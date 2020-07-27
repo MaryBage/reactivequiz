@@ -1,8 +1,19 @@
 import React from 'react';
 import './App.css';
+import SignIn from './components/pages/SignIn/SignIn';
+import SignUp from './components/pages/SignUp/SignUp';
+import Feedback from './components/pages/Feedback/Feedback';
 
 function App() {
-  return <div>sfsfsf</div>;
+  return (
+    <>
+      {/* 
+      <SignIn />
+      <SignUp />
+      <Feedback /> 
+      */}
+    </>
+  );
 }
 
 export default App;
