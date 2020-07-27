@@ -7,7 +7,7 @@ import Feedback from './components/pages/Feedback/Feedback';
 function App() {
   return (
     <>
-      {/* 
+      {/*       
       <SignIn />
       <SignUp />
       <Feedback /> 
