@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
+import './components/popups/Popup'
+import Popup from './components/popups/Popup';
 
 function App() {
-  return <div>sfsfsf</div>;
+  return <div>aaa</div>  
 }
 
 export default App;
