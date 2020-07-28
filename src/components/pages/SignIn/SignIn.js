@@ -1,11 +1,10 @@
 import React from "react";
 import image from "../../../images/pages/signin.png";
-import Logo from "../Logo/Logo";
 import BackButton from "../BackButton/BackButton";
-import Slogan from "../Slogan/Slogan";
 import Division from "../Division/Division";
 import Checkbox from "../CheckBox/CheckBox";
 import StaticImage from "../StaticImage/StaticImage";
+import PageIntro from "../PageIntro/PageIntro";
 
 const SignIn = (props) => {
     return (
@@ -13,8 +12,7 @@ const SignIn = (props) => {
             <StaticImage image={image}/>
             <div className="changable-wrapper">
                 <BackButton />
-                <Logo />
-                <Slogan />
+                <PageIntro sloganAndLogo={props}/>
                 <Division />
                 <Checkbox/>
                 <Division />

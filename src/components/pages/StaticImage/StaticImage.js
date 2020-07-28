@@ -4,7 +4,7 @@ const StaticImage = (props) => {
     const url = props.image;
     return (
         <div className="static-wrapper">
-            <img src={url} alt="sign_in" />
+            <img className="img" src={url} alt="sign_in" />
         </div>
             
     )
