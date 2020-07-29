@@ -16,13 +16,22 @@ const sloganText = [
     "us how we are doing"
 ];
 
+const informalFieldText = [
+    "email",
+    "name"
+]
+
+const approveButtonText = [
+    "sign in",
+    "sign up",
+    "send message"
+]
+
 const popupText = {
-        harder : "Study harder!",
-        well : "Well done!",
-        great : "Perfectly done!",
-        thanksmail : "Thank you!"
+    harder : "Study harder!",
+    well : "Well done!",
+    great : "Perfectly done!",
+    thanksmail : "Thank you!"
 }
        
-
-
-export {logoText, sloganText, popupText};
+export {logoText, sloganText, informalFieldText, approveButtonText, popupText};

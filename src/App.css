@@ -16,7 +16,7 @@ body {
 
 .changable-wrapper {
   display: grid;
-  justify-content: space-evenly;
+  justify-content: space-around; 
   justify-self: left;
 }
 
