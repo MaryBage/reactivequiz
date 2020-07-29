@@ -8,12 +8,12 @@ import Feedback from './components/pages/Feedback/Feedback';
 function App() {
   return (
     <>
-       {/* <SignIn 
+       <SignIn 
         logoText={logoText} 
         sloganText={sloganText} 
         informalFieldText={informalFieldText} 
         approveButtonText={approveButtonText} 
-      /> */}
+      />
       {/* <SignUp 
         logoText={logoText} 
         sloganText={sloganText} 
