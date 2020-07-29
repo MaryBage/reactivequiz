@@ -18,8 +18,8 @@ const InformalField = (props) => {
         <form className={classes.root} noValidate autoComplete="off">
             <TextField
                 // error
-                id="email"
-                label={text} // "Incorrect email"
+                id={text}
+                label={text} // {`Incorrect ${text}`}
                 variant="outlined"
             />
         </form>
