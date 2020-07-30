@@ -25,7 +25,8 @@ const informalFieldText = [
 const approveButtonText = [
     "sign in",
     "sign up",
-    "send message"
+    "send message",
+    "reset my password",
 ]
 
 const popupText = {

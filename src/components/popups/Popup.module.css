@@ -1,0 +1,30 @@
+.popupWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 2px solid #bbbbbb;
+    border-radius: 20px;
+    background-color: white;
+    height: 70%;
+    width: 65%;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.popupCommonWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.popupCommonWrapper h1 {
+    color: #7e57c2;
+}
+
+.popupCommonWrapper h2 {
+    text-align: center;
+    color: #6f6e6e;
+}
+
+.popupCommonWrapper span {
+    color: #7e57c2;
+}

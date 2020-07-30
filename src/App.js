@@ -4,6 +4,8 @@ import { logoText, sloganText, informalFieldText, approveButtonText } from "./St
 import SignIn from './components/pages/SignIn/SignIn';
 import SignUp from './components/pages/SignUp/SignUp';
 import Feedback from './components/pages/Feedback/Feedback';
+import ResetPasswordPopup from './components/popups/ResetPasswordPopup/ResetPasswordPopup';
+import Popup from './components/popups/Popup';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         informalFieldText={informalFieldText}
         approveButtonText={approveButtonText}
       /> */}
+      {/* <Popup /> */}
+      {/* <ResetPasswordPopup /> */}
     </>
   );
 }
