@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     }
 });
 
-const Buttons = ({buttonText, Link }) => {
+const Buttons = ({buttonText }) => {
     const classes = useStyles();
 
     return (

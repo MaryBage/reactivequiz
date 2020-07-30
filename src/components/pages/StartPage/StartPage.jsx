@@ -1,11 +1,11 @@
 import React from "react";
-import StaticImage from "../StaticImage/StaticImage";
 import image from "../../../images/pages/start.png";
-import PageIntro from "../PageIntro/PageIntro";
 import Buttons from "../Buttons/Button";
-import './_StartPage.css';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
+import '../DetailedComponents/PageIntro/PageIntro.module.css';
+import './_StartPage.css';
 
 
 const StartPage = () => {
