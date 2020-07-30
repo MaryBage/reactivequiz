@@ -6,6 +6,6 @@ const Division = (props) => {
             <div> current division </div>
         </div>
     )
-}
+};
 
 export default Division;
