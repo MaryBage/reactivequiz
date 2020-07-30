@@ -4,7 +4,7 @@ const Slogan = (props) => {
     const text = props.sloganText;  // "becoming reactive experts", "it’s great to see you here", "a quiz, test your skills", 
                                     // "a quiz, share your experience", "us, motivate and inspire", "us how we are doing"
     return (
-        <div className="slogan">{text[3]}</div>
+        <div className="slogan">{text}</div>
     )
 }
 

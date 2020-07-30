@@ -1,0 +1,28 @@
+.feedbackInformalDivision {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90% !important;
+    height: 50%;
+}
+
+.feedbackInformalDivision button {
+    height: 45px !important;
+    width: 45%;
+}
+
+.feedbackInformalDivision textarea {
+    max-width : 99%;
+    max-height : 50%;
+    min-width: 99%;
+    min-height: 50%;
+} 
+
+.nameAndEmailField {
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.nameAndEmailField input {
+    width: 45%;
+}

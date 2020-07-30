@@ -4,7 +4,7 @@ const Logo = (props) => {
     const text = props.logoText; // "reactive", "hello", "compose", "create", "join", "tell"
 
     return (
-        <div className="logo">{text[3]}</div>
+        <div className="logo">{text}</div>
     )
 }
 
