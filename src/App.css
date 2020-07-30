@@ -27,6 +27,11 @@ body {
   width: 100%;
 }
 
+.pageIntro {
+  display: flex;
+  flex-direction: column;
+}
+
 .logo {
   color: #555555;
   font-size: 55px;
