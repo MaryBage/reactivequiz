@@ -1,9 +1,7 @@
 import React from "react";
 import image from "../../../images/pages/start.png";
 import CustomButton from '../DetailedComponents/Buttons/CustomButton/CustomButton'
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
-import '../DetailedComponents/PageIntro/PageIntro.module.css';
 import './_StartPage.css';
 
 
