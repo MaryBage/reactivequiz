@@ -11,7 +11,7 @@ import StartPage from "./components/pages/StartPage/StartPage";
 function App() {
   return (
     <>
-        <StartPage/>
+        {/* <StartPage/> */}
       {/* <SignIn*/}
       {/*  logoText={logoText}*/}
       {/*  sloganText={sloganText}*/}
@@ -30,7 +30,7 @@ function App() {
         informalFieldText={informalFieldText}
         approveButtonText={approveButtonText}
       /> */}
-      {/* <Popup /> */}
+      {/* <Popup resultPoint={70} totalPoint={87}/>// null for thanksmail */}
       {/* <ResetPasswordPopup /> */}
     </>
   );
