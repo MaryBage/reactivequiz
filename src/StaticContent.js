@@ -1,16 +1,16 @@
 const logoText = [
     "reactive",
-    "hello", 
-    "compose", 
-    "create", 
-    "join", 
+    "hello",
+    "compose",
+    "create",
+    "join",
     "tell"
 ];
 
 const sloganText = [
-    "becoming reactive experts", 
-    "it’s great to see you here", 
-    "a quiz, test your skills", 
+    "becoming reactive experts",
+    "it’s great to see you here",
+    "a quiz, test your skills",
     "a quiz, share your experience",
     "us, motivate and inspire",
     "us how we are doing"
@@ -18,7 +18,8 @@ const sloganText = [
 
 const informalFieldText = [
     "email",
-    "name"
+    "name",
+    "password",
 ]
 
 const approveButtonText = [
@@ -28,10 +29,10 @@ const approveButtonText = [
 ]
 
 const popupText = {
-    harder : "Study harder!",
-    well : "Well done!",
-    great : "Perfectly done!",
-    thanksmail : "Thank you!"
+    harder: "Study harder!",
+    well: "Well done!",
+    great: "Perfectly done!",
+    thanksmail: "Thank you!"
 }
-       
-export {logoText, sloganText, informalFieldText, approveButtonText, popupText};
+
+export { logoText, sloganText, informalFieldText, approveButtonText, popupText };

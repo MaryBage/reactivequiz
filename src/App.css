@@ -1,11 +1,17 @@
 body {
   margin: 0px;
   padding: 0px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.wrapper div {
+  width: 100%;
 }
 
 .img {
@@ -15,17 +21,68 @@ body {
 }
 
 .changable-wrapper {
-  display: grid;
-  justify-content: space-around; 
-  justify-self: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .logo {
-  font-size: 45px;
-  font-weight: bold;
+  color: #555555;
+  font-size: 55px;
+  font-weight: bolder;
 }
 
 .slogan {
-  font-size: 18px;
+  color: #6f6e6e;
+  font-size: 25px;
 }
 
+.informalDivision {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; 
+  width: 50% !important;
+}
+
+.informalDivision button {
+  height: 45px !important
+}
+
+.commonstyle {
+  height: 40px;
+  color: #555555;
+  font-size: 18px;
+  font-family: 'Courier New', Courier, monospace;
+  border: 1.5px solid  #bbbbbb;
+  border-radius: 5px;
+  background-color: white;
+  text-align: center;
+  outline: none;
+}
+
+.commonstyle:hover {
+  border-color: #7e57c2;
+  color: #7e57c2;
+  cursor: pointer;
+}
+
+::placeholder { 
+  color: #555555;
+}
+
+.commonstyle:hover::placeholder { 
+  color: #7e57c2;
+}
+
+.incorrectInput {
+  height: 40px;
+  color: #e60000;
+  font-size: 18px;
+  font-family: 'Courier New', Courier, monospace;
+  border: 1.5px solid  #e60000;
+  border-radius: 5px;
+  background-color: white;
+  text-align: center;
+  outline: none;
+}

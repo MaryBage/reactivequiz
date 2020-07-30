@@ -4,9 +4,10 @@ import image from "../../../images/pages/feedback.png";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import BackButton from "../DetailedComponents/Buttons/BackButton/BackButton";
 import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
-import InformalField from "../DetailedComponents/Fields/InformalField/InformalField";
 import ApproveButton from "../DetailedComponents/Buttons/ApproveButton/ApproveButton";
 import MessageField from "../DetailedComponents/Fields/MessageField/MessageField";
+import NameField from "../DetailedComponents/Fields/NameField/NameField";
+import EmailField from "../DetailedComponents/Fields/EmailField/EmailField";
 
 const Feedback = (props) => {
     const logoText = props.logoText[5];
@@ -20,9 +21,11 @@ const Feedback = (props) => {
             <div className="changable-wrapper">
                 <BackButton />
                 <PageIntro logoText={logoText} sloganText={sloganText} />
-                <div className={s.informalDivision}>  
-                    <InformalField informalText={informalText[1]} />
-                    <InformalField informalText={informalText[0]} />
+                <div className={s.feedbackInformalDivision}>
+                    <div className={s.nameAndEmailField}>
+                        <NameField informalText={informalText[1]} />
+                        <EmailField informalText={informalText[0]} />
+                    </div>
                     <MessageField />
                     <ApproveButton approveButtonText={approveButtonText} />
                 </div>

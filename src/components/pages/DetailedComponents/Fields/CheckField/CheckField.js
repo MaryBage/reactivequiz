@@ -6,11 +6,11 @@ import CheckBox from "./CheckBox";
 const CheckField = (props) => {
     return (
         <div className={s.checkField}>
-            <div className={s.checkBoxField}>
+            <div className={s.firstInnerCheckField}>
                 <CheckBox />
                 <div>remember me</div>
             </div>
-            <div>forgot password?</div>
+            <div className={s.secondInnerCheckField}><a href="#writeyourmailpage">forgot password?</a></div>
         </div>
     )
 }

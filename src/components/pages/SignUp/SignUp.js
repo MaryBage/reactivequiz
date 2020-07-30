@@ -1,12 +1,13 @@
 import React from "react";
-import s from "./SignUp.module.css";
-import image from "../../../images/pages/signin.png";
-import ApproveButton from "../DetailedComponents/Buttons/ApproveButton/ApproveButton";
+import image from "../../../images/pages/signup.png";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
-import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
-import InformalField from "../DetailedComponents/Fields/InformalField/InformalField";
-import PasswordField from "../DetailedComponents/Fields/PasswordField/PasswordField";
 import BackButton from "../DetailedComponents/Buttons/BackButton/BackButton";
+import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
+import NameField from "../DetailedComponents/Fields/NameField/NameField";
+import EmailField from "../DetailedComponents/Fields/EmailField/EmailField"
+import PasswordField from "../DetailedComponents/Fields/PasswordField/PasswordField";
+import ApproveButton from "../DetailedComponents/Buttons/ApproveButton/ApproveButton";
+
 
 const SignUp = (props) => {
     const logoText = props.logoText[4];
@@ -20,10 +21,10 @@ const SignUp = (props) => {
             <div className="changable-wrapper">
                 <BackButton />
                 <PageIntro logoText={logoText} sloganText={sloganText} />
-                <div className={s.informalDivision}>
-                    <InformalField informalText={informalText[1]} />
-                    <InformalField informalText={informalText[0]} />
-                    <PasswordField />
+                <div className="informalDivision">
+                    <NameField informalText={informalText[1]} />
+                    <EmailField informalText={informalText[0]} />
+                    <PasswordField informalText={informalText[2]} />
                     <ApproveButton approveButtonText={approveButtonText} />
                 </div>
             </div>
