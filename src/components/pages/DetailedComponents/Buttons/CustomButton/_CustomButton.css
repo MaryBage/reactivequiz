@@ -1,6 +1,5 @@
-.makeStyles-root-1 ::before
+.linear ::before
 {
-
     content: "";
     position: absolute;
     width: 1.5px;
@@ -12,7 +11,7 @@
 
 .makeStyles-root-1
 {
-border: 1px solid #c1c0c0 !important;
+    border: 1px solid #c1c0c0 !important;
 
 }
 

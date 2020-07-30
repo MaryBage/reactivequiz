@@ -12,18 +12,18 @@ function App() {
   return (
     <>
         <StartPage/>
-      {/* <SignIn
-        logoText={logoText}
-        sloganText={sloganText}
-        informalFieldText={informalFieldText}
-        approveButtonText={approveButtonText}
-      /> */}
-      {/* <SignUp
-        logoText={logoText}
-        sloganText={sloganText}
-        informalFieldText={informalFieldText}
-        approveButtonText={approveButtonText}
-      /> */}
+      {/* <SignIn*/}
+      {/*  logoText={logoText}*/}
+      {/*  sloganText={sloganText}*/}
+      {/*  informalFieldText={informalFieldText}*/}
+      {/*  approveButtonText={approveButtonText}*/}
+      {/*/>*/}
+      {/* <SignUp*/}
+      {/*  logoText={logoText}*/}
+      {/*  sloganText={sloganText}*/}
+      {/*  informalFieldText={informalFieldText}*/}
+      {/*  approveButtonText={approveButtonText}*/}
+      {/*/>*/}
       {/* <Feedback
         logoText={logoText}
         sloganText={sloganText}

@@ -1,7 +1,6 @@
 import React from "react";
 import image from "../../../images/pages/start.png";
-import Buttons from "../Buttons/Button";
-
+import CustomButton from '../DetailedComponents/Buttons/CustomButton/CustomButton'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import '../DetailedComponents/PageIntro/PageIntro.module.css';
@@ -14,13 +13,17 @@ const StartPage = () => {
             <StaticImage image={image}/>
             <div className="changable-wrapper-new">
                 <h1 className="title">reActive</h1>
-                <KeyboardArrowUpIcon/>
+                {/*<div className="inner-container">*/}
                 <p className="subtitle">becoming reactive experts</p>
                 <div className="buttons">
-                    <Buttons buttonText="where you are"/>
-                    <Buttons buttonText="where you are"/>
-                    <Buttons buttonText="where you are"/>
+                    <CustomButton linear>where you are</CustomButton>
+                    <CustomButton linear>for trainees</CustomButton>
+                    <CustomButton linear>for trainers</CustomButton>
+                    <CustomButton type="submit" linear>feedback</CustomButton>
+
                 </div>
+                {/*</div>*/}
+
             </div>
         </div>
     )
