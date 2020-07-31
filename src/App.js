@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       {/* <StartPage/> */}
-      {/* <SignIn /> */}
+      {/* <SignIn />*/}
       {/* <SignUp /> */}
       {/* <Feedback /> */}
       {/* <Popup /> */}
