@@ -1,0 +1,22 @@
+.custom-select {
+    border: 1px solid gray;
+    padding: 9px 71px;
+    border-radius: 13px;
+    width: 250px;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+.custom-select::-ms-expand {
+    display: none;
+}
+.custom-select:hover
+{
+    cursor: pointer;
+}

@@ -14,6 +14,7 @@ import About from './components/pages/About/About';
 function App() {
   return (
     <>
+<<<<<<< HEAD
 
       
        {/* <SignIn 
@@ -55,13 +56,18 @@ function App() {
       <Popup />
       <ResetPasswordPopup />
 
+=======
+>>>>>>> 0e0f6cba55c7b250b3fac9904b565b6a81cb7a23
       {/* <StartPage/> */}
-      {/* <SignIn /> */}
+      {/* <SignIn />*/}
       {/* <SignUp /> */}
       {/* <Feedback /> */}
       {/* <Popup /> */}
       {/* <ResetPasswordPopup /> */}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e0f6cba55c7b250b3fac9904b565b6a81cb7a23
     </>
   );
 }

@@ -1,5 +1,5 @@
 const logoText = [
-    "reactive",
+    "reActive",
     "hello",
     "compose",
     "create",

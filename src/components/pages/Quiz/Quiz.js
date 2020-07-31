@@ -8,7 +8,7 @@ export const Quiz = () => {
   useEffect(() => {
 
     axios
-        .get(`http://reactivequiz.com/2mash/quiz.php?quiz=1`)
+        .get(`https://reactivequiz.com/2mash/quiz.php?quiz=1`)
         .then(res => {
             console.log(res.data);
            setQuiz(res.data.map((questionItem, i) => {
