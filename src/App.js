@@ -11,25 +11,25 @@ import StartPage from "./components/pages/StartPage/StartPage";
 function App() {
   return (
     <>
-        <StartPage/>
-      {/* <SignIn
+        {/* <StartPage/> */}
+      <SignIn
         logoText={logoText}
         sloganText={sloganText}
         informalFieldText={informalFieldText}
         approveButtonText={approveButtonText}
-      /> */}
-      {/* <SignUp
+      />
+      <SignUp
         logoText={logoText}
         sloganText={sloganText}
         informalFieldText={informalFieldText}
         approveButtonText={approveButtonText}
-      /> */}
-      {/* <Feedback
+      />
+      <Feedback
         logoText={logoText}
         sloganText={sloganText}
         informalFieldText={informalFieldText}
         approveButtonText={approveButtonText}
-      /> */}
+      />
       {/* <Popup /> */}
       {/* <ResetPasswordPopup /> */}
     </>
