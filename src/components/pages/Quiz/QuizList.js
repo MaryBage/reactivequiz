@@ -1,12 +1,12 @@
 import React from 'react'
-import Flashcard from './QuizItem';
+import QuizItem from './QuizItem';
 
-export default function FlashcardList({ flashcards }) {
+export default function QuizList({ quizes }) {
    // console.log(flashcards);
   return (
     <div>
-      {flashcards.map(flashcard => {
-        return <Flashcard flashcard={flashcard} key={flashcard.id} />
+      {quizes.map(quiz => {
+        return <QuizItem quiz={quiz} key={quiz.id} />
       })}
     </div>
   )

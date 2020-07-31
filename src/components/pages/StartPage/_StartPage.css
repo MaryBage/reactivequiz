@@ -1,0 +1,41 @@
+.buttons {
+    display: flex;
+    flex-direction: column;
+    width: 50% !important;
+    margin-top: -3%;
+}
+
+.title {
+    font-size: 95px;
+    letter-spacing: 3px;
+    color: #5a5757;
+}
+
+.changable-wrapper-new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #5a5757;
+}
+
+.subtitle {
+    position: relative;
+    font-size: 29px;
+    letter-spacing: 5px;
+}
+
+.subtitle::before
+{
+    content: "";
+    position: absolute;
+    width: 1.5px;
+    height: 50px;
+    background-color: #c1c0c0;
+    top: -55px;
+    left: 50%;
+}
+/*.MuiSvgIcon-root {*/
+/*    position: relative !important;*/
+/*    margin-bottom: 25px !important;*/
+/*}*/
+

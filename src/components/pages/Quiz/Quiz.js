@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import FlashcardList from './QuizList';
+import QuizList from './QuizList';
 import './Quiz.css'
 import axios from 'axios'
 
@@ -49,7 +49,7 @@ export const Quiz = () => {
     <>
      {}
       
-        <FlashcardList flashcards={quiz} />
+        <QuizList quizes={quiz} />
       
     </>
   );

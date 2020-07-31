@@ -5,31 +5,14 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import ApproveButton from '../DetailedComponents/Buttons/ApproveButton/ApproveButton';
 
 
-export default function Flashcard({ flashcard }) {
-console.log(flashcard);
-    const exampleCode = `
-    var x = new Array();
-
-    function foo(){
-        x++;
-        this.x = x;
-        let y = 0;
-        return foo;
-    }
-    var bar = new new foo;
-    console.log(bar.x);
-`;
- 
-
-
-
-
+export default function Quiz({ quiz }) {
+console.log(quiz);
   return (
     <div className="main">
-      <div className="question" value={flashcard.questionId} >
-        {flashcard.question}
-        {flashcard.code?
-                <Highlight {...defaultProps} code={flashcard.code} language="javascript">
+      <div className="question" value={quiz.questionId} >
+        {quiz.question}
+        {quiz.code?
+                <Highlight {...defaultProps} code={quiz.code} language="javascript">
                     {({ className, tokens, getLineProps, getTokenProps }) => (
                     <pre className={className}>
                         {tokens.map((line, i) => (
@@ -47,19 +30,14 @@ console.log(flashcard);
             
         </div>
         <div className="answer">
-
-        <FormControl component="fieldset">
-                    
-                    <RadioGroup aria-label="quiz" name="quiz" >
-                    {flashcard.options.map(option => {
-            return <FormControlLabel value={option} control={<Radio />} key={option} label={option} />
+            
+            {quiz.options.map((option,i) => {
+            return <div>
+              <input type={quiz.type=='single' ? 'radio' : 'checkbox'} name={`answrOf${quiz.questionId}`} value={option} key={option} id={quiz.questionId+i} />
+              <label for={quiz.questionId+i}>{option}</label>
+            </div>
           })}
-                    </RadioGroup>
-                </FormControl>
-       
         </div>
-      
-     
     </div>
   )
 }

@@ -1,11 +1,31 @@
 .checkField {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    font-size: 12px;
+    height: 20%;
+    font-size: 13px;
+    color: #555555;
 }
 
-.checkBoxField {
+.firstInnerCheckField {
     display: flex;
     align-items: center;
+}
+
+.firstInnerCheckField input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+.secondInnerCheckField {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.checkField a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.checkField a:hover {
+    color: #7e57c2;
 }

@@ -1,16 +1,17 @@
 import React from "react";
 import s from "./CheckField.module.css";
-import CheckBox from "./CheckBox";
+import { informativeFieldType, informativeFieldId } from "../../../../../StaticContent";
+import InformativeField from "../InformativeField/InformativeField";
 
 
 const CheckField = (props) => {
     return (
         <div className={s.checkField}>
-            <div className={s.checkBoxField}>
-                <CheckBox />
+            <div className={s.firstInnerCheckField}>
+                <InformativeField fieldType={informativeFieldType[2]} fieldId={informativeFieldId[0]} />              
                 <div>remember me</div>
             </div>
-            <div>forgot password?</div>
+            <div className={s.secondInnerCheckField}><a href="#writeyourmailpage">forgot password?</a></div>
         </div>
     )
 }
