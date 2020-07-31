@@ -7,41 +7,42 @@ import ResetPasswordPopup from './components/popups/ResetPasswordPopup/ResetPass
 import Popup from './components/popups/Popup';
 import StartPage from "./components/pages/StartPage/StartPage";
 import About from './components/pages/About/About';
+import StartTest from "./components/pages/StartTest/StartTest";
 
 function App() {
   return (
     <>
-<<<<<<< HEAD
-        <StartPage/>
-        <About/>
-      <SignIn
-        logoText={logoText}
-        sloganText={sloganText}
-        informalFieldText={informalFieldText}
-        approveButtonText={approveButtonText}
-      />
-      <SignUp
-        logoText={logoText}
-        sloganText={sloganText}
-        informalFieldText={informalFieldText}
-        approveButtonText={approveButtonText}
-      />
-      <Feedback
-        logoText={logoText}
-        sloganText={sloganText}
-        informalFieldText={informalFieldText}
-        approveButtonText={approveButtonText}
-      />
-      <Popup />
-      <ResetPasswordPopup />
-=======
+        <StartTest/>
+{/*<<<<<<< HEAD*/}
+{/*        <StartPage/>*/}
+        {/*<About/>*/}
+      {/*<SignIn*/}
+      {/*  logoText={logoText}*/}
+      {/*  sloganText={sloganText}*/}
+      {/*  informalFieldText={informalFieldText}*/}
+      {/*  approveButtonText={approveButtonText}*/}
+      {/*/>*/}
+      {/*<SignUp*/}
+      {/*  logoText={logoText}*/}
+      {/*  sloganText={sloganText}*/}
+      {/*  informalFieldText={informalFieldText}*/}
+      {/*  approveButtonText={approveButtonText}*/}
+      {/*/>*/}
+      {/*<Feedback*/}
+      {/*  logoText={logoText}*/}
+      {/*  sloganText={sloganText}*/}
+      {/*  informalFieldText={informalFieldText}*/}
+      {/*  approveButtonText={approveButtonText}*/}
+      {/*/>*/}
+      {/*<Popup />*/}
+      {/*<ResetPasswordPopup />*/}
       {/* <StartPage/> */}
       {/* <SignIn /> */}
       {/* <SignUp /> */}
       {/* <Feedback /> */}
       {/* <Popup /> */}
       {/* <ResetPasswordPopup /> */}
->>>>>>> 67fe2ad71120aa5a01c1a2003ef01b8a3ed99e1c
+
     </>
   );
 }
