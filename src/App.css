@@ -1,0 +1,33 @@
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.changable-wrapper {
+  display: grid;
+  justify-content: space-around; 
+  justify-self: left;
+}
+
+.logo {
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.slogan {
+  font-size: 18px;
+}
+
+

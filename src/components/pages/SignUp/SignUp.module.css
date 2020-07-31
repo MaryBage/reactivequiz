@@ -1,0 +1,4 @@
+.informalDivision {
+    display: grid;
+    justify-content: space-evenly;
+  }
