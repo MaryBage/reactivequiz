@@ -36,4 +36,6 @@ const popupText = {
     thanksmail: "Thank you!"
 }
 
+
+
 export { logoText, sloganText, informalFieldText, approveButtonText, popupText };

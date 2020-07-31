@@ -3,6 +3,9 @@ import image from "../../../images/pages/start.png";
 import CustomButton from '../DetailedComponents/Buttons/CustomButton/CustomButton'
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import './_StartPage.css';
+import { Link } from "react-router-dom";
+
+import SignIn from "../SignIn/SignIn";
 
 
 const StartPage = () => {
@@ -14,10 +17,10 @@ const StartPage = () => {
                 {/*<div className="inner-container">*/}
                 <p className="subtitle">becoming reactive experts</p>
                 <div className="buttons">
-                    <CustomButton linear>where you are</CustomButton>
-                    <CustomButton linear>for trainees</CustomButton>
-                    <CustomButton linear>for trainers</CustomButton>
-                    <CustomButton type="submit" linear>feedback</CustomButton>
+                    <CustomButton href="/about-us" linear="true"> where you are </CustomButton>
+                    <CustomButton href="/for-trainees" linear="true">for trainees</CustomButton>
+                    <CustomButton href="/for-trainers" linear="true">for trainers</CustomButton>
+                    <CustomButton href="/feedback" type="submit" linear="true">feedback</CustomButton>
 
                 </div>
                 {/*</div>*/}

@@ -7,11 +7,13 @@ import Feedback from './components/pages/Feedback/Feedback';
 import ResetPasswordPopup from './components/popups/ResetPasswordPopup/ResetPasswordPopup';
 import Popup from './components/popups/Popup';
 import StartPage from "./components/pages/StartPage/StartPage";
+import StartTest from "./components/pages/StartTest/StartTest";
 
 function App() {
   return (
     <>
-        <StartPage/>
+        <StartTest/>
+        {/*<StartPage/>*/}
       {/* <SignIn*/}
       {/*  logoText={logoText}*/}
       {/*  sloganText={sloganText}*/}
