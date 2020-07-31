@@ -1,30 +1,28 @@
 import React from "react";
 import Button from '@material-ui/core/Button';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import './_CustomButton.css';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 const useStyles = makeStyles({
     root: {
         position: "relative",
-        marginTop: 50,
-        padding: '0 45px',
-        borderColor: 'grey',
-        color: 'black',
-        borderRadius: 13,
-        border:"2px solid red",
-        // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-        height: 48,
-        // boxShadow: '0 3px 5px 2px rgba(184, 85, 168, .3)',
-        // border: 'none',
-        textTransform: 'lowercase',
+        marginTop: 38,
+        height: 45,
+        color: "#555555",
         fontSize: 18,
-        letterSpacing: 2,
+        fontFamily: "Courier New",
+        borderRadius: 5,
+        backgroundColor: "white",
+        textAlign: "center",
+        outline: "none",
+        textTransform: 'lowercase',
+        padding: '0 45px',
     }
 });
 
-const Buttons = ({children, ...otherProps}) => {
+const CustomButton = ({ children, ...otherProps }) => {
     const classes = useStyles();
 
     return (
@@ -32,13 +30,11 @@ const Buttons = ({children, ...otherProps}) => {
             <Button  {...otherProps} classes={{
                 root: classes.root
             }} className={`${otherProps.linear ? "linear" : ""} ${otherProps.small ? "small" : ""}`} variant="outlined"
-                     color="primary">
+                color="primary">
                 {children}
             </Button>
-
-
         </>
-
     )
-};
-export default Buttons
+}
+
+export default CustomButton;
