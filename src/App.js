@@ -6,14 +6,15 @@ import Feedback from './components/pages/Feedback/Feedback';
 import ResetPasswordPopup from './components/popups/ResetPasswordPopup/ResetPasswordPopup';
 import Popup from './components/popups/Popup';
 import StartPage from "./components/pages/StartPage/StartPage";
+import About from './components/pages/About/About';
 
 function App() {
   return (
     <>
-      <StartPage/>
-      {/* <SignIn />
-      <SignUp />
-      <Feedback /> */}
+      {/* <StartPage/> */}
+      {/* <SignIn /> */}
+      {/* <SignUp /> */}
+      {/* <Feedback /> */}
       {/* <Popup /> */}
       {/* <ResetPasswordPopup /> */}
     </>
