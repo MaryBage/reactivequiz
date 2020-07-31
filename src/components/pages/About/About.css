@@ -1,0 +1,40 @@
+.welcome{
+    width:90%;
+    display:flex;
+    flex-direction: row;
+ 
+}
+
+
+img{
+    width:100%;
+ 
+}
+ 
+
+.hello{
+    margin-top:10%;
+    font-size: 80px;
+    color: #5a5757;
+    letter-spacing: inherit;
+
+    
+}
+
+.importanttext{
+    color:purple;
+
+}
+
+.content{
+    
+    margin-left: 200px;
+}
+
+.paragrafh{
+    letter-spacing:inherit;
+    color: grey;
+    font-family: inherit;
+    font-size: 30px;
+
+}

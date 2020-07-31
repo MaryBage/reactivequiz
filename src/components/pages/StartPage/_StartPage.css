@@ -4,13 +4,7 @@
     width: 50% !important;
     margin-top: -3%;
 }
-.inner-container
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 7%;
-}
+
 .title {
     font-size: 95px;
     letter-spacing: 3px;

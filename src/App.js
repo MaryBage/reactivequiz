@@ -7,11 +7,13 @@ import Feedback from './components/pages/Feedback/Feedback';
 import ResetPasswordPopup from './components/popups/ResetPasswordPopup/ResetPasswordPopup';
 import Popup from './components/popups/Popup';
 import StartPage from "./components/pages/StartPage/StartPage";
+import About from './components/pages/About/About';
 
 function App() {
   return (
     <>
-        {/* <StartPage/> */}
+        <StartPage/>
+        <About/>
       <SignIn
         logoText={logoText}
         sloganText={sloganText}
@@ -30,8 +32,8 @@ function App() {
         informalFieldText={informalFieldText}
         approveButtonText={approveButtonText}
       />
-      {/* <Popup /> */}
-      {/* <ResetPasswordPopup /> */}
+      <Popup />
+      <ResetPasswordPopup />
     </>
   );
 }
