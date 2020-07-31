@@ -1,8 +1,8 @@
 import React from 'react';
-import s from "./PopupReset.module.css"
-import EmailField from '../../pages/DetailedComponents/Fields/EmailField/EmailField';
+import { informativeFieldType, informativeFieldId, informativeFieldText, approveButtonText } from "../../../StaticContent";
+import s from "./PopupReset.module.css";
 import ApproveButton from '../../pages/DetailedComponents/Buttons/ApproveButton/ApproveButton';
-import { informalFieldText, approveButtonText } from "../../../StaticContent";
+import InformativeField from '../../pages/DetailedComponents/Fields/InformativeField/InformativeField';
 
 const ResetPasswordPopup = (props) => {
     return (
@@ -15,10 +15,10 @@ const ResetPasswordPopup = (props) => {
                         and we will send you a link to reset your password.
                     </h3>
                 </div>
-                <div className={s.popupWrapper}>
-                    <EmailField informalText={informalFieldText[2]} />
+                <form className={s.popupWrapper}>
+                    <InformativeField fieldType={informativeFieldType[0]} fieldId={informativeFieldId[3]} informativeText={informativeFieldText[2]} />
                     <ApproveButton approveButtonText={approveButtonText[3]} />
-                </div>
+                </form>
             </div>
         </div>
     )

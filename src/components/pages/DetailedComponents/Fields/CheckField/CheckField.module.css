@@ -1,19 +1,19 @@
 .checkField {
     display: flex;
     align-items: center;
+    height: 20%;
     font-size: 13px;
     color: #555555;
 }
 
 .firstInnerCheckField {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    
 }
 
-.firstInnerCheckField div {
-    max-width: max-content;
+.firstInnerCheckField input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
 }
 
 .secondInnerCheckField {
