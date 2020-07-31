@@ -2,7 +2,7 @@ import React from "react"
 
 const BackButton = (props) => {
     return (
-        <div>
+        <div className="backButton">
             <button> back </button>
         </div>
     )

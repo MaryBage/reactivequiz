@@ -1,12 +1,9 @@
 import React from "react";
 import image from "../../../images/pages/start.png";
-import CustomButton from '../DetailedComponents/Buttons/CustomButton/CustomButton'
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import './_StartPage.css';
-import { Link } from "react-router-dom";
-
-import SignIn from "../SignIn/SignIn";
-
+import Buttons from "../DetailedComponents/Buttons/CustomButton/CustomButton";
 
 const StartPage = () => {
     return (

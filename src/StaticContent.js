@@ -16,7 +16,20 @@ const sloganText = [
     "us how we are doing"
 ];
 
-const informalFieldText = [
+const informativeFieldType = [
+    "text",
+    "password",
+    "checkbox",
+]
+
+const informativeFieldId = [
+    "signin",
+    "signup",
+    "feedback",
+    "reset",
+]
+
+const informativeFieldText = [
     "email",
     "name",
     "password",
@@ -36,6 +49,12 @@ const popupText = {
     thanksmail: "Thank you!"
 }
 
-
-
-export { logoText, sloganText, informalFieldText, approveButtonText, popupText };
+export { 
+    logoText, 
+    sloganText, 
+    informativeFieldType, 
+    informativeFieldId, 
+    informativeFieldText, 
+    approveButtonText, 
+    popupText 
+};

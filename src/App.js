@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { logoText, sloganText, informalFieldText, approveButtonText } from "./StaticContent";
 import SignIn from './components/pages/SignIn/SignIn';
 import SignUp from './components/pages/SignUp/SignUp';
 import Feedback from './components/pages/Feedback/Feedback';
@@ -12,6 +11,7 @@ import About from './components/pages/About/About';
 function App() {
   return (
     <>
+<<<<<<< HEAD
         <StartPage/>
         <About/>
       <SignIn
@@ -34,6 +34,14 @@ function App() {
       />
       <Popup />
       <ResetPasswordPopup />
+=======
+      {/* <StartPage/> */}
+      {/* <SignIn /> */}
+      {/* <SignUp /> */}
+      {/* <Feedback /> */}
+      {/* <Popup /> */}
+      {/* <ResetPasswordPopup /> */}
+>>>>>>> 67fe2ad71120aa5a01c1a2003ef01b8a3ed99e1c
     </>
   );
 }
