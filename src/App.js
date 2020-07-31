@@ -10,10 +10,10 @@ import StartPage from "./components/pages/StartPage/StartPage";
 function App() {
   return (
     <>
-      {/* <StartPage/> */}
-      {/* <SignIn /> */}
-      {/* <SignUp /> */}
-      {/* <Feedback /> */}
+      <StartPage/>
+      {/* <SignIn />
+      <SignUp />
+      <Feedback /> */}
       {/* <Popup /> */}
       {/* <ResetPasswordPopup /> */}
     </>
