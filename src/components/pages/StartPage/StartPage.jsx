@@ -18,6 +18,8 @@ const StartPage = () => {
                     <Buttons buttonText="where you are" />
                     <Buttons buttonText="where you are" />
                 </div>
+                {/*</div>*/}
+
             </div>
         </div>
     )

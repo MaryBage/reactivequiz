@@ -1,14 +1,13 @@
 import React from "react";
 import Button from '@material-ui/core/Button';
 import {makeStyles} from '@material-ui/core/styles';
-import './_Buttons.css';
-import {Link} from "react-router-dom";
+import './_CustomButton.css'
 
 
 const useStyles = makeStyles({
     root: {
         position: "relative",
-        marginTop:50,
+        marginTop: 50,
         padding: '0 45px',
         borderColor: 'grey',
         color: 'black',
@@ -23,15 +22,15 @@ const useStyles = makeStyles({
     }
 });
 
-const Buttons = ({buttonText }) => {
+const Buttons = ({children, ...otherProps}) => {
     const classes = useStyles();
 
     return (
         <>
-            <Button classes={{
+            <Button {...otherProps} classes={{
                 root: classes.root
-            }} variant="outlined" color="primary">
-              {buttonText}
+            }} className={otherProps.linear? "linear" : ""} variant="outlined" color="primary">
+                {children}
             </Button>
 
 
