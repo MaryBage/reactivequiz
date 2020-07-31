@@ -8,21 +8,24 @@ import Buttons from "../DetailedComponents/Buttons/CustomButton/CustomButton";
 const StartPage = () => {
     return (
         <div className="wrapper">
-            <StaticImage image={image} />
+            <StaticImage image={image}/>
             <div className="changable-wrapper-new">
                 <h1 className="title">reActive</h1>
-                <KeyboardArrowUpIcon />
+                {/*<div className="inner-container">*/}
                 <p className="subtitle">becoming reactive experts</p>
                 <div className="buttons">
-                    <Buttons buttonText="where you are" />
-                    <Buttons buttonText="where you are" />
-                    <Buttons buttonText="where you are" />
+                    <CustomButton href="/about-us" linear="true"> where you are </CustomButton>
+                    <CustomButton href="/for-trainees" linear="true">for trainees</CustomButton>
+                    <CustomButton href="/for-trainers" linear="true">for trainers</CustomButton>
+                    <CustomButton href="/feedback" type="submit" linear="true">feedback</CustomButton>
+
                 </div>
                 {/*</div>*/}
 
             </div>
         </div>
     )
-}
 
-export default StartPage;
+
+};
+export default StartPage
