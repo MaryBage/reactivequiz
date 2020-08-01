@@ -3,7 +3,8 @@ import { logoText, sloganText, informativeFieldType, informativeFieldId, informa
 import s from "./Feedback.module.css";
 import image from "../../../images/pages/feedback.png";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
-import BackButton from "../DetailedComponents/Buttons/BackButton/BackButton";
+import CustomButton from "../DetailedComponents/Buttons/CustomButton/CustomButton";
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
 import ApproveButton from "../DetailedComponents/Buttons/ApproveButton/ApproveButton";
 import MessageField from "../DetailedComponents/Fields/MessageField/MessageField";
@@ -16,7 +17,7 @@ const Feedback = (props) => {
         <div className="wrapper">
             <StaticImage image={image} />
             <div className="changable-wrapper">
-                <BackButton />
+                <CustomButton small="true" href="/back"><KeyboardBackspaceIcon/>back</CustomButton>
                 <PageIntro logoText={logoText[5]} sloganText={sloganText[5]} />
                 <form className={s.feedbackInformativeDivision}>
                     <div className={s.nameAndEmailField}>
