@@ -9,6 +9,7 @@ import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
 // import { MemoryRouter as Router } from 'react-router';
 // import { Link as RouterLink } from 'react-router-dom';
 
+
 const StartPage = () => {
     return (
         <div className="wrapper">
