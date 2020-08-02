@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import './App.css';
-import {Redirect, Route, Switch} from "react-router-dom"
+import {Redirect, Route, Switch} from "react-rreacouter-dom"
 import {connect} from 'react-redux';
 import {setCurrentUser,logoutUser} from './redux/user/user.actions';
 import StartPage from "./components/pages/StartPage/StartPage";
@@ -64,3 +64,6 @@ const mapStateToProps = state => ({
     currentUser: state.user.currentUser
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App)
+
+export default App;
+
