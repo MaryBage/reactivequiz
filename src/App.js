@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {setCurrentUser,logoutUser} from './redux/user/user.actions';
 import StartPage from "./components/pages/StartPage/StartPage";
 import SignIn from "./components/pages/SignIn/SignIn";
+import StartTest from "./components/pages/StartTest/StartTest";
 
 
 const App = ({ setCurrentUser,currentUser,logoutUser}) => {
@@ -21,35 +22,37 @@ const App = ({ setCurrentUser,currentUser,logoutUser}) => {
     };
     return (<>
         <Switch>
-            <Route exact path="/signIn" render={() => currentUser ?
-                <Redirect to="/"/> :
-                <SignIn handleSubmit={handleSubmit}/>
-            }/>
+            {/*<Route exact path="/signIn" render={() => currentUser ?*/}
+            {/*    <Redirect to="/"/> :*/}
+            {/*    <SignIn handleSubmit={handleSubmit}/>*/}
+            {/*}/>*/}
             <Route exact path="/" component={StartPage}/>
+            <Route exact path="/start-test" component={StartTest}/>
+            <Route exact path="/signIn" component={SignIn}/>
         </Switch>
 
 
     </>)
 
-function App() {
-  return (
-    <BrowserRouter>
-      <>
-        <Route path="/home" component={StartPage} />
-        {/* <StartPage/> */}
-        <Route path="/about" component={About} />
-        {/* <About /> */}
-        <Route path="/for-trainees" component={SignIn} />
-        {/* <SignIn /> */}
-        {/* <SignUp /> */}
-        <Route path="/feedback" component={Feedback} />
-        {/* <Feedback /> */}
-        {/* <Popup /> */}
-        {/* <ResetPasswordPopup /> */}
-      </>
-    </BrowserRouter>
-  )
-}
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <>
+//         <Route path="/home" component={StartPage} />
+//         {/* <StartPage/> */}
+//         <Route path="/about" component={About} />
+//         {/* <About /> */}
+//         <Route path="/for-trainees" component={SignIn} />
+//         {/* <SignIn /> */}
+//         {/* <SignUp /> */}
+//         <Route path="/feedback" component={Feedback} />
+//         {/* <Feedback /> */}
+//         {/* <Popup /> */}
+//         {/* <ResetPasswordPopup /> */}
+//       </>
+//     </BrowserRouter>
+//   )
+// }
 
 
 };

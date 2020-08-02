@@ -1,17 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import image from "../../../images/pages/start.png";
 import CustomButton from '../DetailedComponents/Buttons/CustomButton/CustomButton';
 import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import CustomSelect from "../DetailedComponents/Buttons/CustomSelect/CustomSelect";
-// import Select from 'react-select-2'
-// Be sure to include styles at some point, probably during your bootstrapping
-// import 'react-select-2/dist/css/react-select-2.css'
+import {category, level, time} from "../../../StaticContent";
 
 
 const StartTest = () => {
-    const category = {js: 'JavaScript', "php": "PHP", "python": "Python"};
+
+    const [data, setData] = useState({category: "", level: "", time: ""});
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setData({category: "", level: "", time: ""});
+
+    };
+    const handleSelectChange = (e) => {
+        const {name} = e.target;
+        setData({...data, [name]: e.target.value});
+    };
 
     return (
         <div className="wrapper">
@@ -19,13 +27,16 @@ const StartTest = () => {
             <div className="changable-wrapper">
                 <CustomButton small="true" href="/back"><KeyboardBackspaceIcon/>back</CustomButton>
                 <PageIntro logoText="compose" sloganText="a quiz, test your skills "/>
-                <div className="informativeDivision">
-                    <CustomSelect options={category} name="category"/>
-                    <CustomSelect options={category} name="category"/>
-                    <CustomSelect options={category} name="category"/>
-                    <CustomButton>Start</CustomButton>
+                <form className="informativeDivision" onSubmit={handleSubmit}>
+                    <CustomSelect value={data.category} key="category" onChange={handleSelectChange} options={category}
+                                  name="category"/>
+                    <CustomSelect value={data.level} key="level" onChange={handleSelectChange} options={level}
+                                  name="level"/>
+                    <CustomSelect value={data.time} key="time" onChange={handleSelectChange} options={time}
+                                  name="time"/>
+                    <CustomButton type="submit">Start</CustomButton>
+                </form>
 
-                </div>
             </div>
         </div>
     )

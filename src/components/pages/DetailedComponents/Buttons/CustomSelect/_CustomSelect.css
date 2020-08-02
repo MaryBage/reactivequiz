@@ -1,11 +1,11 @@
 .custom-select {
     border: 1px solid gray;
-    padding: 9px 71px;
-    border-radius: 13px;
-    width: 250px;
+    padding: 3% 38%;
+    border-radius: 5px;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 20px;
+    font-family: 'Courier New', Courier, monospace !important;
 
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -16,7 +16,7 @@
 .custom-select::-ms-expand {
     display: none;
 }
-.custom-select:hover
-{
+
+.custom-select:hover {
     cursor: pointer;
 }

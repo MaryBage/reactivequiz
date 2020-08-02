@@ -47,14 +47,21 @@ const popupText = {
     well: "Well done!",
     great: "Perfectly done!",
     thanksmail: "Thank you!"
-}
+};
 
-export { 
-    logoText, 
-    sloganText, 
-    informativeFieldType, 
-    informativeFieldId, 
-    informativeFieldText, 
-    approveButtonText, 
-    popupText 
+const category = {js: 'JavaScript', "php": "PHP", "python": "Python"};
+const level = {simple: 'Simple', "middle": "Middle", "hard": "Hard"};
+const time = {40: '40min', 60: "60 min", "120": "120 min"};
+
+export {
+    logoText,
+    sloganText,
+    informativeFieldType,
+    informativeFieldId,
+    informativeFieldText,
+    approveButtonText,
+    popupText,
+    category,
+    level,
+    time
 };
