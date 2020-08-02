@@ -5,7 +5,7 @@ const CustomSelect = ({options, ...otherProps}) => {
 
     const createSelectItems = (options) => {
         let items = [];
-        items.push(<option key={otherProps.name}>{otherProps.name}</option>);
+        items.push(<option value="" key={otherProps.name}>{otherProps.name}</option>);
         for (let key in options) {
             items.push(<option key={key} value={key}>{options[key]}</option>)
         }

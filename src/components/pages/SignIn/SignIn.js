@@ -37,15 +37,14 @@ const SignIn = ({handleSubmit}) => {
                 <PageIntro logoText={logoText[3]} sloganText={sloganText[3]}/>
 
                 <form onSubmit={onSubmit} className="informativeDivision">
-                    <InformativeField onChange={oniInputChange} value={data.email} fieldType={informativeFieldType[0]}
-                                      fieldId={informativeFieldId[0]}
-                                      informativeText={informativeFieldText[0]}/>
-                    <InformativeField onChange={oniInputChange} value={data.password}
-                                      fieldType={informativeFieldType[1]} fieldId={informativeFieldId[0]}
-                                      informativeText={informativeFieldText[2]}/>
-                    <ApproveButton approveButtonText={approveButtonText[0]}/>
-                    <CheckField/>
-                    <ApproveButton approveButtonText={approveButtonText[1]}/>
+                    <InformativeField required onChange={oniInputChange} id="email" type="email" name="email"
+                                      placeholder="email"
+                                      value={data.email}/>
+                    <InformativeField required id="password" type="password" name="password" placeholder="password"
+                                      onChange={oniInputChange} value={data.password}/>
+                    <CustomButton type="submit">Sign In</CustomButton>
+                    <CheckField id="remember-me" type="checkbox"/>
+                    <CustomButton type="button" href="/sign-up">Sign Up</CustomButton>
                 </form>
 
 

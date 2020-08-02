@@ -1,8 +1,8 @@
 import React from "react";
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import './_CustomButton.css';
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 
 const useStyles = makeStyles({
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     }
 });
 
-const CustomButton = ({ children, ...otherProps }) => {
+const CustomButton = ({children, ...otherProps}) => {
     const classes = useStyles();
 
     return (
@@ -30,7 +30,7 @@ const CustomButton = ({ children, ...otherProps }) => {
             <Button  {...otherProps} classes={{
                 root: classes.root
             }} className={`${otherProps.linear ? "linear" : ""} ${otherProps.small ? "small" : ""}`} variant="outlined"
-                color="primary">
+                     color="primary">
                 {children}
             </Button>
         </>

@@ -28,11 +28,11 @@ const StartTest = () => {
                 <CustomButton small="true" href="/back"><KeyboardBackspaceIcon/>back</CustomButton>
                 <PageIntro logoText="compose" sloganText="a quiz, test your skills "/>
                 <form className="informativeDivision" onSubmit={handleSubmit}>
-                    <CustomSelect value={data.category} key="category" onChange={handleSelectChange} options={category}
+                    <CustomSelect required={"required"} value={data.category} key="category" onChange={handleSelectChange} options={category}
                                   name="category"/>
-                    <CustomSelect value={data.level} key="level" onChange={handleSelectChange} options={level}
+                    <CustomSelect required value={data.level} key="level" onChange={handleSelectChange} options={level}
                                   name="level"/>
-                    <CustomSelect value={data.time} key="time" onChange={handleSelectChange} options={time}
+                    <CustomSelect required value={data.time} key="time" onChange={handleSelectChange} options={time}
                                   name="time"/>
                     <CustomButton type="submit">Start</CustomButton>
                 </form>

@@ -4,11 +4,11 @@ import { informativeFieldType, informativeFieldId } from "../../../../../StaticC
 import InformativeField from "../InformativeField/InformativeField";
 
 
-const CheckField = (props) => {
+const CheckField = ({...props}) => {
     return (
         <div className={s.checkField}>
             <div className={s.firstInnerCheckField}>
-                <InformativeField fieldType={informativeFieldType[2]} fieldId={informativeFieldId[0]} />              
+                <InformativeField  {...props} />
                 <div>remember me</div>
             </div>
             <div className={s.secondInnerCheckField}><a href="#writeyourmailpage">forgot password?</a></div>
