@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -7,7 +8,6 @@ body {
 .wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
 }
 
 .wrapper div {
@@ -16,27 +16,22 @@ body {
 
 .img {
   object-fit: cover;
-  width: 100%;
+  width: 95%;
   height: 100%;
 }
 
 .changable-wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 100%;
-}
-
-.backButton {
-  display: flex;
-  align-items: center;
-  height: 20%;
 }
 
 .pageIntro {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: 30%;
+  justify-content: flex-end;
+  height: 20%;
 }
 
 .logo {
@@ -106,4 +101,13 @@ body {
   justify-items: center;
   align-items: center;
   background-color: #d9d2e9ff;
+}
+
+.MuiSvgIcon-root {
+  margin-right: 10px;
+  color: #bbbbbb;
+}
+
+.freeSpaceDiv {
+  height: 17%;
 }

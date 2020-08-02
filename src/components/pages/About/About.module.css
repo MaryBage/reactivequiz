@@ -1,0 +1,14 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    height: 46%;
+    width: 90% !important;
+    color: #555555;
+    font-size: 25px;
+}
+
+.content span {
+    color: #7e57c2;
+    font-weight: bold;
+}

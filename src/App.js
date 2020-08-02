@@ -31,6 +31,26 @@ const App = ({ setCurrentUser,currentUser,logoutUser}) => {
 
     </>)
 
+function App() {
+  return (
+    <BrowserRouter>
+      <>
+        <Route path="/home" component={StartPage} />
+        {/* <StartPage/> */}
+        <Route path="/about" component={About} />
+        {/* <About /> */}
+        <Route path="/for-trainees" component={SignIn} />
+        {/* <SignIn /> */}
+        {/* <SignUp /> */}
+        <Route path="/feedback" component={Feedback} />
+        {/* <Feedback /> */}
+        {/* <Popup /> */}
+        {/* <ResetPasswordPopup /> */}
+      </>
+    </BrowserRouter>
+  )
+}
+
 
 };
 const mapDispatchToProps = dispatch => ({

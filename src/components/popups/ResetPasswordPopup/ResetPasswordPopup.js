@@ -3,6 +3,7 @@ import { informativeFieldType, informativeFieldId, informativeFieldText, approve
 import s from "./PopupReset.module.css";
 import ApproveButton from '../../pages/DetailedComponents/Buttons/ApproveButton/ApproveButton';
 import InformativeField from '../../pages/DetailedComponents/Fields/InformativeField/InformativeField';
+import SimpleLine from '../../pages/DetailedComponents/SimpleLine/SimpleLine';
 
 const ResetPasswordPopup = (props) => {
     return (
@@ -17,6 +18,7 @@ const ResetPasswordPopup = (props) => {
                 </div>
                 <form className={s.popupWrapper}>
                     <InformativeField fieldType={informativeFieldType[0]} fieldId={informativeFieldId[3]} informativeText={informativeFieldText[2]} />
+                    <SimpleLine />
                     <ApproveButton approveButtonText={approveButtonText[3]} />
                 </form>
             </div>
