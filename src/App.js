@@ -17,13 +17,14 @@ function App() {
     <BrowserRouter>
       <>
         <Route path="/home" component={StartPage} />
-        {/* <StartPage/> */}
+        <StartPage/>
         <Route path="/about" component={About} />
-        {/* <About /> */}
-        <Route path="/for-trainees" component={SignIn} />
+        <About />
+
+        {/* <Route path="/for-trainees" component={SignIn} /> */}
         {/* <SignIn /> */}
-        {/* <SignUp /> */}
-        <Route path="/feedback" component={Feedback} />
+         {/* <SignUp /> */}
+        {/* <Route path="/feedback" component={Feedback} /> */}
         {/* <Feedback /> */}
         {/* <Popup /> */}
         {/* <ResetPasswordPopup /> */}
