@@ -2,6 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import QuizList from './QuizList';
 import './Quiz.css';
 import axios from 'axios';
+//import CustomButton from "../DetailedComponents/Buttons/CustomButton/CustomButton";
+//import { Link } from "react-router-dom"
+//add Link w/ its attribute to in conclusion Submit-CustomButton tag / component={ Link } to="/result" / 
+//add Link w/ its attribute to in and back/next / to=`/${id}` /
 
 export const Quiz = () => {
   const [quiz, setQuiz] = useState([]);

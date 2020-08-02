@@ -7,6 +7,7 @@ import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import CustomSelect from "../DetailedComponents/Buttons/CustomSelect/CustomSelect";
 import SimpleLine from "../DetailedComponents/SimpleLine/SimpleLine";
+import { Link } from "react-router-dom";
 // import Select from 'react-select-2'
 // Be sure to include styles at some point, probably during your bootstrapping
 // import 'react-select-2/dist/css/react-select-2.css'
@@ -29,17 +30,17 @@ const StartTest = () => {
         <div className="wrapper">
             <StaticImage image={image}/>
             <div className="changable-wrapper">
-                <CustomButton small="true" url="/home"><KeyboardBackspaceIcon/>back</CustomButton>
-                <div className="freeSpaceDiv"></div>
+                <CustomButton small="true"component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
+                <div className="freeSpace"></div>
                 <PageIntro logoText={logoText[2]} sloganText={sloganText[2]}/>
-                <div className="freeSpaceDiv"></div>
+                <div className="freeSpace"></div>
                 <div className="informativeDivision">
                     <CustomSelect options={category} name="category" selectfieldtext={selectFieldText[0]} />
                     <SimpleLine />
                     <CustomSelect options={category} name="category" selectfieldtext={selectFieldText[1]} />
                     <SimpleLine />
                     <CustomSelect options={category} name="category" selectfieldtext={selectFieldText[2]} />
-                    <CustomButton linear="true">{approveButtonText[4]}</CustomButton>
+                    <CustomButton type="submit" linear="true" component={Link} to="/quiz">{approveButtonText[4]}</CustomButton>
                 </div>
             </div>
         </div>

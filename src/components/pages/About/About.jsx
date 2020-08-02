@@ -6,6 +6,7 @@ import CustomButton from "../DetailedComponents/Buttons/CustomButton/CustomButto
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import StaticImage from '../DetailedComponents/StaticImage/StaticImage';
 import PageIntro from '../DetailedComponents/PageIntro/PageIntro';
+import { Link } from "react-router-dom";
 
 
 const About = (props) => {
@@ -13,7 +14,7 @@ const About = (props) => {
     <div className="wrapper">
         <StaticImage image={image} />
           <div className="changable-wrapper">
-              <CustomButton small="true" url="/home"><KeyboardBackspaceIcon/>back</CustomButton>
+              <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
               <PageIntro logoText={logoText[1]} sloganText={sloganText[1]} />
               <div className={s.content}>
                   This environment was created to motivate an enthusiastic,

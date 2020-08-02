@@ -16,8 +16,9 @@ body {
 
 .img {
   object-fit: cover;
-  width: 95%;
-  height: 100%;
+  width: 750px;
+  height: 98vh;
+  padding-right: 40px;
 }
 
 .changable-wrapper {
@@ -53,10 +54,6 @@ body {
   width: 50% !important;
 }
 
-.informativeDivision button {
-  height: 45px !important
-}
-
 .commonstyle {
   height: 40px;
   color: #555555;
@@ -83,7 +80,7 @@ body {
   color: #7e57c2;
 }
 
-.incorrectInput {
+/* .incorrectInput {
   height: 40px;
   color: #e60000;
   font-size: 18px;
@@ -93,7 +90,7 @@ body {
   background-color: white;
   text-align: center;
   outline: none;
-}
+} */
 
 .popup-container {
   display: grid;
@@ -110,10 +107,7 @@ body {
   height: 40px !important;
 }
 
-.MuiButton-outlinedPrimary {
-  border: 1.5px solid #bbbbbb !important;
-}
 
-.freeSpaceDiv {
+.freeSpace {
   height: 17%;
 }

@@ -6,6 +6,7 @@ import arrow from "../../../images/arrow/arrowup.png";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import CustomButton from "../DetailedComponents/Buttons/CustomButton/CustomButton";
 import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
+import {Link} from "react-router-dom"
 // import { MemoryRouter as Router } from 'react-router';
 // import { Link as RouterLink } from 'react-router-dom';
 
@@ -24,16 +25,12 @@ const StartPage = () => {
                 <div>
                     <PageIntro logoText={""} sloganText={sloganText[0]} />
                 </div>
-                {/* <Router> */}
-                    {/*<div className="inner-container">*/}
                         <div className="buttons">
-                            <CustomButton url="/about" linear="true">{informativeButtonText[0]}</CustomButton>
-                            <CustomButton url="/start_test" linear="true">{informativeButtonText[1]}</CustomButton>
-                            <CustomButton url="/signin" linear="true">{informativeButtonText[2]}</CustomButton>
-                            <CustomButton url="/feedback" type="submit" linear="true">{informativeButtonText[3]}</CustomButton>
+                            <CustomButton component={Link} to="/about" linear="true">{informativeButtonText[0]}</CustomButton>
+                            <CustomButton component={Link} to="/start_test" linear="true">{informativeButtonText[1]}</CustomButton>
+                            <CustomButton component={Link} to="/signin" linear="true">{informativeButtonText[2]}</CustomButton>
+                            <CustomButton component={Link} to="/feedback" linear="true">{informativeButtonText[3]}</CustomButton>
                         </div>
-                    {/*</div>*/}
-                {/* </Router> */}
                 <footer><small>&copy; Copyright 2020, Reactive</small></footer> 
             </div>
         </div>

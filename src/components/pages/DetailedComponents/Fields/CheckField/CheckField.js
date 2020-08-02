@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./CheckField.module.css";
-import { informativeFieldType, informativeFieldId } from "../../../../../StaticContent";
 import InformativeField from "../InformativeField/InformativeField";
 import { Link } from 'react-router-dom';
 
@@ -12,7 +11,7 @@ const CheckField = ({...props}) => {
                 <InformativeField  {...props} />
                 <div>remember me</div>
             </div>
-            <Link to="/resetpassword" className={s.secondInnerCheckField}>forgot password?</Link>
+            <Link to="/reset_password" className={s.secondInnerCheckField}>forgot password?</Link>
         </div>
     )
 }
