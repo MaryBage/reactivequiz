@@ -1,5 +1,4 @@
-import React from "react";
-import { logoText, sloganText, approveButtonText, selectFieldText } from "../../../StaticContent";
+import React, {useState} from "react";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import image from "../../../images/pages/pass.png";
 import CustomButton from '../DetailedComponents/Buttons/CustomButton/CustomButton';
@@ -13,7 +12,17 @@ import SimpleLine from "../DetailedComponents/SimpleLine/SimpleLine";
 
 
 const StartTest = () => {
-    const category = {js: 'JavaScript', "php": "PHP", "python": "Python"};
+
+    const [data, setData] = useState({category: "", level: "", time: ""});
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setData({category: "", level: "", time: ""});
+
+    };
+    const handleSelectChange = (e) => {
+        const {name} = e.target;
+        setData({...data, [name]: e.target.value});
+    };
 
     return (
         <div className="wrapper">

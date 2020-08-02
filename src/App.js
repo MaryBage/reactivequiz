@@ -1,28 +1,66 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {Redirect, BrowserRouter, Route, Switch} from "react-router-dom"
+import {connect} from 'react-redux';
+import {setCurrentUser, logoutUser} from './redux/user/user.actions';
 import StartPage from "./components/pages/StartPage/StartPage";
-import About from './components/pages/About/About';
-import StartTest from './components/pages/StartTest/StartTest';
-import SignIn from './components/pages/SignIn/SignIn';
-import SignUp from "./components/pages/SignUp/SignUp";
-import ResetPasswordPopup from "./components/popups/ResetPasswordPopup/ResetPasswordPopup";
-import Feedback from './components/pages/Feedback/Feedback';
+import SignIn from "./components/pages/SignIn/SignIn";
+import StartTest from "./components/pages/StartTest/StartTest";
 
-function App() {
-  return (
-    <BrowserRouter>
+
+const App = ({setCurrentUser, currentUser, logoutUser}) => {
+    useEffect(() => {
+        const payload = JSON.parse(localStorage.getItem('currentUser'));
+        setCurrentUser(payload);
+    }, []);
+
+    const handleSubmit = (data) => {
+        setCurrentUser(data);
+    };
+    const handleLogOut = () => {
+        logoutUser();
+    };
+    return (<>
         <Switch>
-          <Route exact path="/home" component={StartPage} />
-          <Route path="/about" component={About} />
-          <Route path="/passtest" component={StartTest} />
-          <Route path="/signin" component={SignIn} />
-          <Route path="/resetpassword" component={ResetPasswordPopup} />
-          <Route path="/register" component={SignUp} />
-          <Route path="/feedback" component={Feedback} />
+            {/*<Route exact path="/signIn" render={() => currentUser ?*/}
+            {/*    <Redirect to="/"/> :*/}
+            {/*    <SignIn handleSubmit={handleSubmit}/>*/}
+            {/*}/>*/}
+            <Route exact path="/" component={StartPage}/>
+            <Route exact path="/start-test" component={StartTest}/>
+            <Route exact path="/signIn" component={(props) => <SignIn handleSubmit={handleSubmit}/>}/>
         </Switch>
-    </BrowserRouter>
-  )
-}
+    </>)
 
-export default App;
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <>
+//         <Route path="/home" component={StartPage} />
+//         {/* <StartPage/> */}
+//         <Route path="/about" component={About} />
+//         {/* <About /> */}
+//         <Route path="/for-trainees" component={SignIn} />
+//         {/* <SignIn /> */}
+//         {/* <SignUp /> */}
+//         <Route path="/feedback" component={Feedback} />
+//         {/* <Feedback /> */}
+//         {/* <Popup /> */}
+//         {/* <ResetPasswordPopup /> */}
+//       </>
+//     </BrowserRouter>
+//   )
+// }
+
+
+};
+const mapDispatchToProps = dispatch => ({
+    setCurrentUser: user => dispatch(setCurrentUser(user)),
+    logoutUser: () => dispatch(logoutUser()),
+});
+const mapStateToProps = state => ({
+    currentUser: state.user.currentUser
+});
+export default connect(mapStateToProps, mapDispatchToProps)(App)
+
+
