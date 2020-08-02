@@ -30,8 +30,6 @@ const App = ({ setCurrentUser,currentUser,logoutUser}) => {
             <Route exact path="/start-test" component={StartTest}/>
             <Route exact path="/signIn" component={SignIn}/>
         </Switch>
-
-
     </>)
 
 // function App() {
