@@ -6,7 +6,7 @@ const InformativeField = (props) => {
     const text = props.informativeText;
     
     return (
-        <input type={type} id={id} name={id} placeholder={text} value="" className="commonstyle" />
+        <input type={type} id={id} name={id} placeholder={text}  className="commonstyle" />
     )
 }
 
