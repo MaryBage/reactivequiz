@@ -35,11 +35,29 @@ const informativeFieldText = [
     "password",
 ]
 
+const informativeButtonText =[
+    "where you are",
+    "for trainees",
+    "for trainers",
+    "feedback",
+    "category",
+    "level",
+    "time",
+]
+
 const approveButtonText = [
     "sign in",
     "sign up",
     "send message",
     "reset my password",
+    "start",
+    "submit",
+]
+
+const selectFieldText = [
+    "category",
+    "level",
+    "time",
 ]
 
 const popupText = {
@@ -54,7 +72,9 @@ export {
     sloganText, 
     informativeFieldType, 
     informativeFieldId, 
-    informativeFieldText, 
+    informativeFieldText,
+    informativeButtonText, 
     approveButtonText, 
+    selectFieldText,
     popupText 
 };

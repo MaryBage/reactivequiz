@@ -1,33 +1,26 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Route} from "react-router-dom";
-import SignIn from './components/pages/SignIn/SignIn';
-import SignUp from './components/pages/SignUp/SignUp';
-import Feedback from './components/pages/Feedback/Feedback';
-import { Quiz } from './components/pages/Quiz/Quiz';
-
-import ResetPasswordPopup from './components/popups/ResetPasswordPopup/ResetPasswordPopup';
-import Popup from './components/popups/Popup';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import StartPage from "./components/pages/StartPage/StartPage";
 import About from './components/pages/About/About';
-
+import StartTest from './components/pages/StartTest/StartTest';
+import SignIn from './components/pages/SignIn/SignIn';
+import SignUp from "./components/pages/SignUp/SignUp";
+import ResetPasswordPopup from "./components/popups/ResetPasswordPopup/ResetPasswordPopup";
+import Feedback from './components/pages/Feedback/Feedback';
 
 function App() {
   return (
     <BrowserRouter>
-      <>
-        <Route path="/home" component={StartPage} />
-        {/* <StartPage/> */}
-        <Route path="/about" component={About} />
-        {/* <About /> */}
-        <Route path="/for-trainees" component={SignIn} />
-        {/* <SignIn /> */}
-        {/* <SignUp /> */}
-        <Route path="/feedback" component={Feedback} />
-        {/* <Feedback /> */}
-        {/* <Popup /> */}
-        {/* <ResetPasswordPopup /> */}
-      </>
+        <Switch>
+          <Route exact path="/home" component={StartPage} />
+          <Route path="/about" component={About} />
+          <Route path="/passtest" component={StartTest} />
+          <Route path="/signin" component={SignIn} />
+          <Route path="/resetpassword" component={ResetPasswordPopup} />
+          <Route path="/register" component={SignUp} />
+          <Route path="/feedback" component={Feedback} />
+        </Switch>
     </BrowserRouter>
   )
 }

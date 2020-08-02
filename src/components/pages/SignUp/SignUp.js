@@ -5,7 +5,6 @@ import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import CustomButton from "../DetailedComponents/Buttons/CustomButton/CustomButton";
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
-import ApproveButton from "../DetailedComponents/Buttons/ApproveButton/ApproveButton";
 import InformativeField from "../DetailedComponents/Fields/InformativeField/InformativeField";
 import SimpleLine from "../DetailedComponents/SimpleLine/SimpleLine";
 
@@ -17,7 +16,7 @@ const SignUp = (props) => {
         <div className="wrapper">
             <StaticImage image={image} />
             <div className="changable-wrapper">
-                <CustomButton small="true" href="/back"><KeyboardBackspaceIcon/>back</CustomButton>
+                <CustomButton small="true" url="/home"><KeyboardBackspaceIcon/>back</CustomButton>
                 <div className="freeSpaceDiv"></div>
                 <PageIntro logoText={logoText[4]} sloganText={sloganText[4]} />
                 <div className="freeSpaceDiv"></div>
@@ -27,8 +26,7 @@ const SignUp = (props) => {
                     <InformativeField fieldType={informativeFieldType[0]} fieldId={uniqueId} informativeText={informativeFieldText[0]} />
                     <SimpleLine />
                     <InformativeField fieldType={informativeFieldType[1]} fieldId={informativeFieldId[1]} informativeText={informativeFieldText[2]} />
-                    <SimpleLine />
-                    <ApproveButton approveButtonText={approveButtonText[1]} />
+                    <CustomButton type="submit" linear="true">{approveButtonText[1]}</CustomButton>
                 </form>
             </div>
         </div>

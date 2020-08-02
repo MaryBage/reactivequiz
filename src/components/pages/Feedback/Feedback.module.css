@@ -6,11 +6,6 @@
     height: 50%;
 }
 
-.feedbackInformativeDivision button {
-    height: 45px !important;
-    width: 45%;
-}
-
 .feedbackInformativeDivision textarea {
     max-width : 99%;
     max-height : 50%;
@@ -24,5 +19,10 @@
 }
 
 .nameAndEmailField input {
+    width: 45%;
+}
+
+.customButtonWrapper a {
+    margin-top: -2px;
     width: 45%;
 }

@@ -5,12 +5,10 @@ const CustomSelect = ({options, ...otherProps}) => {
 
     return (
         <select className="custom-select" {...otherProps}>
-            <option>Category</option>
+            <option>{otherProps.selectfieldtext}</option>
             <option value="js">Javascript</option>
-
         </select>
     )
-
-
 }
-export default CustomSelect
+
+export default CustomSelect;

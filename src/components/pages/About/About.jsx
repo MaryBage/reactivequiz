@@ -13,7 +13,7 @@ const About = (props) => {
     <div className="wrapper">
         <StaticImage image={image} />
           <div className="changable-wrapper">
-              <CustomButton small="true" href="/back"><KeyboardBackspaceIcon/>back</CustomButton>
+              <CustomButton small="true" url="/home"><KeyboardBackspaceIcon/>back</CustomButton>
               <PageIntro logoText={logoText[1]} sloganText={sloganText[1]} />
               <div className={s.content}>
                   This environment was created to motivate an enthusiastic,

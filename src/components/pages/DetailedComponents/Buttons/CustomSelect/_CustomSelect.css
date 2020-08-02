@@ -1,22 +1,33 @@
 .custom-select {
-    border: 1px solid gray;
-    padding: 9px 71px;
-    border-radius: 13px;
-    width: 250px;
-    text-align: center;
-    font-size: 20px;
-    margin-top: 20px;
-
+    border: 1.5px solid #bbbbbb;
+    border: 1.5px solid #bbbbbb;
+    border-radius: 5px;
+    height: 45px;
+    width: 382px;
+    color: #555555;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    outline: none;
+    text-indent: 44%;
     -webkit-appearance: none;
     -moz-appearance: none;
-    text-indent: 1px;
     text-overflow: '';
+}
+
+.custom-select:nth-child(1) {
+    text-indent: 40%;
+}
+
+.custom-select:nth-child(2) {
+    text-indent: 43%;
 }
 
 .custom-select::-ms-expand {
     display: none;
 }
-.custom-select:hover
-{
+
+.custom-select:hover {
+    color: #7e57c2;
+    border-color: #7e57c2;
     cursor: pointer;
 }

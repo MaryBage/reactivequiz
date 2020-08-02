@@ -1,7 +1,7 @@
 .checkField {
     display: flex;
     align-items: center;
-    height: 23%;
+    height: 16%;
     font-size: 13px;
     color: #555555;
 }
@@ -18,12 +18,13 @@
 
 .secondInnerCheckField {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .checkField a {
     text-decoration: none;
     color: inherit;
+    width: 50%;
 }
 
 .checkField a:hover {

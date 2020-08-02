@@ -8,9 +8,11 @@
 }
 
 .small {
+    border: 1.5px solid #bbbbbb;
     width: 20%;
 }
 
 .makeStyles-root-1 {
     border: 1.5px solid #bbbbbb !important;
+    height: 45px !important;
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import QuizList from './QuizList';
-import './Quiz.css'
-import axios from 'axios'
+import './Quiz.css';
+import axios from 'axios';
 
 export const Quiz = () => {
   const [quiz, setQuiz] = useState([]);
