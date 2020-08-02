@@ -39,8 +39,10 @@ const SignIn = ({handleSubmit}) => {
                     <InformativeField required onChange={oniInputChange} id="email" type="email" name="email"
                                       placeholder="email"
                                       value={data.email}/>
+                    <SimpleLine />
                     <InformativeField required id="password" type="password" name="password" placeholder="password"
                                       onChange={oniInputChange} value={data.password}/>
+                    <SimpleLine />
                     <CustomButton type="submit">Sign In</CustomButton>
                     <CheckField id="remember-me" type="checkbox"/>
                     <CustomButton type="button" href="/sign-up">Sign Up</CustomButton>

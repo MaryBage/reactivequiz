@@ -28,7 +28,7 @@ const StartPage = () => {
                     {/*<div className="inner-container">*/}
                         <div className="buttons">
                             <CustomButton url="/about" linear="true">{informativeButtonText[0]}</CustomButton>
-                            <CustomButton url="/passtest" linear="true">{informativeButtonText[1]}</CustomButton>
+                            <CustomButton url="/start_test" linear="true">{informativeButtonText[1]}</CustomButton>
                             <CustomButton url="/signin" linear="true">{informativeButtonText[2]}</CustomButton>
                             <CustomButton url="/feedback" type="submit" linear="true">{informativeButtonText[3]}</CustomButton>
                         </div>

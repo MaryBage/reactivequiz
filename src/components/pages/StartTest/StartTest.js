@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { logoText, sloganText, selectFieldText, approveButtonText, category } from "../../../StaticContent";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import image from "../../../images/pages/pass.png";
 import CustomButton from '../DetailedComponents/Buttons/CustomButton/CustomButton';

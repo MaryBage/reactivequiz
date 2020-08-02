@@ -4,8 +4,12 @@ import {Redirect, BrowserRouter, Route, Switch} from "react-router-dom"
 import {connect} from 'react-redux';
 import {setCurrentUser, logoutUser} from './redux/user/user.actions';
 import StartPage from "./components/pages/StartPage/StartPage";
-import SignIn from "./components/pages/SignIn/SignIn";
+import About from "./components/pages/About/About";
 import StartTest from "./components/pages/StartTest/StartTest";
+import SignIn from "./components/pages/SignIn/SignIn";
+import SignUp from "./components/pages/SignUp/SignUp";
+import ResetPasswordPopup from "./components/popups/ResetPasswordPopup/ResetPasswordPopup";
+import Feedback from "./components/pages/Feedback/Feedback";
 
 
 const App = ({setCurrentUser, currentUser, logoutUser}) => {
@@ -21,15 +25,21 @@ const App = ({setCurrentUser, currentUser, logoutUser}) => {
         logoutUser();
     };
     return (<>
-        <Switch>
-            {/*<Route exact path="/signIn" render={() => currentUser ?*/}
-            {/*    <Redirect to="/"/> :*/}
-            {/*    <SignIn handleSubmit={handleSubmit}/>*/}
-            {/*}/>*/}
-            <Route exact path="/" component={StartPage}/>
-            <Route exact path="/start-test" component={StartTest}/>
-            <Route exact path="/signIn" component={(props) => <SignIn handleSubmit={handleSubmit}/>}/>
-        </Switch>
+        <BrowserRouter>
+            <Switch>
+                {/*<Route exact path="/signIn" render={() => currentUser ?*/}
+                {/*    <Redirect to="/"/> :*/}
+                {/*    <SignIn handleSubmit={handleSubmit}/>*/}
+                {/*}/>*/}
+                <Route exact path="/home" component={StartPage}/>
+                <Route exact path="/about" component={About}/>
+                <Route exact path="/start_test" component={StartTest}/>
+                <Route exact path="/signin" component={(props) => <SignIn handleSubmit={handleSubmit}/>}/>
+                <Route exact path="/signup" component={SignUp}/>
+                <Route exact path="/reset_password" component={ResetPasswordPopup}/>
+                <Route exact path="/feedback" component={Feedback}/>
+            </Switch>
+        </BrowserRouter>
     </>)
 
 // function App() {

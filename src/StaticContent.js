@@ -74,9 +74,11 @@ const time = {40: '40min', 60: "60 min", "120": "120 min"};
 export {
     logoText,
     sloganText,
+    selectFieldText,
     informativeFieldType,
     informativeFieldId,
     informativeFieldText,
+    informativeButtonText,
     approveButtonText,
     popupText,
     category,
