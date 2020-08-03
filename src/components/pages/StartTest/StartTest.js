@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { logoText, sloganText, selectFieldText, approveButtonText, category } from "../../../StaticContent";
+import s from "./StartTest.module.css";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import image from "../../../images/pages/pass.png";
 import CustomButton from '../DetailedComponents/Buttons/CustomButton/CustomButton';
@@ -40,7 +41,9 @@ const StartTest = () => {
                     <CustomSelect options={category} name="category" selectfieldtext={selectFieldText[1]} />
                     <SimpleLine />
                     <CustomSelect options={category} name="category" selectfieldtext={selectFieldText[2]} />
+                    <div className={s.customStyle}>
                     <CustomButton type="submit" linear="true" component={Link} to="/quiz">{approveButtonText[4]}</CustomButton>
+                    </div>
                 </div>
             </div>
         </div>

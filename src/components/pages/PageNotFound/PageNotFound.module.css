@@ -1,0 +1,10 @@
+.PageNotFoundCenterer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PageNotFoundCenterer img {
+    max-width:50%;
+    max-height:50%;
+}

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import './App.css';
-import {Redirect, BrowserRouter as Router, Route } from "react-router-dom";
+import {Redirect, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {connect} from 'react-redux';
 import {setCurrentUser, logoutUser} from './redux/user/user.actions';
 import StartPage from "./components/pages/StartPage/StartPage";
@@ -12,6 +12,7 @@ import SignUp from "./components/pages/SignUp/SignUp";
 import ResetPasswordPopup from "./components/popups/ResetPasswordPopup/ResetPasswordPopup";
 import Feedback from "./components/pages/Feedback/Feedback";
 import Popup from "./components/popups/Popup";
+import PageNotFound from "./components/pages/PageNotFound/PageNotFound";
 
 
 const App = ({setCurrentUser, currentUser, logoutUser}) => {
@@ -28,22 +29,19 @@ const App = ({setCurrentUser, currentUser, logoutUser}) => {
     };
     return (
         <Router>
-            <>
-                {/*<Route exact path="/signIn" render={() => currentUser ?*/}
-                {/*    <Redirect to="/"/> :*/}
-                {/*    <SignIn handleSubmit={handleSubmit}/>*/}
-                {/*}/>*/}
-                <Route exact path="/" component={StartPage} />
-                <Route path="/about" component={About} />
-                <Route path="/start_test" component={StartTest} />
-                {/* <Route path="/quiz" component={Quiz} /> */}
-                {/* <Route path="/result" component={Popup} /> */}
-                <Route path="/signin" component={(props) => <SignIn handleSubmit={handleSubmit}/>}/>
-                <Route path="/signup" component={SignUp} />
-                {/* <Route path="/current_user" component={User} /> */}
-                <Route path="/reset_password" component={ResetPasswordPopup} />
-                <Route path="/feedback" component={Feedback} />
-            </>
+            <Switch>
+                    <Route exact path="/" component={StartPage} />
+                    <Route path="/about" component={About} />
+                    <Route path="/start_test" component={StartTest} />
+                    {/* <Route path="/quiz" component={Quiz} /> */}
+                    {/* <Route path="/result" component={Popup} /> */}
+                    {/* <Route exact path="/signin" render={() => currentUser ? <Redirect to="/"/> : <SignIn handleSubmit={handleSubmit}/> */}
+                    <Route path="/signin" component={(props) => <SignIn handleSubmit={handleSubmit}/>}/>
+                    <Route path="/signup" component={SignUp} />
+                    <Route path="/reset_password" component={ResetPasswordPopup} />
+                    <Route path="/feedback" component={Feedback} />
+                    <Route render={() => <PageNotFound />} />
+            </Switch>
         </Router>
     )
 }
