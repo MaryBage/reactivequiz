@@ -33,16 +33,16 @@ const App = ({setCurrentUser, currentUser, logoutUser}) => {
                 {/*    <Redirect to="/"/> :*/}
                 {/*    <SignIn handleSubmit={handleSubmit}/>*/}
                 {/*}/>*/}
-                <Route exact path="/"><StartPage /></Route>
-                <Route path="/about"><About /></Route>
-                <Route path="/start_test"><StartTest /></Route>
-                {/* <Route path="/quiz"><Quiz /></Route> */}
-                {/* <Route path="/result"><Popup /></Route> */}
+                <Route exact path="/" component={StartPage} />
+                <Route path="/about" component={About} />
+                <Route path="/start_test" component={StartTest} />
+                {/* <Route path="/quiz" component={Quiz} /> */}
+                {/* <Route path="/result" component={Popup} /> */}
                 <Route path="/signin" component={(props) => <SignIn handleSubmit={handleSubmit}/>}/>
-                <Route path="/signup"><SignUp /></Route>
-                {/* <Route path="/current_user"><User /></Route> */}
-                <Route path="/reset_password"><ResetPasswordPopup /></Route>
-                <Route path="/feedback"><Feedback /></Route>
+                <Route path="/signup" component={SignUp} />
+                {/* <Route path="/current_user" component={User} /> */}
+                <Route path="/reset_password" component={ResetPasswordPopup} />
+                <Route path="/feedback" component={Feedback} />
             </>
         </Router>
     )
@@ -57,5 +57,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-
