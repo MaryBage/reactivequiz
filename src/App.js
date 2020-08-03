@@ -12,7 +12,7 @@ import SignUp from "./components/pages/SignUp/SignUp";
 import ResetPasswordPopup from "./components/popups/ResetPasswordPopup/ResetPasswordPopup";
 import Feedback from "./components/pages/Feedback/Feedback";
 import Popup from "./components/popups/Popup";
-import PageNotFound from "./components/pages/PageNotFound/PageNotFound";
+//import PageNotFound from "./components/pages/PageNotFound/PageNotFound";
 
 
 const App = ({setCurrentUser, currentUser, logoutUser}) => {
@@ -40,7 +40,8 @@ const App = ({setCurrentUser, currentUser, logoutUser}) => {
                     <Route path="/signup" component={SignUp} />
                     <Route path="/reset_password" component={ResetPasswordPopup} />
                     <Route path="/feedback" component={Feedback} />
-                    <Route render={() => <PageNotFound />} />
+                    <Redirect to="/" />
+                    {/* <Route render={() => <PageNotFound />} /> */}
             </Switch>
         </Router>
     )

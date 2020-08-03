@@ -1,7 +1,9 @@
 .checkField {
     display: flex;
     align-items: center;
-    height: 7%;
+    height: 5%;
+    margin-top: 10px;
+    margin-left: -3px;
     font-size: 13px;
     color: #555555;
 }
@@ -24,7 +26,7 @@
 .checkField a {
     text-decoration: none;
     color: inherit;
-    width: 55%;
+    width: 51%;
 }
 
 .checkField a:hover {

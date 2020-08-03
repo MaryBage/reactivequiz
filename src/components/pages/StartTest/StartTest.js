@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import { logoText, sloganText, selectFieldText, approveButtonText, category } from "../../../StaticContent";
-import s from "./StartTest.module.css";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import image from "../../../images/pages/pass.png";
 import CustomButton from '../DetailedComponents/Buttons/CustomButton/CustomButton';
@@ -31,19 +30,15 @@ const StartTest = () => {
         <div className="wrapper">
             <StaticImage image={image}/>
             <div className="changable-wrapper">
-                <CustomButton small="true"component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
+                <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
                 <div className="freeSpace"></div>
                 <PageIntro logoText={logoText[2]} sloganText={sloganText[2]}/>
                 <div className="freeSpace"></div>
                 <div className="informativeDivision">
                     <CustomSelect options={category} name="category" selectfieldtext={selectFieldText[0]} />
                     <SimpleLine />
-                    <CustomSelect options={category} name="category" selectfieldtext={selectFieldText[1]} />
-                    <SimpleLine />
                     <CustomSelect options={category} name="category" selectfieldtext={selectFieldText[2]} />
-                    <div className={s.customStyle}>
-                    <CustomButton type="submit" linear="true" component={Link} to="/quiz">{approveButtonText[4]}</CustomButton>
-                    </div>
+                    <CustomButton type="submit" linear="true" /*component={Link} to="/quiz"*/ style={{width:"380px"}}>{approveButtonText[4]}</CustomButton>
                 </div>
             </div>
         </div>
