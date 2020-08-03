@@ -22,7 +22,7 @@
     width: 45%;
 }
 
-.customButtonWrapper a {
+.customButtonWrapper button {
     margin-top: -2px;
-    width: 45%;
+    width: 310px !important;
 }

@@ -17,10 +17,10 @@ const ResetPasswordPopup = (props) => {
                 </div>
                 <form className={s.popupWrapper}>
                     <InformativeField
-                        type="password" 
+                        type="email" 
                         id="reset"
                         name="reset" 
-                        placeholder="password"
+                        placeholder="email"
                         // onChange={onInputChange}
                         // value={}
                     />

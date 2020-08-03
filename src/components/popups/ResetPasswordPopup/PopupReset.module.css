@@ -27,3 +27,7 @@
     text-align: center;
     color: #9b7cd0;
 }
+
+.popupWrapper input {
+    width: 365px;
+}

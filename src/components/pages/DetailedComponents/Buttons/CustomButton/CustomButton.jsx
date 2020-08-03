@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
+        width: 372,
         position: "relative",
         marginTop: 38,
-        height: 45,
         color: "#555555",
         fontSize: 18,
         fontFamily: "Courier New",
