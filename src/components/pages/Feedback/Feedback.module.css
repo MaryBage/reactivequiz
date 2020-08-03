@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     width: 90% !important;
-    height: 50%;
+    height: 55%;
 }
 
 .feedbackInformativeDivision textarea {
@@ -23,6 +23,6 @@
 }
 
 .customButtonWrapper button {
-    margin-top: -2px;
+    margin-top: 2px;
     width: 310px !important;
 }
