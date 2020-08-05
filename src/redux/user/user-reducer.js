@@ -1,16 +1,12 @@
 const INITIAL_STATE = {
-    currentUser: null
+    currentUser: null,
 };
 const userReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case "SET_CURRENT_USER":
-            localStorage.setItem('currentUser', JSON.stringify({
-                ...action.payload
-            }));
-            return {...action.payload};
+            return { ...state, currentUser: action.payload};
         case "LOGOUT_USER":
-            localStorage.setItem('currentUser', null);
-            return {
+            return {...state,
                 currentUser: null
             };
 
