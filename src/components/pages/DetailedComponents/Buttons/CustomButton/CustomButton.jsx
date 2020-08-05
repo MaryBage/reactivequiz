@@ -5,18 +5,16 @@ import './_CustomButton.css';
 
 const useStyles = makeStyles({
     root: {
-        width: 372,
         position: "relative",
-        marginTop: 38,
+        marginTop: 43,
         color: "#555555",
-        fontSize: 18,
+        fontSize: 19,
         fontFamily: "Courier New",
         borderRadius: 5,
         backgroundColor: "white",
         textAlign: "center",
         outline: "none",
         textTransform: 'lowercase',
-        padding: '0 45px',
     }
 });
 

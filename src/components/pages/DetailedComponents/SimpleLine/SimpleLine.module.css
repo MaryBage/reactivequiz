@@ -1,11 +1,11 @@
 .simpleLineWrapper {
-   height: 40px;
-   position: relative;
+    height: 45px;
+    position: relative;
 }
 
 .simpleLine {
     border-left: 1.5px solid #bbbbbb;
-    height: 40px;
+    height: 45px;
     left: 50%;
     position: absolute;
 }

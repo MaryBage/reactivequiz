@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 90% !important;
+    width: 95%;
     height: 55%;
 }
 
@@ -11,10 +11,11 @@
     max-height : 50%;
     min-width: 99%;
     min-height: 50%;
+    margin-bottom: -45px;
 } 
 
 .nameAndEmailField {
-    display: inline-flex;
+    display: flex;
     justify-content: space-between;
 }
 
@@ -22,7 +23,6 @@
     width: 45%;
 }
 
-.customButtonWrapper button {
-    margin-top: 2px;
-    width: 310px !important;
+.feedbackCustomButton button {
+    width: 45% !important;
 }

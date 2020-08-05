@@ -15,7 +15,7 @@ const About = (props) => {
         <StaticImage image={image} />
           <div className="changable-wrapper">
               <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
-              <PageIntro logoText={logoText[1]} sloganText={sloganText[1]} />
+              <PageIntro logoText={logoText[0]} sloganText={sloganText[0]} />
               <div className={s.content}>
                   This environment was created to motivate an enthusiastic,
                   active, curios people, who never stop going forward and developing own skills.

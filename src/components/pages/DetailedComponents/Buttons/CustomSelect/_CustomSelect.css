@@ -1,25 +1,20 @@
 .custom-select {
     border: 1.5px solid #bbbbbb;
-    border: 1.5px solid #bbbbbb;
     border-radius: 5px;
-    height: 45px;
-    width: 382px;
+    height: 48px;
     color: #555555;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 18px;
+    font-size: 19px;
+    letter-spacing: 0.02857em;
     outline: none;
-    text-indent: 44%;
+    text-indent: 43%;
     -webkit-appearance: none;
     -moz-appearance: none;
     text-overflow: '';
 }
 
 .custom-select:nth-child(1) {
-    text-indent: 40%;
-}
-
-.custom-select:nth-child(2) {
-    text-indent: 43%;
+    text-indent: 37%;
 }
 
 .custom-select::-ms-expand {
