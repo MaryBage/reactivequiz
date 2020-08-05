@@ -31,14 +31,12 @@ const StartTest = () => {
             <StaticImage image={image}/>
             <div className="changable-wrapper">
                 <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
-                <div className="freeSpace"></div>
-                <PageIntro logoText={logoText[2]} sloganText={sloganText[2]}/>
-                <div className="freeSpace"></div>
+                <PageIntro logoText={logoText[1]} sloganText={sloganText[1]}/>
                 <div className="informativeDivision">
                     <CustomSelect options={category} name="category" selectfieldtext={selectFieldText[0]} />
                     <SimpleLine />
                     <CustomSelect options={category} name="category" selectfieldtext={selectFieldText[2]} />
-                    <CustomButton type="submit" linear="true" /*component={Link} to="/quiz"*/ style={{width:"380px"}}>{approveButtonText[4]}</CustomButton>
+                    <CustomButton type="submit" linear="true">{approveButtonText[4]}</CustomButton>
                 </div>
             </div>
         </div>

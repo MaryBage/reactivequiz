@@ -17,7 +17,7 @@ const Feedback = (props) => {
             <StaticImage image={image} />
             <div className="changable-wrapper">
                 <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
-                <PageIntro logoText={logoText[5]} sloganText={sloganText[5]} />
+                <PageIntro logoText={logoText[4]} sloganText={sloganText[4]} />
                 <form className={s.feedbackInformativeDivision}>
                     <div className={s.nameAndEmailField}>
                         <InformativeField
@@ -36,7 +36,7 @@ const Feedback = (props) => {
                         />
                     </div>
                     <MessageField />
-                    <div className={s.customButtonWrapper}>
+                    <div className={s.feedbackCustomButton}>
                         <CustomButton type="submit">{approveButtonText[2]}</CustomButton>
                     </div>
                 </form>

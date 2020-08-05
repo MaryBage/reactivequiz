@@ -1,5 +1,4 @@
 body {
-  display: flex;
   margin: 0;
   padding: 0;
   font-family: 'Courier New', Courier, monospace;
@@ -10,29 +9,22 @@ body {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.wrapper div {
-  width: 100%;
-}
-
 .img {
   object-fit: cover;
-  width: 750px;
   height: 99vh;
-  padding-right: 40px;
+  background-color: #e2ddee;
 }
 
 .changable-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
+  padding-left: 50px;
 }
 
 .pageIntro {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  height: 20%;
 }
 
 .logo {
@@ -49,15 +41,15 @@ body {
 .informativeDivision {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  width: 55%;
   height: 50%;
-  width: 50% !important;
 }
 
 .commonstyle {
-  height: 40px;
+  height: 45px;
   color: #555555;
-  font-size: 18px;
+  font-size: 19px;
+  letter-spacing: 0.02857em;
   font-family: 'Courier New', Courier, monospace;
   border: 1.5px solid  #bbbbbb;
   border-radius: 5px;
@@ -104,9 +96,4 @@ body {
 .MuiSvgIcon-root {
   margin-right: 10px;
   color: #bbbbbb;
-  height: 40px !important;
-}
-
-.freeSpace {
-  height: 13%;
 }

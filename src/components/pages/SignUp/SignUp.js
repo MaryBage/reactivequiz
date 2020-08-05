@@ -17,9 +17,7 @@ const SignUp = (props) => {
             <StaticImage image={image} />
             <div className="changable-wrapper">
                 <CustomButton small="true" component={Link} to="/signin"><KeyboardBackspaceIcon/>back</CustomButton>
-                <div className="freeSpace"></div>
-                <PageIntro logoText={logoText[4]} sloganText={sloganText[4]} />
-                <div className="freeSpace"></div>
+                <PageIntro logoText={logoText[3]} sloganText={sloganText[3]} />
                 <form className="informativeDivision">
                     <InformativeField 
                         type="text"
@@ -30,7 +28,7 @@ const SignUp = (props) => {
                     />
                     <SimpleLine />
                     <InformativeField
-                        type="email"
+                        type="text"
                         id="signup-email" 
                         name="signup-name"
                         placeholder="email"
