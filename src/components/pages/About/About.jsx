@@ -1,41 +1,34 @@
 import React from 'react';
-import   "./About.css"
+import { logoText, sloganText } from "../../../StaticContent";
+import s from "./About.module.css";
+import image from "../../../images/pages/welcome.png";
+import CustomButton from "../DetailedComponents/Buttons/CustomButton/CustomButton";
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import StaticImage from '../DetailedComponents/StaticImage/StaticImage';
+import PageIntro from '../DetailedComponents/PageIntro/PageIntro';
+import { Link } from "react-router-dom";
 
-import  welcome from "../../../images/pages/welcome.png";
-import BackButton from '../DetailedComponents/Buttons/BackButton/BackButton';
-const About=()=>{
 
-return (
-
-    <div className="welcome">
-      <div>
-          <img src={welcome} alt="welcome"/>
-      </div>
-      <div className="content">
-      <BackButton/>
-      <h1 className="hello">hello,</h1>
-      <p className="paragrafh"><strong>
-
-      This environment was created to motivate an enthusiastic,<br/>
-      active, curios people, who never stop going forward and developing own skills.<br/>
-       Also, this platform aims to gather the people, <br/>
-       who want to share own experience or direct the others to become reactive experts<br/> 
-       climbing higher and higher up to their learning “mountain”. <br/>
-      <span className="importanttext"> 
-      So, the best of luck to you on your way to the top!
-        </span> 
-
-      </strong>
-      </p>
-      </div>
-  
-     
-       
- 
+const About = (props) => {
+  return (
+    <div className="wrapper">
+        <StaticImage image={image} />
+          <div className="changable-wrapper">
+              <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
+              <PageIntro logoText={logoText[0]} sloganText={sloganText[0]} />
+              <div className={s.content}>
+                  This environment was created to motivate an enthusiastic,
+                  active, curios people, who never stop going forward and developing own skills.
+                  Also, this platform aims to gather the people, 
+                  who want to share own experience or direct the others to become reactive experts
+                  climbing higher and higher up to their learning “mountain”. 
+                  <br></br>
+                  <br></br>
+                  <span>So, the best of luck to you on your way to the top!</span>
+              </div>
+          </div>
     </div>
-
-)
-
+  )
 }
 
 export default About;

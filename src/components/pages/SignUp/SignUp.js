@@ -1,27 +1,48 @@
 import React from "react";
-import { logoText, sloganText, informativeFieldType, informativeFieldId, informativeFieldText, approveButtonText } from "../../../StaticContent";
+import { logoText, sloganText, approveButtonText } from "../../../StaticContent";
 import image from "../../../images/pages/signup.png";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
-import BackButton from "../DetailedComponents/Buttons/BackButton/BackButton";
+import CustomButton from "../DetailedComponents/Buttons/CustomButton/CustomButton";
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
-import ApproveButton from "../DetailedComponents/Buttons/ApproveButton/ApproveButton";
 import InformativeField from "../DetailedComponents/Fields/InformativeField/InformativeField";
+import SimpleLine from "../DetailedComponents/SimpleLine/SimpleLine";
+import { Link } from "react-router-dom";
 
 
 const SignUp = (props) => {
-    const uniqueId = `${informativeFieldId[1]}Second`;
 
     return (
         <div className="wrapper">
             <StaticImage image={image} />
             <div className="changable-wrapper">
-                <BackButton />
-                <PageIntro logoText={logoText[4]} sloganText={sloganText[4]} />
+                <CustomButton small="true" component={Link} to="/signin"><KeyboardBackspaceIcon/>back</CustomButton>
+                <PageIntro logoText={logoText[3]} sloganText={sloganText[3]} />
                 <form className="informativeDivision">
-                    <InformativeField fieldType={informativeFieldType[0]} fieldId={informativeFieldId[1]} informativeText={informativeFieldText[1]} />
-                    <InformativeField fieldType={informativeFieldType[0]} fieldId={uniqueId} informativeText={informativeFieldText[0]} />
-                    <InformativeField fieldType={informativeFieldType[1]} fieldId={informativeFieldId[1]} informativeText={informativeFieldText[2]} />
-                    <ApproveButton approveButtonText={approveButtonText[1]} />
+                    <InformativeField 
+                        type="text"
+                        id="signup" 
+                        name="signup"
+                        placeholder="name"
+                        // value={}
+                    />
+                    <SimpleLine />
+                    <InformativeField
+                        type="text"
+                        id="signup-email" 
+                        name="signup-name"
+                        placeholder="email"
+                        // value={}
+                    />
+                    <SimpleLine />
+                    <InformativeField
+                        type="password"
+                        id="signup-password" 
+                        name="signup-password"
+                        placeholder="password"
+                        // value={}
+                    />
+                    <CustomButton type="submit" linear="true">{approveButtonText[1]}</CustomButton>
                 </form>
             </div>
         </div>

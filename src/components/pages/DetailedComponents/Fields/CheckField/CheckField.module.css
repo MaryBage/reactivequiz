@@ -1,8 +1,9 @@
 .checkField {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    height: 20%;
-    font-size: 13px;
+    margin-top: 10px;
+    font-size: 14px;
     color: #555555;
 }
 
@@ -11,9 +12,10 @@
     align-items: center;
 }
 
-.firstInnerCheckField input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
+.firstInnerCheckField input {
+    width: 18px;
+    height: 18px;
+    margin: 0 10px 0 0;
 }
 
 .secondInnerCheckField {

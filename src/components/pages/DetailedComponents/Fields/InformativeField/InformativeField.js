@@ -1,13 +1,9 @@
 import React from 'react';
 
-const InformativeField = (props) => {
-    const type = props.fieldType;
-    const id = `${props.fieldId}${type}`;
-    const text = props.informativeText;
-    
+const InformativeField = ({...otherProps}) => {
     return (
-        <input type={type} id={id} name={id} placeholder={text} value="" className="commonstyle" />
+        <input {...otherProps} className="commonstyle"/>
     )
-}
+};
 
 export default InformativeField;

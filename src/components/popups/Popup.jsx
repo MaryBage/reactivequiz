@@ -4,7 +4,7 @@ import harder from "../../images/popups/harder.png";
 import well from "../../images/popups/well.png";
 import great from "../../images/popups/great.png";
 import thanksmail from "../../images/popups/thanksmail.png";
-import { popupText } from '../../StaticContent'
+import { popupText } from '../../StaticContent';
 
 
 const Popup = (props) => {
@@ -33,11 +33,11 @@ const Popup = (props) => {
         <div className="popup-container">
             <div className={s.popupWrapper}>
                 <div>
-                    <img className="img" src={images[i]} alt="img" />
+                    <img className={s.popupImg} src={images[i]} alt="img" />
                 </div>
                 <div className={s.popupCommonWrapper}>
                     <h1>{text}</h1>
-                    {props.resultPoint?<h2>Your result: <span>{result}</span> of <span>{total}</span></h2>:
+                        {props.resultPoint ? <h2>Your result: <span>{result}</span> of <span>{total}</span></h2> :
                     <h2>{thanksmailText}</h2>}
                 </div>
             </div>

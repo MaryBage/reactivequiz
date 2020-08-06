@@ -1,0 +1,13 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 45%;
+    width: 95%;
+    color: #555555;
+    font-size: 25px;
+}
+
+.content span {
+    color: #7e57c2;
+    font-weight: bold;
+}

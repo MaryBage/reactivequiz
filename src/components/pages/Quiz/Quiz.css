@@ -34,6 +34,7 @@ body {
  
 
 }
+
 .question pre{
    /* margin-top: 100px;*/
     padding: 20px;
@@ -66,7 +67,6 @@ body {
 .method { color:#0000ff}
 .property-access { color:#007788}
 
-
 .answer {
   padding: 20px;
   display: flex;
@@ -97,7 +97,6 @@ body {
   width: 20px;
   height: 20px;
   margin-right: 18px;
-  
 }
 
 .choice > div > label{
@@ -270,8 +269,9 @@ input[type='button'] {
   border-radius: 3px;
   border: 2px solid #7e57c2;
 }
+
 .answer > div > label:after {
-content: '';
+  content: '';
   display: block;
   width: 10px;
   height: 5px;
@@ -285,10 +285,10 @@ content: '';
   top: 12px;
   left: 10px;
 }
+
 .answer > div > input[type="checkbox"]:checked ~ label::before {
   color: #7e57c2;
 }
-
 
 .answer > div > label {
   min-height: 34px;
@@ -299,12 +299,14 @@ content: '';
   cursor: pointer;
   vertical-align: sub;
 }
+
 .answer > div > label span {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
 .answer > div > input[type="checkbox"]:focus + label::before {
   outline: 0;
 }*/

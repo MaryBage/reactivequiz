@@ -2,27 +2,27 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 90% !important;
-    height: 50%;
-}
-
-.feedbackInformativeDivision button {
-    height: 45px !important;
-    width: 45%;
+    width: 95%;
+    height: 55%;
 }
 
 .feedbackInformativeDivision textarea {
     max-width : 99%;
-    max-height : 40%;
+    max-height : 50%;
     min-width: 99%;
-    min-height: 40%;
+    min-height: 50%;
+    margin-bottom: -45px;
 } 
 
 .nameAndEmailField {
-    display: inline-flex;
+    display: flex;
     justify-content: space-between;
 }
 
 .nameAndEmailField input {
     width: 45%;
+}
+
+.feedbackCustomButton button {
+    width: 45% !important;
 }

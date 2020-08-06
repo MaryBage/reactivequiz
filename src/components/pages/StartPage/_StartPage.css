@@ -5,30 +5,39 @@
     align-items: center;
 }
 
-.pageIntro-custom {
+.innerWrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    text-align: center;
+    height: 85%;
+}
+
+.innerWrapper .logo {
+    font-size: 85px;
+    letter-spacing: 3px;
+}
+
+.innerWrapper .slogan {
+    font-size: 35px;
+    letter-spacing: 5px;
+}
+
+.arrow img {
+    height: 80px;
+    width: 25px;
 }
 
 .buttons {
     display: flex;
     flex-direction: column;
-    width: 50% !important;
-    margin-top: -3%;
+    width: 60%;
 }
 
-.inner-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 7%;
+.buttons .linear ::before {
+    width: 1.6px !important;
 }
 
-/* .MuiSvgIcon-root {
-    position: relative !important;
-    margin-bottom: 25px !important;
-} */
-
+footer {
+    color: #999999;
+}
