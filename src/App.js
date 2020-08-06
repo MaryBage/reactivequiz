@@ -6,12 +6,10 @@ import {setCurrentUser, logoutUser} from './redux/user/user.actions';
 import StartPage from "./components/pages/StartPage/StartPage";
 import About from "./components/pages/About/About";
 import StartTest from "./components/pages/StartTest/StartTest";
-import { Quiz } from "./components/pages/Quiz/Quiz";
 import SignIn from "./components/pages/SignIn/SignIn";
 import SignUp from "./components/pages/SignUp/SignUp";
 import ResetPasswordPopup from "./components/popups/ResetPasswordPopup/ResetPasswordPopup";
 import Feedback from "./components/pages/Feedback/Feedback";
-import Popup from "./components/popups/Popup";
 //import PageNotFound from "./components/pages/PageNotFound/PageNotFound";
 
 
@@ -33,8 +31,6 @@ const App = ({setCurrentUser, currentUser, logoutUser}) => {
                     <Route exact path="/" component={StartPage} />
                     <Route path="/about" component={About} />
                     <Route path="/start_test" component={StartTest} />
-                    {/* <Route path="/quiz" component={Quiz} /> */}
-                    {/* <Route path="/result" component={Popup} /> */}
                     {/* <Route exact path="/signin" render={() => currentUser ? <Redirect to="/"/> : <SignIn handleSubmit={handleSubmit}/> */}
                     <Route path="/signin" component={(props) => <SignIn handleSubmit={handleSubmit}/>}/>
                     <Route path="/signup" component={SignUp} />
