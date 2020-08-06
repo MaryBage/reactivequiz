@@ -17,7 +17,6 @@ export default function ActiveQuiz(props) {
       };
     });
 
-    
     useEffect(() => {
         setQuiz(props.quiz);
     }, [props])
@@ -74,8 +73,7 @@ export default function ActiveQuiz(props) {
                 : ''}
                 
            </div>
-        
-            <form 
+          <form 
                 className="answer" 
                 onSubmit = {(e) => props.onSbmtHandler(e, answeredQuiz, props.activeQuestion)}>
 

@@ -5,9 +5,7 @@ import ActiveQuiz from './ActiveQuiz';
 import './Quiz.css'
 import Popup from '../../popups/Popup'
 
-
-
-export const Quiz = () => {
+export const Quiz = (props) => {
   const [quiz, setQuiz] = useState([]);
   const [conds,setConds] = useState({trasition: false, loader:true, totalPoint:0, resultPoint:0})
 
@@ -16,6 +14,8 @@ export const Quiz = () => {
     category: 'JavaScript',
     level: 'hard',
   }
+
+
 
   /*const params = {
     action: 'signUp',
@@ -33,7 +33,10 @@ export const Quiz = () => {
   useEffect(() => {
     
     axios
-        .post(`/quiz.php`, JSON.stringify(params))
+    .post(`/feedback.php`,btoa(JSON.stringify({email: 'mary.mary.am',
+    name: 'Mary',
+    message: 'thank you for youe job'})))
+       // .post(`/quiz.php`, JSON.stringify(params))
         //.post(`/auth.php`, btoa(JSON.stringify(params)))
         .then(res => {
             console.log(res.data)
@@ -133,10 +136,10 @@ export const Quiz = () => {
   }
 
   return (
-    <div className="quizBody">
+    <>
       { (conds.loader && <Loader />) || (conds.totalPoint && <Popup totalPoint = {conds.totalPoint} resultPoint = {conds.resultPoint} />) || 
-             <div className='quizLayout'>
-               
+             <div className="quizBody">
+            <div className='quizLayout'>
                    <div className='sidenav'>
                       {
                         quiz.map((el,i) => {
@@ -161,8 +164,8 @@ export const Quiz = () => {
                           onSbmtHandler = {sbmtHandler} 
                         /> 
                     
-                  </div>                      
+                  </div>    </div>                    
         }
-         </div>
+         </>
   )
 }
