@@ -12,6 +12,7 @@ body {
 .img {
   object-fit: cover;
   height: 99vh;
+  width: 100%;
   background-color: #e2ddee;
 }
 
