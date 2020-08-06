@@ -9,7 +9,7 @@ export const Quiz = (props) => {
   const [quiz, setQuiz] = useState([]);
   const [conds,setConds] = useState({trasition: false, loader:true, totalPoint:0, resultPoint:0})
 
-  const params = {
+  const params = props || {
     quiz: true,
     category: 'JavaScript',
     level: 'hard',
@@ -33,10 +33,7 @@ export const Quiz = (props) => {
   useEffect(() => {
     
     axios
-    .post(`/feedback.php`,btoa(JSON.stringify({email: 'mary.mary.am',
-    name: 'Mary',
-    message: 'thank you for youe job'})))
-       // .post(`/quiz.php`, JSON.stringify(params))
+       .post(`/quiz.php`, JSON.stringify(params))
         //.post(`/auth.php`, btoa(JSON.stringify(params)))
         .then(res => {
             console.log(res.data)
