@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import './_StartPage.css';
 import { logoText, sloganText, informativeButtonText } from "../../../StaticContent";
 import image from "../../../images/pages/start.png";
@@ -12,6 +12,7 @@ import {Link} from "react-router-dom"
 
 
 const StartPage = () => {
+   
     return (
         <div className="wrapper">
             <StaticImage image={image}/>
@@ -26,10 +27,14 @@ const StartPage = () => {
                     <PageIntro logoText={""} sloganText={sloganText[0]} />
                 </div>
                         <div className="buttons">
+                            
                             <CustomButton component={Link} to="/about" linear="true">{informativeButtonText[0]}</CustomButton>
                             <CustomButton component={Link} to="/start_test" linear="true">{informativeButtonText[1]}</CustomButton>
                             <CustomButton component={Link} to="/signin" linear="true">{informativeButtonText[2]}</CustomButton>
                             <CustomButton component={Link} to="/feedback" linear="true">{informativeButtonText[3]}</CustomButton>
+                       
+                       
+                          
                         </div>
                 <footer><small>&copy; Copyright 2020, Reactive</small></footer> 
             </div>

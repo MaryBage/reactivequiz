@@ -16,6 +16,8 @@ import Popup from "./components/popups/Popup";
 
 
 const App = ({setCurrentUser, currentUser, logoutUser}) => {
+ 
+
     useEffect(() => {
         const payload = JSON.parse(localStorage.getItem('currentUser'));
         setCurrentUser(payload);
@@ -28,6 +30,7 @@ const App = ({setCurrentUser, currentUser, logoutUser}) => {
         logoutUser();
     };
     return (
+   
         <Router>
             <Switch>
                     <Route exact path="/" component={StartPage} />
@@ -44,6 +47,7 @@ const App = ({setCurrentUser, currentUser, logoutUser}) => {
                     {/* <Route render={() => <PageNotFound />} /> */}
             </Switch>
         </Router>
+
     )
 }
 

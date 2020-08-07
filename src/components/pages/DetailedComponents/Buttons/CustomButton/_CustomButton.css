@@ -5,14 +5,51 @@
     height: 40px;
     background-color: #bbbbbb;
     top: -40px;
+    animation: linear  1000ms;
 }
 
 .small {
     border: 1.5px solid #bbbbbb;
     width: 20% !important;
+    animation: small 500ms ;
 }
 
 .makeStyles-root-1 {
     border: 1.5px solid #bbbbbb !important;
     height: 45px !important;
 }
+
+
+
+.sm-enter{
+    opacity: 0;
+  transform: scale(0.9);
+}
+.sm-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+  .sm-exit {
+    opacity: 1;
+  }
+  .sm-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+  }
+  
+
+@keyframes  small{
+    0%{opacity: 0;transform:translateX(1000px);}
+    100%{opacity: 1;transform:translateX(0px);}
+}
+
+
+
+
+@keyframes linear{
+    0%{opacity: 0;margin-left:-200px;}
+    100%{opacity: 1;margin-left: 0px;}
+}
+
