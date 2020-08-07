@@ -54,8 +54,8 @@ body {
   width: 50%;
   height: 50%;
 }
-
-.commonstyle {
+.informativeDivision input
+{
   height: 45px;
   color: #555555;
   font-size: 19px;
@@ -67,8 +67,25 @@ body {
   text-align: center;
   outline: none;
 }
+.incorrectInput {
+  height: 45px!important;
+  color: #4d3874!important;
+  font-size: 19px!important;
+  font-family: 'Courier New', Courier, monospace!important;
+  border: 2px solid  #4d3874!important;
+  border-radius: 5px!important;
+  background-color: white!important;
+  text-align: center!important;
+  outline: none!important;
+  font-weight: 800;
+}
+.error-message
+{
+  color:#4d3874;
+  font-weight: 700;
+}
 
-.commonstyle:hover {
+.informativeDivision input:hover {
   border-color: #7e57c2;
   color: #7e57c2;
   cursor: pointer;
@@ -78,7 +95,7 @@ body {
   color: #555555;
 }
 
-.commonstyle:hover::placeholder { 
+.informativeDivision input:hover::placeholder {
   color: #7e57c2;
 }
 

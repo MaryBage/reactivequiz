@@ -9,10 +9,7 @@ import CustomSelect from "../DetailedComponents/Buttons/CustomSelect/CustomSelec
 import SimpleLine from "../DetailedComponents/SimpleLine/SimpleLine";
 import { Link } from "react-router-dom";
 import { Quiz } from "../Quiz/Quiz";
-import { keys } from "@material-ui/core/styles/createBreakpoints";
-// import Select from 'react-select-2'
-// Be sure to include styles at some point, probably during your bootstrapping
-// import 'react-select-2/dist/css/react-select-2.css'
+
 
 
 const StartTest = () => {
