@@ -36,7 +36,6 @@ const approveButtonText = [
 const selectFieldText = [
     "category",
     "level",
-    "time",
 ]
 
 const popupText = {

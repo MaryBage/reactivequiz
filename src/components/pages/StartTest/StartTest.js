@@ -39,7 +39,7 @@ const StartTest = () => {
                 <div className="informativeDivision">
                     <CustomSelect options={category} name="category" selectfieldtext={selectFieldText[0]} />
                     <SimpleLine />
-                    <CustomSelect options={category} name="category" selectfieldtext={selectFieldText[2]} />
+                    <CustomSelect options={category} name="category" selectfieldtext={selectFieldText[1]} />
                     <CustomButton type="submit" linear="true">{approveButtonText[4]}</CustomButton>
                 </div>
             </div>
