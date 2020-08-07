@@ -42,7 +42,6 @@ const approveButtonText = [
 const selectFieldText = [
     "category",
     "level",
-    "time",
 ]
 
 const popupText = {
@@ -53,8 +52,8 @@ const popupText = {
 };
 
 const category = { js: 'JavaScript', "php": "PHP", "python": "Python" };
-const level = { simple: 'Simple', "middle": "Middle", "hard": "Hard" };
-const time = { 40: '40min', 60: "60 min", "120": "120 min" };
+const level = { easy: 'Easy', "medium": "Medium", "hard": "Hard" };
+
 
 export {
     logoText,
@@ -65,6 +64,5 @@ export {
     popupText,
     category,
     level,
-    time,
     adminNav
 };
