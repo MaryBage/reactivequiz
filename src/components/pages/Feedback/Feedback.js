@@ -30,8 +30,8 @@ const Feedback = () => {
 
     return (
       <div className="wrapper">
-            <StaticImage image={image} />
-            <div className="changable-wrapper">
+            <StaticImage image={image} anim='fromRight' />
+            <div className="changable-wrapper fromLeft">
                 <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
                 <PageIntro logoText={logoText[4]} sloganText={sloganText[4]} />
                 <form className={s.feedbackInformativeDivision}>

@@ -32,8 +32,8 @@ const StartTest = () => {
         
         //  կախված պայմանից նկարում ես <Quiz {...data} />
         <div className="wrapper">
-            <StaticImage image={image}/>
-            <div className="changable-wrapper">
+            <StaticImage image={image} anim='fromBelow'/>
+            <div className="changable-wrapper fromAbove">
                 <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
                 <PageIntro logoText={logoText[1]} sloganText={sloganText[1]}/>
                 <div className="informativeDivision">
