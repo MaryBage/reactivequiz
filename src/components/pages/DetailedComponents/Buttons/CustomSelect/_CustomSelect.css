@@ -7,14 +7,12 @@
     font-size: 19px;
     letter-spacing: 0.02857em;
     outline: none;
-    text-indent: 41%;
+    text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center; 
     -webkit-appearance: none;
     -moz-appearance: none;
     text-overflow: '';
-}
-
-.custom-select:nth-child(1) {
-    text-indent: 38%;
 }
 
 .custom-select::-ms-expand {
