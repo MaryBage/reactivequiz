@@ -23,7 +23,7 @@ export default function ActiveQuiz(props) {
 
 
     const addUserAnswer  = (e) => {
-        console.log('e.target', +e.target.id)
+       
         if(quiz.type == 'single')
           setQuiz({...answeredQuiz, userAnswer: [+e.target.id]})
         if(quiz.type == 'multiple'){
@@ -33,13 +33,11 @@ export default function ActiveQuiz(props) {
                 setQuiz({...answeredQuiz, userAnswer: answeredQuiz.userAnswer.concat(+e.target.id)})
             }
         }
-
-        console.log('redered answeredQuiz from if', answeredQuiz)
-            
+      
     }
     
     return (
-        
+    
         <div className="quizMain" style={width.w >=800 ? 
                                             { minWidth:'800px', gridTemplateColumns: 'repeat(2, 50%)' } : 
                                             { minWidth:'400px', gridTemplateRows: 'repeat(2, 50%)' } 

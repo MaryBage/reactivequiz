@@ -9,13 +9,11 @@ export const Quiz = (props) => {
   const [quiz, setQuiz] = useState([]);
   const [conds,setConds] = useState({trasition: false, loader:true, totalPoint:0, resultPoint:0})
 
-  const params = props || {
+  const params =  {
     quiz: true,
     category: 'JavaScript',
     level: 'hard',
   }
-
-
 
   /*const params = {
     action: 'signUp',

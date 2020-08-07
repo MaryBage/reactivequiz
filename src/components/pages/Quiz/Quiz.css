@@ -3,7 +3,7 @@
 
 .quizBody {
     font-family: 'Courier New', Courier, monospace;
-    background-color: #f3f3f3;
+    /* background-color: #f3f3f3; */
     margin: 0 auto;
     width: calc(100% - 285px - .35em);
     min-width:800px;
