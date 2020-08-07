@@ -22,6 +22,7 @@ const StartTest = () => {
     };
     
     const handleSelectChange = (e) => {
+        e.preventDefault();
         setData({ ...data, [e.target.name]: e.target.value });
     };
 

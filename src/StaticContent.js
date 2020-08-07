@@ -51,7 +51,7 @@ const popupText = {
     thanksmail: "Thank you!"
 };
 
-const category = { js: 'JavaScript', "php": "PHP", "python": "Python" };
+const category = { JavaScript: 'JavaScript', "php": "PHP", "python": "Python" };
 const level = { easy: 'Easy', "medium": "Medium", "hard": "Hard" };
 
 

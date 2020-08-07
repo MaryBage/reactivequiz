@@ -9,32 +9,13 @@ export const Quiz = (props) => {
   const [quiz, setQuiz] = useState([]);
   const [conds,setConds] = useState({trasition: false, loader:true, totalPoint:0, resultPoint:0})
 
-  const params =  {
-    quiz: true,
-    category: 'JavaScript',
-    level: 'hard',
-  }
-
-  /*const params = {
-    action: 'signUp',
-    email: 'mary@reactivequiz.com',
-    password:  '1444',
-    displayName: 'MaryBage'
-  }*/
-  /*
-  useEffect(() => {
-      console.log('useEffect',quiz);
-  },[quiz])*/
-
-
-
   useEffect(() => {
     
     axios
-       .post(`/quiz.php`, JSON.stringify(params))
-        //.post(`/auth.php`, btoa(JSON.stringify(params)))
+       .post(`/quiz.php`, JSON.stringify(props))
+     
         .then(res => {
-            console.log(res.data)
+           
               setQuiz(res.data.map((questionItem, i) => {
                 return {
                     questionId: questionItem.questionId,
