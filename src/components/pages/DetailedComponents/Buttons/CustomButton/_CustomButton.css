@@ -2,9 +2,9 @@
     content: "";
     position: absolute;
     width: 1.5px;
-    height: 45px;
+    height: 48px;
     background-color: #bbbbbb;
-    top: -45px;
+    top: -49px;
 }
 
 .small {
@@ -15,4 +15,8 @@
 .makeStyles-root-1 {
     border: 1.5px solid #bbbbbb !important;
     height: 48px;
+}
+
+.MuiButton-text {
+    padding: 0 0 !important;
 }
