@@ -1,14 +1,16 @@
 import InvalidCredentialsErrors from '../errors/InvalidCredentials'
+import store from "../redux/store";
 
 const getHeaders = () => {
     let token = "";
     try {
-        token = JSON.parse(localStorage.getItem('Authorization'));
+        token = store.getState().user.Authorization;
     } catch (e) {
     }
     return {
         'Content-Type': 'application/json;charset=utf-8',
-        Authorization: `Bearer ${token}`
+         Authorization: `Bearer ${token}`,
+
     };
 }
 const doRequest = async (url, headers = {}, body = {}, method = "GET") => {

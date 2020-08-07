@@ -14,21 +14,39 @@ import Feedback from "./components/pages/Feedback/Feedback";
 import Popup from "./components/popups/Popup";
 //import PageNotFound from "./components/pages/PageNotFound/PageNotFound";
 import axios from "axios"
+import {makePost} from "./api";
+
 const App = ({setCurrentUser, currentUser, logoutUser}) => {
 
 
+    const handleSubmit = async (data) => {
 
-
-    const handleSubmit = (data) => {
-        axios.get("https://jsonplaceholder.typicode.com/users/1").then(response => {
-            const data = response.data
-            setCurrentUser(data);
-        }).catch(error => {
-            console.log(error);
-        })
-
-
+        const params = {
+            action: 'logIn',
+            email: 'mary@mary.am',
+            password: '145000'
+        }
+        axios.post(`https://cors-anywhere.herokuapp.com/https://reactivequiz.com/api/auth.php`,
+            btoa(JSON.stringify(params)))
+            .then(res => {
+                setCurrentUser(res.data);
+            }).catch(e => console.log(e));
     };
+    const handleRegister = async (data) => {
+        const params = {
+            ...data,
+            action: 'signUp'
+
+        }
+        axios.post(`https://cors-anywhere.herokuapp.com/https://reactivequiz.com/api/auth.php`,
+            btoa(JSON.stringify(params)))
+            .then(res => {
+                console.log(res.data);
+                setCurrentUser(res.data);
+            }).catch(e => console.log(e));
+    };
+
+
     const handleLogOut = () => {
         logoutUser();
     };
@@ -46,32 +64,30 @@ const App = ({setCurrentUser, currentUser, logoutUser}) => {
                         <Route path="/about" component={About}/>
                         <Route path="/feedback" component={Feedback}/>
                         <Redirect to='/'/>
-                            {/* <Route render={() => <PageNotFound />} /> */}
+                        {/* <Route render={() => <PageNotFound />} /> */}
                     </Switch>
-                :
-                <Switch>
-                <Route exact path="/signIn" component={(props) => <SignIn handleSubmit={handleSubmit}/>}/>
-                <Route exact path="/signup" component={SignUp}/>
-                <Route exact path="/" component={StartPage}/>
-                <Route path="/about" component={About}/>
-                <Route path="/feedback" component={Feedback}/>
-                </Switch>
+                    :
+                    <Switch>
+                        <Route exact path="/signIn" component={(props) => <SignIn handleSubmit={handleSubmit}/>}/>
+                        <Route exact path="/signup" component={(props) => <SignUp handleRegister={handleRegister}/>}/>
+                        <Route exact path="/" component={StartPage}/>
+                        <Route path="/about" component={About}/>
+                        <Route path="/feedback" component={Feedback}/>
+                    </Switch>
 
-
-                }
-
-
-
-                </Router>
-                )
             }
 
-            const mapDispatchToProps = dispatch => ({
-            setCurrentUser: user => dispatch(setCurrentUser(user)),
-            logoutUser: () => dispatch(logoutUser()),
-        });
-            const mapStateToProps = state => ({
-            currentUser: state.user.currentUser
-        });
 
-            export default connect(mapStateToProps, mapDispatchToProps)(App);
+        </Router>
+    )
+}
+
+const mapDispatchToProps = dispatch => ({
+    setCurrentUser: user => dispatch(setCurrentUser(user)),
+    logoutUser: () => dispatch(logoutUser()),
+});
+const mapStateToProps = state => ({
+    currentUser: state.user.user
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

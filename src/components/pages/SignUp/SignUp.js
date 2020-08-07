@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { logoText, sloganText, approveButtonText } from "../../../StaticContent";
 import image from "../../../images/pages/signup.png";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
@@ -10,7 +10,19 @@ import SimpleLine from "../DetailedComponents/SimpleLine/SimpleLine";
 import { Link } from "react-router-dom";
 
 
-const SignUp = (props) => {
+const SignUp = ({handleRegister}) => {
+    const [data, setData] = useState({displayName:'',email: '', password: ''});
+
+    const oniInputChange = (e) => {
+        const {name} = e.target;
+        setData({...data, [name]: e.target.value});
+    };
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        handleRegister(data);
+        setData({displayName:'',email: '', password: ''});
+    };
 
     return (
         <div className="wrapper">
@@ -18,29 +30,35 @@ const SignUp = (props) => {
             <div className="changable-wrapper">
                 <CustomButton small="true" component={Link} to="/signin"><KeyboardBackspaceIcon/>back</CustomButton>
                 <PageIntro logoText={logoText[3]} sloganText={sloganText[3]} />
-                <form className="informativeDivision">
-                    <InformativeField 
+                <form onSubmit={onSubmit}  className="informativeDivision">
+                    <InformativeField
+                        onChange={oniInputChange}
                         type="text"
                         id="signup" 
-                        name="signup"
+                        name="displayName"
                         placeholder="name"
-                        // value={}
+                        value={data.displayName}
+                        required
                     />
                     <SimpleLine />
                     <InformativeField
+                        onChange={oniInputChange}
                         type="text"
                         id="signup-email" 
-                        name="signup-name"
+                        name="email"
                         placeholder="email"
-                        // value={}
+                        value={data.email}
+                        required
                     />
                     <SimpleLine />
                     <InformativeField
+                        onChange={oniInputChange}
                         type="password"
                         id="signup-password" 
-                        name="signup-password"
+                        name="password"
                         placeholder="password"
-                        // value={}
+                        value={data.password}
+                        required
                     />
                     <CustomButton type="submit" linear="true">{approveButtonText[1]}</CustomButton>
                 </form>
