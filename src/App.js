@@ -6,27 +6,39 @@ import {setCurrentUser, logoutUser} from './redux/user/user.actions';
 import StartPage from "./components/pages/StartPage/StartPage";
 import About from "./components/pages/About/About";
 import StartTest from "./components/pages/StartTest/StartTest";
-import {Quiz} from "./components/pages/Quiz/Quiz";
 import SignIn from "./components/pages/SignIn/SignIn";
 import SignUp from "./components/pages/SignUp/SignUp";
 import ResetPasswordPopup from "./components/popups/ResetPasswordPopup/ResetPasswordPopup";
 import Feedback from "./components/pages/Feedback/Feedback";
-import { Quiz } from './components/pages/Quiz/Quiz';
 //import PageNotFound from "./components/pages/PageNotFound/PageNotFound";
 import axios from "axios"
-import {makePost} from "./api";
+
 
 const App = ({setCurrentUser, currentUser, logoutUser}) => {
-    useEffect(() => {
-        const payload = JSON.parse(localStorage.getItem('currentUser'));
-        setCurrentUser(payload);
-    }, []);
+
+
+    const handleSubmit = async (data) => {
+
+        const params = {
+            action: 'logIn',
+            email: 'mary@mary.am',
+            password: '145000'
+        }
+        axios.post(`https://cors-anywhere.herokuapp.com/https://reactivequiz.com/api/auth.php`,
+            btoa(JSON.stringify(params)))
+            .then(res => {
+                setCurrentUser(res.data);
+            }).catch(e => console.log(e));
+    };
+    const handleRegister = async (data) => {
+        const params = {
+            ...data,
+            action: 'signUp'
 
         }
         axios.post(`https://cors-anywhere.herokuapp.com/https://reactivequiz.com/api/auth.php`,
             btoa(JSON.stringify(params)))
             .then(res => {
-                console.log(res.data);
                 setCurrentUser(res.data);
             }).catch(e => console.log(e));
     };
