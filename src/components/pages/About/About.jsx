@@ -12,8 +12,8 @@ import { Link } from "react-router-dom";
 const About = (props) => {
   return (
     <div className="wrapper">
-        <StaticImage image={image} />
-          <div className="changable-wrapper">
+        <StaticImage image={image} anim='fromLeft' />
+          <div className="changable-wrapper fromRight">
               <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
               <PageIntro logoText={logoText[0]} sloganText={sloganText[0]} />
               <div className={s.content}>
