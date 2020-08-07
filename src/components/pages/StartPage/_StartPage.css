@@ -4,6 +4,7 @@
     justify-content: space-around;
     align-items: center;
     border: 5px solid #E2DDEE;
+    background-color: white;
 }
 
 .innerWrapper {

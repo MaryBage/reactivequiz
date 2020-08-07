@@ -2,6 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Courier New', Courier, monospace;
+  background-color: #f3f3f3;
+  overflow-y:hidden;  
 
 }
 
@@ -15,7 +17,7 @@ body {
   object-fit: cover;
   height: 98vh;
   width: 100%;
-  background-color: #e2ddee;
+ 
 }
 
 .changable-wrapper {
@@ -24,10 +26,11 @@ body {
   justify-content: space-between;
   padding-left: 50px;
   border: 5px solid #E2DDEE;
+  background-color: white;
 }
 .static-wrapper{
   border: 5px solid white;
-
+  background-color: #e2ddee;
 }
 .pageIntro {
   display: flex;

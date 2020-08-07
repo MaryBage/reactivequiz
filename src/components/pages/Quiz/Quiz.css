@@ -3,7 +3,7 @@
 
 .quizBody {
     font-family: 'Courier New', Courier, monospace;
-    /* background-color: #f3f3f3; */
+
     margin: 0 auto;
     width: calc(100% - 285px - .35em);
     min-width:800px;
@@ -123,6 +123,8 @@
   align-items: center;
   justify-content: center;
   box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+  animation: rotateBtn 1000ms; 
+  outline: none;
   
 }
 
@@ -135,7 +137,11 @@ input[type='button'] {
 }
 
 .btns > button:active {
-  border: none;
+ 
+  background-color: #E2DDEE;
+  
+  /*transform: rotate(90deg);*/
+  
 }
 
 .btns > button > span {
@@ -247,6 +253,21 @@ input[type='button'] {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+
+@keyframes rotateBtn{
+from {
+  transformOrigin: 'center';
+  transform: rotate3d(0, 0, 1, -200);
+  opacity: 0
+};
+to {
+  transformOrigin: 'center';
+  transform: 'none';
+  opacity: 1
+}
 }
 
 

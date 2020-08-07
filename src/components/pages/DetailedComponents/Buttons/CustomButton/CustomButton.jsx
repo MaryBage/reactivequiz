@@ -30,7 +30,7 @@ const CustomButton = ({children, ...otherProps}) => {
      <> 
     <Button {...otherProps} classes={{
     root: classes.root
-      }} className={`${otherProps.linear ? "linear" : ""} ${otherProps.small ? "small" : ""}`} variant="outlined"
+      }} className={`${otherProps.linear ? "linear" : ""} ${otherProps.small ? "small" : ""} rotateBtn`} variant="outlined"
       color="primary" onClick={()=>settoggle(!toggle)}  >
        
      
@@ -47,6 +47,7 @@ const CustomButton = ({children, ...otherProps}) => {
       >
         
         {<Button onClick={()=>settoggle(toggle)} ></Button>} 
+      
       </CSSTransition>
     </> 
  

@@ -36,7 +36,7 @@ const App = ({setCurrentUser, currentUser, logoutUser}) => {
                     <Route exact path="/" component={StartPage} />
                     <Route path="/about" component={About} />
                     <Route path="/start_test" component={StartTest} />
-                    {/* <Route path="/quiz" component={Quiz} /> */}
+                     <Route path="/quiz" component={Quiz} />
                     {/* <Route path="/result" component={Popup} /> */}
                     {/* <Route exact path="/signin" render={() => currentUser ? <Redirect to="/"/> : <SignIn handleSubmit={handleSubmit}/> */}
                     <Route path="/signin" component={(props) => <SignIn handleSubmit={handleSubmit}/>}/>
