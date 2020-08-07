@@ -11,6 +11,7 @@ import SignUp from "./components/pages/SignUp/SignUp";
 import ResetPasswordPopup from "./components/popups/ResetPasswordPopup/ResetPasswordPopup";
 import Feedback from "./components/pages/Feedback/Feedback";
 import { Quiz } from './components/pages/Quiz/Quiz';
+import { Admin } from './components/pages/Admin/Admin';
 //import PageNotFound from "./components/pages/PageNotFound/PageNotFound";
 
 
@@ -37,6 +38,7 @@ const App = ({setCurrentUser, currentUser, logoutUser}) => {
                     <Route path="/about" component={About} />
                     <Route path="/start_test" component={StartTest} />
                      <Route path="/quiz" component={Quiz} />
+                     <Route path="/admin" component={Admin} />
                     {/* <Route path="/result" component={Popup} /> */}
                     {/* <Route exact path="/signin" render={() => currentUser ? <Redirect to="/"/> : <SignIn handleSubmit={handleSubmit}/> */}
                     <Route path="/signin" component={(props) => <SignIn handleSubmit={handleSubmit}/>}/>

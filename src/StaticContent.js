@@ -23,6 +23,12 @@ const informativeButtonText = [
     "level",
     "time",
 ]
+const adminNav = [
+    "My questions",
+    "My quizes",
+    "Students results",
+    "Settings"
+]
 
 const approveButtonText = [
     "sign in",
@@ -59,5 +65,6 @@ export {
     popupText,
     category,
     level,
-    time
+    time,
+    adminNav
 };
