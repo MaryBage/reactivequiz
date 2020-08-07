@@ -23,6 +23,12 @@ const informativeButtonText = [
     "level",
     "time",
 ]
+const adminNav = [
+    "My questions",
+    "My quizes",
+    "Students results",
+    "Settings"
+]
 
 const approveButtonText = [
     "sign in",
@@ -45,9 +51,9 @@ const popupText = {
     thanksmail: "Thank you!"
 };
 
-const category = { js: 'JavaScript', "php": "PHP", "python": "Python" };
-const level = { simple: 'Simple', "middle": "Middle", "hard": "Hard" };
-const time = { 40: '40min', 60: "60 min", "120": "120 min" };
+const category = { JavaScript: 'JavaScript', "php": "PHP", "python": "Python" };
+const level = { easy: 'Easy', "medium": "Medium", "hard": "Hard" };
+
 
 export {
     logoText,
@@ -58,5 +64,5 @@ export {
     popupText,
     category,
     level,
-    time
+    adminNav
 };

@@ -126,6 +126,7 @@
   animation: rotateBtn 1000ms; 
   outline: none;
   
+  
 }
 
 input[type='button'] {
@@ -135,13 +136,29 @@ input[type='button'] {
   width: 75%!important;
   
 }
+input[type='button']:active {
+  background-color: #E2DDEE;
+  
+}
+input[type='submit']:active {
+  background-color: #E2DDEE;
+  
+}
 
 .btns > button:active {
  
   background-color: #E2DDEE;
   
-  /*transform: rotate(90deg);*/
+ /* transform: rotateX(90deg);
+ animation: spin 1s linear infinite;*/
   
+}
+
+@keyframes spin {
+  
+  100% {
+    transform: rotatey(360deg);
+  }
 }
 
 .btns > button > span {
@@ -152,27 +169,6 @@ input[type='button'] {
 }
 
 
-
-.codeTransition-enter {
-  animation: code 750ms ease-out forwards;
-}
-
-.codeTransition-enter-active {
-  opacity: 1;
-  transition: opacity 750ms ease-out;
-}
-
-.codeTransition-exit-active {
-  animation: code 1s ease-out forwards;
-}
-/*
-.quizLayout{
-  display: flex;
-  flex-flow: row nowrap;
-
-}
-
-*/
 
 .sidenav {
   height: 100%;
@@ -200,6 +196,16 @@ input[type='button'] {
 .sidenav a:hover {
   color: #f1f1f1;
 }
+/*
+.quizLayout{
+  display: flex;
+  flex-flow: row nowrap;
+
+}
+
+*/
+
+
 
 .activeQstn {
   color: #f1f1f1!important;

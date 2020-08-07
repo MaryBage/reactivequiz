@@ -32,10 +32,10 @@ const Popup = (props) => {
     return (
         <div className="popup-container">
             <div className={s.popupWrapper}>
-                <div>
+                <div className='zoomOut'>
                     <img className={s.popupImg} src={images[i]} alt="img" />
                 </div>
-                <div className={s.popupCommonWrapper}>
+                <div className={`${s.popupCommonWrapper} fromRight`}>
                     <h1>{text}</h1>
                         {props.resultPoint ? <h2>Your result: <span>{result}</span> of <span>{total}</span></h2> :
                     <h2>{thanksmailText}</h2>}
