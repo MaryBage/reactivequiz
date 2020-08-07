@@ -1,12 +1,18 @@
 .popupWrapper {
+    grid-column: 2/6;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     border: 2px solid #bbbbbb;
     border-radius: 20px;
     background-color: white;
     height: 70%;
-    width: 65%;
     font-family: 'Courier New', Courier, monospace;
+}
+
+.popupImg {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
 }
 
 .popupCommonWrapper {

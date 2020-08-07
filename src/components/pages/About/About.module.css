@@ -1,9 +1,8 @@
 .content {
     display: flex;
     flex-direction: column;
-    text-align: left;
-    height: 46%;
-    width: 90% !important;
+    height: 45%;
+    width: 95%;
     color: #555555;
     font-size: 25px;
 }

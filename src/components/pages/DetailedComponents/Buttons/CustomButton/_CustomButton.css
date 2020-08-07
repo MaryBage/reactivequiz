@@ -2,20 +2,29 @@
     content: "";
     position: absolute;
     width: 1.5px;
-    height: 40px;
+    height: 45px;
     background-color: #bbbbbb;
+<<<<<<< HEAD
     top: -40px;
     animation: linear  1000ms;
+=======
+    top: -45px;
+>>>>>>> 7dea1227fe4fe4ee07a084080d7df81a0ebbc682
 }
 
 .small {
     border: 1.5px solid #bbbbbb;
+<<<<<<< HEAD
     width: 20% !important;
     animation: small 500ms ;
+=======
+    width: 20%;
+>>>>>>> 7dea1227fe4fe4ee07a084080d7df81a0ebbc682
 }
 
 .makeStyles-root-1 {
     border: 1.5px solid #bbbbbb !important;
+<<<<<<< HEAD
     height: 45px !important;
 }
 
@@ -53,3 +62,7 @@
     100%{opacity: 1;margin-left: 0px;}
 }
 
+=======
+    height: 48px;
+}
+>>>>>>> 7dea1227fe4fe4ee07a084080d7df81a0ebbc682

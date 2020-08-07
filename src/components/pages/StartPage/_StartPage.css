@@ -1,54 +1,43 @@
 .changable-wrapper-custom {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    text-align: center;
-}
-
-.pageIntro-custom {
-    display: flex;
-    align-items: flex-end;
-    height: 20%;
-}
-
-.changable-wrapper-custom .pageIntro {
-    letter-spacing: 8px !important;
-}
-
-.arrow {
-    display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    height: 15%;
+}
+
+.innerWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 85%;
+}
+
+.innerWrapper .logo {
+    font-size: 85px;
+    letter-spacing: 3px;
+}
+
+.innerWrapper .slogan {
+    font-size: 35px;
+    letter-spacing: 5px;
 }
 
 .arrow img {
-    height: 50px;
-    width: 20px;
+    height: 80px;
+    width: 25px;
 }
 
 .buttons {
     display: flex;
     flex-direction: column;
-    align-self: center;
-    width: 50% !important;
-    margin-top: -3%;
-    height: 50%;
+    width: 60%;
+}
+
+.buttons .linear ::before {
+    width: 1.6px !important;
 }
 
 footer {
     color: #999999;
 }
-
-/* .inner-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 7%;
-} */
-
-/* .MuiSvgIcon-root {
-    position: relative !important;
-    margin-bottom: 25px !important;
-} */
-

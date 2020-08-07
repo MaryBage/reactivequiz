@@ -5,12 +5,14 @@ import InformativeField from '../../pages/DetailedComponents/Fields/InformativeF
 import CustomButton from '../../pages/DetailedComponents/Buttons/CustomButton/CustomButton';
 import { Link } from 'react-router-dom';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import AfterResetPopup from './AfterResetPopup/AfterResetPopup';
 
 const ResetPasswordPopup = (props) => {
     return (
+        // <AfterResetPopup /> onSubmit => setValue => conditional rendering
         <div className="popup-container">
             <div className={s.resetWrapper}>
-            <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
+            <CustomButton small="true" component={Link} to="/signin"><KeyboardBackspaceIcon/>back</CustomButton>
                 <div className={s.popupWrapper}>
                     <h1>Forgot your password?</h1>
                     <h3>
@@ -20,14 +22,14 @@ const ResetPasswordPopup = (props) => {
                 </div>
                 <form className={s.popupWrapper}>
                     <InformativeField
-                        type="email" 
+                        type="text" 
                         id="reset"
                         name="reset" 
                         placeholder="email"
                         // onChange={onInputChange}
                         // value={}
                     />
-                    <CustomButton type="submit" linear="true">{approveButtonText[3]}</CustomButton>
+                    <CustomButton type="submit" small="true" linear="true">{approveButtonText[3]}</CustomButton>
                 </form>
             </div>
         </div>

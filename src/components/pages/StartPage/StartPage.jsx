@@ -17,9 +17,20 @@ const StartPage = () => {
         <div className="wrapper">
             <StaticImage image={image}/>
             <div className="changable-wrapper-custom">
-                <div className="pageIntro-custom">
-                    <PageIntro logoText={logoText[0]} sloganText={""} />
+                <div className="innerWrapper">
+                    <div className="logo">reActive</div>
+                    <div className="arrow">
+                        <img src={arrow} alt="img"/>
+                    </div>
+                    <div className="slogan">becoming reactive experts</div>
+                    <div className="buttons">
+                        <CustomButton component={Link} to="/about" linear="true">{informativeButtonText[0]}</CustomButton>
+                        <CustomButton component={Link} to="/start_test" linear="true">{informativeButtonText[1]}</CustomButton>
+                        <CustomButton component={Link} to="/signin" linear="true">{informativeButtonText[2]}</CustomButton>
+                        <CustomButton component={Link} to="/feedback" linear="true">{informativeButtonText[3]}</CustomButton>
+                    </div>
                 </div>
+<<<<<<< HEAD
                 <div className="arrow">
                     <img src={arrow} alt="img"/>
                 </div>
@@ -36,6 +47,8 @@ const StartPage = () => {
                        
                           
                         </div>
+=======
+>>>>>>> 7dea1227fe4fe4ee07a084080d7df81a0ebbc682
                 <footer><small>&copy; Copyright 2020, Reactive</small></footer> 
             </div>
         </div>

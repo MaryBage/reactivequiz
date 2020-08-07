@@ -30,11 +30,11 @@ const SignIn = ({handleSubmit}) => {
             <StaticImage image={image}/>
             <div className="changable-wrapper">
                 <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
-                <PageIntro logoText={logoText[3]} sloganText={sloganText[3]}/>
+                <PageIntro logoText={logoText[2]} sloganText={sloganText[2]}/>
                 <form onSubmit={onSubmit} className="informativeDivision">
                     <InformativeField required onChange={oniInputChange} 
                         id="email" 
-                        type="email"
+                        type="text"
                         name="email"
                         placeholder="email"
                         value={data.email}

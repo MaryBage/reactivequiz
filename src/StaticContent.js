@@ -1,5 +1,4 @@
 const logoText = [
-    "reActive",
     "hello",
     "compose",
     "create",
@@ -8,7 +7,6 @@ const logoText = [
 ];
 
 const sloganText = [
-    "becoming reactive experts",
     "it’s great to see you here",
     "a quiz, test your skills",
     "a quiz, share your experience",
@@ -30,7 +28,7 @@ const approveButtonText = [
     "sign in",
     "sign up",
     "send message",
-    "reset my password",
+    "reset",
     "start",
     "submit",
 ]
