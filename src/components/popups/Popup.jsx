@@ -33,7 +33,7 @@ const Popup = (props) => {
         <div className="popup-container">
             <div className={s.popupWrapper}>
                 <div>
-                    <img className={s.popupImg} src={images[3]} alt="img" />
+                    <img className={s.popupImg} src={images[i]} alt="img" />
                 </div>
                 <div className={s.popupCommonWrapper}>
                     <h1>{text}</h1>
