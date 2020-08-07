@@ -7,6 +7,15 @@
 }
 
 .feedbackInformativeDivision textarea {
+    color: #555555 !important;
+    font-size: 19px !important;
+    letter-spacing: 0.02857em !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    border: 1.5px solid  #bbbbbb !important;
+    border-radius: 5px !important;
+    background-color: white !important;
+    text-align: center !important;
+    outline: none !important;
     max-width : 99%;
     max-height : 50%;
     min-width: 99%;
@@ -20,7 +29,29 @@
 }
 
 .nameAndEmailField input {
+    height: 45px !important;
     width: 45%;
+    color: #555555 !important;
+    font-size: 19px !important;
+    letter-spacing: 0.02857em !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    border: 1.5px solid  #bbbbbb !important;
+    border-radius: 5px !important;
+    background-color: white !important;
+    text-align: center !important;
+    outline: none !important;
+}
+
+.nameAndEmailField input:hover, 
+.feedbackInformativeDivision textarea:hover {
+    border-color: #7e57c2 !important;
+    color: #7e57c2 !important;
+    cursor: pointer !important;
+}
+
+.nameAndEmailField input:hover::placeholder,
+.feedbackInformativeDivision textarea:hover::placeholder {
+    color: #7e57c2 !important;
 }
 
 .feedbackCustomButton button {

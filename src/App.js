@@ -21,28 +21,27 @@ const App = ({currentUser, logoutUser}) => {
         <Router>
             {
                 currentUser ?
-                    <Switch>
-                        <Route path="/start-test" component={StartTest}/>
-                        <Route path="/reset_password" component={ResetPasswordPopup}/>
-                        <Route exact path="/" component={StartPage}/>
-                        <Route path="/about" component={About}/>
-                        <Route path="/feedback" component={Feedback}/>
-                        <Redirect to='/'/>
+                <Switch>
+                    <Route exact path="/" component={StartPage}/>
+                    <Route path="/about" component={About}/>
+                    <Route path="/start-test" component={StartTest}/>
+                    <Route path="/feedback" component={Feedback}/>
+                    <Redirect to='/'/>
 
-                    </Switch>
-                    :
-                    <Switch>
-                        <Route exact path="/signIn" component={SignIn}/>
-                        <Route exact path="/signup" component={SignUp}/>
-                        <Route exact path="/" component={StartPage}/>
-                        <Route path="/about" component={About}/>
-                        <Route path="/feedback" component={Feedback}/>
-                        <Route path="/start-test" component={StartTest}/>
-                    </Switch>
+                 </Switch>
+                :
+                <Switch>
+                    <Route exact path="/" component={StartPage}/>
+                    <Route path="/about" component={About}/>
+                    <Route path="/start-test" component={StartTest}/>
+                    <Route exact path="/signIn" component={SignIn}/>
+                    <Route exact path="/signup" component={SignUp}/>
+                    <Route path="/reset_password" component={ResetPasswordPopup}/>
+                    <Route path="/feedback" component={Feedback}/>
+                    <Redirect to='/'/>
+                </Switch>
 
             }
-
-
         </Router>
     )
 }

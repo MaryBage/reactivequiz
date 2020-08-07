@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import AfterResetPopup from './AfterResetPopup/AfterResetPopup';
 import axios from '../../../axios/axios-quiz';
+//must be added email validation !!!
 
 const ResetPasswordPopup = (props) => {
     const [status, setStatus] = useState({status: false, message : ""});
@@ -20,11 +21,11 @@ const ResetPasswordPopup = (props) => {
     const onSubmitClick = (e) => {
         e.preventDefault();
         axios
-       .post(`/reset.php`, btoa(JSON.stringify(
+        .post(`/reset.php`, btoa(JSON.stringify(
            {
             email : value,
            }
-       )))
+        )))
         .then(res => {
             console.log(res.data);
             setStatus({...res.data});
