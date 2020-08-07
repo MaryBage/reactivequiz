@@ -27,8 +27,8 @@ const SignIn = ({handleSubmit}) => {
 
     return (
         <div className="wrapper">
-            <StaticImage image={image}/>
-            <div className="changable-wrapper">
+            <StaticImage image={image} anim='fromLeft'/>
+            <div className="changable-wrapper fromRight">
                 <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
                 <PageIntro logoText={logoText[2]} sloganText={sloganText[2]}/>
                 <form onSubmit={onSubmit} className="informativeDivision">

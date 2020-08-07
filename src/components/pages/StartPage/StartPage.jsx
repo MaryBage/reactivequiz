@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import './_StartPage.css';
 import { logoText, sloganText, informativeButtonText } from "../../../StaticContent";
 import image from "../../../images/pages/start.png";
@@ -12,10 +12,11 @@ import {Link} from "react-router-dom"
 
 
 const StartPage = () => {
+   
     return (
         <div className="wrapper">
-            <StaticImage image={image}/>
-            <div className="changable-wrapper-custom">
+            <StaticImage image={image} anim='fromAbove'/>
+            <div className="changable-wrapper-custom fromBelow">
                 <div className="innerWrapper">
                     <div className="logo">reActive</div>
                     <div className="arrow">

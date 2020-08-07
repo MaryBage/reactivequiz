@@ -7,14 +7,14 @@
     font-size: 19px;
     letter-spacing: 0.02857em;
     outline: none;
-    text-indent: 43%;
+    text-indent: 41%;
     -webkit-appearance: none;
     -moz-appearance: none;
     text-overflow: '';
 }
 
 .custom-select:nth-child(1) {
-    text-indent: 37%;
+    text-indent: 38%;
 }
 
 .custom-select::-ms-expand {

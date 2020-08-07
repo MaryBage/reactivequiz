@@ -11,31 +11,16 @@ import SignIn from "./components/pages/SignIn/SignIn";
 import SignUp from "./components/pages/SignUp/SignUp";
 import ResetPasswordPopup from "./components/popups/ResetPasswordPopup/ResetPasswordPopup";
 import Feedback from "./components/pages/Feedback/Feedback";
-import Popup from "./components/popups/Popup";
+import { Quiz } from './components/pages/Quiz/Quiz';
 //import PageNotFound from "./components/pages/PageNotFound/PageNotFound";
 import axios from "axios"
 import {makePost} from "./api";
 
 const App = ({setCurrentUser, currentUser, logoutUser}) => {
-
-
-    const handleSubmit = async (data) => {
-
-        const params = {
-            action: 'logIn',
-            email: 'mary@mary.am',
-            password: '145000'
-        }
-        axios.post(`https://cors-anywhere.herokuapp.com/https://reactivequiz.com/api/auth.php`,
-            btoa(JSON.stringify(params)))
-            .then(res => {
-                setCurrentUser(res.data);
-            }).catch(e => console.log(e));
-    };
-    const handleRegister = async (data) => {
-        const params = {
-            ...data,
-            action: 'signUp'
+    useEffect(() => {
+        const payload = JSON.parse(localStorage.getItem('currentUser'));
+        setCurrentUser(payload);
+    }, []);
 
         }
         axios.post(`https://cors-anywhere.herokuapp.com/https://reactivequiz.com/api/auth.php`,

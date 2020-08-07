@@ -1,0 +1,26 @@
+.afterResetWrapper {
+    grid-column: 2/6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #bbbbbb;
+    border-radius: 20px;
+    background-color: white;
+    height: 70%;
+    width: 100%;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.afterResetWrapper h1 {
+    color: #7e57c2;
+}
+
+.afterResetWrapper h3 {
+    color: #a78dd4ff;
+}
+
+.afterResetWrapper a {
+    width: 13% !important;
+}

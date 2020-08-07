@@ -1,0 +1,41 @@
+.bg{ 
+  padding: 50px;
+  height: 100%;
+  background-color: #f3f3f3;
+}
+.main {
+    display: grid;
+    margin: 10px;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(1, 100%);
+    /* justify-content: space-evenly; */
+  }
+
+.question {
+  padding: 20px;
+  background-color: #d9d2e9ff;
+  border: 2px solid #fff;
+
+}
+
+.answer {
+  padding: 20px;
+  background-color: #fff;
+  border: 2px solid #d9d2e9ff;
+}
+
+
+/* horizontal*/
+.trans {
+  -webkit-transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, -webkit-transform 0.5s ease-in;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.5s ease-in;
+}
+
+.code,.codespan{font-family:Consolas,"courier new";font-size:16px}
+.code{width:auto;background-color:#fff;padding:8px 12px;border-left:4px solid #4CAF50;word-wrap:break-word}
+.codespan{color:crimson;background-color:#f1f1f1;padding-left:4px;padding-right:4px;font-size:110%}
+.jscolor{color:black}
+.jskeywordcolor{color:mediumblue}
+.jsstringcolor{color:brown}
+.jsnumbercolor{color:red}
+.jspropertycolor{color:black}
