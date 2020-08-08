@@ -1,7 +1,7 @@
 .popupWrapper {
-    grid-column: 2/6;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    margin: 0 270px;
     border: 2px solid #bbbbbb;
     border-radius: 20px;
     background-color: white;
@@ -33,4 +33,16 @@
 
 .popupCommonWrapper span {
     color: #7e57c2;
+}
+
+.tryAgain {
+    background-color: white;
+    border: 1.5px solid #bbbbbb;
+    border-radius: 5px;
+    padding: 10px 5px;
+    width: 170px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 19px;
+    outline: none;
+    margin-top: 25px;
 }

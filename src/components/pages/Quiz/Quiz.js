@@ -114,7 +114,7 @@ export const Quiz = (props) => {
   return (
     <>
       { (conds.loader && <Loader />) || (conds.totalPoint && <Popup totalPoint = {conds.totalPoint} resultPoint = {conds.resultPoint} />) || 
-             <div className="quizBody">
+          <div className="quizBody">
             <div className='quizLayout'>
                    <div className='sidenav'>
                       {

@@ -9,7 +9,7 @@ const CustomSelect = ({options, ...otherProps}) => {
         items.push(<option value="" key={otherProps.name}>Select {otherProps.name}</option>);
 
         for (let key in options) {
-            items.push(<option key={key} value={key}>{options[key]}</option>)
+                items.push(<option key={key} value={key} disabled = {(otherProps.name == 'category') && key !== 'JavaScript'}>{options[key]}</option>)
         }
         return items;
     };
