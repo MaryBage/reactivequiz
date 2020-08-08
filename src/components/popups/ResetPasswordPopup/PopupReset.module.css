@@ -25,6 +25,29 @@
     width: 70%;
 }
 
+.popupWrapper input {
+  height: 45px;
+  color: #555555 !important;
+  font-size: 19px !important;
+  letter-spacing: 0.02857em !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  border: 1.5px solid  #bbbbbb !important;
+  border-radius: 5px !important;
+  background-color: white !important;
+  text-align: center !important;
+  outline: none !important;
+}
+
+.popupWrapper input:hover {
+    border-color: #7e57c2 !important;
+    color: #7e57c2 !important;
+    cursor: pointer !important;
+  }
+  
+.popupWrapper input:hover::placeholder {
+    color: #7e57c2 !important;
+}
+
 .popupWrapper h1 {
     color: #7e57c2;
 }

@@ -4,7 +4,7 @@ import React from 'react';
 
 const InformativeField = ({...otherProps}) => {
     return (
-        <input {...otherProps}   />
+        <input {...otherProps} />
     )
 };
 

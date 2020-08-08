@@ -7,13 +7,20 @@
     font-size: 19px;
     letter-spacing: 0.02857em;
     outline: none;
+<<<<<<< HEAD
     /* text-indent: 41%; */
+=======
+    text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center; 
+>>>>>>> 9238b0d971922ec09a8bc6906449300bca62c7a1
     -webkit-appearance: none;
     -moz-appearance: none;
     text-overflow: '';
     text-align-last: center;
 }
 
+<<<<<<< HEAD
 .custom-select > option {
     font-weight: bold;
 }
@@ -26,6 +33,8 @@
     text-indent: 38%;
 } */
 
+=======
+>>>>>>> 9238b0d971922ec09a8bc6906449300bca62c7a1
 .custom-select::-ms-expand {
     display: none;
 }

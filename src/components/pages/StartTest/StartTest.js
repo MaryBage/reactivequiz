@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 import { Quiz } from "../Quiz/Quiz";
 
 
-
 const StartTest = () => {
 
     const [data, setData] = useState({ quiz: false, category: "", level: "" });

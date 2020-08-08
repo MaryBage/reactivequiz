@@ -42,7 +42,6 @@ const SignIn = ({setCurrentUser}) => {
         setData({...data, [name]: e.target.value});
     };
 
-
     return (
         <>
             {(loader.loader && <Loader/>) ||

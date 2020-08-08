@@ -5,7 +5,6 @@ body {
   background-color: #f3f3f3;
   overflow-y:hidden;  
   overflow-x:hidden;
-
 }
 
 .wrapper {
@@ -15,7 +14,7 @@ body {
 
 .img {
   object-fit: cover;
-  height: 98vh;
+  height: 97.7vh;
   width: 100%;
 }
 
@@ -33,6 +32,7 @@ body {
   border: 5px solid #ffffff;
 
 }
+
 .pageIntro {
   display: flex;
   flex-direction: column;
@@ -53,21 +53,36 @@ body {
   display: flex;
   flex-direction: column;
   width: 50%;
-  height: 50%;
+  height: 55%;
 }
-.informativeDivision input
-{
-  height: 45px;
+
+.informativeDivision input {
+  height: 45px !important;
+  color: #555555 !important;
+  font-size: 19px !important;
+  letter-spacing: 0.02857em !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  border: 1.5px solid  #bbbbbb !important;
+  border-radius: 5px !important;
+  background-color: white !important;
+  text-align: center !important;
+  outline: none !important;
+}
+
+::placeholder { 
   color: #555555;
-  font-size: 19px;
-  letter-spacing: 0.02857em;
-  font-family: 'Courier New', Courier, monospace;
-  border: 1.5px solid  #bbbbbb;
-  border-radius: 5px;
-  background-color: white;
-  text-align: center;
-  outline: none;
 }
+
+.informativeDivision input:hover {
+  border-color: #7e57c2 !important;
+  color: #7e57c2 !important;
+  cursor: pointer !important;
+}
+
+.informativeDivision input:hover::placeholder {
+  color: #7e57c2 !important;
+}
+
 .incorrectInput {
   height: 45px!important;
   color: #4d3874!important;
@@ -80,26 +95,11 @@ body {
   outline: none!important;
   font-weight: 800;
 }
-.error-message
-{
+
+.error-message {
   color:#4d3874;
   font-weight: 700;
 }
-
-.informativeDivision input:hover {
-  border-color: #7e57c2;
-  color: #7e57c2;
-  cursor: pointer;
-}
-
-::placeholder { 
-  color: #555555;
-}
-
-.informativeDivision input:hover::placeholder {
-  color: #7e57c2;
-}
-
 
 .popup-container {
   /* display: grid;
@@ -164,6 +164,7 @@ body {
 @keyframes zoomOut{
   0%{ opacity: 0; transform: scale(0);}
   100%{ opacity: 1; transform: scale(1);}
+<<<<<<< HEAD
 }
 @keyframes zoomIn{
   0%{ opacity: 0; transform: scale(1.5);}
@@ -173,3 +174,6 @@ body {
 
 
 
+=======
+}
+>>>>>>> 9238b0d971922ec09a8bc6906449300bca62c7a1
