@@ -11,27 +11,35 @@ import InformativeField from "../DetailedComponents/Fields/InformativeField/Info
 import { Link } from "react-router-dom";
 import axios from '../../../axios/axios-quiz'
 import Popup from '../../popups/Popup'
+import { Loader } from "../DetailedComponents/Loader/Loader";
+
 
 const Feedback = () => {
 
     const [sentStatus, setSentStatus] = useState({ status: false, message: '' })
     const [fieldsValue, setFieldsValue] = useState({ fName: '', fEmail: '', message: '' })
+    const [error, setError] = useState('')
+    const [loader,setLoader] = useState(false)
 
     const sbmtHandler = (e) => {
         e.preventDefault()
+        
         const allFieldsFilled = Object.values(fieldsValue).every(e => e)
 
         if (allFieldsFilled) {
+            setLoader(true)
             axios
                 .post(`/feedback.php`, btoa(JSON.stringify({
                     ...fieldsValue
                 })))
                 .then(res => {
                     console.log(res.data)
+                    if(!res.data.status) setError(res.data.message)
                     setSentStatus({ ...res.data })
+                    setLoader(false)
                 })
         } else {
-            alert('Please fill all fields')
+            setError('Please fill all fields');
         }
 
     }
@@ -43,14 +51,15 @@ const Feedback = () => {
 
     return (
 
-        <>
-            {sentStatus.status ? <Popup /> :
+        <>  {loader ? <Loader /> :
+            sentStatus.status ? <Popup /> :
                 <div className="wrapper">
                     <StaticImage image={image} anim='fromRight' />
                     <div className="changable-wrapper fromLeft">
                         <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon />back</CustomButton>
                         <PageIntro logoText={logoText[4]} sloganText={sloganText[4]} />
                         <form onSubmit={sbmtHandler} className={s.feedbackInformativeDivision}>
+                            <p className="error-message">{error}</p>
                             <div className={s.nameAndEmailField}>
                                 <InformativeField onBlur={onFieldChange}
                                     type="text"
