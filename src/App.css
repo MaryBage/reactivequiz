@@ -102,9 +102,6 @@ body {
 }
 
 .popup-container {
-  /* display: grid;
- grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 100vh;*/
   display:flex;
   justify-content: center;
   align-items: center;
@@ -164,16 +161,9 @@ body {
 @keyframes zoomOut{
   0%{ opacity: 0; transform: scale(0);}
   100%{ opacity: 1; transform: scale(1);}
-<<<<<<< HEAD
 }
+
 @keyframes zoomIn{
   0%{ opacity: 0; transform: scale(1.5);}
   100%{ opacity: 1; transform: scale(1);}
 }
-
-
-
-
-=======
-}
->>>>>>> 9238b0d971922ec09a8bc6906449300bca62c7a1
