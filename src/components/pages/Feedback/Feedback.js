@@ -6,7 +6,6 @@ import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import CustomButton from "../DetailedComponents/Buttons/CustomButton/CustomButton";
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
-// import MessageField from "../DetailedComponents/Fields/MessageField/MessageField";
 import InformativeField from "../DetailedComponents/Fields/InformativeField/InformativeField";
 import { Link } from "react-router-dom";
 import axios from '../../../axios/axios-quiz'
@@ -75,7 +74,7 @@ const Feedback = () => {
                                     placeholder="email"
                                 />
                             </div>
-                            <textarea placeholder="message" className="commonstyle" name='message' onBlur={onFieldChange} />
+                            <textarea placeholder="message" name='message' onBlur={onFieldChange} />
                             <div className={s.feedbackCustomButton}>
                                 <CustomButton type="submit">{approveButtonText[2]}</CustomButton>
                             </div>

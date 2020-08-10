@@ -7,13 +7,15 @@ import { Link } from 'react-router-dom';
 const AfterResetPopup = (props) => {
     return (
         <div className="popup-container">
-             <div className={s.afterResetWrapper}>
-                <h1>Success!</h1>
-                <h3>
-                    Password reset request was sent successfully.<br></br>
-                    Please check your email to reset your password.
-                </h3>
-                <CustomButton small="true" component={Link} to="/signin"><KeyboardBackspaceIcon/>back</CustomButton>
+            <div className={s.afterResetWrapper}>
+                <div className={s.afterResetTextWrapper}>
+                    <h1>Success!</h1>
+                    <h3>
+                        Password reset request was sent successfully.<br></br>
+                        Please check your email to reset your password.
+                    </h3>
+                    <CustomButton small="true" component={Link} to="/signin"><KeyboardBackspaceIcon/>back</CustomButton>
+                </div>
             </div>
         </div>
     )

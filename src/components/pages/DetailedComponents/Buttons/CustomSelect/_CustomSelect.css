@@ -7,13 +7,11 @@
     font-size: 19px;
     letter-spacing: 0.02857em;
     outline: none;
-    text-align: center;
-    text-align-last: center;
-    -moz-text-align-last: center; 
     -webkit-appearance: none;
     -moz-appearance: none;
     text-overflow: '';
     text-align-last: center;
+    -moz-text-align-last: center; 
 }
 
 .custom-select > option {
@@ -24,10 +22,13 @@
   font-weight: normal;
 }
 
+<<<<<<< HEAD
 /* .custom-select:nth-child(1) {
     text-indent: 38%;
 } */
 
+=======
+>>>>>>> 260ede97c44fe088091a10e143c7e4f8ed6e048b
 .custom-select::-ms-expand {
     display: none;
 }

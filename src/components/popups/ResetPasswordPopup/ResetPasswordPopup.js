@@ -7,11 +7,13 @@ import { Link } from 'react-router-dom';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import AfterResetPopup from './AfterResetPopup/AfterResetPopup';
 import axios from '../../../axios/axios-quiz';
-//must be added email validation !!!
+import { Loader } from "../../pages/DetailedComponents/Loader/Loader";
 
 const ResetPasswordPopup = (props) => {
-    const [status, setStatus] = useState({status: false, message : ""});
+
+    const [status, setStatus] = useState({ status: false, message: "" });
     const [value, setValue] = useState("");
+    const [loader, setLoader] = useState(false);
 
     const onInputChange = (e) => {
         e.preventDefault();
@@ -20,24 +22,27 @@ const ResetPasswordPopup = (props) => {
 
     const onSubmitClick = (e) => {
         e.preventDefault();
+        setLoader(true);
         axios
         .post(`/reset.php`, btoa(JSON.stringify(
-           {
-            email : value,
-           }
+            {
+                email: value,
+            }
         )))
         .then(res => {
             console.log(res.data);
-            setStatus({...res.data});
+            setStatus({ ...res.data });
+            setLoader(false);
         });
     }
 
     return (
         <>
-            {status.status ? <AfterResetPopup /> :
+            {loader ? <Loader /> :
+                status.status ? <AfterResetPopup /> :
                 <div className="popup-container">
                     <div className={s.resetWrapper}>
-                    <CustomButton small="true" component={Link} to="/signin"><KeyboardBackspaceIcon/>back</CustomButton>
+                        <CustomButton small="true" component={Link} to="/signin"><KeyboardBackspaceIcon />back</CustomButton>
                         <div className={s.popupWrapper}>
                             <h1>Forgot your password?</h1>
                             <h3>
@@ -45,10 +50,11 @@ const ResetPasswordPopup = (props) => {
                             </h3>
                         </div>
                         <form className={s.popupWrapper} onSubmit={onSubmitClick}>
-                            <InformativeField
-                                type="text" 
+                            <p className="error-message">{!status.status ? status.message : ""}</p>
+                            <InformativeField className={!status.status && status.message == "" ? "" : "incorrectInput"} required
+                                type="text"
                                 id="reset"
-                                name="reset" 
+                                name="reset"
                                 placeholder="email"
                                 value={value}
                                 onChange={onInputChange}
@@ -58,6 +64,7 @@ const ResetPasswordPopup = (props) => {
                     </div>
                 </div>
             }
+
         </>
     )
 }
