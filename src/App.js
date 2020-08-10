@@ -19,29 +19,16 @@ const App = ({currentUser, logoutUser}) => {
     }
     return (
         <Router>
-            {
-                currentUser ?
-                <Switch>
-                    <Route exact path="/" component={StartPage}/>
-                    <Route path="/about" component={About}/>
-                    <Route path="/start-test" component={StartTest}/>
-                    <Route path="/feedback" component={Feedback}/>
-                    <Redirect to='/'/>
-
-                 </Switch>
-                :
-                <Switch>
-                    <Route exact path="/" component={StartPage}/>
-                    <Route path="/about" component={About}/>
-                    <Route path="/start-test" component={StartTest}/>
-                    <Route exact path="/signIn" component={SignIn}/>
-                    <Route exact path="/signup" component={SignUp}/>
-                    <Route path="/reset_password" component={ResetPasswordPopup}/>
-                    <Route path="/feedback" component={Feedback}/>
-                    <Redirect to='/'/>
-                </Switch>
-
-            }
+            <Switch>
+                <Route exact path="/" component={StartPage}/>
+                <Route path="/about" component={About}/>
+                <Route path="/start-test" component={StartTest}/>
+                {!currentUser ? <Route exact path="/signIn" component={SignIn}/> : null}
+                {!currentUser ? <Route exact path="/signup" component={SignUp}/> : null}
+                {!currentUser ? <Route path="/reset_password" component={ResetPasswordPopup}/> : null}
+                <Route path="/feedback" component={Feedback}/>
+                <Redirect to='/'/>                    
+            </Switch>
         </Router>
     )
 }

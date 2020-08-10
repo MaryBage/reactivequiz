@@ -35,9 +35,7 @@ const SignUp = ({setCurrentUser}) => {
                 if (res.data.message) {
                     if (res.data.message.includes('Integrity constraint violation')) {
                         setError({error: 'Email must be unique'})
-
                     }
-
                 } else {
                     setCurrentUser(res.data);
                 }

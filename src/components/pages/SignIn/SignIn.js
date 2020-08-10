@@ -55,7 +55,7 @@ const SignIn = ({ setCurrentUser }) => {
                             <InformativeField className={error.error ? 'incorrectInput' : ''} required
                                 onChange={oniInputChange}
                                 id="email"
-                                type="email"
+                                type="text"
                                 name="email"
                                 placeholder="email"
                                 value={data.email}
