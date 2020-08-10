@@ -10,14 +10,19 @@ import SignIn from "./components/pages/SignIn/SignIn";
 import SignUp from "./components/pages/SignUp/SignUp";
 import ResetPasswordPopup from "./components/popups/ResetPasswordPopup/ResetPasswordPopup";
 import Feedback from "./components/pages/Feedback/Feedback";
+import Admin from "./components/pages/Admin/Admin";
+import { UserContext } from './components/pages/Admin/context/user/userContext';
+import { DbState } from './components/pages/Admin/context/database/dbState';
+import { ThemeState } from './components/pages/Admin/context/theme/themeState';
 
 
 const App = ({currentUser, logoutUser}) => {
-
+    
     const handleLogout = () => {
         logoutUser();
     }
     return (
+        
         <Router>
             {
                 currentUser ?
@@ -26,7 +31,17 @@ const App = ({currentUser, logoutUser}) => {
                     <Route path="/about" component={About}/>
                     <Route path="/start-test" component={StartTest}/>
                     <Route path="/feedback" component={Feedback}/>
-                    <Redirect to='/'/>
+
+                    <UserContext.Provider value={{...currentUser, logoutUser}}>
+                        <DbState>
+                            <ThemeState>
+                                <Route path="/admin" component={Admin} />
+                                <Redirect to='/admin'/>
+                            </ThemeState>
+                        </DbState>
+                    </UserContext.Provider>
+
+                    
 
                  </Switch>
                 :

@@ -16,7 +16,6 @@
     text-align-last: center;
 }
 
-<<<<<<< HEAD
 .custom-select > option {
     font-weight: bold;
 }
@@ -29,8 +28,6 @@
     text-indent: 38%;
 } */
 
-=======
->>>>>>> 9238b0d971922ec09a8bc6906449300bca62c7a1
 .custom-select::-ms-expand {
     display: none;
 }
