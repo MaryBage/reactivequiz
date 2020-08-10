@@ -28,19 +28,19 @@ const StartTest = () => {
     return (
         <>
             {data.quiz ? <Quiz {...data} /> :
-                <div className="wrapper">
-                    <StaticImage image={image} anim='fromBelow' />
-                    <div className="changable-wrapper fromAbove">
-                        <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon />back</CustomButton>
-                        <PageIntro logoText={logoText[1]} sloganText={sloganText[1]} />
-                        <form onSubmit={handleSubmit} className="informativeDivision">
-                            <CustomSelect options={category} onChange={handleSelectChange} name="category" selectfieldtext={selectFieldText[0]} />
-                            <SimpleLine />
-                            <CustomSelect options={level} onChange={handleSelectChange} name="level" selectfieldtext={selectFieldText[1]} />
-                            <CustomButton type="submit" linear="true">{approveButtonText[4]}</CustomButton>
-                        </form>
-                    </div>
-                </div>}
+            <div className="wrapper">
+                <StaticImage image={image} anim='fromBelow' />
+                <div className="changable-wrapper fromAbove">
+                    <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon />back</CustomButton>
+                    <PageIntro logoText={logoText[1]} sloganText={sloganText[1]} />
+                    <form onSubmit={handleSubmit} className="informativeDivision">
+                        <CustomSelect options={category} onChange={handleSelectChange} name="category" selectfieldtext={selectFieldText[0]} />
+                        <SimpleLine />
+                        <CustomSelect options={level} onChange={handleSelectChange} name="level" selectfieldtext={selectFieldText[1]} />
+                        <CustomButton type="submit" linear="true">{approveButtonText[4]}</CustomButton>
+                    </form>
+                </div>
+            </div>}
         </>
     )
 }
