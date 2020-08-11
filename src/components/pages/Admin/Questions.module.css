@@ -1,0 +1,39 @@
+.questions{
+    width: 100%;
+    font-size: 20px;
+    padding: 0;
+}
+
+.questionItem {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+    padding: 5px 15px;
+    border: 1.5px solid #bbbbbb;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.inputWrapper {
+    display: flex;
+    flex-grow: 2;
+    align-items: center;
+}
+
+.questionItemInput {
+    width: 90%;
+    border: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 19px;
+    font-weight: bold;
+    color: #555555;
+    margin-left: 10px;
+    outline: none;
+}
+
+.tick {
+    padding-top: 10px;
+    cursor: pointer;
+}
