@@ -1,47 +1,48 @@
-.header{
-    position:absolute;
-    left:0; 
-    right:0;
+.header {
+    position: absolute;
+    left: 0; 
+    right: 0;
     height: 92px;
     padding: 5px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 19px;
+    color: white;
     animation: 800ms ease-out 0s 1 slideInFromAboveAdm;
-
 }
 
-.themeSelect{
+.themeSelect {
     width:200px;
     padding: 15px;
     font-size: 19px;
     border: 1px solid #bbbbbb;
     border-radius: 10px;
     outline: none;
-
 }
-
-
-
 
 .logoAdmin {
     color: #fff;
     font-size: 50px;
     font-weight: bolder;
-    text-shadow: 3px 3px 8px #000;
+    text-shadow: 2px 2px 6px #F5F5F5;
+    margin-left: 14px;
   }
 
 .logout {
     background-color: white;
-    border: 1px solid #bbbbbb;
-    border-radius: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
     padding: 7px 5px;
     width: 150px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 15pt;
-    box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+    color: #555555;
+    box-shadow: 2px 2px 2px #d1d1d1;
     outline: none;
     margin-right: 25px;
+    cursor: pointer;
 }
 
 .sidebar-left{
@@ -54,8 +55,18 @@
     animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
     display: flex;
     flex-direction: column;
-    
+}
 
+.sidebar-left .linear ::before {
+  background-color: #fff !important;
+}
+
+.sidebar-left .makeStyles-root-1 {
+  border: 1.5px solid #fff !important;
+}
+
+.sidebar-left .makeStyles-root-1:hover {
+  color: #fff;
 }
 
 .mainAdmin{
@@ -80,14 +91,13 @@
     min-height: 800px;				
 }
 
-
-
 .addForm{
 
     display:flex;
     flex-direction: column;
     justify-content: center;
 }
+
 .row{
     display:flex;
     flex-direction: row;
@@ -109,12 +119,12 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 3px;
-
 }
 
 .pointer {
     cursor: pointer;
 }
+
 .red{
     color:red
 }
@@ -134,9 +144,9 @@
     100% {
       transform: scale(1);
     }
-  }
+}
   
-  @keyframes slideInFromAboveAdm {
+@keyframes slideInFromAboveAdm {
     0% {
       opacity: 0;
       transform: translateY(-100%);
@@ -149,7 +159,7 @@
       opacity: 1;
       transform: translateY(0);
     }
-  }
+}
 
 .rotate-active{
 animation: spin 1s linear infinite;
@@ -158,10 +168,9 @@ animation: spin 1s linear infinite;
 .rotate-exit.rotate-exit-active{
     opacity:1;
 }
+
 @keyframes spin {
-  
-    100% {
-      transform: rotatey(360deg);
-    }
+  100% {
+    transform: rotatey(360deg);
   }
-  
+}

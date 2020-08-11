@@ -9,64 +9,82 @@ import AfterResetPopup from './AfterResetPopup/AfterResetPopup';
 import axios from '../../../axios/axios-quiz';
 import { Loader } from "../../pages/DetailedComponents/Loader/Loader";
 
-const ResetPasswordPopup = (props) => {
-
-    const [status, setStatus] = useState({ status: false, message: "" });
-    const [value, setValue] = useState("");
-    const [loader, setLoader] = useState(false);
-
-    const onInputChange = (e) => {
-        e.preventDefault();
-        setValue(e.target.value);
+class ResetPasswordPopup extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            status: false, 
+            message: "",
+            value: "",
+            loader: false,
+        };
     }
 
-    const onSubmitClick = (e) => {
+    onInputChange = (e) => {
         e.preventDefault();
-        setLoader(true);
-        axios
-        .post(`/reset.php`, btoa(JSON.stringify(
-            {
-                email: value,
-            }
-        )))
-        .then(res => {
-            console.log(res.data);
-            setStatus({ ...res.data });
-            setLoader(false);
+        this.setState({
+            value: e.target.value,
         });
     }
 
-    return (
-        <>
-            {loader ? <Loader /> :
-                status.status ? <AfterResetPopup /> :
-                <div className="popup-container">
-                    <div className={s.resetWrapper}>
-                        <CustomButton small="true" component={Link} to="/signin"><KeyboardBackspaceIcon />back</CustomButton>
-                        <div className={s.popupWrapper}>
-                            <h1>Forgot your password?</h1>
-                            <h3>
-                                Don’t worry, just enter your email address, and we will send you a link to reset your password.
-                            </h3>
-                        </div>
-                        <form className={s.popupWrapper} onSubmit={onSubmitClick}>
-                            <p className="error-message">{!status.status ? status.message : ""}</p>
-                            <InformativeField className={!status.status && status.message == "" ? "" : "incorrectInput"} required
-                                type="text"
-                                id="reset"
-                                name="reset"
-                                placeholder="email"
-                                value={value}
-                                onChange={onInputChange}
-                            />
-                            <CustomButton type="submit" small="true" linear="true">{approveButtonText[3]}</CustomButton>
-                        </form>
-                    </div>
-                </div>
-            }
+    onSubmitClick = (e) => {
+        e.preventDefault();
+        this.setState({
+            loader: true,
+        });
 
-        </>
-    )
+        axios
+        .post(`/reset.php`, btoa(JSON.stringify(
+            {
+            email: this.state.value,
+            }
+        )))
+        .then(res => {
+            //console.log(res.data);
+            this.setState({
+                status: res.data.status,
+            });
+            this.setState({
+                message: res.data.message,
+            });
+            this.setState({
+                loader: false,
+            });
+        });
+    }
+
+    render() {
+        return (
+            <>
+                {this.state.loader ? <Loader /> :
+                    this.state.status ? <AfterResetPopup /> :
+                    <div className="popup-container">
+                        <div className={s.resetWrapper}>
+                            <CustomButton small="true" component={Link} to="/signin"><KeyboardBackspaceIcon />back</CustomButton>
+                            <div className={s.popupWrapper}>
+                                <h1>Forgot your password?</h1>
+                                <h3>
+                                    Don’t worry, just enter your email address, and we will send you a link to reset your password.
+                                </h3>
+                            </div>
+                            <form className={s.popupWrapper} onSubmit={this.onSubmitClick}>
+                                <p className="error-message">{!this.state.status ? this.state.message : ""}</p>
+                                <InformativeField className={!this.state.status && this.state.message == "" ? "" : "incorrectInput"} required
+                                    type="text"
+                                    id="reset"
+                                    name="reset"
+                                    placeholder="email"
+                                    value={this.state.value}
+                                    onChange={this.onInputChange}
+                                />
+                                <CustomButton type="submit" small="true" linear="true">{approveButtonText[3]}</CustomButton>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </>
+        )
+    }
 }
 
 export default ResetPasswordPopup;
