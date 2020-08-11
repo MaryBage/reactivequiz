@@ -10,14 +10,19 @@ import SignIn from "./components/pages/SignIn/SignIn";
 import SignUp from "./components/pages/SignUp/SignUp";
 import ResetPasswordPopup from "./components/popups/ResetPasswordPopup/ResetPasswordPopup";
 import Feedback from "./components/pages/Feedback/Feedback";
+import Admin from "./components/pages/Admin/Admin";
+import { UserContext } from './components/pages/Admin/context/user/userContext';
+import { DbState } from './components/pages/Admin/context/database/dbState';
+import { ThemeState } from './components/pages/Admin/context/theme/themeState';
 
 
 const App = ({currentUser, logoutUser}) => {
-
+    
     const handleLogout = () => {
         logoutUser();
     }
     return (
+        
         <Router>
             <Switch>
                 <Route exact path="/" component={StartPage}/>
@@ -27,8 +32,18 @@ const App = ({currentUser, logoutUser}) => {
                 {!currentUser ? <Route exact path="/signup" component={SignUp}/> : null}
                 {!currentUser ? <Route path="/reset_password" component={ResetPasswordPopup}/> : null}
                 <Route path="/feedback" component={Feedback}/>
-                <Redirect to='/'/>                    
-            </Switch>
+                {currentUser ?
+                    <UserContext.Provider value={{...currentUser, logoutUser}}>
+                            <DbState>
+                                <ThemeState>
+                                    <Route path="/admin" component={Admin} />
+                                    <Redirect to='/admin'/>
+                                </ThemeState>
+                            </DbState>
+                    </UserContext.Provider> : null
+                }
+                 <Redirect to='/'/>
+               </Switch>
         </Router>
     )
 }

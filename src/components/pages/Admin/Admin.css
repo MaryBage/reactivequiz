@@ -1,21 +1,34 @@
 .header{
-    background-color: #4D3874;
-    width:100%;
-    height:80px;
+    position:absolute;
+    left:0; 
+    right:0;
+    height: 92px;
     padding: 5px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     animation: 800ms ease-out 0s 1 slideInFromAboveAdm;
-   
-
 
 }
 
+.themeSelect{
+    width:200px;
+    padding: 15px;
+    font-size: 19px;
+    border: 1px solid #bbbbbb;
+    border-radius: 10px;
+    outline: none;
+
+}
+
+
+
+
 .logoAdmin {
     color: #fff;
-    font-size: 45px;
+    font-size: 50px;
     font-weight: bolder;
+    text-shadow: 3px 3px 8px #000;
   }
 
 .logout {
@@ -32,12 +45,13 @@
 }
 
 .sidebar-left{
-    float:left;
-    width:15%;
-    background-color: #A78DD4;
+    position:absolute;
+    left:0; 
+    top:92px; 
+    bottom: 0;
+    width: 250px;
     padding: 0 20px;
     animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
     
@@ -45,13 +59,13 @@
 }
 
 .mainAdmin{
-    float:left;
-    width:80%;
-    background-color: #E2DDEE;
-    margin-top: 20px;
-    margin-left: 20px;
-   
-
+    position: absolute;
+    left:290px; 
+    top:102px; 
+    right:0;
+    bottom:0;
+    padding:50px;
+    animation: 800ms ease-out 0s 1 slideInFromRightAdm;
 }
 
 .footer{
@@ -62,8 +76,47 @@
     background-color: lightblue;
 }
 
-.sidebar-left, .mainAdmin, .sidebar-right{
+.sidebar-left, .mainAdmin{
     min-height: 800px;				
+}
+
+
+
+.addForm{
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.row{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 3px;
+}
+
+.row input, textarea {
+    outline: none;
+}
+
+.questions{
+    width: 70%;
+    font-size: 20px;
+}
+
+.questionItem {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 3px;
+
+}
+
+.pointer {
+    cursor: pointer;
+}
+.red{
+    color:red
 }
 
 @keyframes slideInFromLeftAdm {
@@ -72,6 +125,14 @@
     }
     100% {
       transform: translateX(0);
+    }
+  }
+  @keyframes slideInFromRightAdm {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
     }
   }
   
@@ -89,3 +150,18 @@
       transform: translateY(0);
     }
   }
+
+.rotate-active{
+animation: spin 1s linear infinite;
+}
+
+.rotate-exit.rotate-exit-active{
+    opacity:1;
+}
+@keyframes spin {
+  
+    100% {
+      transform: rotatey(360deg);
+    }
+  }
+  
