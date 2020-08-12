@@ -9,5 +9,4 @@ const handlers =  {
 export const dbReducer = (state, action) => {
     const handler = handlers[action.type] || Headers.DEFAULT
     return handler(state, action);    
-
 }
