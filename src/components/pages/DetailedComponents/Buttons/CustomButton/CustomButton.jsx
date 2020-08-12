@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import './_CustomButton.css';
-import { Transition, CSSTransition } from "react-transition-group";
+import { Switch, Route, withRouter } from "react-router-dom";
+import { CSSTransition ,TransitionGroup} from "react-transition-group";
 
 
 const useStyles = makeStyles({
@@ -26,24 +27,33 @@ const CustomButton = ({ children, ...otherProps }) => {
 
   return (
     <>
-      <Button {...otherProps} classes={{
-        root: classes.root
-      }} className={`${otherProps.linear ? "linear" : ""} ${otherProps.small ? "small" : ""}`} 
-        variant="outlined"
-        color="primary" 
-        onClick={() => settoggle(!toggle)}  
-      >
-        {children}
-      </Button>
-      <CSSTransition
+ 
+
+ <CSSTransition
         in={toggle}
-        timeout={1}
-        classNames="sm"
-        unmountOnExit
-        onEnter={() => settoggle(true)}
+        timeout={1000}
+      
       >
-      {<Button onClick={() => settoggle(toggle)} ></Button>}
+        {state=>
+        
+        <Button {...otherProps} classes={{
+          root: classes.root
+        }} className={`${otherProps.linear ? "linear" : ""} ${otherProps.small ? `small ${state}` : ""}`} 
+          variant="outlined"
+          color="primary" 
+          onClick={() => settoggle(!toggle)}  
+        >
+          {children}
+        </Button>
+        
+        
+        }
+ 
       </CSSTransition>
+
+
+
+
     </>
   )
 }
