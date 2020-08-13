@@ -1,0 +1,39 @@
+.answer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 15px 10px 10px;
+    margin: 5px;
+    border: 1.5px solid #d9d9d9;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 17px;
+    color: #555555;
+    outline: none;
+}
+
+.answer input {
+    color: #555555;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 17px;
+    border: none;
+    outline: none;
+}
+
+.codeWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+}
+
+textarea {
+    max-width: 96%;
+    margin: 5px;
+    border: 1.5px solid #d9d9d9;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 17px;
+    outline: none;
+}

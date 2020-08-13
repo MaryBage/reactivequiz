@@ -38,7 +38,7 @@ export const DbState = ({ children }) => {
 
         setLoader();
         const res = await axios.post('/data.php', btoa(JSON.stringify({ action: 'get', creator: id })))
-        console.log(res.data)
+        //console.log(res.data)
         const payload = res.data.map((questionItem) => {
             return {
                 questionId: questionItem.questionId,
@@ -57,12 +57,13 @@ export const DbState = ({ children }) => {
         })
     }
 
-    const updateData = async (dbId, dataToUpdate = 'question', newValue) => {
+    const updateData = async (dbId, table, dataToUpdate, newValue) => {
         setLoader();
 
         const res = await axios.post('/data.php', btoa(JSON.stringify({
             action: 'update',
             creator: id,
+            table: table,
             dataToUpdate: dataToUpdate,
             newValue: newValue,
             id: dbId

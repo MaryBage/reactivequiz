@@ -1,19 +1,26 @@
-.questions{
+.questions {
     width: 100%;
     font-size: 20px;
     padding: 0;
+    margin: 0;
+    overflow-y: scroll;
 }
 
 .questionItem {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 5px 5px 0;
     padding: 5px 15px;
     border: 1.5px solid #bbbbbb;
     border-radius: 5px;
     background-color: #fff;
+}
+
+.questionItemLi {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px;
 }
 
 .inputWrapper {
@@ -34,6 +41,18 @@
 }
 
 .tick {
-    padding-top: 10px;
+    display: flex;
+    align-items: center;
     cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.answersWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1.5px solid #bbbbbb;
+    border-radius: 5px;
 }
