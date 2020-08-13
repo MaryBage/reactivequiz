@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Redirect, BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {Redirect, BrowserRouter as Router, Route, Switch,withRouter } from "react-router-dom";
 import {connect} from 'react-redux';
 import {logoutUser} from './redux/user/user.actions';
 import StartPage from "./components/pages/StartPage/StartPage";
@@ -14,7 +14,6 @@ import Admin from "./components/pages/Admin/Admin";
 import { UserContext } from './components/pages/Admin/context/user/userContext';
 import { DbState } from './components/pages/Admin/context/database/dbState';
 import { ThemeState } from './components/pages/Admin/context/theme/themeState';
-
 
 const App = ({currentUser, logoutUser}) => {
     
@@ -44,7 +43,10 @@ const App = ({currentUser, logoutUser}) => {
                 <Redirect to='/'/>
             </Switch>
         </Router>
+      
+        
     )
+
 }
 
 const mapDispatchToProps = dispatch => ({
