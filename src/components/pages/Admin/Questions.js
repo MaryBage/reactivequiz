@@ -69,10 +69,12 @@ const Questions = () => {
                             </li>
                             <div className={s.answersWrapper}>
                                 { showAnswers.includes(currentQuestion.questionId) ? 
+                                    
                                     <AnswersAndCode 
                                     id={currentQuestion.questionId} 
                                     dbid={currentQuestion.questionDbId}
                                     questions={questions}/> : null 
+                                    
                                 }
                             </div>
                         </div>
