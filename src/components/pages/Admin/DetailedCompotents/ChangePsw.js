@@ -1,25 +1,38 @@
-import React from "react";
+import React,{usestae, useState} from "react";
 import InformativeField from "../../DetailedComponents/Fields/InformativeField/InformativeField";
 
 import   "./ChangePsw.css";
+import { CSSTransition } from "react-transition-group";
+
 
 const ChangePsw=()=>{
-   
+const [toggle,settoggle]=useState(false);
+
+const onClickHandler=()=>(settoggle(!toggle))  
+
+
  return (
 <>
 <br/><br/>
-<h1>Change Password</h1>
+ <button type="button" onClick={onClickHandler}>Change password</button>
 
 <hr/>
+<CSSTransition
+  in={toggle}
+  timeout={10}
+  classNames="formanimation"
+unmountOnExit
+>
+<form className="container">
 
- <form className="container">
+<div className="label">new password</div><InformativeField className={"cngpasswordlabel"}type="password" placeholder="new password" required/><br/>
 
-      <div className="label">new password</div><InformativeField className={"cngpasswordlabel"}type="password" placeholder="new password" required/><br/>
+<div className="label">retype new</div><InformativeField className={"cngpasswordlabel"} type="password" placeholder="retype new"  required/><br/>
 
-      <div className="label">retype new</div><InformativeField className={"cngpasswordlabel"} type="password" placeholder="retype new"  required/><br/>
-
-      <button>save changes</button>
+<button>save changes</button>
 </form>
+
+</CSSTransition>
 
 </>
        )

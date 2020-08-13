@@ -3,21 +3,28 @@
   width: 100%;
   height: 280px;
   margin-top: 80px;
+  font-family: 'Courier New', Courier, monospace;
 
-  
-
- 
-}
+  }
 .label{
  font-size: 30px;
   width: 220px;
   display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
 
 }
-h1{
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: darkgrey;
-  font-size: 50px;
+button{
+  color:white;
+  font-size: 20px;
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background-color:rgb(77, 56, 116);
+  text-shadow: 2px 2px 6px #F5F5F5;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
 }
 .cngpasswordlabel{
 
@@ -40,9 +47,39 @@ form button{
   margin-top: 40px;
   border-radius: 10px;
   border:1px solid purple;
-  color: blueviolet;
+  color: white;
  margin-left: 320px;
-  font-size: larger;
+  font-size: 30px;
+  text-shadow: 2px 2px 6px #F5F5F5;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
 
 }
+
+.formanimation.entering{
+
+    animation: formanimation 500ms ease-out forwards;
+    transition: linear;
+}
+
+.formanimation.exiting{
+
+  animation: formanimation 500ms ease-in alternate-reverse;
+}
+
+
+@keyframes formanimation{
+
+  0%{
+     opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+
 
