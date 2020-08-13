@@ -25,6 +25,7 @@ button{
   text-shadow: 2px 2px 6px #F5F5F5;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bolder;
+  
 }
 .cngpasswordlabel{
 
@@ -56,30 +57,7 @@ form button{
 
 }
 
-.formanimation.entering{
 
-    animation: formanimation 500ms ease-out forwards;
-    transition: linear;
-}
-
-.formanimation.exiting{
-
-  animation: formanimation 500ms ease-in alternate-reverse;
-}
-
-
-@keyframes formanimation{
-
-  0%{
-     opacity: 0;
-  }
-  50%{
-    opacity: 1;
-  }
-  100%{
-    opacity: 0;
-  }
-}
 
 
 
