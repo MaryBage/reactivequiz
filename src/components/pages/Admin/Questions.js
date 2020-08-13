@@ -59,12 +59,12 @@ const Questions = () => {
                                         onBlur={(e) => editInput(e, currentQuestion.questionDbId, "questions")}
                                     />
                                 </div>
-                                <button 
+                                <div 
                                     className={s.tick} 
                                     onClick={(e) => makeToShow(e, currentQuestion.questionId)}
                                 >
                                 { !showAnswers.includes(currentQuestion.questionId) ? <ArrowDropDownIcon style={{color:"#555555"}}/> : <ArrowDropUpIcon style={{color:"#555555"}} /> }
-                                </button>
+                                </div>
                                 <div className="pointer red" onClick={() => deleteData(currentQuestion.questionDbId)}>&#10008;</div>
                             </li>
                             <div className={s.answersWrapper}>
