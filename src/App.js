@@ -43,10 +43,7 @@ const App = ({currentUser, logoutUser}) => {
                 <Redirect to='/'/>
             </Switch>
         </Router>
-      
-        
     )
-
 }
 
 const mapDispatchToProps = dispatch => ({

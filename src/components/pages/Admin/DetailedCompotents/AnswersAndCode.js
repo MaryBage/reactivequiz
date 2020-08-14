@@ -8,6 +8,8 @@ const AnswersAndCode = ({id, dbid, questions}) => {
     const { updateData, deleteData } = useContext(DbContext);
     const answers = questions[id - 1].options;
 
+    console.log(questions)
+
     const codeEdit = (e, id, table) => {
         if(e.target.value) {
             updateData(id, table, e.target.name, e.target.value);
@@ -15,7 +17,7 @@ const AnswersAndCode = ({id, dbid, questions}) => {
     }
 
     const editAnswer = (e, table) => {
-        console.log(e.target.id)
+        console.log(e.target.id, table, e.target.name, e.target.value)
         if(e.target.value) {
             updateData(e.target.id, table, e.target.name, e.target.value);
         }
@@ -23,14 +25,16 @@ const AnswersAndCode = ({id, dbid, questions}) => {
 
     return (
         <>  
-            <div className={s.codeWrapper}>
-                <textarea 
-                    name="code"
-                    placeholder={questions[id - 1].code} 
-                    onBlur={(e) => codeEdit(e, dbid, "questions")}
-                />
-                <div className="pointer red" onClick={() => deleteData(dbid)}>&#10008;</div>
-            </div>
+            { questions[id - 1].code &&
+                <div className={s.codeWrapper}>
+                    <textarea 
+                        name="code"
+                        placeholder={questions[id - 1].code} 
+                        onBlur={(e) => codeEdit(e, dbid, "questions")}
+                    />
+                    <div className="pointer red" onClick={() => deleteData(dbid)}>&#10008;</div>
+                </div>
+            }
             {answers.map(answer => (
                     <div className={s.answer} key={Object.keys(answer)[0]}>
                         <input 
@@ -40,7 +44,7 @@ const AnswersAndCode = ({id, dbid, questions}) => {
                             placeholder={Object.values(answer)[0][1]}
                             onBlur={(e) => editAnswer(e, "answers")}
                         />
-                        <div className="pointer red" onClick={() => deleteData(dbid)}>&#10008;</div>
+                        <div className="pointer red" onClick={() => deleteData(Object.keys(answer)[0])}>&#10008;</div>
                 </div>))
             }
         </>

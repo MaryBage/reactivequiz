@@ -5,7 +5,7 @@ import { adminNav } from "../../../StaticContent";
 import { Link } from "react-router-dom"
 import './Admin.css'
 import Quizes from './Quizes'
-import Questions from './Questions'
+import Questions from "./Question/Questions"
 import StuResults from './StuResults'
 import Settings from './Settings'
 import AddForm from './AddForm'

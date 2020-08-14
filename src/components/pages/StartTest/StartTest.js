@@ -32,7 +32,9 @@ const StartTest = () => {
                 <StaticImage image={image} anim='fromBelow' />
                 <div className="changable-wrapper fromAbove">
                     <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon />back</CustomButton>
+                    <div className="freeSpace" />
                     <PageIntro logoText={logoText[1]} sloganText={sloganText[1]} />
+                    <div className="freeSpace" />
                     <form onSubmit={handleSubmit} className="informativeDivision">
                         <CustomSelect options={category} onChange={handleSelectChange} name="category" selectfieldtext={selectFieldText[0]} />
                         <SimpleLine />

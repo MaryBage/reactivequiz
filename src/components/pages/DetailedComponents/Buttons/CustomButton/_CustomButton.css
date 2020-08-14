@@ -9,7 +9,7 @@
 
 .small {
     border: 1.5px solid #bbbbbb;
-    width: 20%;
+    width: 20% !important;
 }
 
 .makeStyles-root-1 {
@@ -21,9 +21,6 @@
     padding: 0 0 !important;
 }
 
-
-
-
 .small.entering{
 
     animation: small 1000ms;
@@ -32,8 +29,6 @@
 
     animation: small 1000ms;
 }
-
-
 
 @keyframes  small{
 
