@@ -23,26 +23,32 @@
 
 .small.entering{
 
-    animation: small 1000ms;
+    animation: small 500ms;
 }
 .small.exiting{
-
-    animation: small 1000ms;
+    
+    animation: small 500ms;
 }
 
 @keyframes  small{
 
   0%{
 
-     
-    transform:rotateY(90deg)
+   
+    transform:rotateY(0deg)
   }
+  50%{
+
+   
+    transform:rotateY(180deg)
+  }
+
 
 
   100%{
 
-     
-    transform:rotateY(180deg)
+    
+    transform:rotateY(0deg)
   }
 
 }

@@ -13,7 +13,7 @@ import axios from "axios";
 import { connect } from 'react-redux';
 import { setCurrentUser } from "../../../redux/user/user.actions";
 import { Loader } from '../DetailedComponents/Loader/Loader';
-
+import DelayLink from 'react-delay-link';
 const SignIn = ({ setCurrentUser }) => {
     const [data, setData] = useState({ email: '', password: '' });
     const [error, setError] = useState({ error: '' });
@@ -48,7 +48,10 @@ const SignIn = ({ setCurrentUser }) => {
                 <div className="wrapper">
                     <StaticImage image={image} anim='fromLeft' />
                     <div className="changable-wrapper fromRight">
-                        <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon />back</CustomButton>
+                        <DelayLink delay={700} to={"/"}>
+                        <CustomButton small="true" ><KeyboardBackspaceIcon />back</CustomButton>
+                         </DelayLink>
+                       
                         <PageIntro logoText={logoText[2]} sloganText={sloganText[2]} />
                         <form onSubmit={handleSubmit} className="informativeDivision">
                             <p className="error-message">{error.error}</p>
