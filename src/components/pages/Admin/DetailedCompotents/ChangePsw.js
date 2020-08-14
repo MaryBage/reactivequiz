@@ -21,7 +21,7 @@ const onClickHandler=()=>(settoggle(!toggle))
   in={toggle}
   timeout={10}
   classNames="formanimation"
-unmountOnExit
+   unmountOnExit
 >
 <form className="container">
 
@@ -29,7 +29,7 @@ unmountOnExit
 
 <div className="label">retype new</div><InformativeField className={"cngpasswordlabel"} type="password" placeholder="retype new"  required/><br/>
 
-<button>save changes</button>
+<button type="button">save changes</button>
 </form>
 
 </CSSTransition>

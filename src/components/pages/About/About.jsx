@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { logoText, sloganText } from "../../../StaticContent";
 import s from "./About.module.css";
 import image from "../../../images/pages/welcome.png";
@@ -7,14 +7,29 @@ import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import StaticImage from '../DetailedComponents/StaticImage/StaticImage';
 import PageIntro from '../DetailedComponents/PageIntro/PageIntro';
 import { Link } from "react-router-dom";
+import DelayLink from 'react-delay-link';
 
 
 const About = (props) => {
+
+  const [toggle,settoggle]=useState(true)
   return (
     <div className="wrapper">
         <StaticImage image={image} anim='fromLeft' />
           <div className="changable-wrapper fromRight">
-              <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon/>back</CustomButton>
+           <DelayLink  delay={700} to="/" >
+           <CustomButton small="true"  
+       
+        
+        
+      
+ 
+   
+      ><KeyboardBackspaceIcon/>back</CustomButton>
+           </DelayLink>
+    
+      
+  
               <PageIntro logoText={logoText[0]} sloganText={sloganText[0]} />
               <div className={s.content}>
                   This environment was created to motivate an enthusiastic,
