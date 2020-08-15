@@ -15,7 +15,6 @@ const Questions = () => {
     const { getData, updateData, deleteData, loading, questions } = useContext(DbContext);
     const [showAnswers, setShowAnswers] = useState([]);
 
-    console.log(questions)
 
     useEffect(function () {
         getData();
@@ -29,7 +28,6 @@ const Questions = () => {
     }
 
     const editSelect = (e, id, table) => {
-        console.log(e.target.value)
         if(e.target.value) {
             updateData(id, table, e.target.name, e.target.value);
         }
