@@ -95,7 +95,7 @@ export default function ActiveQuiz(props) {
                 <div className='btns'>
                     {quiz.questionId === 1 ? null
                     :<button 
-                    className='paging' 
+                    
                     value='back' 
                     key='back'
                     onClick = {(e) => props.onBackClickHandler(e, answeredQuiz, props.activeQuestion)} >
@@ -105,6 +105,7 @@ export default function ActiveQuiz(props) {
                 }
 
                 <input 
+                className='answSbmt'
                 disabled = {!answeredQuiz.userAnswer.length}
                 value = 'submit'
                 type = 'submit' 
@@ -112,7 +113,7 @@ export default function ActiveQuiz(props) {
 
                 {quiz.questionId === props.lastQuestion ? null
                     :<button 
-                        className='paging' 
+                         
                         value='next'
                         key='next' 
                         onClick = {(e) => props.onNextClickHandler(e, answeredQuiz, props.activeQuestion)} >

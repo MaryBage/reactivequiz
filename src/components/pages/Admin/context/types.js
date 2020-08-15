@@ -8,8 +8,6 @@ export const UPDATE_DATA = 'UPDATE_DATA'
 export const DELETE_DATA = 'DELETE_DATA'
 export const SET_LOADER = 'SET_LOADER'
 
-
-
 export const THEME ={  
     DEFAULT: '77,56,116',
     GREEN: '60,160,60',
@@ -18,4 +16,3 @@ export const THEME ={
     RED: '170,10,10',
     YELLOW: '255,240,0'
 }
-

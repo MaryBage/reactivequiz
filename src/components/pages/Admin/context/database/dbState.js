@@ -6,18 +6,18 @@ import {UserContext} from '../user/userContext'
 import { GET_DATA, GET_QUIZ, SET_LOADER } from "../types";
 
 
-export const DbState = ({children})  => {
-    const {id} = useContext(UserContext)
+export const DbState = ({ children }) => {
+    const { id } = useContext(UserContext)
 
     const initialState = {
         questions: [],
         quizes: [],
         loading: false
-      }
+    }
 
     const [state, dispatch] = useReducer(dbReducer, initialState)
 
-    const addData = async (data) =>{
+    const addData = async (data) => {
         setLoader();
 
         const res = await axios.post('/data.php', btoa(JSON.stringify({...data, creator: id, action: 'add'})))
@@ -26,43 +26,45 @@ export const DbState = ({children})  => {
 
     } 
 
-    const getData = async () =>{
+    const getData = async () => {
         setLoader();
         
       const res = await axios.post('/data.php', btoa(JSON.stringify({action: 'get', creator: id})))
       //console.log(res.data)
         const payload = res.data.map((questionItem) => {
-                    return {
-                        questionId: questionItem.questionId,
-                        questionDbId: questionItem.questionDbId,
-                        question: questionItem.question,
-                        code: questionItem.code,
-                        type: questionItem.type,
-                        difficulty: questionItem.difficulty,
-                        options: questionItem.options
-                    }
-                });
+            return {
+                questionId: questionItem.questionId,
+                questionDbId: questionItem.questionDbId,
+                question: questionItem.question,
+                code: questionItem.code,
+                type: questionItem.type,
+                difficulty: questionItem.difficulty,
+                options: questionItem.options
+            }
+        });
 
         dispatch({
-            type:GET_DATA,
+            type: GET_DATA,
             payload
         })
-    } 
+    }
 
-    const updateData = async (dbId, dataToUpdate = 'question', newValue) =>{
+    const updateData = async (dbId, table, dataToUpdate, newValue) => {
         setLoader();
 
-        await axios.post('/data.php', btoa(JSON.stringify({
-                    action: 'update', 
-                    creator: id, 
-                    dataToUpdate: dataToUpdate, 
-                    newValue: newValue,
-                    id: dbId})))
-        
-        getData();
-    } 
+        const res = await axios.post('/data.php', btoa(JSON.stringify({
+            action: 'update',
+            creator: id,
+            table: table,
+            dataToUpdate: dataToUpdate,
+            newValue: newValue,
+            id: dbId
+        })))
 
-    const deleteData = async (dbId, dataToDelete = 'question') =>{
+        getData();
+    }
+
+    const deleteData = async (dbId, dataToDelete = 'question') => {
         setLoader();
         console.log('deleting')
         const res = await axios.post('/data.php', btoa(JSON.stringify({

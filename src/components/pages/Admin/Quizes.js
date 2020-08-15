@@ -2,8 +2,7 @@ import React, {useContext, useState, useRef, useEffect} from 'react'
 import { DbContext } from './context/database/dbContext';
 import './Admin.css'
 import PropTypes from 'prop-types';
-import InfiniteScroll from 'react-infinite-scroller';
-import {KeyboardArrowUp, KeyboardArrowDown, ArrowLeft, ArrowRight} from '@material-ui/icons';
+import {ArrowLeft, ArrowRight} from '@material-ui/icons';
 
   
 const Quizes = (props) => {

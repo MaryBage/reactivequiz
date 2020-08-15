@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Redirect, BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {Redirect, BrowserRouter as Router, Route, Switch,withRouter } from "react-router-dom";
 import {connect} from 'react-redux';
 import {logoutUser} from './redux/user/user.actions';
 import StartPage from "./components/pages/StartPage/StartPage";
@@ -15,7 +15,6 @@ import Admin from "./components/pages/Admin/Admin";
 import { UserContext } from './components/pages/Admin/context/user/userContext';
 import { DbState } from './components/pages/Admin/context/database/dbState';
 import { ThemeState } from './components/pages/Admin/context/theme/themeState';
-import Quixote from './components/pages/Pdf/Pdf'
 import { PDFViewer } from '@react-pdf/renderer';
 import PageNotFound from './components/pages/PageNotFound/PageNotFound';
 
@@ -25,7 +24,6 @@ const App = ({currentUser, logoutUser}) => {
         logoutUser();
     }
     return (
-        
         <Router>
             <Switch>
                 <Route exact path="/" component={StartPage}/>
@@ -33,7 +31,7 @@ const App = ({currentUser, logoutUser}) => {
                 <Route path="/start-test" component={StartTest}/>
                 <Route path="/quiz/:detail" component={Quiz}/>
                 <Route path="/unavailable" component={PageNotFound}/>
-                <Route path='/pdf' render={() => <PDFViewer style={{width:'100%', height:'100vh'}}><Quixote value='80'/></PDFViewer>} />
+                {/* <Route path='/pdf' render={() => <PDFViewer style={{width:'100%', height:'100vh'}}><ResultPdf value='80'/></PDFViewer>} /> */}
                 {!currentUser ? <Route exact path="/signIn" component={SignIn}/> : null}
                 {!currentUser ? <Route exact path="/signup" component={SignUp}/> : null}
                 {!currentUser ? <Route path="/reset_password" component={ResetPasswordPopup}/> : null}
@@ -48,8 +46,8 @@ const App = ({currentUser, logoutUser}) => {
                             </DbState>
                     </UserContext.Provider> : null
                 }
-                 <Redirect to='/'/>
-               </Switch>
+                <Redirect to='/'/>
+            </Switch>
         </Router>
     )
 }

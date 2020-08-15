@@ -12,7 +12,7 @@ import axios from '../../../axios/axios-quiz'
 import Popup from '../../popups/Popup'
 import { Loader } from "../DetailedComponents/Loader/Loader";
 
-
+import DelayLink from 'react-delay-link';
 const Feedback = () => {
 
     const [sentStatus, setSentStatus] = useState({ status: false, message: '' })
@@ -55,7 +55,11 @@ const Feedback = () => {
                 <div className="wrapper">
                     <StaticImage image={image} anim='fromRight' />
                     <div className="changable-wrapper fromLeft">
-                        <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon />back</CustomButton>
+                        <DelayLink delay={700} to={"/"}>
+
+                        <CustomButton small="true" ><KeyboardBackspaceIcon />back</CustomButton>
+                        </DelayLink>
+                        
                         <PageIntro logoText={logoText[4]} sloganText={sloganText[4]} />
                         <form onSubmit={sbmtHandler} className={s.feedbackInformativeDivision}>
                             <p className="error-message">{error}</p>

@@ -142,7 +142,8 @@ const Quiz = (props) => {
               onNextClickHandler={onNextClickHandler}
               onSbmtHandler={sbmtHandler}
             />
-          </div>    </div>
+          </div>    
+          </div>
       }
     </>
   )

@@ -63,9 +63,13 @@ const AddForm = (props) => {
         if(!data.question){
             error += 'Question field is empty.\n'
             validation = false;
-         } 
+        } 
+        if(!data.category){
+            error += 'Category field is empty.\n'
+            validation = false;
+        } 
         if(data.answer.filter(e => e).length < 2){
-            error += 'It should be minimum 2 answers.\n'
+            error += 'Question should have minimum 2 answers.\n'
             validation = false;
         }
         if(!myType.some(e => e) ){
@@ -102,7 +106,10 @@ return (
                 <form  onSubmit={handleSubmit(sbmtHandler)} onReset={() => {
                     setAddValidation({...addValidation, success: false})
                     setQstnPoint(1)
-                    setQstnPoint('')}}>
+                    setQstnPoint('')
+                    setQstnType('')
+                    setQstnType('single')
+                    }}>
                     
                     { addValidation.error 
                     ? addValidation.error.split ('\n').map ((item, i) => (

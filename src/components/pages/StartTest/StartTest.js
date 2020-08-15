@@ -8,8 +8,8 @@ import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import CustomSelect from "../DetailedComponents/Buttons/CustomSelect/CustomSelect";
 import SimpleLine from "../DetailedComponents/SimpleLine/SimpleLine";
 import { Link } from "react-router-dom";
-import  Quiz from "../Quiz/Quiz";
-
+import  Quiz  from "../Quiz/Quiz";
+import DelayLink from 'react-delay-link';
 
 const StartTest = () => {
 
@@ -31,8 +31,11 @@ const StartTest = () => {
             <div className="wrapper">
                 <StaticImage image={image} anim='fromBelow' />
                 <div className="changable-wrapper fromAbove">
-                    <CustomButton small="true" component={Link} to="/"><KeyboardBackspaceIcon />back</CustomButton>
+                    <DelayLink delay={700} to={"/"}>
+                            <CustomButton small="true" ><KeyboardBackspaceIcon />back</CustomButton>
+                    </DelayLink>
                     <PageIntro logoText={logoText[1]} sloganText={sloganText[1]} />
+                    <div className="freeSpace" />
                     <form onSubmit={handleSubmit} className="informativeDivision">
                         <CustomSelect options={category} onChange={handleSelectChange} name="category" selectfieldtext={selectFieldText[0]} />
                         <SimpleLine />

@@ -1,52 +1,55 @@
-.header{
-    position:absolute;
-    left:0; 
-    right:0;
+.header {
+    position: absolute;
+    left: 0; 
+    right: 0;
     height: 92px;
     padding: 5px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 19px;
+    color: white;
     animation: 800ms ease-out 0s 1 slideInFromAboveAdm;
-
 }
 
 .header h4 {
     color: #fff;
 }
 
-.themeSelect{
+
+.themeSelect {
     width:200px;
     padding: 15px;
     font-size: 19px;
     border: 1px solid #bbbbbb;
     border-radius: 10px;
     outline: none;
-
 }
-
-
-
 
 .logoAdmin {
     color: #fff;
     font-size: 50px;
     font-weight: bolder;
-    text-shadow: 3px 3px 8px #000;
+    text-shadow: 2px 2px 6px #F5F5F5;
+    margin-left: 14px;
     text-decoration: none;
   }
 
 .logout {
     background-color: white;
-    border: 1px solid #bbbbbb;
-    border-radius: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
     padding: 7px 5px;
+    height: 40px;
     width: 150px;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 15pt;
-    box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+    font-size: 19px;
+    color: #555555;
+    box-shadow: 2px 2px 2px #d1d1d1;
     outline: none;
     margin-right: 25px;
+    cursor: pointer;
 }
 
 .sidebar-left{
@@ -60,7 +63,17 @@
     display: flex;
     flex-direction: column;
     min-height:800px;
+}
+.sidebar-left .linear ::before {
+  background-color: #fff !important;
+}
 
+.sidebar-left .makeStyles-root-1 {
+  border: 1.5px solid #fff !important;
+}
+
+.sidebar-left .makeStyles-root-1:hover {
+  color: #fff;
 }
 
 .mainAdmin{
@@ -146,7 +159,8 @@
 .wideRow, .addForm textarea {
     width: 100%;
 }
-.row{
+
+.row {
     display:flex;
     width:99%;
     flex-direction: row;
@@ -195,8 +209,9 @@
 .pointer {
     cursor: pointer;
 }
+
 .red{
-    color:red
+    color: red;
 }
 
 .adminModalForm {
@@ -232,6 +247,20 @@
   box-shadow: 2px 2px 2px rgba(0,0,0,.5);
   background-color: rgba(0,0,0,.02);
 
+}
+
+.createQuiz {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15pt;
+  font-weight: bold;
+  outline: none;
+  margin-bottom: 15px;
+  border: none;
+  padding: 7px 20px;
+  
+  border-radius: 7px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,.5);
+  background-color:rgba(255,255,255,0.95);;
 }
 
 .adminModalForm select {
@@ -285,9 +314,9 @@
     100% {
       transform: scale(1);
     }
-  }
+}
   
-  @keyframes slideInFromAboveAdm {
+@keyframes slideInFromAboveAdm {
     0% {
       opacity: 0;
       transform: translateY(-100%);
@@ -300,7 +329,7 @@
       opacity: 1;
       transform: translateY(0);
     }
-  }
+}
 
 .rotate-active{
 animation: spin 1s linear infinite;
@@ -315,15 +344,13 @@ animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  
-    100% {
-      transform: rotatey(360deg);
-    }
+  100% {
+    transform: rotatey(360deg);
   }
-  
-  /*.questionItem-exit-active {
+}
+  .questionItem-exit-active {
     animation: questionItem 800ms;
-  }*/
+  }
   
   .questionItem-enter-active {
     animation: questionItem 800ms ease-in alternate-reverse;
