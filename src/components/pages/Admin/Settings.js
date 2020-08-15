@@ -1,7 +1,6 @@
 import React, {useContext} from 'react'
 import './Admin.css'
-import {THEME} from './context/types'
-import ChangePsw from './DetailedCompotents/ChangePsw'
+import {THEME} from './context/types';
 
 
 const Settings = ({setThemeColor, id, theme}) => {
@@ -13,19 +12,16 @@ const Settings = ({setThemeColor, id, theme}) => {
 
 return (
     <div className='settings'>
-  
-        <select className='themeSelect' onChange={handleSelectChange} name="theme" style={{color:`rgb(${THEME[theme]})`}}>
+        <select className='themeSelect' onChange={handleSelectChange} name="theme">
+            <option value="selectColor">select color</option>
             {Object.keys(THEME).map(color => <option 
-                selected={color == theme ? 'selected' : ''} 
+                // selected={color == theme ? 'selected' : ''} 
                 value={color} 
                 style={{color:`rgb(${THEME[color]})`}}> 
                 &#9670; {color}
             </option>)}
         </select>
-      
-        <ChangePsw/>
     </div>
     )
-
 }
 export default Settings;
