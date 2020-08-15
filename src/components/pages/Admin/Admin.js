@@ -14,6 +14,7 @@ import { ThemeContext } from './context/theme/themeContext'
 import { UserContext } from './context/user/userContext';
 import { DbContext } from './context/database/dbContext';
 import Pdf from '../Pdf/Pdf'
+import { FullscreenExit } from '@material-ui/icons';
 
 const Admin = () => {
     const user = useContext(UserContext)
@@ -33,8 +34,8 @@ return (
       <>
             <div className="header" style={{backgroundColor: `rgba(${THEME[theme]})`}}>
                 <div style={{width: '80%'}} ><Link to='/admin' className="logoAdmin">reActive</Link> </div>
-                <div>
-                   
+                <div style={{display:'flex', flexDirection:'column',justifyContent: 'center'}}>
+                    <span className='displayName'>Logged in as {user.displayName}</span>
                     <button 
                     className='logout'
                     value='back' 

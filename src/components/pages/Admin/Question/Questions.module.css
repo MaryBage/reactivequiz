@@ -78,3 +78,27 @@ select .selected {
     width: 100%;
     border-radius: 5px;
 }
+
+.questionItem-exit-active {
+    animation: questionItem 800ms;
+  }
+  
+  .questionItem-enter-active {
+    animation: questionItem 800ms ease-in alternate-reverse;
+  }
+  
+  @keyframes questionItem {
+    0% {
+      opacity: 1;
+    }
+  
+    30% {
+      opacity: .7;
+      transform: translateX(30px);
+    }
+  
+    100% {
+      opacity: 0;
+      transform: translateX(-200px);
+    }
+  }

@@ -19,7 +19,9 @@ const Quizes = (props) => {
         document.execCommand('copy');
         e.target.focus();
         setCopySuccess({id:  e.target.id, copied: true});
-        console.log(inptRef.current.value)
+        setTimeout(() => {
+          setCopySuccess({...copySuccess, copied: false});
+        },3000)
     };
   
 

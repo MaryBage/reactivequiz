@@ -11,17 +11,25 @@ const AddForm = (props) => {
     const {addData} = useContext(DbContext);
 
     const { register, handleSubmit } = useForm();
-    const [addValidation, setAddValidation] = useState({ validation: false, error:'', success: false})
+    const [addValidation, setAddValidation] = useState({validation: false,
+                                                        error:'', 
+                                                        success: false,
+                                                        category: 1,
+                                                        question: 1,
+                                                        answer: 1,
+                                                        point: 1
+                                                    })
+
     const [qstnType, setQstnType] = useState('single')
     const [qstnPoint, setQstnPoint] = useState('')
 
     const qstnTypeChangeHandler = (e) => {
         setQstnType(e.target.value);
-        setAddValidation({...addValidation,success: false })
+        hideSuccessMsg();
     }
     const pointChangeHandler = e => {
         setQstnPoint(e.target.value)
-        setAddValidation({...addValidation,success: false })
+        hideSuccessMsg();
     }
     const sbmtHandler = data => {
  
@@ -35,6 +43,10 @@ const AddForm = (props) => {
         }
 
         let validation = true;
+        let question = true;
+        let answer = true;
+        let point = true;
+        let category = true;
         let error = '';
         let myType = new Array(data.answer.length).fill(false)
         let myPoint = new Array(data.answer.length).fill(0)
@@ -62,22 +74,22 @@ const AddForm = (props) => {
 
         if(!data.question){
             error += 'Question field is empty.\n'
-            validation = false;
+            validation = question = false;
         } 
         if(!data.category){
             error += 'Category field is empty.\n'
-            validation = false;
+            validation = category = false;
         } 
         if(data.answer.filter(e => e).length < 2){
-            error += 'Question should have minimum 2 answers.\n'
+            error += 'Question should have at least 2 answers.\n'
             validation = false;
         }
         if(!myType.some(e => e) ){
             error += 'There is no right answer.\n'
-            validation = false;
+            validation = answer = false;
         }
         if(myPoint.every(e => !e)){
-            error += 'There is bo point for this question.\n'
+            error += 'There is no point for this question.\n'
             validation = false;
         }
 
@@ -86,7 +98,7 @@ const AddForm = (props) => {
             validation = false;
         }
  
-        setAddValidation({...addValidation, validation, error})
+        setAddValidation({...addValidation, validation, error , question, category, point, answer})
 
         if(validation) {
             data.answer.map((e,i) => {
@@ -97,6 +109,10 @@ const AddForm = (props) => {
             setAddValidation({...addValidation, validation, error, success: true})
         }
     } 
+
+    const hideSuccessMsg = () => {
+        setAddValidation({...addValidation,success: false })
+    }
 
     
 
@@ -115,13 +131,25 @@ return (
                     ? addValidation.error.split ('\n').map ((item, i) => (
                               <span style={{color:'red'}} key={i}>{item}</span>))
                     : addValidation.success
-                       ? <span className='successAnim' style={{color:'green'}}>Question is successfully added! Click to reset&nbsp;<input type='reset' value='&#8634;' name='reset' /></span>
-                        : null } 
+                       && <span className='successAnim' style={{color:'green'}}>Question is successfully added! Click to reset&nbsp;
+                       <input type='reset' className='resetBtn' value='&#8634;' name='reset' /></span>
+                         } 
                     
                  
-                <div className='row'> <input ref={register} className='wideRow' type='text' name='question' placeholder='Enter a question' onChange={() => setAddValidation({...addValidation,success: false })}  /></div>
-                <div className='row'> <textarea  ref={register} cols='50' rows='4' name='code' placeholder='Code here' onChange={() => setAddValidation({...addValidation,success: false })} /></div>
-                <div className='row'> <input ref={register} type='text' name='category' placeholder='Enter a category' onChange={() => setAddValidation({...addValidation,success: false })} />
+                <div className='row'> <input ref={register} 
+                className='wideRow' 
+                type='text' 
+                name='question' 
+                placeholder='Enter a question' 
+                style= {!addValidation.question ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
+                onChange={hideSuccessMsg}  /></div>
+                <div className='row'> <textarea  ref={register} cols='50' rows='4' name='code' placeholder='Code here' onChange={hideSuccessMsg} /></div>
+                <div className='row'> <input ref={register} 
+                type='text' 
+                name='category' 
+                placeholder='Enter a category' 
+                style= {!addValidation.category ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
+                onChange={hideSuccessMsg} />
                 <select name='difficulty' ref={register} onChange={qstnTypeChangeHandler}>
                         <option value='Easy'>easy</option>
                         <option value='Medium'>medium</option>
@@ -133,7 +161,13 @@ return (
                         <option value='multiple'>multiple</option>
                     </select>
          
-  <input type='number' ref={register}  name='point'  step='1' onChange={pointChangeHandler} placeholder='Score'/> 
+  <input type='number' 
+  ref={register}  
+  name='point'  
+  step='1' 
+  onChange={pointChangeHandler} 
+  style= {!addValidation.point ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
+  placeholder='Score'/> 
                   </div>
                     {answers.map((_, i) => <div className='row'> 
                     {qstnType ==='single' ? 
@@ -142,7 +176,7 @@ return (
                             key={`2${i}`} 
                             name='type'
                             value={i}
-                            onChange={() => setAddValidation({...addValidation,success: false })}
+                            onChange={hideSuccessMsg}
                                 /> 
                             :
                             <input ref={register} 
@@ -150,14 +184,16 @@ return (
                             key={`3${i}`} 
                             name={`type[${i}]`}
                             value={i}
-                            onChange={() => setAddValidation({...addValidation,success: false })}
+                            onChange={hideSuccessMsg}
                                 /> 
                     }
                         
                         
                         &nbsp;
-                        <input type='text' className='wideRow' ref={register}  key={`1${i}`} name={`answer[${i}]`}  onChange={() => setAddValidation({...addValidation,success: false })}/> &nbsp;
-                        {qstnPoint ? null : <input type='number'  ref={register} key={`4${i}`} size='1' name={`point[${i}]`}   step='0.2' onChange={() => setAddValidation({...addValidation,success: false })} />} 
+                        <input type='text' 
+                        style= {!addValidation.answer ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
+                        className='wideRow' ref={register}  key={`1${i}`} name={`answer[${i}]`}  onChange={hideSuccessMsg}/> &nbsp;
+                        {qstnPoint ? null : <input type='number'  ref={register} key={`4${i}`} size='1' name={`point[${i}]`}   step='0.2' onChange={hideSuccessMsg} />} 
                         </div>) }
 
                         <div className='centerAdm'><input value='Add question' type='submit' 
