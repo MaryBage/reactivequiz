@@ -51,7 +51,6 @@ const Questions = (props) => {
     }
 
     const editSelect = (e, id, table) => {
-        console.log(e.target.value)
         if(e.target.value) {
             updateData(id, table, e.target.name, e.target.value);
         }

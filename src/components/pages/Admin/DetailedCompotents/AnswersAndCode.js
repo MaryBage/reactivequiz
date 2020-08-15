@@ -7,8 +7,7 @@ const AnswersAndCode = ({id, dbid, questions}) => {
 
     const { updateData, deleteData } = useContext(DbContext);
     const answers = questions[id - 1].options;
-
-    console.log(questions)
+    
 
     const codeEdit = (e, id, table) => {
         if(e.target.value) {
