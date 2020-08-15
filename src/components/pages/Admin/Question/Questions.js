@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import '../Admin.css';
 import s from "./Questions.module.css";
-import { UserContext } from '../context/user/userContext';
 import { DbContext } from '../context/database/dbContext';
-import { Loader } from '../../DetailedComponents/Loader/Loader';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
@@ -24,10 +22,8 @@ const customStyles = {
       borderRadius          : 15,
       border                : 'none',
       boxShadow             : '5px 5px 25px rgba(0,0,0,.5)',
-
-
     } 
-  };
+};
 
 const Questions = (props) => {
 
@@ -83,80 +79,71 @@ const Questions = (props) => {
          setIsOpen(false);
        }
      
-     
-     const onchangeHandler = (e) => {
-         if(selectedQstns.includes(e.target.value))
-             setSelectedQstns(selectedQstns.filter((el) => el!= e.target.value))
-         else
-             setSelectedQstns([...selectedQstns,e.target.value]);
+    const onchangeHandler = (e) => {
+        if(selectedQstns.includes(e.target.value))
+            setSelectedQstns(selectedQstns.filter((el) => el!= e.target.value))
+        else
+            setSelectedQstns([...selectedQstns,e.target.value]);
      }
      
-     const sbmtHandler = async data => {
-       console.log(data)
+    const sbmtHandler = async data => {
+        console.log(data)
         if(data.name && data.duration) {
            const quizId = await addQuizes(data).then(res => res);
            setCopyLink({value:`http://localhost:3000/quiz/${btoa(JSON.stringify({quiz:'trainer',quizId: quizId}))}`, copied: false})
            getQuizes();
        }
-       else setFormControls({
+        else setFormControls({
                        duration: data.duration || 'empty',
                        name: data.name || 'empty'});
-     }
-
-
-
-
-
-
-
+    }
 
     return (
         <>
-        <button className='createQuiz' name='createQuiz' onClick={openModal} >Create quiz</button>
-        <hr />
-        <Modal
-          isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Quiz name"
-        >
+            <button className='createQuiz' name='createQuiz' onClick={openModal} >Create quiz</button>
+            <hr />
+            <Modal
+                isOpen={modalIsOpen}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Quiz name"
+            >
 
-          {!copyLink.value && !copyLink.copied
+            {!copyLink.value && !copyLink.copied
             ?<form className='adminModalForm' onSubmit={handleSubmit(sbmtHandler)}>
                   <input type='hidden' value={selectedQstns} name='qstnId' ref={register}/>
-                  <input type='text' 
-                          placeholder='Put a name of quiz' 
-                          style={quizFormControls.name == 'empty' ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}} 
-                          name='name' 
-                          ref={register}/>
+                    <input type='text' 
+                        placeholder='Put a name of quiz' 
+                        style={quizFormControls.name == 'empty' ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}} 
+                        name='name' 
+                        ref={register}/>
                    <input type='number' 
-                            ref={register}  
-                            name='duration' 
-                            style={quizFormControls.duration == 'empty' ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}} 
-                            step='5'  
-                            placeholder='duration'/> 
-                  <select name='status' ref={register}  >
-                   <option key='enabled' value = 'enabled'>enabled</option>
-                    <option key='disabled' value = 'disabled' >disabled</option>
+                        ref={register}  
+                        name='duration' 
+                        style={quizFormControls.duration == 'empty' ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}} 
+                        step='5'  
+                        placeholder='duration'/> 
+                    <select name='status' ref={register}  >
+                        <option key='enabled' value = 'enabled'>enabled</option>
+                        <option key='disabled' value = 'disabled' >disabled</option>
                     </select>
-                 <div className='createCancelDiv'>
-                   &nbsp;<input type='submit' value='Confirm' name='create'/>
-                  &nbsp;<div className="pointer red" onClick={closeModal}>&#10008;</div>
-                  </div>
-              </form>
+                    <div className='createCancelDiv'>
+                        &nbsp;<input type='submit' value='Confirm' name='create'/>
+                        &nbsp;<div className="pointer red" onClick={closeModal}>&#10008;</div>
+                    </div>
+                </form>
            : 
-              <div className='copyLink'>
-               
-                &nbsp;<CopyToClipboard text={copyLink.value}
+                <div className='copyLink'>
+                    &nbsp;<CopyToClipboard text={copyLink.value}
                         onCopy={() => setCopyLink({copied: true})}>
-                         <button className='getLinkBtn'>&nbsp;&copy;&nbsp;Copy link</button>
-                     </CopyToClipboard>
+                        <button className='getLinkBtn'>&nbsp;&copy;&nbsp;Copy link</button>
+                    </CopyToClipboard>
 
-              {copyLink.copied ? <span style={{color: 'green'}}>&nbsp;&nbsp;&#10004;&nbsp; Copied</span> : null}
-              &nbsp;<div className="pointer red" onClick={closeModal}>&#10008;</div>
-              </div>
-          }
+                    {copyLink.copied ? <span style={{color: 'green'}}>&nbsp;&nbsp;&#10004;&nbsp; Copied</span> : null}
+                    &nbsp;<div className="pointer red" onClick={closeModal}>&#10008;</div>
+                </div>
+            }
         </Modal>
          <TransitionGroup component='ul' className={s.questions}>
                 {(filterValue 
@@ -218,17 +205,16 @@ const Questions = (props) => {
                             </li>
                             <div className={s.answersWrapper}>
                                 { showAnswers.includes(currentQuestion.questionId) &&
-                                        <AnswersAndCode 
-                                        id={currentQuestion.questionId} 
-                                        dbid={currentQuestion.questionDbId}
-                                        questions={questions}/>
+                                    <AnswersAndCode 
+                                    id={currentQuestion.questionId} 
+                                    dbid={currentQuestion.questionDbId}
+                                    questions={questions}/>
                                 }
                             </div>
                         </div>
                     </CSSTransition>
                 ))}
             </TransitionGroup>
-            
         </>
     )
 }

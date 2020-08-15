@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import Settings from '../Settings';
 import { ThemeContext } from '../context/theme/themeContext';
 import { UserContext } from '../context/user/userContext';
-import CustomButton from '../../DetailedComponents/Buttons/CustomButton/CustomButton';
 import { Link } from "react-router-dom";
 
 

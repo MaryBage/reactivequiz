@@ -50,6 +50,7 @@
     flex-direction: column;
     min-height:800px;
 }
+
 .sidebar-left .linear ::before {
   background-color: #fff !important;
 }
@@ -81,9 +82,6 @@
     background-color: lightblue;
 }
 
-
-
-
 .addForm{
     width:600px;
     min-width: 600px;
@@ -92,9 +90,8 @@
     border-radius: 15px;
     padding: 15px;
     box-shadow: 5px 5px 25px rgba(0,0,0,.5); 
-    
+}
 
- }
  .addForm input, select, textarea{
     outline: none;
     padding: 5px;
@@ -103,15 +100,11 @@
     font-size: 17px;
     border: none;
     border-radius: 7px;
- }
+}
  .addForm span{
      padding-left: 10px;
      font-weight: bold;
-
- }
-
-
-
+}
 
 .addForm h3{
     text-align:center;
@@ -125,15 +118,18 @@
     flex-grow: 1;
     width:100%;
 }
+
 .addForm input[type="number"] {
     width: 70px;
 }
+
 .addForm input[type="submit"] {
     border: 2px solid #000;
     font-weight: bold;
     margin: auto;
     padding: 10px;
 }
+
 .addForm input[type="reset"] {
     font-style: normal!important;
     font-weight: bold;
@@ -142,6 +138,7 @@
     color: green;
     margin-top: 3px;
 }
+
 .wideRow, .addForm textarea {
     width: 100%;
 }
@@ -158,7 +155,6 @@
 .centerAdm { 
     text-align: center; 
     width:100%;
-    
 }
 
 .questions{
@@ -171,25 +167,22 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 3px;
-
 }
 
 .quizLi {
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 7px;
-
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 7px;
 }
 
 .getLinkBtn{
-  outline: none;
-  padding: 10px;
-  border: none;
-  background: none;
-  border-radius: 15px;
-  box-shadow: 2px 2px 2px rgba(0,0,0,.5); 
-
+    outline: none;
+    padding: 10px;
+    border: none;
+    background: none;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.5); 
 }
 
 .pointer {
@@ -201,88 +194,81 @@
 }
 
 .adminModalForm {
-  display: flex;
-  flex-direction:column;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 25px;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 25px;
 }
+
 .adminModalForm input[type='text'] {
-  outline: none;
-  padding: 10px;
-  border-radius: 7px;
-  font-family: 'Courier New', Courier, monospace;
-  font-style: italic;
-  font-size: 17px;
-  box-shadow: 2px 2px 2px rgba(0,0,0,.5);
-  background-color: rgba(0,0,0,.02);
-  border: none;
-  width: 100%;
-  
-
+    outline: none;
+    padding: 10px;
+    border-radius: 7px;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    font-size: 17px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+    background-color: rgba(0,0,0,.02);
+    border: none;
+    width: 100%;
 }
+
 .adminModalForm input[type='submit'] {
+    outline: none;
+    background: none;
+    border: none;
+    padding: 7px 20px;
+    color: green;
+    font-size: 15pt;
+    border-radius: 7px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+    background-color: rgba(0,0,0,.02);
+  }
 
-  outline: none;
-  background: none;
-  border: none;
-  padding: 7px 20px;
-  color: green;
-  font-size: 15pt;
-  border-radius: 7px;
-  box-shadow: 2px 2px 2px rgba(0,0,0,.5);
-  background-color: rgba(0,0,0,.02);
+  .createQuiz {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15pt;
+    font-weight: bold;
+    outline: none;
+    margin-bottom: 15px;
+    border: none;
+    padding: 7px 20px;
+    border-radius: 7px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.5);
+    background-color:rgba(255,255,255,0.95);;
+  }
 
-}
-
-.createQuiz {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 15pt;
-  font-weight: bold;
-  outline: none;
-  margin-bottom: 15px;
-  border: none;
-  padding: 7px 20px;
-  
-  border-radius: 7px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,.5);
-  background-color:rgba(255,255,255,0.95);;
-}
-
-.adminModalForm select {
-
-  outline: none;
-  background: none;
-  border: none;
-  width: 100%;
-  box-shadow: 2px 2px 2px rgba(0,0,0,.5);
-  padding: 10px;
-  text-align-last: center;
-  background-color: rgba(0,0,0,.02);
-  
+  .adminModalForm select {
+    outline: none;
+    background: none;
+    border: none;
+    width: 100%;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+    padding: 10px;
+    text-align-last: center;
+    background-color: rgba(0,0,0,.02);
 }
 
 .adminModalForm input[type="number"] {
-  outline: none;
-  margin: 10px;
-  
-  padding: 10px;
-  font-family: 'Courier New', Courier, monospace;
-  font-style: italic;
-  font-size: 17px;
-  border: none;
-  border-radius: 7px;
-  text-align: center;
-  box-shadow: 2px 2px 2px rgba(0,0,0,.5);
-  width: 100%;
-  background-color: rgba(0,0,0,.02);
-
+    outline: none;
+    margin: 10px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    font-size: 17px;
+    border: none;
+    border-radius: 7px;
+    text-align: center;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+    width: 100%;
+    background-color: rgba(0,0,0,.02);
 }
 
-.createCancelDiv{
-  display: flex;
-  margin-top: 25px;
-  align-items: center;
+.createCancelDiv {
+    display: flex;
+    margin-top: 25px;
+    align-items: center;
 }
 
 @keyframes slideInFromLeftAdm {
@@ -317,8 +303,8 @@
     }
 }
 
-.rotate-active{
-animation: spin 1s linear infinite;
+.rotate-active {
+    animation: spin 1s linear infinite;
 }
 
 .rotate-exit.rotate-exit-active{
@@ -326,7 +312,7 @@ animation: spin 1s linear infinite;
 }
 
 .successAnim {
-  animation: successAnim 800ms forwards;
+    animation: successAnim 800ms forwards;
 }
 
 @keyframes spin {
@@ -336,84 +322,89 @@ animation: spin 1s linear infinite;
 }
 
 .settingsWrapper {
-  margin-top: 3px;
-  border: 1.5px solid white;
-  border-radius: 5px;
+    margin-top: 3px;
+    border: 1.5px solid white;
+    border-radius: 5px;
 }
 
 .settingsButton {
-  height: 48px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  border: 1.5px solid #fff;
-  border-radius: 5px;
-  outline: none;
-  font-size: 19px;
-  font-family: 'Courier New', Courier, monospace;
-  color: #fff;
-  font-weight: bold;
-  text-shadow: none;
-  margin-top: 50px;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 1.5px solid #fff;
+    border-radius: 5px;
+    outline: none;
+    font-size: 19px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: none;
+    margin-top: 50px;
+}
+
+.settingsButton:hover {
+    cursor: pointer;
+    box-shadow: 0 0 5px #fff;
 }
 
 .settingsContent {
-  display: flex;
-  flex-direction: column;
-  height: min-content;
-  padding: 2px;
+    display: flex;
+    flex-direction: column;
+    height: min-content;
+    padding: 2px;
 }
 
 .themeSelect {
-  background-color: transparent;
-  width:100%;
-  padding: 10px;
-  font-size: 19px;
-  font-family: 'Courier New', Courier, monospace;
-  color: #fff;
-  text-align: center;
-  text-align-last: center;
-  font-style: normal !important;
-  border: 1px solid white;
-  border-radius: 3px;
-  outline: none;
+    background-color: transparent;
+    width:100%;
+    padding: 10px;
+    font-size: 19px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #fff;
+    text-align: center;
+    text-align-last: center;
+    font-style: normal !important;
+    border: 1px solid white;
+    border-radius: 3px;
+    outline: none;
 }
 
 .themeSelect:hover {
-  background-color: transparent;
-  border: 1px solid #fff;
-  cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #fff;
+    cursor: pointer;
 }
 
 .settingsContent button {
-  width: 100%;
-  height: 48px;
-  background-color: transparent;
-  border: 1px solid white;
-  text-shadow: none;
-  border-radius: 3px;
-  outline: none;
-  color: #fff;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 19px;
-  font-weight: normal;
-  margin-top: 2px;
+    width: 100%;
+    height: 48px;
+    background-color: transparent;
+    border: 1px solid white;
+    text-shadow: none;
+    border-radius: 3px;
+    outline: none;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 19px;
+    font-weight: normal;
+    margin-top: 2px;
 }
 
 .settingsContent button:hover {
-  font-weight: bold;
-  color: #555555;
-  cursor: pointer;
+    font-weight: bold;
+    color: #555555;
+    cursor: pointer;
 }
 
   .questionItem-exit-active {
-    animation: questionItem 800ms;
+      animation: questionItem 800ms;
   }
   
   .questionItem-enter-active {
-    animation: questionItem 800ms ease-in alternate-reverse;
+      animation: questionItem 800ms ease-in alternate-reverse;
   }
   
   @keyframes questionItem {
@@ -445,30 +436,29 @@ animation: spin 1s linear infinite;
     }
   }
 
-  .quizesTableDiv{
+.quizesTableDiv {
     display: grid;
-
   }
 
-  .copyLink{
-
+.copyLink {
     display: flex;
     flex-direction:row;
     justify-content: space-evenly;
     align-items: center;
+}
   
-  }
-  
-  .linkToCopyInpt{
+.linkToCopyInpt {
     border: none;
     color: transparent;
     z-index: 0;
-  }
-  .quizTable, .linkToCopyInpt{
+}
+
+.quizTable, .linkToCopyInpt {
     grid-column: 1;
     grid-row: 1;
-  }
-  .quizTable { 
+}
+
+.quizTable { 
     width: 100%;
     box-shadow: 15px 15px 25px #ccc;
     border-collapse: collapse;
@@ -477,35 +467,40 @@ animation: spin 1s linear infinite;
     background-color: white;
     z-index: 1;
     font-size: 15pt;
+}
 
-  }
-  .quizTable td, th { 
+.quizTable td, th { 
     border:none;
     border-bottom: 1px solid #ccc; 
     vertical-align: 0rem;
-    
     text-align:center; 
-  }
-  .quizTable  th { 
-     padding: 15px;
-  }
-  .quizTable tr:first-child {
+}
 
-     /*background: #ccc;*/
-     font-size: 19px; 
-    
-    }
-    .quizTable tr:last-child td{
-      vertical-align: bottom!important;
-      /*background: #ccc;*/
-      height: 50px;
-      font-size: 17px; 
-      font-weight: bold;
-     
-     }
+.quizTable  th { 
+    padding: 15px;
+}
 
-    .tablePaging{
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
+.quizTable tr:first-child {
+    /*background: #ccc;*/
+    font-size: 19px; 
+}
+
+.quizTable tr:last-child td{
+    vertical-align: bottom!important;
+    /*background: #ccc;*/
+    height: 50px;
+    font-size: 17px; 
+    font-weight: bold;
+}
+
+.tablePaging{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+hr {
+  margin-bottom: 25px;
+  border: 0.1px solid white;
+  margin-right: 5px;
+}
