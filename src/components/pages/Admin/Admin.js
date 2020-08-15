@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import CustomButton from "../DetailedComponents/Buttons/CustomButton/CustomButton";
 import { adminNav } from "../../../StaticContent";
@@ -15,6 +15,7 @@ import { UserContext } from './context/user/userContext';
 import { DbContext } from './context/database/dbContext';
 import SettingsMenu from './DetailedCompotents/SettingsMenu';
 import SettingsIcon from '@material-ui/icons/Settings';
+import Pdf from '../Pdf/Pdf';
 
 const Admin = () => {
 
@@ -28,18 +29,30 @@ const Admin = () => {
         setShowSettings(!showSettings);
     }
 
-    return (
-        <>
-            <div className="header" style={{ backgroundColor: `rgba(${THEME[theme]})` }}>
-                <div className="logoAdmin">reActive</div>
-                    hello, {user.displayName}<button
-                        className='logout'
-                        value='back'
-                        key='back'
-                        onClick={user.logoutUser}
+    useEffect(() => {
+        db.getData();
+        db.getQuizes();
+        document.body.style.overflow ='visible';
+      // eslint-disable-next-line
+    }, [])
+
+        
+return (
+    
+      <>
+            <div className="header" style={{backgroundColor: `rgba(${THEME[theme]})`}}>
+                <div style={{width: '80%'}} ><Link to='/admin' className="logoAdmin">reActive</Link> </div>
+                <div>
+                   
+                    <button 
+                    className='logout'
+                    value='back' 
+                    key='back'
+                    onClick = {user.logoutUser} 
                     >
                         log out
                     </button>
+                </div>
             </div>
             <div className="sidebar-left" style={{ backgroundColor: `rgba(${THEME[theme]},.45)` }}>
                 <CustomButton component={Link} to="/admin/questions">{adminNav[0]}</CustomButton>
@@ -53,11 +66,13 @@ const Admin = () => {
             </div>
             <div className="mainAdmin" style={{ backgroundColor: `rgba(${THEME[theme]},.15)` }}>
                 <Switch >
+                    <Route path='/admin/questions/:detail' render={() => <Questions id={user.id} />} />     
                     <Route path='/admin/questions' render={() => <Questions id={user.id} />} />
                     <Route path='/admin/quizes' component={Quizes} />
                     <Route path='/admin/students_results' component={StuResults} />
                     <Route path="/admin/change_password" component={ChangePsw} />
                     <Route path='/admin/' exact component={AddForm} />
+                    
                 </Switch>
             </div>
         </>

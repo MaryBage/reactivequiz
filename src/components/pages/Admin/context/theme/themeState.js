@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from 'react'
+import React, { useReducer, useState, useEffect, useContext } from 'react'
 import { ThemeContext } from './themeContext'
 import { themeReducer } from './themeReducer'
 import { THEME } from "../types";
@@ -7,13 +7,17 @@ import axios from '../../../../../axios/axios-quiz'
 
 
 export const ThemeState = ({children})  => {
-     const {theme} = useContext(UserContext)
+
+    const {theme} = useContext(UserContext)
+
+
     const [state, dispatch] = useReducer(themeReducer, theme)
    
     const setThemeColor = async (newTheme, id) => {
         console.log('from themestate',newTheme, id)
-        axios.post('/theme.php',btoa(JSON.stringify({theme: newTheme, id: id })))
+        axios.post('/theme.php',btoa(JSON.stringify({ theme: newTheme, id: id })))
         .then(res => {
+            console.log(res.data)
             let payload = res.data.user.theme;
             dispatch({type: THEME, payload})
 

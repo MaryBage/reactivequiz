@@ -8,16 +8,16 @@ import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import CustomSelect from "../DetailedComponents/Buttons/CustomSelect/CustomSelect";
 import SimpleLine from "../DetailedComponents/SimpleLine/SimpleLine";
 import { Link } from "react-router-dom";
-import { Quiz } from "../Quiz/Quiz";
+import  Quiz  from "../Quiz/Quiz";
 import DelayLink from 'react-delay-link';
 
 const StartTest = () => {
 
-    const [data, setData] = useState({ quiz: false, category: "", level: "" });
+    const [data, setData] = useState({ quiz: '', category: "", level: "" });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setData({ ...data, quiz: true });
+        setData({ ...data, quiz: 'trainee' });
     };
     
     const handleSelectChange = (e) => {

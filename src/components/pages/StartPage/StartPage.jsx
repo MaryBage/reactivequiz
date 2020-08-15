@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './_StartPage.css';
 import {  informativeButtonText } from "../../../StaticContent";
 import image from "../../../images/pages/start.png";
@@ -11,6 +11,10 @@ import {Link} from "react-router-dom"
 
 
 const StartPage = () => {
+
+    useEffect (()=>{
+        document.body.style.overflow='hidden';  
+    },[])
    
     return (
         <div className="wrapper">

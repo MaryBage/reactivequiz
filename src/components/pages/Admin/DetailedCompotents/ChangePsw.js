@@ -13,7 +13,7 @@ const onClickHandler=()=>(settoggle(!toggle))
  return (
 <>
 <br/><br/>
- <button type="button" onClick={onClickHandler}>Change password</button>
+ <button type="button" className='changePswBtn' onClick={onClickHandler}>Change password</button>
 
 <hr/>
 <CSSTransition
@@ -28,7 +28,7 @@ const onClickHandler=()=>(settoggle(!toggle))
 
 <div className="label">retype new</div><InformativeField className={"cngpasswordlabel"} type="password" placeholder="retype new"  required/><br/>
 
-<button type="button">save changes</button>
+<button  type="button">save changes</button>
 </form>
 
 </CSSTransition>
