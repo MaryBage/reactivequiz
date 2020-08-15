@@ -1,30 +1,29 @@
-import React from "react";
+import React  from "react";
 
- const Filter = () => {
+import { DbContext } from '../context/database/dbContext';
+
+
+
+ const Filters = (props) => {
+
 
 
   return (
     <>
       <form action="" className=''>
-        <input type="text" />
-        <select name="" id="">
-          <option value="">ass</option>
-          <option value="">,dbvkjn</option>
-          <option value=""></option>
+        <input type="text" onChange={props.onSearch}/>
+        <select name="category" id="">
+        {props.options.map(e=><option  value={e}>{e}</option>)}
         </select>
         <select name="" id="">
-          <option value=""></option>
-          <option value=""></option>
-          <option value=""></option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
         </select>
-        <select name="" id="">
-          <option value=""></option>
-          <option value=""></option>
-          <option value=""></option>
-        </select>
+      
       </form>
     </>
   );
 };
 
-export default Filter;
+export default Filters;

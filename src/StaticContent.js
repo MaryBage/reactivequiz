@@ -24,6 +24,8 @@ const informativeButtonText = [
     "time",
 ]
 const adminNav = [
+
+    'Add question',
     "My questions",
     "My quizes",
     "Students results",
