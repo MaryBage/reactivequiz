@@ -55,17 +55,19 @@ return (
                 </div>
             </div>
             <div className="sidebar-left" style={{ backgroundColor: `rgba(${THEME[theme]},.45)` }}>
-                <CustomButton component={Link} to="/admin/questions">{adminNav[0]}</CustomButton>
-                <CustomButton component={Link} to="/admin/quizes" linear="true">{adminNav[1]}</CustomButton>
-                <CustomButton component={Link} to="/admin/students_results" linear="true">{adminNav[2]}</CustomButton>
+                <CustomButton component={Link} to="/admin/addquestions">{adminNav[0]}</CustomButton>
+                <CustomButton component={Link} to="/admin/questions" linear='true'>{adminNav[1]}</CustomButton>
+                <CustomButton component={Link} to="/admin/quizes" linear="true">{adminNav[2]}</CustomButton>
+                <CustomButton component={Link} to="/admin/students_results" linear="true">{adminNav[3]}</CustomButton>
                 <button className="settingsButton" onClick={makeToShow}>
                     <SettingsIcon style={{color:"#fff"}}/>
-                    {adminNav[3]}
+                    {adminNav[4]}
                 </button>
                 {showSettings && <SettingsMenu />}
             </div>
             <div className="mainAdmin" style={{ backgroundColor: `rgba(${THEME[theme]},.15)` }}>
                 <Switch >
+                    <Route path='/admin/addquestions' component={AddForm} />
                     <Route path='/admin/questions/:detail' render={() => <Questions id={user.id} />} />     
                     <Route path='/admin/questions' render={() => <Questions id={user.id} />} />
                     <Route path='/admin/quizes' component={Quizes} />

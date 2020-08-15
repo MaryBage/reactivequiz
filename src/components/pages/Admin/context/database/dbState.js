@@ -33,12 +33,14 @@ export const DbState = ({ children }) => {
       //console.log(res.data)
         const payload = res.data.map((questionItem) => {
             return {
+
                 questionId: questionItem.questionId,
                 questionDbId: questionItem.questionDbId,
                 question: questionItem.question,
                 code: questionItem.code,
                 type: questionItem.type,
                 difficulty: questionItem.difficulty,
+                category:questionItem.category,
                 options: questionItem.options
             }
         });

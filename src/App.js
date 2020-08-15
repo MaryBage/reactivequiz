@@ -17,6 +17,7 @@ import { DbState } from './components/pages/Admin/context/database/dbState';
 import { ThemeState } from './components/pages/Admin/context/theme/themeState';
 import { PDFViewer } from '@react-pdf/renderer';
 import PageNotFound from './components/pages/PageNotFound/PageNotFound';
+import Filter from './components/pages/Admin/DetailedCompotents/Filter';
 
 const App = ({currentUser, logoutUser}) => {
     
@@ -24,6 +25,8 @@ const App = ({currentUser, logoutUser}) => {
         logoutUser();
     }
     return (
+        
+        
         <Router>
             <Switch>
                 <Route exact path="/" component={StartPage}/>
