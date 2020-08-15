@@ -8,13 +8,16 @@ import About from "./components/pages/About/About";
 import StartTest from "./components/pages/StartTest/StartTest";
 import SignIn from "./components/pages/SignIn/SignIn";
 import SignUp from "./components/pages/SignUp/SignUp";
+import Quiz from "./components/pages/Quiz/Quiz";
 import ResetPasswordPopup from "./components/popups/ResetPasswordPopup/ResetPasswordPopup";
 import Feedback from "./components/pages/Feedback/Feedback";
 import Admin from "./components/pages/Admin/Admin";
 import { UserContext } from './components/pages/Admin/context/user/userContext';
 import { DbState } from './components/pages/Admin/context/database/dbState';
 import { ThemeState } from './components/pages/Admin/context/theme/themeState';
-
+import Quixote from './components/pages/Pdf/Pdf'
+import { PDFViewer } from '@react-pdf/renderer';
+import PageNotFound from './components/pages/PageNotFound/PageNotFound';
 
 const App = ({currentUser, logoutUser}) => {
     
@@ -28,6 +31,9 @@ const App = ({currentUser, logoutUser}) => {
                 <Route exact path="/" component={StartPage}/>
                 <Route path="/about" component={About}/>
                 <Route path="/start-test" component={StartTest}/>
+                <Route path="/quiz/:detail" component={Quiz}/>
+                <Route path="/unavailable" component={PageNotFound}/>
+                <Route path='/pdf' render={() => <PDFViewer style={{width:'100%', height:'100vh'}}><Quixote value='80'/></PDFViewer>} />
                 {!currentUser ? <Route exact path="/signIn" component={SignIn}/> : null}
                 {!currentUser ? <Route exact path="/signup" component={SignUp}/> : null}
                 {!currentUser ? <Route path="/reset_password" component={ResetPasswordPopup}/> : null}

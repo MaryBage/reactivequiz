@@ -5,31 +5,42 @@ import ActiveQuiz from './ActiveQuiz';
 import './Quiz.css';
 import Popup from '../../popups/Popup';
 
-export const Quiz = (props) => {
+const Quiz = (props) => {
+  const params = props.match 
+            ? atob(props.match.params.detail) 
+            : JSON.stringify(props)
 
-  const [quiz, setQuiz] = useState([]);
+        console.log(atob(props.match.params.detail) )
+
+  const [quiz, setQuiz] = useState([])
   const [conds, setConds] = useState({ trasition: false, loader: true, totalPoint: 0, resultPoint: 0 })
 
   useEffect(() => {
 
     axios
-      .post(`/quiz.php`, JSON.stringify(props))
+      .post(`/quiz.php`, params)
       .then(res => {
-        setQuiz(res.data.map((questionItem, i) => {
-          return {
-            questionId: questionItem.questionId,
-            questionDbId: questionItem.questionDbId,
-            question: questionItem.question,
-            code: questionItem.code,
-            type: questionItem.type,
-            difficulty: questionItem.difficulty,
-            options: questionItem.options.sort(() => Math.random() - .5),
-            userAnswer: [],
-            isActive: (i === 0),
-            isSubmitted: false
+        console.log(res.data)
+          if(res.data.message) {
+            props.history.push('/unavailable/')
           }
-        }));
-        setConds({ ...conds, loader: false, trasition: true })
+          else{
+                setQuiz(res.data.map((questionItem, i) => {
+                return {
+                  questionId: questionItem.questionId,
+                  questionDbId: questionItem.questionDbId,
+                  question: questionItem.question,
+                  code: questionItem.code,
+                  type: questionItem.type,
+                  difficulty: questionItem.difficulty,
+                  options: questionItem.options.sort(() => Math.random() - .5),
+                  userAnswer: [],
+                  isActive: (i === 0),
+                  isSubmitted: false
+                }
+              }));
+              setConds({ ...conds, loader: false, trasition: true })
+          }
       })
       .catch((e) => console.log(e.message))
   }, [])
@@ -37,7 +48,7 @@ export const Quiz = (props) => {
 
   const onBackClickHandler = (e, singleQuiz, activeQuestion) => {
     e.preventDefault();
-    //console.log('back',quiz, activeQuestion);
+    
     setQuiz(quiz.map((questionItem, i) => {
       return {
         ...questionItem,
@@ -95,7 +106,7 @@ export const Quiz = (props) => {
     quiz.forEach(questionItem => {
       params[questionItem.questionDbId] = questionItem.userAnswer.join();
     })
-
+    console.log(params)
     axios
       .post(`/calcResult.php`, JSON.stringify(params))
       .then(res => {
@@ -116,7 +127,7 @@ export const Quiz = (props) => {
                 })
               }
               <input type='button'
-                className='paging'
+                className='finishBtn'
                 value='finish'
                 key='finish'
                 disabled={!quiz.every(e => e.userAnswer.length)}
@@ -136,3 +147,4 @@ export const Quiz = (props) => {
     </>
   )
 }
+export default Quiz;

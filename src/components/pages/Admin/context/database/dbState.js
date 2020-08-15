@@ -3,7 +3,7 @@ import axios from '../../../../../axios/axios-quiz'
 import { DbContext } from './dbContext'
 import { dbReducer } from './dbReducer'
 import {UserContext} from '../user/userContext'
-import { GET_DATA, UPDATE_DATA, DELETE_DATA, SET_LOADER } from "../types";
+import { GET_DATA, GET_QUIZ, SET_LOADER } from "../types";
 
 
 export const DbState = ({children})  => {
@@ -11,6 +11,7 @@ export const DbState = ({children})  => {
 
     const initialState = {
         questions: [],
+        quizes: [],
         loading: false
       }
 
@@ -19,25 +20,17 @@ export const DbState = ({children})  => {
     const addData = async (data) =>{
         setLoader();
 
-        const res = await axios.post('/data.php', JSON.stringify({userId: id}))
+        const res = await axios.post('/data.php', btoa(JSON.stringify({...data, creator: id, action: 'add'})))
+        console.log(res.data)
+        getData();
 
-        let payload = Object.keys(res.data).map(key => {
-            return {
-              ...res.data[key],
-              id: key
-            }
-          })
-
-        dispatch({
-            type:GET_DATA,
-            payload})
     } 
 
     const getData = async () =>{
         setLoader();
         
       const res = await axios.post('/data.php', btoa(JSON.stringify({action: 'get', creator: id})))
-      console.log(res.data)
+      //console.log(res.data)
         const payload = res.data.map((questionItem) => {
                     return {
                         questionId: questionItem.questionId,
@@ -59,7 +52,7 @@ export const DbState = ({children})  => {
     const updateData = async (dbId, dataToUpdate = 'question', newValue) =>{
         setLoader();
 
-        const res = await axios.post('/data.php', btoa(JSON.stringify({
+        await axios.post('/data.php', btoa(JSON.stringify({
                     action: 'update', 
                     creator: id, 
                     dataToUpdate: dataToUpdate, 
@@ -71,23 +64,94 @@ export const DbState = ({children})  => {
 
     const deleteData = async (dbId, dataToDelete = 'question') =>{
         setLoader();
-
+        console.log('deleting')
         const res = await axios.post('/data.php', btoa(JSON.stringify({
                     action: 'delete', 
                     creator: id, 
                     dataToDelete: dataToDelete, 
                     id: dbId})))
+                console.log(res.data)
         
         getData();
+        getQuizes();
     } 
+
+    const addQuizes = async data =>{
+        setLoader();
+        const res = await axios.post('/quizData.php', btoa(JSON.stringify({...data,creator: id, action: 'add'})))
+        return res.data;
+  
+    } 
+
+    const getQuizes = async () =>{
+        setLoader();
+        
+      const res = await axios.post('/quizData.php', btoa(JSON.stringify({creator: id, action: 'get'})))
+      console.log('get quiz',res.data)
+        const payload = res.data.map((quizItem) => {
+                    return {
+                        dbId: quizItem.id,
+                        name: quizItem.name,
+                        status: quizItem.status,
+                        duration: quizItem.duration,
+                        questions: quizItem.questions.split(',')
+                        
+                    }
+                });
+
+        dispatch({
+            type:GET_QUIZ,
+            payload
+        })
+    } 
+
+    const updateQuizes = async (dbId, dataToUpdate, newValue) =>{
+        setLoader();
+
+        await axios.post('/quizData.php', btoa(JSON.stringify({
+                    action: 'update', 
+                    creator: id, 
+                    dataToUpdate: dataToUpdate, 
+                    newValue: newValue,
+                    id: dbId})))
+        
+        getQuizes();
+    } 
+
+    const deleteQuizes = async (dbId) =>{
+        setLoader();
+
+        const res = await axios.post('/quizData.php', btoa(JSON.stringify({
+                    action: 'delete', 
+                    creator: id, 
+                    id: dbId})))
+        
+        getQuizes();
+    } 
+
+    
 
     const setLoader = () => dispatch({type: SET_LOADER})
 
     return (
         <DbContext.Provider value={{
-            addData, getData, updateData, deleteData, setLoader, questions: state.questions,loading: state.loading,
+            addData, 
+            getData, 
+            updateData, 
+            deleteData, 
+            getQuizes,
+            addQuizes,
+            updateQuizes,
+            deleteQuizes,
+            setLoader, 
+            questions: state.questions,
+            qty: state.questions.length,
+            quizes: state.quizes,
+            quizesQty: state.quizes.length,
+            loading: state.loading 
         }}>
             {children}
         </DbContext.Provider>
     )
 }
+
