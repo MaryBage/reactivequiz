@@ -1,5 +1,4 @@
 import React  from "react";
-
 import { DbContext } from '../context/database/dbContext';
 
 
@@ -28,7 +27,7 @@ import { DbContext } from '../context/database/dbContext';
       
       </form>
     </>
-  );
-};
+  )
+}
 
 export default Filters;

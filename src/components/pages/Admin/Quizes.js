@@ -21,7 +21,7 @@ const Quizes = (props) => {
         setCopySuccess({id:  e.target.id, copied: true});
         setTimeout(() => {
           setCopySuccess({...copySuccess, copied: false});
-        },3000)
+        },2500)
     };
   
 
@@ -47,7 +47,7 @@ const Quizes = (props) => {
   
  
   return (
-    <> 
+    <div className='quizesWrapper'> 
      {quizes.length ?
     <div className='quizesTableDiv'>
      <input type='text' 
@@ -105,7 +105,7 @@ const Quizes = (props) => {
         <tr key='quizHeader'>
         <td colspan='7'>
             <div className='tablePaging'>
-               <div> show per page
+               <div> show per page&nbsp;
                 <select onChange={onRowperpageChange}>
                     <option value='5'>5</option>
                     <option value='10'>10</option>
@@ -117,7 +117,7 @@ const Quizes = (props) => {
                 <ArrowLeft onClick={back}/>
                 <ArrowRight onClick={next}/> 
                 </div>
-                {page+1}-{rowperpage+page} from {quizes.length} 
+                {page+1}-{rowperpage+page > quizes.length ? quizes.length : rowperpage+page } from {quizes.length} 
              </div>
              </td>
 
@@ -127,7 +127,7 @@ const Quizes = (props) => {
       </table>
       </div>
       : 'There is no quizes yet.'}
-      </>
+      </div>
   )
 
 }

@@ -13,6 +13,13 @@
     animation: 800ms ease-out 0s 1 slideInFromAboveAdm;
 }
 
+.quizesWrapper {
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 5px 5px 25px rgba(0,0,0,.5);
+}
+
 .logoAdmin {
     color: #fff;
     font-size: 50px;
@@ -83,23 +90,25 @@
 }
 
 .addForm{
-    width:600px;
-    min-width: 600px;
+    /* width:600px;
+    min-width: 600px; */
+    width: 65%;
     font-size: 18px;
     margin: 0 auto;
     border-radius: 15px;
     padding: 15px;
     box-shadow: 5px 5px 25px rgba(0,0,0,.5); 
+    color: #555555;
 }
 
  .addForm input, select, textarea{
     outline: none;
-    padding: 5px;
+    padding: 7px;
     font-family: 'Courier New', Courier, monospace;
-    font-style: italic;
+    /* font-style: italic; */
     font-size: 17px;
-    border: none;
-    border-radius: 7px;
+    border: 1.5px solid #bbbbbb;
+    border-radius: 5px;
 }
  .addForm span{
      padding-left: 10px;
@@ -124,15 +133,21 @@
 }
 
 .addForm input[type="submit"] {
-    border: 2px solid #000;
+    border: 2px solid #bbbbbb;
     font-weight: bold;
     margin: auto;
     padding: 10px;
+    color: #555555;
 }
 
 
 .wideRow, .addForm textarea {
     width: 100%;
+}
+
+.addFormTxtarea {
+  max-width: 100%;
+  margin: 0;
 }
 
 .row {
@@ -169,12 +184,24 @@
 }
 
 .getLinkBtn{
-    outline: none;
+
+  width: 130px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 17px;
+  color: #555555;
+  outline: none;
+  border: none;
+  padding: 11px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+  background-color: rgba(255,255,255,0.95);
+  padding: 9px!important;
+  /*  outline: none;
     padding: 10px;
     border: none;
     background: none;
     border-radius: 15px;
-    box-shadow: 2px 2px 2px rgba(0,0,0,.5); 
+    box-shadow: 2px 2px 2px rgba(0,0,0,.5); */
 }
 
 .pointer {
@@ -230,7 +257,7 @@
     background-color:rgba(255,255,255,0.95);;
   }
 
-  .adminModalForm select {
+.adminModalForm select {
     outline: none;
     background: none;
     border: none;
@@ -393,14 +420,26 @@
 }
 .filterForm {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
  /* border: 1px solid red;
 */
 }
 
 .filterForm input[type='text'] {
-  outline: none;
+  
+    width: 50%;
+    padding: 9px;
+    border: 1.5px solid #bbbbbb;
+    border-radius: 5px;
+    color: #757575;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 17px;
+    letter-spacing: 0.02857em;
+    outline: none;
+  
+  
+  /* outline: none;
   padding: 5px;
   border-radius: 7px;
   font-family: 'Courier New', Courier, monospace;
@@ -408,7 +447,7 @@
   font-size: 17px;
   box-shadow: 2px 2px 2px rgba(0,0,0,.5);
   border: none;
-  width: 50%;
+  width: 50%; */
 }
 
 .filterForm select {
@@ -508,7 +547,6 @@
 
 .quizTable { 
     width: 100%;
-    box-shadow: 15px 15px 25px #ccc;
     border-collapse: collapse;
     padding: 10px; 
     text-align:center; 
@@ -550,5 +588,4 @@
 hr {
   margin-bottom: 25px;
   border: 0.1px solid white;
-  margin-right: 5px;
 }

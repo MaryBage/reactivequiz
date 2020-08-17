@@ -72,7 +72,16 @@ const Questions = (props) => {
 
   },[searching])
       
+  const [disappear, setDisappear] = useState({ disappear : false, index : null });
 
+  const makeToDisappear = (e, id) => {
+    setDisappear({
+      ...disappear,
+      disappear : true,
+      index : id
+    })
+  }
+  
   const editInput = (e, id, table) => {
     e.preventDefault();
     if (e.target.value) {
@@ -133,172 +142,191 @@ const Questions = (props) => {
 
   return (
     <>  
-        {props.location.hash && <div className='filterBy'>Filtered by quiz : {props.location.hash.slice(1)}</div>}
-        <div className="filterDiv">
-            <button className="createQuiz" name="createQuiz" onClick={openModal}>
-                Create quiz
-            </button>
-           
-            <Filters
-               
-               onChangeHandler = {onChangeHandler}
-                options={questions
-                .map((e) => e.category)
-                .filter((e, i, arr) => i === arr.lastIndexOf(e))
-                .sort()}
-                values={searching}                
-            />
-            {/* <button className='resetBtn' onClick={() => setSearching({question: '', category:'', difficulty:'', type: '', timeout: 0})}>&#8634;</button> */}
-        </div>
-        <hr />
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Quiz name"
-      >
-        
-          <form className="adminModalForm" onSubmit={handleSubmit(sbmtHandler)}>
-            <input
-              type="hidden"
-              value={selectedQstns}
-              name="qstnId"
-              ref={register}
-            />
-            <input
-              type="text"
-              placeholder="Put a name of quiz"
-              style={
-                quizFormControls.name == "empty"
-                  ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
-                  : {}
-              }
-              name="name"
-              ref={register}
-            />
-            <input
-              type="number"
-              ref={register}
-              name="duration"
-              style={
-                quizFormControls.duration == "empty"
-                  ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
-                  : {}
-              }
-              step="5"
-              placeholder="duration"
-            />
-            <select name="status" ref={register}>
-              <option key="enabled" value="enabled">
-                enabled
-              </option>
-              <option key="disabled" value="disabled">
-                disabled
-              </option>
-            </select>
-            <div className="createCancelDiv">
-              &nbsp;
-              <input type="submit" value="Confirm" name="create" />
-              &nbsp;
-              <div className="pointer red" onClick={closeModal}>
-                &#10008;
-              </div>
-            </div>
-          </form>
-        
-      </Modal>
-      <TransitionGroup component="ul" className={s.questions}>
-        {filteredValue.map((currentQuestion) => (
-          <CSSTransition
-            key={currentQuestion.questionId}
-            className={s.questionItem}
-            timeout={800}
-          >
-            <div className={s.questionItemWrapper}>
-              <li className={s.questionItemLi}>
-                <div className={s.inputWrapper}>
-                  <input
-                    type="checkbox"
-                    value={currentQuestion.questionId}
-                    checked={selectedQstns.includes(
-                      currentQuestion.questionDbId
-                    )}
-                    value={currentQuestion.questionDbId}
-                    onChange={onchangeHandler}
-                  />
-                  <div
-                    className={s.tick}
-                    onClick={(e) => makeToShow(e, currentQuestion.questionId)}
-                  >
-                    {!showAnswers.includes(currentQuestion.questionId) ? (
-                      <ArrowDropDownIcon style={{ color: "#757575" }} />
-                    ) : (
-                      <ArrowDropUpIcon style={{ color: "#757575" }} />
-                    )}
-                  </div>
-                  <input
-                    type="text"
-                    name="question"
-                    placeholder={currentQuestion.question}
-                    className={s.questionItemInput}
-                    onBlur={(e) =>
-                      editInput(e, currentQuestion.questionDbId, "questions")
-                    }
-                  />
-                </div>
-                <div>
-                  <select
-                    name="difficulty"
-                    onChange={(e) =>
-                      editSelect(e, currentQuestion.questionDbId, "questions")
-                    }
-                  >
-                    <option
-                      value={currentQuestion.difficulty}
-                      className={s.selected}
-                    >
-                      {currentQuestion.difficulty}
-                    </option>
-                    <option value="easy">easy</option>
-                    <option value="medium">medium</option>
-                    <option value="hard">hard</option>
-                  </select>
-                </div>
-                <div>
-                  <select
-                    name="type"
-                    onChange={(e) =>
-                      editSelect(e, currentQuestion.questionDbId, "questions")
-                    }
-                  >
-                    <option value={currentQuestion.type} className={s.selected}>
-                      {currentQuestion.type}
-                    </option>
-                    <option value="single">single</option>
-                    <option value="multiple">multiple</option>
-                  </select>
-                </div>
-                <div
-                  className="pointer red"
-                  onClick={() => deleteData(currentQuestion.questionDbId)}
-                >
+        <Modal
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Quiz name"
+        >
+         
+            <form className="adminModalForm" onSubmit={handleSubmit(sbmtHandler)}>
+              <input
+                type="hidden"
+                value={selectedQstns}
+                name="qstnId"
+                ref={register}
+              />
+              <input
+                type="text"
+                placeholder="Put a name of quiz"
+                style={
+                  quizFormControls.name == "empty"
+                    ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
+                    : {}
+                }
+                name="name"
+                ref={register}
+              />
+              <input
+                type="number"
+                ref={register}
+                name="duration"
+                style={
+                  quizFormControls.duration == "empty"
+                    ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
+                    : {}
+                }
+                step="5"
+                placeholder="duration"
+              />
+              <select name="status" ref={register}>
+                <option key="enabled" value="enabled">
+                  enabled
+                </option>
+                <option key="disabled" value="disabled">
+                  disabled
+                </option>
+              </select>
+              <div className="createCancelDiv">
+                &nbsp;
+                <input type="submit" value="Confirm" name="create" />
+                &nbsp;
+                <div className="pointer red" onClick={closeModal}>
                   &#10008;
                 </div>
-              </li>
-              <div className={s.answersWrapper}>
-                {showAnswers.includes(currentQuestion.questionId) && (
-                  <AnswersAndCode
-                    id={currentQuestion.questionId}
-                    dbid={currentQuestion.questionDbId}
-                    questions={questions}
-                  />
-                )}
               </div>
-            </div>
-          </CSSTransition>
-        ))}
-      </TransitionGroup>
+            </form>
+        
+        
+      </Modal>
+        {props.location.hash && <div className='filterBy'>Filtered by quiz : {props.location.hash.slice(1)}</div>}
+        
+      
+      <div className={s.questionWrapper}>
+      <div className={s.buttonsWrapper}>
+          <button className={s.createQuiz} name="createQuiz" onClick={openModal}>create quiz</button>
+          <button className={s.deleteAll} name="deleteAll" /*onClick={deleteAll}*/>delete all</button>
+        </div>
+        <hr />
+      <div className="filterDiv">
+          
+          <Filters
+             onChangeHandler = {onChangeHandler}
+              options={questions
+              .map((e) => e.category)
+              .filter((e, i, arr) => i === arr.lastIndexOf(e))
+              .sort()}
+              values={searching}                
+          />
+          {/* <button className='resetBtn' onClick={() => setSearching({question: '', category:'', difficulty:'', type: '', timeout: 0})}>&#8634;</button> */}
+      </div>
+     
+        
+        <hr />
+       
+        
+      
+        <TransitionGroup component="ul" className={s.questions}>
+          {filteredValue.map((currentQuestion) => (
+            <CSSTransition
+              key={currentQuestion.questionId}
+              className={s.questionItem}
+              timeout={800}
+            >
+              <div className={s.questionItemWrapper}>
+                <li className={s.questionItemLi}>
+                  <div className={s.inputWrapper}>
+                    <input
+                      type="checkbox"
+                      value={currentQuestion.questionId}
+                      checked={selectedQstns.includes(
+                        currentQuestion.questionDbId
+                      )}
+                      value={currentQuestion.questionDbId}
+                      onChange={onchangeHandler}
+                    />
+                    <div
+                      className={s.tick}
+                      onClick={(e) => makeToShow(e, currentQuestion.questionId)}
+                    >
+                      {!showAnswers.includes(currentQuestion.questionId) ? (
+                        <ArrowDropDownIcon style={{ color: "#757575" }} />
+                      ) : (
+                        <ArrowDropUpIcon style={{ color: "#757575" }} />
+                      )}
+                    </div>
+                    <div 
+                      className={currentQuestion.questionId == disappear.index ? s.disappeared : s.appeared} 
+                      onDoubleClick={(e) => makeToDisappear(e, currentQuestion.questionId)}
+                    >
+                      {currentQuestion.question}
+                    </div>
+                    { disappear.disappear && currentQuestion.questionId == disappear.index &&
+                      <input
+                        type="text"
+                        name="question"
+                        placeholder={currentQuestion.question}
+                        className={s.questionItemInput}
+                        onBlur={(e) =>
+                          editInput(e, currentQuestion.questionDbId, "questions")
+                        }
+                      />
+                    }
+                  </div>
+                  <div>
+                    <select
+                      name="difficulty"
+                      onChange={(e) =>
+                        editSelect(e, currentQuestion.questionDbId, "questions")
+                      }
+                    >
+                      <option
+                        value={currentQuestion.difficulty}
+                        className={s.selected}
+                      >
+                        {currentQuestion.difficulty}
+                      </option>
+                      <option value="easy">easy</option>
+                      <option value="medium">medium</option>
+                      <option value="hard">hard</option>
+                    </select>
+                  </div>
+                  <div>
+                    <select
+                      name="type"
+                      onChange={(e) =>
+                        editSelect(e, currentQuestion.questionDbId, "questions")
+                      }
+                    >
+                      <option value={currentQuestion.type} className={s.selected}>
+                        {currentQuestion.type}
+                      </option>
+                      <option value="single">single</option>
+                      <option value="multiple">multiple</option>
+                    </select>
+                  </div>
+                  <div
+                    className="pointer red"
+                    onClick={() => deleteData(currentQuestion.questionDbId)}
+                  >
+                    &#10008;
+                  </div>
+                </li>
+                <div className={s.answersWrapper}>
+                  {showAnswers.includes(currentQuestion.questionId) && (
+                    <AnswersAndCode
+                      id={currentQuestion.questionId}
+                      dbid={currentQuestion.questionDbId}
+                      questions={questions}
+                    />
+                  )}
+                </div>
+              </div>
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
+        </div>
     </>
   );
 };
