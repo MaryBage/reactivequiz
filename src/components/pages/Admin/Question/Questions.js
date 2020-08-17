@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import "../Admin.css";
 import s from "./Questions.module.css";
 import { DbContext } from "../context/database/dbContext";
@@ -35,6 +35,7 @@ const Questions = (props) => {
     getQuizes,
     updateData,
   } = useContext(DbContext);
+
   const [selectedQstns, setSelectedQstns] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const { register, handleSubmit } = useForm();
@@ -42,11 +43,35 @@ const Questions = (props) => {
     name: "",
     duration: "",
   });
-  const [copyLink, setCopyLink] = useState({ value: "", copied: false });
+ 
   const [showAnswers, setShowAnswers] = useState([]);
-  const [searchedValue, setSearchedValue] = useState(questions);
-  const filterValue =
-    props.match.params.detail && atob(props.match.params.detail).split(",");
+  const [filteredValue, setFilteredValue] = useState(questions);
+
+  const [searching,setSearching] = useState({question: '', category:'', difficulty:'', type: '', timeout: 0});
+
+  useEffect(() => {
+
+   setFilteredValue(questions);
+
+  },[props])
+  
+  useEffect(() => {
+
+    const filtArr= Object.keys(searching).filter(el => searching[el])
+    let filtered = [];
+    if(props.match.params.detail){
+        const filterByQuiz = atob(props.match.params.detail).split(",")
+        filtered = questions.filter(e => filterByQuiz.includes(e.questionDbId))
+    }
+    else filtered = [...questions]
+
+    for (let key of filtArr) {
+        filtered = filtered.filter(el => el[key].includes(searching[key]))
+    }
+    setFilteredValue(filtered)
+
+  },[searching])
+      
 
   const editInput = (e, id, table) => {
     e.preventDefault();
@@ -75,7 +100,7 @@ const Questions = (props) => {
   }
 
   function afterOpenModal() {
-    setCopyLink({ value: "", copied: false });
+    //setCopyLink({ value: "", copied: false });
   }
 
   function closeModal() {
@@ -91,39 +116,41 @@ const Questions = (props) => {
   const sbmtHandler = async (data) => {
     console.log(data);
     if (data.name && data.duration) {
-      const quizId = await addQuizes(data).then((res) => res);
-      setCopyLink({
-        value: `http://localhost:3000/quiz/${btoa(
-          JSON.stringify({ quiz: "trainer", quizId: quizId })
-        )}`,
-        copied: false,
-      });
-      getQuizes();
+      addQuizes(data)
+      closeModal()
     } else
       setFormControls({
         duration: data.duration || "empty",
         name: data.name || "empty",
       });
   };
-  const onSearchHandler = (e) => {
-    setSearchedValue(
-      questions.filter((el) => el.question.includes(e.target.value))
-    );
-  };
+
+  const onChangeHandler = (e) => {
+
+    setSearching({...searching,[e.target.name]:e.target.value})
+
+  }
 
   return (
-    <>
-      <button className="createQuiz" name="createQuiz" onClick={openModal}>
-        Create quiz
-      </button>
-      <Filters
-        options={questions
-          .map((e) => e.category)
-          .filter((e, i, arr) => i === arr.lastIndexOf(e))
-          .sort()}
-        onSearch={onSearchHandler}
-      />
-      <hr />
+    <>  
+        {props.location.hash && <div className='filterBy'>Filtered by quiz : {props.location.hash.slice(1)}</div>}
+        <div className="filterDiv">
+            <button className="createQuiz" name="createQuiz" onClick={openModal}>
+                Create quiz
+            </button>
+           
+            <Filters
+               
+               onChangeHandler = {onChangeHandler}
+                options={questions
+                .map((e) => e.category)
+                .filter((e, i, arr) => i === arr.lastIndexOf(e))
+                .sort()}
+                values={searching}                
+            />
+            {/* <button className='resetBtn' onClick={() => setSearching({question: '', category:'', difficulty:'', type: '', timeout: 0})}>&#8634;</button> */}
+        </div>
+        <hr />
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -131,7 +158,7 @@ const Questions = (props) => {
         style={customStyles}
         contentLabel="Quiz name"
       >
-        {!copyLink.value && !copyLink.copied ? (
+        
           <form className="adminModalForm" onSubmit={handleSubmit(sbmtHandler)}>
             <input
               type="hidden"
@@ -179,34 +206,10 @@ const Questions = (props) => {
               </div>
             </div>
           </form>
-        ) : (
-          <div className="copyLink">
-            &nbsp;
-            <CopyToClipboard
-              text={copyLink.value}
-              onCopy={() => setCopyLink({ copied: true })}
-            >
-              <button className="getLinkBtn">
-                &nbsp;&copy;&nbsp;Copy link
-              </button>
-            </CopyToClipboard>
-            {copyLink.copied ? (
-              <span style={{ color: "green" }}>
-                &nbsp;&nbsp;&#10004;&nbsp; Copied
-              </span>
-            ) : null}
-            &nbsp;
-            <div className="pointer red" onClick={closeModal}>
-              &#10008;
-            </div>
-          </div>
-        )}
+        
       </Modal>
       <TransitionGroup component="ul" className={s.questions}>
-        {(filterValue
-          ? questions.filter((e) => filterValue.includes(e.questionDbId))
-          : searchedValue
-        ).map((currentQuestion) => (
+        {filteredValue.map((currentQuestion) => (
           <CSSTransition
             key={currentQuestion.questionId}
             className={s.questionItem}

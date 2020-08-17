@@ -73,15 +73,15 @@ const AddForm = (props) => {
 
 
         if(!data.question){
-            error += 'Question field is empty.\n'
+           /* error += 'Question field is empty.\n'*/
             validation = question = false;
         } 
         if(!data.category){
-            error += 'Category field is empty.\n'
+           /* error += 'Category field is empty.\n'*/
             validation = category = false;
         } 
         if(data.answer.filter(e => e).length < 2){
-            error += 'Question should have at least 2 answers.\n'
+            error += 'Should be at least 2 answers.\n'
             validation = false;
         }
         if(!myType.some(e => e) ){
@@ -89,8 +89,8 @@ const AddForm = (props) => {
             validation = answer = false;
         }
         if(myPoint.every(e => !e)){
-            error += 'There is no point for this question.\n'
-            validation = false;
+           /* error += 'There is no point for this question.\n'*/
+            validation = point = false;
         }
 
         if(!myType.map((e,i) => e ? i : null).filter(e => e!=null).every(e => data.answer[e])){
@@ -118,23 +118,27 @@ const AddForm = (props) => {
 
 return (
         <div className='addForm'>
-                <div className='centerAdm'>   <h3>Add question</h3></div>
+                <div className='centerAdm'>   <div className='addFormHeader'>Add question</div></div>
                 <form  onSubmit={handleSubmit(sbmtHandler)} onReset={() => {
                     setAddValidation({...addValidation, success: false})
                     setQstnPoint(1)
                     setQstnPoint('')
                     setQstnType('')
                     setQstnType('single')
+                    setAddValidation({
+                        category: 1,
+                        question: 1,
+                        answer: 1})
                     }}>
-                    
+                    <div style={{height: 40}}>
                     { addValidation.error 
                     ? addValidation.error.split ('\n').map ((item, i) => (
-                              <span style={{color:'red'}} key={i}>{item}</span>))
+                              <><span style={{color:'red'}} key={i}>{item}</span><br/></>))
                     : addValidation.success
-                       && <span className='successAnim' style={{color:'green'}}>Question is successfully added! Click to reset&nbsp;
-                       <input type='reset' className='resetBtn' value='&#8634;' name='reset' /></span>
+                       && <span className='successAnim' style={{color:'green'}}>Question is successfully added! Click&nbsp;
+                       <input type='reset' className='resetBtn' value='&#8634;' name='reset' />&nbsp;to reset</span>
                          } 
-                    
+                    </div>
                  
                 <div className='row'> <input ref={register} 
                 className='wideRow' 

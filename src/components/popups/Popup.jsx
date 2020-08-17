@@ -5,8 +5,12 @@ import well from "../../images/popups/well.png";
 import great from "../../images/popups/great.png";
 import thanksmail from "../../images/popups/thanksmail.png";
 import { popupText } from "../../StaticContent";
+import ResultPdf from '../../components/pages/Pdf/Pdf'
+import { PDFViewer } from '@react-pdf/renderer';
+import { withRouter } from "react-router-dom";
 
 const Popup = (props) => {
+    
     const [width, setWidth] = useState({
         w: window.innerWidth,
         dif: window.outerWidth - window.innerWidth,
@@ -23,11 +27,26 @@ const Popup = (props) => {
             window.removeEventListener("resize", handleResize);
         };
     });
+
+   
     const images = [harder, well, great, thanksmail];
-    const total = props.totalPoint;
-    const result = props.resultPoint;
+    const [openPdf, setOpenPdf] = useState(false)
+    const total = props.res.map(e => Math.max(...e.options.map(el => el.total))).reduce((t,e) => t + e,0);
+    const result = props.res.map(e => Math.max(...e.options.map(el => el.point))).reduce((t,e) => t + e,0);
     const coefficient = (result / total) * 100;
     const thanksmailText = "We greatly appreciate your feedback!";
+    const stuInfo = {
+        quizName:   props.location.hash.slice(1),
+        date: props.date 
+    };
+
+    if(props.location.search){
+        let stuInfoArr = props.location.search.slice(1).split('&')
+          stuInfoArr.map(e => {
+            stuInfo[e.split('=')[0]] = e.split('=')[1]
+          })
+      }
+
     let i;
     let text;
     if (coefficient < 60) {
@@ -45,6 +64,10 @@ const Popup = (props) => {
     }
 
     return (
+        <>
+        {openPdf ? <PDFViewer style={{width: '100%', height: '100vh'}}>
+                    <ResultPdf res={props.res} {...stuInfo} score={`${result}/${total}`} percentage={coefficient}/>
+            </PDFViewer> :
         <div className="popup-container">
             <div
                 className={s.popupWrapper}
@@ -59,7 +82,7 @@ const Popup = (props) => {
                 </div>
                 <div className={`${s.popupCommonWrapper} zoomOut`}>
                     <h1>{text}</h1>
-                    {props.resultPoint ? (
+                    {props.res.length ? (
                         <h2>
                             Your result: <span>{result}</span> of <span>{total}</span>
                         </h2>
@@ -67,18 +90,28 @@ const Popup = (props) => {
                             <h2>{thanksmailText}</h2>
                         )}
 
-                    <button
+                    {/* <button
                         className={s.tryAgain}
                         value="try again"
                         key="tryAgain"
                         onClick={() => window.location.reload(false)}
                     >
                         try again!
-          </button>
+                    </button> */}
+                    <button
+                        className={s.tryAgain}
+                        value="see results"
+                        key="tryAgain"
+                        onClick={() => setOpenPdf(true)}
+                    >
+                        see results
+                    </button>
                 </div>
             </div>
         </div>
+        }
+        </>
     );
 };
 
-export default Popup;
+export default withRouter(Popup);

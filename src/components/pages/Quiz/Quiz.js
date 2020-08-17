@@ -4,17 +4,19 @@ import { Loader } from '../DetailedComponents/Loader/Loader';
 import ActiveQuiz from './ActiveQuiz';
 import './Quiz.css';
 import Popup from '../../popups/Popup';
+import { withRouter } from "react-router-dom";
+import Countdown, { zeroPad } from 'react-countdown';
 
 const Quiz = (props) => {
-  const params = props.match 
+  const params = props.match.params.detail
             ? atob(props.match.params.detail) 
             : JSON.stringify(props)
 
-        console.log(atob(props.match.params.detail) )
+  console.log('location.search',props.location.search.slice(1).split('&'))
+  const duration = props.location.search.slice(1).split('&')[1].split('=')[1];
 
   const [quiz, setQuiz] = useState([])
-  const [conds, setConds] = useState({ trasition: false, loader: true, totalPoint: 0, resultPoint: 0 })
-
+  const [conds, setConds] = useState({ trasition: false, loader: true, result: []})
   useEffect(() => {
 
     axios
@@ -101,26 +103,43 @@ const Quiz = (props) => {
 
   const finishQuiz = (e) => {
     e.preventDefault();
-    const params = {};
-
+    const params = {
+      quiz:{}, 
+      quizName:  props.location.hash.slice(1)
+    };
+    if(props.location.search){
+      let stuInfo = props.location.search.slice(1).split('&')
+        stuInfo.map(e => {
+          params[e.split('=')[0]] = e.split('=')[1]
+        })
+    }
+    console.log(params)
     quiz.forEach(questionItem => {
-      params[questionItem.questionDbId] = questionItem.userAnswer.join();
+      params.quiz[questionItem.questionDbId] = questionItem.userAnswer.join();
     })
     console.log(params)
     axios
-      .post(`/calcResult.php`, JSON.stringify(params))
+      .post(`/calcResult.php`, btoa(JSON.stringify(params)))
       .then(res => {
         console.log(res.data);
-        setConds({ ...conds, ...res.data })
+        setConds({ ...conds, result: res.data })
       })
   }
 
   return (
     <>
-      {(conds.loader && <Loader />) || (conds.totalPoint && <Popup totalPoint={conds.totalPoint} resultPoint={conds.resultPoint} />) ||
+      {(conds.loader && <Loader />) || (conds.result.length && <Popup res={conds.result} date={Date(Date.now()).slice(4,24)} />) ||
         <div className="quizBody">
           <div className='quizLayout'>
             <div className='sidenav'>
+            
+            <Countdown renderer = {({ hours, minutes, seconds }) => (
+                                    <span style = {{color:'#fff', marginLeft: 15, paddingBottom:25}}>
+                                      {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
+                                    </span>
+                                  )}
+                date={Date.now() + duration*60000} style={{color:'#fff'}}/>
+                <hr/>
               {
                 quiz.map((el, i) => {
                   return <a href="#" className={(i == quiz.findIndex(item => item.isActive)) ? 'activeQstn' : (el.isSubmitted ? 'passedQuestion' : null)} id={i} onClick={changeQuestion}>{el.isSubmitted ? <span>&#10004;</span> : null} Question {i + 1}</a>
@@ -148,4 +167,4 @@ const Quiz = (props) => {
     </>
   )
 }
-export default Quiz;
+export default withRouter(Quiz);

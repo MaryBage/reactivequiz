@@ -15,9 +15,9 @@ import Admin from "./components/pages/Admin/Admin";
 import { UserContext } from './components/pages/Admin/context/user/userContext';
 import { DbState } from './components/pages/Admin/context/database/dbState';
 import { ThemeState } from './components/pages/Admin/context/theme/themeState';
-import { PDFViewer } from '@react-pdf/renderer';
 import PageNotFound from './components/pages/PageNotFound/PageNotFound';
 import Filter from './components/pages/Admin/DetailedCompotents/Filter';
+import StuRegister from './components/pages/StuRegister/StuRegister';
 
 const App = ({currentUser, logoutUser}) => {
     
@@ -34,6 +34,7 @@ const App = ({currentUser, logoutUser}) => {
                 <Route path="/start-test" component={StartTest}/>
                 <Route path="/quiz/:detail" component={Quiz}/>
                 <Route path="/unavailable" component={PageNotFound}/>
+                <Route path="/start-quiz/:detail" component={StuRegister}/>
                 {/* <Route path='/pdf' render={() => <PDFViewer style={{width:'100%', height:'100vh'}}><ResultPdf value='80'/></PDFViewer>} /> */}
                 {!currentUser ? <Route exact path="/signIn" component={SignIn}/> : null}
                 {!currentUser ? <Route exact path="/signup" component={SignUp}/> : null}

@@ -21,7 +21,7 @@ export const DbState = ({ children }) => {
         setLoader();
 
         const res = await axios.post('/data.php', btoa(JSON.stringify({...data, creator: id, action: 'add'})))
-        console.log(res.data)
+        
         getData();
 
     } 
@@ -30,7 +30,7 @@ export const DbState = ({ children }) => {
         setLoader();
         
       const res = await axios.post('/data.php', btoa(JSON.stringify({action: 'get', creator: id})))
-      //console.log(res.data)
+      console.log(res.data)
         const payload = res.data.map((questionItem) => {
             return {
 
@@ -82,8 +82,8 @@ export const DbState = ({ children }) => {
 
     const addQuizes = async data =>{
         setLoader();
-        const res = await axios.post('/quizData.php', btoa(JSON.stringify({...data,creator: id, action: 'add'})))
-        return res.data;
+        await axios.post('/quizData.php', btoa(JSON.stringify({...data,creator: id, action: 'add'})))
+        getQuizes();
   
     } 
 
@@ -149,9 +149,7 @@ export const DbState = ({ children }) => {
             deleteQuizes,
             setLoader, 
             questions: state.questions,
-            qty: state.questions.length,
             quizes: state.quizes,
-            quizesQty: state.quizes.length,
             loading: state.loading 
         }}>
             {children}

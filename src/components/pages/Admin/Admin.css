@@ -130,14 +130,6 @@
     padding: 10px;
 }
 
-.addForm input[type="reset"] {
-    font-style: normal!important;
-    font-weight: bold;
-    font-size: 20pt!important;
-    background: none;
-    color: green;
-    margin-top: 3px;
-}
 
 .wideRow, .addForm textarea {
     width: 100%;
@@ -231,7 +223,6 @@
     font-size: 15pt;
     font-weight: bold;
     outline: none;
-    margin-bottom: 15px;
     border: none;
     padding: 7px 20px;
     border-radius: 7px;
@@ -393,6 +384,44 @@
     margin-top: 2px;
 }
 
+.filterDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+
+}
+.filterForm {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+ /* border: 1px solid red;
+*/
+}
+
+.filterForm input[type='text'] {
+  outline: none;
+  padding: 5px;
+  border-radius: 7px;
+  font-family: 'Courier New', Courier, monospace;
+  font-style: italic;
+  font-size: 17px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+  border: none;
+  width: 50%;
+}
+
+.filterForm select {
+  box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+}
+
+.filterBy{
+  margin-bottom: 15px;
+  font-size: 19px;
+  font-weight: bold;
+
+}
+
 .settingsContent button:hover {
     font-weight: bold;
     color: #555555;
@@ -428,7 +457,18 @@
   }
 
   .resetBtn {
-    color: black!important;
+    font-style: normal!important;
+    font-weight: bold;
+    font-size: 22pt!important;
+    background: none;
+    margin-top: 3px;
+    color: black;
+  }
+  .addFormHeader {
+    padding: 5px;
+    text-align: center;
+    font-size: 23pt;
+    font-weight: bold;
   }
 
   @keyframes successAnim {

@@ -13,8 +13,8 @@ const Quizes = (props) => {
     
     const inptRef = useRef(null);
 
-    function copyToClipboard(e) {
-        inptRef.current.value= `http://localhost:3000/quiz/${btoa(JSON.stringify({quiz:'trainer',quizId: e.target.id}))}`
+    function copyToClipboard(e, duration) {
+        inptRef.current.value= `http://localhost:3000/start-quiz/${btoa(JSON.stringify({quiz:'trainer',quizId: e.target.id}))}?quizId=${e.target.id}&duration=${duration}#${e.target.name}`
         inptRef.current.select();
         document.execCommand('copy');
         e.target.focus();
@@ -26,8 +26,11 @@ const Quizes = (props) => {
   
 
 
-    const filterByQuiz = (_, filterValue) => {
-        props.history.push(`/admin/questions/${btoa(filterValue)}`);
+    const filterByQuiz = (_, filterValue, filterName) => {
+
+        props.history.push({
+          pathname:`/admin/questions/${btoa(filterValue)}`,
+          hash: filterName});
     }
 
     const back = () => {
@@ -68,7 +71,7 @@ const Quizes = (props) => {
             <td>{i + 1 + page}</td>
             <td>
           <div style={{cursor:'pointer'}} 
-          onClick={(e) =>filterByQuiz(e,quiz.questions)} > {quiz.name} </div>
+          onClick={(e) =>filterByQuiz(e,quiz.questions,quiz.name)} > {quiz.name} </div>
           </td>
             <td>{quiz.questions.length}</td>
             <td>{quiz.duration}</td>
@@ -79,8 +82,9 @@ const Quizes = (props) => {
                     style={(copySuccess.id == quiz.dbId && copySuccess.copied) ? {backgroundColor: 'rgba(60, 160, 60,.1)'} : {}}
                     value={(copySuccess.id == quiz.dbId && copySuccess.copied) ? 'Copied!': 'get link'}
                     id={quiz.dbId} 
-                     className='getLinkBtn'
-                    onClick={copyToClipboard} />
+                    name={quiz.name}
+                    className='getLinkBtn'
+                    onClick={(e) => copyToClipboard(e,quiz.duration)} />
             </td>
             <td>
                 <select style={quiz.status == 'enabled' ?  {backgroundColor: 'rgba(60, 160, 60,.1)'} : { backgroundColor: 'rgba(170,10,10, .1)'}} onChange={(e) => updateQuizes(quiz.dbId, 'status', e.target.value)}>
