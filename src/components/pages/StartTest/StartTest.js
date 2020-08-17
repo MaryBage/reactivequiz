@@ -34,6 +34,7 @@ const StartTest = () => {
                     <DelayLink delay={700} to={"/"}>
                             <CustomButton small="true" ><KeyboardBackspaceIcon />back</CustomButton>
                     </DelayLink>
+                    <div className="freeSpace" />
                     <PageIntro logoText={logoText[1]} sloganText={sloganText[1]} />
                     <div className="freeSpace" />
                     <form onSubmit={handleSubmit} className="informativeDivision">

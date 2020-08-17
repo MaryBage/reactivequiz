@@ -83,23 +83,24 @@
 }
 
 .addForm{
-    width:600px;
-    min-width: 600px;
+    /* width:600px;
+    min-width: 600px; */
     font-size: 18px;
     margin: 0 auto;
     border-radius: 15px;
     padding: 15px;
     box-shadow: 5px 5px 25px rgba(0,0,0,.5); 
+    color: #555555;
 }
 
  .addForm input, select, textarea{
     outline: none;
-    padding: 5px;
+    padding: 7px;
     font-family: 'Courier New', Courier, monospace;
-    font-style: italic;
+    /* font-style: italic; */
     font-size: 17px;
-    border: none;
-    border-radius: 7px;
+    border: 1.5px solid #bbbbbb;
+    border-radius: 5px;
 }
  .addForm span{
      padding-left: 10px;
@@ -124,10 +125,11 @@
 }
 
 .addForm input[type="submit"] {
-    border: 2px solid #000;
+    border: 2px solid #bbbbbb;
     font-weight: bold;
     margin: auto;
     padding: 10px;
+    color: #555555;
 }
 
 .addForm input[type="reset"] {
@@ -141,6 +143,11 @@
 
 .wideRow, .addForm textarea {
     width: 100%;
+}
+
+.addFormTxtarea {
+  max-width: 100%;
+  margin: 0;
 }
 
 .row {
@@ -224,22 +231,9 @@
     border-radius: 7px;
     box-shadow: 2px 2px 2px rgba(0,0,0,.5);
     background-color: rgba(0,0,0,.02);
-  }
+}
 
-  .createQuiz {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 15pt;
-    font-weight: bold;
-    outline: none;
-    margin-bottom: 15px;
-    border: none;
-    padding: 7px 20px;
-    border-radius: 7px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,.5);
-    background-color:rgba(255,255,255,0.95);;
-  }
-
-  .adminModalForm select {
+.adminModalForm select {
     outline: none;
     background: none;
     border: none;
@@ -510,5 +504,4 @@
 hr {
   margin-bottom: 25px;
   border: 0.1px solid white;
-  margin-right: 5px;
 }

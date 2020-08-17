@@ -22,13 +22,6 @@
   font-weight: normal;
 }
 
-<<<<<<< HEAD
-/* .custom-select:nth-child(1) {
-    text-indent: 38%;
-} */
-
-=======
->>>>>>> 260ede97c44fe088091a10e143c7e4f8ed6e048b
 .custom-select::-ms-expand {
     display: none;
 }

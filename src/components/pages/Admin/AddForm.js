@@ -1,8 +1,8 @@
-import React, { useState, useContext} from 'react'
+import React, { useState, useContext} from 'react';
 import { DbContext } from './context/database/dbContext';
-import './Admin.css'
+import './Admin.css';
 import { useForm } from "react-hook-form";
-import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom';
 
 
 const AddForm = (props) => {
@@ -143,7 +143,7 @@ return (
                 placeholder='Enter a question' 
                 style= {!addValidation.question ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
                 onChange={hideSuccessMsg}  /></div>
-                <div className='row'> <textarea  ref={register} cols='50' rows='4' name='code' placeholder='Code here' onChange={hideSuccessMsg} /></div>
+                <div className='row'> <textarea  ref={register} cols='50' rows='4' name='code' placeholder='code here' onChange={hideSuccessMsg} className="addFormTxtarea" /></div>
                 <div className='row'> <input ref={register} 
                 type='text' 
                 name='category' 
