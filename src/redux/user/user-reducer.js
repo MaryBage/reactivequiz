@@ -13,6 +13,10 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 user: null,
                 access_token: null
             };
+        case "UPDATE_SETTINGS":
+            const user = state.user;
+            const newUser = {...user,...action.payload}
+            return {...state,user:newUser}
 
         default:
             return state;
