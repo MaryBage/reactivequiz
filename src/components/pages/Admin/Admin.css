@@ -58,6 +58,15 @@
     min-height:800px;
 }
 
+.navAdmin {
+  
+  
+  overflow-x: hidden;
+
+  box-shadow: 10px 0px 25px rgba(0,0,0,.5);
+  animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
+}
+
 .sidebar-left .linear ::before {
   background-color: #fff !important;
 }
@@ -99,6 +108,7 @@
     padding: 15px;
     box-shadow: 5px 5px 25px rgba(0,0,0,.5); 
     color: #555555;
+    min-width: 350px;
 }
 
  .addForm input, select, textarea{
@@ -537,7 +547,7 @@
 .linkToCopyInpt {
     border: none;
     color: transparent;
-    z-index: 0;
+    /* z-index: 0; */
 }
 
 .quizTable, .linkToCopyInpt {
@@ -551,7 +561,7 @@
     padding: 10px; 
     text-align:center; 
     background-color: white;
-    z-index: 1;
+    /* z-index: 1; */
     font-size: 15pt;
 }
 

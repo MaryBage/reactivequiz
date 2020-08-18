@@ -109,15 +109,13 @@ export const DbState = ({ children }) => {
         })
     } 
 
-    const updateQuizes = async (dbId, dataToUpdate, newValue) =>{
+    const updateQuizes = async (data) =>{
         setLoader();
 
         await axios.post('/quizData.php', btoa(JSON.stringify({
                     action: 'update', 
-                    creator: id, 
-                    dataToUpdate: dataToUpdate, 
-                    newValue: newValue,
-                    id: dbId})))
+                    creator: id,
+                    ...data})))
         
         getQuizes();
     } 

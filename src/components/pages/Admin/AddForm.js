@@ -148,7 +148,7 @@ return (
                 style= {!addValidation.question ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
                 onChange={hideSuccessMsg}  /></div>
                 <div className='row'> <textarea  ref={register} cols='50' rows='4' name='code' placeholder='code here' onChange={hideSuccessMsg} className="addFormTxtarea" /></div>
-                <div className='row'> <input ref={register} 
+                <div className='row' style={{flexFlow: 'row wrap'}}> <input ref={register} 
                 type='text' 
                 name='category' 
                 placeholder='Enter a category' 

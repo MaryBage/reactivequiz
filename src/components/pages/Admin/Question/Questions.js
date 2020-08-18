@@ -8,9 +8,7 @@ import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import AnswersAndCode from "../DetailedCompotents/AnswersAndCode";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import { withRouter } from "react-router-dom";
-import { Filter } from "@material-ui/icons";
 import Filters from "../DetailedCompotents/Filter";
 
 const customStyles = {
@@ -32,7 +30,6 @@ const Questions = (props) => {
     deleteData,
     questions,
     addQuizes,
-    getQuizes,
     updateData,
   } = useContext(DbContext);
 
@@ -149,7 +146,9 @@ const Questions = (props) => {
           style={customStyles}
           contentLabel="Quiz name"
         >
-         
+            <div className="pointer red" style={{marginLeft: 270}} onClick={closeModal}>
+                  &#10008;
+                </div>
             <form className="adminModalForm" onSubmit={handleSubmit(sbmtHandler)}>
               <input
                 type="hidden"
@@ -191,10 +190,7 @@ const Questions = (props) => {
               <div className="createCancelDiv">
                 &nbsp;
                 <input type="submit" value="Confirm" name="create" />
-                &nbsp;
-                <div className="pointer red" onClick={closeModal}>
-                  &#10008;
-                </div>
+    
               </div>
             </form>
         

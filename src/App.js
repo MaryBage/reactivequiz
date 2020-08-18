@@ -16,14 +16,11 @@ import { UserContext } from './components/pages/Admin/context/user/userContext';
 import { DbState } from './components/pages/Admin/context/database/dbState';
 import { ThemeState } from './components/pages/Admin/context/theme/themeState';
 import PageNotFound from './components/pages/PageNotFound/PageNotFound';
-import Filter from './components/pages/Admin/DetailedCompotents/Filter';
 import StuRegister from './components/pages/StuRegister/StuRegister';
 
 const App = ({currentUser, logoutUser}) => {
     
-    const handleLogout = () => {
-        logoutUser();
-    }
+
     return (
         
         
