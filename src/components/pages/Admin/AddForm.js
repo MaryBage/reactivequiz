@@ -130,7 +130,7 @@ return (
                         question: 1,
                         answer: 1})
                     }}>
-                    <div style={{height: 40}}>
+                    <div>
                     { addValidation.error 
                     ? addValidation.error.split ('\n').map ((item, i) => (
                               <><span style={{color:'red'}} key={i}>{item}</span><br/></>))
