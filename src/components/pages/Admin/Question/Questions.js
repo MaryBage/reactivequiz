@@ -8,9 +8,9 @@ import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import AnswersAndCode from "../DetailedCompotents/AnswersAndCode";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+// import { CopyToClipboard } from "react-copy-to-clipboard";
 import { withRouter } from "react-router-dom";
-import { Filter } from "@material-ui/icons";
+// import { Filter } from "@material-ui/icons";
 import Filters from "../DetailedCompotents/Filter";
 
 const customStyles = {
@@ -43,45 +43,45 @@ const Questions = (props) => {
     name: "",
     duration: "",
   });
- 
+
   const [showAnswers, setShowAnswers] = useState([]);
   const [filteredValue, setFilteredValue] = useState(questions);
 
-  const [searching,setSearching] = useState({question: '', category:'', difficulty:'', type: '', timeout: 0});
+  const [searching, setSearching] = useState({ question: '', category: '', difficulty: '', type: '', timeout: 0 });
 
   useEffect(() => {
 
-   setFilteredValue(questions);
+    setFilteredValue(questions);
 
-  },[props])
-  
+  }, [props])
+
   useEffect(() => {
 
-    const filtArr= Object.keys(searching).filter(el => searching[el])
+    const filtArr = Object.keys(searching).filter(el => searching[el])
     let filtered = [];
-    if(props.match.params.detail){
-        const filterByQuiz = atob(props.match.params.detail).split(",")
-        filtered = questions.filter(e => filterByQuiz.includes(e.questionDbId))
+    if (props.match.params.detail) {
+      const filterByQuiz = atob(props.match.params.detail).split(",")
+      filtered = questions.filter(e => filterByQuiz.includes(e.questionDbId))
     }
     else filtered = [...questions]
 
     for (let key of filtArr) {
-        filtered = filtered.filter(el => el[key].includes(searching[key]))
+      filtered = filtered.filter(el => el[key].includes(searching[key]))
     }
     setFilteredValue(filtered)
 
-  },[searching])
-      
-  const [disappear, setDisappear] = useState({ disappear : false, index : null });
+  }, [searching])
+
+  const [disappear, setDisappear] = useState({ disappear: false, index: null });
 
   const makeToDisappear = (e, id) => {
     setDisappear({
       ...disappear,
-      disappear : true,
-      index : id
+      disappear: true,
+      index: id
     })
   }
-  
+
   const editInput = (e, id, table) => {
     e.preventDefault();
     if (e.target.value) {
@@ -135,98 +135,86 @@ const Questions = (props) => {
   };
 
   const onChangeHandler = (e) => {
-
-    setSearching({...searching,[e.target.name]:e.target.value})
-
+    setSearching({ ...searching, [e.target.name]: e.target.value })
   }
 
   return (
-    <>  
-        <Modal
-          isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Quiz name"
-        >
-         
-            <form className="adminModalForm" onSubmit={handleSubmit(sbmtHandler)}>
-              <input
-                type="hidden"
-                value={selectedQstns}
-                name="qstnId"
-                ref={register}
-              />
-              <input
-                type="text"
-                placeholder="Put a name of quiz"
-                style={
-                  quizFormControls.name == "empty"
-                    ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
-                    : {}
-                }
-                name="name"
-                ref={register}
-              />
-              <input
-                type="number"
-                ref={register}
-                name="duration"
-                style={
-                  quizFormControls.duration == "empty"
-                    ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
-                    : {}
-                }
-                step="5"
-                placeholder="duration"
-              />
-              <select name="status" ref={register}>
-                <option key="enabled" value="enabled">
-                  enabled
+    <>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Quiz name"
+      >
+        <form className="adminModalForm" onSubmit={handleSubmit(sbmtHandler)}>
+          <input
+            type="hidden"
+            value={selectedQstns}
+            name="qstnId"
+            ref={register}
+          />
+          <input
+            type="text"
+            placeholder="Put a name of quiz"
+            style={
+              quizFormControls.name == "empty"
+                ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
+                : {}
+            }
+            name="name"
+            ref={register}
+          />
+          <input
+            type="number"
+            ref={register}
+            name="duration"
+            style={
+              quizFormControls.duration == "empty"
+                ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
+                : {}
+            }
+            step="5"
+            placeholder="duration"
+          />
+          <select name="status" ref={register}>
+            <option key="enabled" value="enabled">
+              enabled
                 </option>
-                <option key="disabled" value="disabled">
-                  disabled
+            <option key="disabled" value="disabled">
+              disabled
                 </option>
-              </select>
-              <div className="createCancelDiv">
-                &nbsp;
+          </select>
+          <div className="createCancelDiv">
+            &nbsp;
                 <input type="submit" value="Confirm" name="create" />
                 &nbsp;
                 <div className="pointer red" onClick={closeModal}>
-                  &#10008;
+              &#10008;
                 </div>
-              </div>
-            </form>
-        
-        
+          </div>
+        </form>
       </Modal>
-        {props.location.hash && <div className='filterBy'>Filtered by quiz : {props.location.hash.slice(1)}</div>}
-        
-      
+      {props.location.hash && <div className='filterBy'>Filtered by quiz : {props.location.hash.slice(1)}</div>}
       <div className={s.questionWrapper}>
-      <div className={s.buttonsWrapper}>
-          <button className={s.createQuiz} name="createQuiz" onClick={openModal}>create quiz</button>
-          <button className={s.deleteAll} name="deleteAll" /*onClick={deleteAll}*/>delete all</button>
+        <div className={s.buttonsWrapper}>
+          <button className={s.createQuiz} name="createQuiz" onClick={openModal}>compose quiz</button>
+          <button className={s.selectAll}  name="selectAll" /*onClick={selectAll}*/>select all</button>
+          <button className={s.deleteAll}  name="deleteAll" /*onClick={deleteAll}*/>delete all</button>
         </div>
         <hr />
-      <div className="filterDiv">
-          
+        <div className="filterDiv">
           <Filters
-             onChangeHandler = {onChangeHandler}
-              options={questions
+            onChangeHandler={onChangeHandler}
+            options={questions
               .map((e) => e.category)
               .filter((e, i, arr) => i === arr.lastIndexOf(e))
               .sort()}
-              values={searching}                
+            values={searching}
           />
           {/* <button className='resetBtn' onClick={() => setSearching({question: '', category:'', difficulty:'', type: '', timeout: 0})}>&#8634;</button> */}
-      </div>
-     
-        
+        </div>
         <hr />
-       
-        
-      
         <TransitionGroup component="ul" className={s.questions}>
           {filteredValue.map((currentQuestion) => (
             <CSSTransition
@@ -253,16 +241,16 @@ const Questions = (props) => {
                       {!showAnswers.includes(currentQuestion.questionId) ? (
                         <ArrowDropDownIcon style={{ color: "#757575" }} />
                       ) : (
-                        <ArrowDropUpIcon style={{ color: "#757575" }} />
-                      )}
+                          <ArrowDropUpIcon style={{ color: "#757575" }} />
+                        )}
                     </div>
-                    <div 
-                      className={currentQuestion.questionId == disappear.index ? s.disappeared : s.appeared} 
+                    <div
+                      className={currentQuestion.questionId == disappear.index ? s.disappeared : s.appeared}
                       onDoubleClick={(e) => makeToDisappear(e, currentQuestion.questionId)}
                     >
                       {currentQuestion.question}
                     </div>
-                    { disappear.disappear && currentQuestion.questionId == disappear.index &&
+                    {disappear.disappear && currentQuestion.questionId == disappear.index &&
                       <input
                         type="text"
                         name="question"
@@ -326,7 +314,7 @@ const Questions = (props) => {
             </CSSTransition>
           ))}
         </TransitionGroup>
-        </div>
+      </div>
     </>
   );
 };

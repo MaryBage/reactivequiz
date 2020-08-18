@@ -53,7 +53,7 @@ select:hover {
   margin-right: 10px;
 }
 
-.createQuiz, .deleteAll {
+.createQuiz, .selectAll, .deleteAll {
   width: 130px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 17px;
