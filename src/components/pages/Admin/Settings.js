@@ -1,12 +1,15 @@
-import React, { useContext } from 'react'
+import React, {useContext} from 'react'
 import './Admin.css'
-import { THEME } from './context/types';
+import {THEME} from './context/types';
+import {connect} from "react-redux";
+import {updateSettings} from "../../../redux/user/user.actions"
 
 
-const Settings = ({ setThemeColor, id, theme }) => {
+const Settings = ({setThemeColor, id, theme, updateSettings}) => {
 
     const handleSelectChange = (e) => {
         e.preventDefault();
+        updateSettings({theme: e.target.value})
         setThemeColor(e.target.value, id)
     }
 
@@ -17,7 +20,7 @@ const Settings = ({ setThemeColor, id, theme }) => {
                 {Object.keys(THEME).map(color => <option
                     // selected={color == theme ? 'selected' : ''} 
                     value={color}
-                    style={{ color: `rgb(${THEME[color]})` }}>
+                    style={{color: `rgb(${THEME[color]})`}}>
                     &#9670; {color}
                 </option>)}
             </select>
@@ -25,4 +28,9 @@ const Settings = ({ setThemeColor, id, theme }) => {
     )
 }
 
-export default Settings;
+
+const mapDispatchToProps = dispatch => ({
+    updateSettings: (theme) => dispatch(updateSettings(theme)),
+});
+
+export default connect(null, mapDispatchToProps)(Settings);

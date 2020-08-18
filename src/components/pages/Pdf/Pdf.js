@@ -16,7 +16,7 @@ const ResultPdf = (props) => {
               <Text style={styles.tableCell}>Name</Text> 
             </View> 
             <View style={styles.tableCol}> 
-              <Text style={styles.tableCell}>{props.name}</Text>
+              <Text style={styles.tableCell}>{props.userName}</Text>
             </View>
           </View>
           <View style={styles.tableRow}>
