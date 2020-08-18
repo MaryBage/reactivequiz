@@ -62,7 +62,7 @@ const Quizes = (props) => {
                            className='linkToCopyInpt'/>
 
                     <table className='quizTable'>
-                        <tr key='quizHeader'>
+                        <tr key='quizHeader1'>
                             <th>#</th>
                             <th>Quiz name</th>
                             <th>Questions<br/>quantity</th>
@@ -111,8 +111,8 @@ const Quizes = (props) => {
                             </tr>
                         ))}
 
-                        <tr key='quizHeader'>
-                            <td colspan='7'>
+                        <tr key='quizHeader2'>
+                            <td colSpan='7'>
                                 <div className='tablePaging'>
                                     <div> show per page&nbsp;
                                         <select onChange={onRowperpageChange}>
