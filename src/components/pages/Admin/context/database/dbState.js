@@ -3,7 +3,7 @@ import axios from '../../../../../axios/axios-quiz'
 import { DbContext } from './dbContext'
 import { dbReducer } from './dbReducer'
 import {UserContext} from '../user/userContext'
-import { GET_DATA, GET_QUIZ, SET_LOADER } from "../types";
+import { GET_DATA, GET_QUIZ, SET_LOADER, GET_STUDENTS } from "../types";
 
 
 export const DbState = ({ children }) => {
@@ -12,6 +12,7 @@ export const DbState = ({ children }) => {
     const initialState = {
         questions: [],
         quizes: [],
+        students: [],
         loading: false
     }
 
@@ -131,7 +132,27 @@ export const DbState = ({ children }) => {
         getQuizes();
     } 
 
-    
+    const getStudents = async () =>{
+        setLoader();
+        
+      const res = await axios.post('/students.php', btoa(JSON.stringify({creator: id, action: 'get'})))
+      console.log(' getStudents',res.data)
+         const payload = res.data.map((student) => {
+                     return {
+                         name: student.name,
+                         email: student.email,
+                         quizId: student.quizId,
+                         result_json: student.result,
+                         result: 80,
+                         date: student.date
+                     }
+                 });
+
+         dispatch({
+             type:GET_STUDENTS,
+            payload
+         })
+    } 
 
     const setLoader = () => dispatch({type: SET_LOADER})
 
@@ -145,10 +166,12 @@ export const DbState = ({ children }) => {
             addQuizes,
             updateQuizes,
             deleteQuizes,
+            getStudents,
             setLoader, 
             questions: state.questions,
             quizes: state.quizes,
-            loading: state.loading 
+            students: state.students,
+            loading: state.loading, 
         }}>
             {children}
         </DbContext.Provider>

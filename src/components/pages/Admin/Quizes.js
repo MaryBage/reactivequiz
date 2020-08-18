@@ -131,6 +131,7 @@ const Quizes = (props) => {
                     : {}
                 }
                 name="name"
+                className = 'modalInptName'
                 onChange = {changeQuizInfo}
                 value={quizFormControls.name}
                 ref={register}

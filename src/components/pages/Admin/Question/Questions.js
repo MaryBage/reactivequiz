@@ -163,6 +163,7 @@ const Questions = (props) => {
                     : {}
                 }
                 name="name"
+                className = 'modalInptName'
                 ref={register}
               />
               <input

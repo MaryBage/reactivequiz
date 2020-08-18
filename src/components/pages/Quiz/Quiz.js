@@ -118,16 +118,20 @@ const Quiz = (props) => {
             <div className="quizBody">
                 <div className='quizLayout'>
                     <div className='sidenav'>
+                        {duration &&
+                            <>
+                                <Countdown renderer={({hours, minutes, seconds}) => (
+                                <span style={{color: '#fff', marginLeft: 15, paddingBottom: 25}}>
+                                        {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
+                                        </span>
+                                )}
+                                    date={+start + duration * 60000} 
+                                    onComplete = {() => alert('Timeout')}
+                                    style={{color: '#fff'}}/>
+                                <hr/>
+                            </>}
 
-                        <Countdown renderer={({hours, minutes, seconds}) => (
-                            <span style={{color: '#fff', marginLeft: 15, paddingBottom: 25}}>
-                                      {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
-                                    </span>
-                        )}
-                                   date={+start + duration * 60000} style={{color: '#fff'}}/>
-                        <hr/>
-                        {
-                            quiz.map((el, i) => {
+                        {quiz.map((el, i) => {
                                 return <a href="#"
                                           className={(i == quiz.findIndex(item => item.isActive)) ? 'activeQstn' : (el.isSubmitted ? 'passedQuestion' : null)}
                                           id={i} onClick={changeQuestion}>{el.isSubmitted ?

@@ -159,6 +159,9 @@ input::placeholder {
   max-width: 100%;
   margin: 0;
 }
+.modalInptName{
+  text-align: center;
+}
 
 .row {
     display:flex;
