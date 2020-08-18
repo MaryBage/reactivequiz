@@ -8,10 +8,10 @@ import { DbContext } from '../context/database/dbContext';
   return (
     <>
       <form action="" className="filterForm" style={{flexGrow:1}}>
-        <input type="text" name='question' onInput={props.onChangeHandler} placeholder="Search..."/>
+        <input type="text" name='question' onInput={props.onChangeHandler} placeholder="search..."/>
         <select name="category" onChange={props.onChangeHandler}>
         <option value="">category</option>
-        {props.options.map(e=><option  value={e}>{e}</option>)}
+        {props.options.map((e, i) => <option key={i} value={e}>{e}</option>)}
         </select>
         <select name="difficulty" onChange={props.onChangeHandler}>
           <option value="">level</option>
@@ -24,7 +24,6 @@ import { DbContext } from '../context/database/dbContext';
           <option value="single">single</option>
           <option value="multiple">multiple</option>
         </select>
-      
       </form>
     </>
   )

@@ -115,12 +115,18 @@
     outline: none;
     padding: 7px;
     font-family: 'Courier New', Courier, monospace;
-    /* font-style: italic; */
+    color: #757575;
     font-size: 17px;
     border: 1.5px solid #bbbbbb;
     border-radius: 5px;
 }
- .addForm span{
+
+input::placeholder {
+  color: #757575;
+  cursor: pointer;
+}
+
+.addForm span{
      padding-left: 10px;
      font-weight: bold;
 }
@@ -598,4 +604,8 @@
 hr {
   margin-bottom: 25px;
   border: 0.1px solid white;
+}
+
+button, input[type='submit'], input[type='button'] {
+  cursor: pointer;
 }

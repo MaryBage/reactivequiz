@@ -13,21 +13,9 @@
   margin: 0 0 20px 0;
 }
 
-/* .search {
-  width: 70%;
-  padding: 12px;
-  border: 1.5px solid #bbbbbb;
-  border-radius: 5px;
-  color: #757575;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 15px;
-  letter-spacing: 0.02857em;
-  outline: none;
-} */
-
 .selectsWrapper {
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .filters select {
@@ -43,14 +31,15 @@ outline: none;
 margin-left: 10px;
 }
 
+.filters input::placeholder {
+  color: #bbbbbb;
+}
+
 select:hover {
   border-color: #555555;
   color: #555555;
   font-weight: bold;
-}
-
-.search::placeholder {
-color: #bbbbbb;
+  cursor: pointer;
 }
 
 .buttonsWrapper {
@@ -64,7 +53,7 @@ color: #bbbbbb;
   margin-right: 10px;
 }
 
-.createQuiz, .deleteAll {
+.createQuiz, .selectAll, .deleteAll {
   width: 130px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 17px;
@@ -76,7 +65,9 @@ color: #bbbbbb;
   box-shadow: 2px 2px 5px rgba(0,0,0,.5);
   background-color: rgba(255,255,255,0.95);
 }
+
 .createQuiz { width: 150px!important; }
+
 .questions {
     width: 100%;
     font-size: 20px;
@@ -99,6 +90,12 @@ color: #bbbbbb;
     flex-direction: row;
     align-items: center;
     margin: 5px 5px 10px 5px;
+}
+
+.questionItemLi select:hover {
+    border-color: #555555;
+    color: #555555;
+    font-weight: bold;
 }
 
 .inputWrapper {
@@ -203,4 +200,3 @@ select .selected {
     font-size: 13px;
   }
 }
-

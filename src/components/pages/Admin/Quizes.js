@@ -235,8 +235,8 @@ const Quizes = (props) => {
                             </tr>
                         ))}
 
-                        <tr key='quizHeader'>
-                            <td colspan='7'>
+                        <tr key='quizHeader2'>
+                            <td colSpan='7'>
                                 <div className='tablePaging'>
                                     <div> show per page&nbsp;
                                         <select onChange={onRowperpageChange}>
@@ -269,6 +269,5 @@ const Quizes = (props) => {
 const mapDispatchToProps = dispatch => ({
     updateQuizInfo: (info) => dispatch(updateQuizInfo(info)),
 });
-
 
 export default connect(null, mapDispatchToProps)(Quizes);

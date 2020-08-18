@@ -40,45 +40,45 @@ const Questions = (props) => {
     name: "",
     duration: "",
   });
- 
+
   const [showAnswers, setShowAnswers] = useState([]);
   const [filteredValue, setFilteredValue] = useState(questions);
 
-  const [searching,setSearching] = useState({question: '', category:'', difficulty:'', type: '', timeout: 0});
+  const [searching, setSearching] = useState({ question: '', category: '', difficulty: '', type: '', timeout: 0 });
 
   useEffect(() => {
 
-   setFilteredValue(questions);
+    setFilteredValue(questions);
 
-  },[props])
-  
+  }, [props])
+
   useEffect(() => {
 
-    const filtArr= Object.keys(searching).filter(el => searching[el])
+    const filtArr = Object.keys(searching).filter(el => searching[el])
     let filtered = [];
-    if(props.match.params.detail){
-        const filterByQuiz = atob(props.match.params.detail).split(",")
-        filtered = questions.filter(e => filterByQuiz.includes(e.questionDbId))
+    if (props.match.params.detail) {
+      const filterByQuiz = atob(props.match.params.detail).split(",")
+      filtered = questions.filter(e => filterByQuiz.includes(e.questionDbId))
     }
     else filtered = [...questions]
 
     for (let key of filtArr) {
-        filtered = filtered.filter(el => el[key].includes(searching[key]))
+      filtered = filtered.filter(el => el[key].includes(searching[key]))
     }
     setFilteredValue(filtered)
 
-  },[searching])
-      
-  const [disappear, setDisappear] = useState({ disappear : false, index : null });
+  }, [searching])
+
+  const [disappear, setDisappear] = useState({ disappear: false, index: null });
 
   const makeToDisappear = (e, id) => {
     setDisappear({
       ...disappear,
-      disappear : true,
-      index : id
+      disappear: true,
+      index: id
     })
   }
-  
+
   const editInput = (e, id, table) => {
     e.preventDefault();
     if (e.target.value) {
@@ -132,9 +132,7 @@ const Questions = (props) => {
   };
 
   const onChangeHandler = (e) => {
-
-    setSearching({...searching,[e.target.name]:e.target.value})
-
+    setSearching({ ...searching, [e.target.name]: e.target.value })
   }
 
   return (
@@ -183,12 +181,12 @@ const Questions = (props) => {
                 <option key="enabled" value="enabled">
                   enabled
                 </option>
-                <option key="disabled" value="disabled">
-                  disabled
+            <option key="disabled" value="disabled">
+              disabled
                 </option>
-              </select>
-              <div className="createCancelDiv">
-                &nbsp;
+          </select>
+          <div className="createCancelDiv">
+            &nbsp;
                 <input type="submit" value="Confirm" name="create" />
     
               </div>
@@ -196,33 +194,26 @@ const Questions = (props) => {
         
         
       </Modal>
-        {props.location.hash && <div className='filterBy'>Filtered by quiz : {props.location.hash.slice(1)}</div>}
-        
-      
+      {props.location.hash && <div className='filterBy'>Filtered by quiz : {props.location.hash.slice(1)}</div>}
       <div className={s.questionWrapper}>
-      <div className={s.buttonsWrapper}>
-          <button className={s.createQuiz} name="createQuiz" onClick={openModal}>create quiz</button>
-          <button className={s.deleteAll} name="deleteAll" /*onClick={deleteAll}*/>delete all</button>
+        <div className={s.buttonsWrapper}>
+          <button className={s.createQuiz} name="createQuiz" onClick={openModal}>compose quiz</button>
+          <button className={s.selectAll}  name="selectAll" /*onClick={selectAll}*/>select all</button>
+          <button className={s.deleteAll}  name="deleteAll" /*onClick={deleteAll}*/>delete all</button>
         </div>
         <hr />
-      <div className="filterDiv">
-          
+        <div className="filterDiv">
           <Filters
-             onChangeHandler = {onChangeHandler}
-              options={questions
+            onChangeHandler={onChangeHandler}
+            options={questions
               .map((e) => e.category)
               .filter((e, i, arr) => i === arr.lastIndexOf(e))
               .sort()}
-              values={searching}                
+            values={searching}
           />
           {/* <button className='resetBtn' onClick={() => setSearching({question: '', category:'', difficulty:'', type: '', timeout: 0})}>&#8634;</button> */}
-      </div>
-     
-        
+        </div>
         <hr />
-       
-        
-      
         <TransitionGroup component="ul" className={s.questions}>
           {filteredValue.map((currentQuestion) => (
             <CSSTransition
@@ -249,16 +240,16 @@ const Questions = (props) => {
                       {!showAnswers.includes(currentQuestion.questionId) ? (
                         <ArrowDropDownIcon style={{ color: "#757575" }} />
                       ) : (
-                        <ArrowDropUpIcon style={{ color: "#757575" }} />
-                      )}
+                          <ArrowDropUpIcon style={{ color: "#757575" }} />
+                        )}
                     </div>
-                    <div 
-                      className={currentQuestion.questionId == disappear.index ? s.disappeared : s.appeared} 
+                    <div
+                      className={currentQuestion.questionId == disappear.index ? s.disappeared : s.appeared}
                       onDoubleClick={(e) => makeToDisappear(e, currentQuestion.questionId)}
                     >
                       {currentQuestion.question}
                     </div>
-                    { disappear.disappear && currentQuestion.questionId == disappear.index &&
+                    {disappear.disappear && currentQuestion.questionId == disappear.index &&
                       <input
                         type="text"
                         name="question"
@@ -322,7 +313,7 @@ const Questions = (props) => {
             </CSSTransition>
           ))}
         </TransitionGroup>
-        </div>
+      </div>
     </>
   );
 };
