@@ -14,6 +14,7 @@ const Quiz = (props) => {
 
   console.log('location.search',props.location.search.slice(1).split('&'))
   const duration = props.location.search.slice(1).split('&')[1].split('=')[1];
+  const start = props.location.search.slice(1).split('&')[2].split('=')[1];
 
   const [quiz, setQuiz] = useState([])
   const [conds, setConds] = useState({ trasition: false, loader: true, result: []})
@@ -138,7 +139,9 @@ const Quiz = (props) => {
                                       {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
                                     </span>
                                   )}
-                date={Date.now() + duration*60000} style={{color:'#fff'}}/>
+                date={+start + duration*60000} style={{color:'#fff'}}
+               />
+
                 <hr/>
               {
                 quiz.map((el, i) => {

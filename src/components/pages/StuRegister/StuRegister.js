@@ -26,7 +26,7 @@ const StuRegister = (props) => {
         e.preventDefault();
         props.history.push({
             pathname:`/quiz/${props.match.params.detail}`,
-            search: `${props.location.search}&name=${data.displayName}&email=${data.email}`,
+            search: `${props.location.search}&start=${Date.now()}&name=${data.displayName}&email=${data.email}`,
             hash: `${props.location.hash}`
         })
     }

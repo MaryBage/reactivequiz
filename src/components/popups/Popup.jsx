@@ -67,7 +67,7 @@ const Popup = (props) => {
         <>
         {openPdf ? <PDFViewer style={{width: '100%', height: '100vh'}}>
                     <ResultPdf res={props.res} {...stuInfo} score={`${result}/${total}`} percentage={coefficient}/>
-            </PDFViewer> :
+                    </PDFViewer> :
         <div className="popup-container">
             <div
                 className={s.popupWrapper}
