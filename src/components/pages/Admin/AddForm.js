@@ -173,7 +173,7 @@ return (
   style= {!addValidation.point ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
   placeholder='Score'/> 
                   </div>
-                    {answers.map((_, i) => <div className='row'> 
+                    {answers.map((_, i) => <div key={i} className='row'> 
                     {qstnType ==='single' ? 
                             <input ref={register} 
                             type='radio' 
