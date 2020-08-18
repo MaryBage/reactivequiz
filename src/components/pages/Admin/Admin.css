@@ -1,5 +1,4 @@
 .header {
-    position: absolute;
     left: 0; 
     right: 0;
     height: 92px;
@@ -14,8 +13,9 @@
 }
 
 .quizesWrapper {
+    height: 67%;
     width: 80%;
-    margin-top: 30px;
+    margin-top: 50px;
     border-radius: 15px;
     padding: 15px;
     box-shadow: 5px 5px 25px rgba(0,0,0,.5);
@@ -48,19 +48,16 @@
 }
 
 .sidebar-left{
-  height: 100vh;
-  left: 0;
+  height: 86vh;
   float: left;
   width: 250px;
   padding: 0 20px;
   animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
   display: flex;
-  justify-content: center;
   flex-direction: column;
 }
 
 .buttonsWrapper {
-  margin-top: -50px;
   width: 250px;
   animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
   display: flex;
@@ -81,9 +78,8 @@
 }
 
 .mainAdmin{
-  height: 100vh;
+  height: 86vh;
   display: flex;
-  align-items: center;
   justify-content: center;
   left: 290px;
   right: 0;
@@ -98,12 +94,13 @@
     background-color: lightblue;
 }
 
-.addForm{
-  width: 80%;
+.addForm {
+  height: 80%;
+  width: 65%;
   font-size: 18px;
   border-radius: 15px;
   padding: 15px;
-  margin-top: 110px;
+  margin-top: 50px;
   box-shadow: 5px 5px 25px rgba(0,0,0,.5);
   color: #555555;
 }
@@ -136,9 +133,6 @@ input::placeholder {
     display:flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: flex-start;
-    flex-grow: 1;
-    width:100%; */
 }
 
 .addForm input[type="number"] {
@@ -148,7 +142,7 @@ input::placeholder {
 .addForm input[type="submit"] {
     border: 2px solid #bbbbbb;
     font-weight: bold;
-    margin: auto;
+    margin: 5px auto;
     padding: 10px;
     color: #555555;
 }
@@ -196,8 +190,7 @@ input::placeholder {
     margin: 7px;
 }
 
-.getLinkBtn{
-
+.getLinkBtn {
   width: 130px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 17px;
