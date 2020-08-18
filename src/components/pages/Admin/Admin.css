@@ -13,7 +13,7 @@
 }
 
 .quizesWrapper {
-    height: 67%;
+    height: min-content;
     width: 80%;
     margin-top: 50px;
     border-radius: 15px;
