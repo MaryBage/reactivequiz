@@ -1,6 +1,6 @@
 .questionWrapper {
-  margin: 0 auto;
   border-radius: 15px;
+  margin: 50px 50px;
   padding: 15px;
   box-shadow: 5px 5px 25px rgba(0,0,0,.5);
 }

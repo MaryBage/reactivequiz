@@ -14,7 +14,7 @@
 }
 
 .quizesWrapper {
-  margin: 0 auto;
+  margin: 50px 50px;
   border-radius: 15px;
   padding: 15px;
   box-shadow: 5px 5px 25px rgba(0,0,0,.5);
@@ -49,13 +49,12 @@
     position:absolute;
     left:0; 
     top:102px; 
-    /*bottom: 0;*/
     width: 250px;
     padding: 0 20px;
     animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
     display: flex;
     flex-direction: column;
-    min-height:800px;
+    height: 100%;
 }
 
 .sidebar-left .linear ::before {
@@ -75,10 +74,8 @@
     left:290px; 
     top:102px; 
     right:0;
-   /* bottom:0;*/
-    padding:50px;
     animation: 800ms ease-out 0s 1 slideInFromRightAdm;
-    min-height:800px;
+    height: 100%;
 }
 
 .footer{
@@ -90,13 +87,10 @@
 }
 
 .addForm{
-    /* width:600px;
-    min-width: 600px; */
-    width: 65%;
     font-size: 18px;
-    margin: 0 auto;
     border-radius: 15px;
     padding: 15px;
+    margin: 50px 100px;
     box-shadow: 5px 5px 25px rgba(0,0,0,.5); 
     color: #555555;
 }
