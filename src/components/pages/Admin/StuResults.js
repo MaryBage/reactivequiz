@@ -124,7 +124,7 @@ return (
           <option value='name'>Name</option>
           <option value='email'>Email</option>
         </select>
-    <hr/>
+        <hr style={{margin:'25px 0px'}}/>
         <div className='quizesTableDiv'>
              <table className='quizTable'>
               <tbody>
