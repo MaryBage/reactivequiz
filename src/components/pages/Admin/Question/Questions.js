@@ -36,7 +36,6 @@ const Questions = (props) => {
   const [hint, setHint] = useState({hint : false, index : null});
   const [filteredValue, setFilteredValue] = useState(questions);
   const [searching, setSearching] = useState({ question: '', category: '', difficulty: '', type: '', timeout: 0 });
-  const [disappear, setDisappear] = useState({ disappear: false, index: null });
   const [checkAll, setCheckAll] = useState(false);
 
   console.log('filteredValue',filteredValue)
