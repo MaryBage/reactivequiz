@@ -1,6 +1,5 @@
 .containerAdmin{
   display: grid;
-
   grid-template-areas:
     "header header "
     "nav content ";
@@ -51,10 +50,9 @@
       auto /* Header */
       minmax(75px, auto) /* Nav */
       1fr /* Content */
-
   }
 
-  .sidebar-left {
+.sidebar-left {
     margin: 0;
   }
 }
@@ -121,7 +119,7 @@
   margin: 0 auto;
 }
 
- .addForm input, select, textarea{
+.addForm input, select, textarea{
     outline: none;
     padding: 7px;
     font-family: 'Courier New', Courier, monospace;
@@ -141,14 +139,10 @@ input::placeholder {
      font-weight: bold;
 }
 
-
 .addForm form{
     display:flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: flex-start;
-    flex-grow: 1;*/
-   
 }
 
 .addForm input[type="number"] {
@@ -162,7 +156,6 @@ input::placeholder {
     padding: 10px;
     color: #555555;
 }
-
 
 .wideRow, .addForm textarea {
     width: 100%;
@@ -509,11 +502,11 @@ input::placeholder {
     }
   }
 
-  .resetBtn:hover{
+.resetBtn:hover{
     cursor: pointer;
-  }
+}
 
-  .resetBtn {
+.resetBtn {
     font-style: normal!important;
     font-weight: bold;
     font-size: 20pt!important;
@@ -521,15 +514,16 @@ input::placeholder {
     margin-top: 3px;
     color: black;
     border: none!important
-  }
-  .addFormHeader {
+}
+
+.addFormHeader {
     padding: 5px;
     text-align: center;
     font-size: 23pt;
     font-weight: bold;
-  }
+}
 
-  @keyframes successAnim {
+@keyframes successAnim {
  
     0% {
       opacity: .7;
@@ -540,7 +534,7 @@ input::placeholder {
       opacity: 1;
       transform: scale(1);
     }
-  }
+}
 
 .quizesTableDiv {
     display: grid;
