@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
+import {UserContext} from './context/user/userContext'
 
 const customStyles = {
   content: {
@@ -25,6 +26,7 @@ const customStyles = {
 
 
 const Quizes = (props) => {
+    const { id } = useContext(UserContext)
     const {deleteQuizes, quizes, updateQuizes} = useContext(DbContext)
     const [page, setPage] = useState(0)
     const [rowperpage, setRowperpage] = useState(5)
@@ -38,6 +40,13 @@ const Quizes = (props) => {
     });
     const { register, handleSubmit } = useForm();
     const inptRef = useRef(null);
+    const [changedQuizes, setChangedQuizes] = useState([])
+    const [orderingName, setOrderingName] = useState(false)
+    
+    useEffect(()=>{
+
+      setChangedQuizes(quizes)
+    },[quizes])
 
     function copyToClipboard(e, duration) {
 
@@ -49,7 +58,7 @@ const Quizes = (props) => {
         document.execCommand('copy');
         e.target.focus();
         setCopySuccess({id: e.target.id, copied: true});
-        props.updateQuizInfo({duration: duration, quizId: e.target.id, quizName: e.target.name});
+        props.updateQuizInfo({duration: duration, quizId: e.target.id, quizName: e.target.name, creator:id});
         setTimeout(() => {
             setCopySuccess({...copySuccess, copied: false});
         }, 1500)
@@ -105,6 +114,51 @@ const Quizes = (props) => {
           name: data.name || "empty",
         });
     };
+
+    const sortingBy = (e, field) => {
+      let orderBy = true ;
+
+      function compare(a, b, order = 1) {
+        // Use toUpperCase() to ignore character casing
+        const quizA = a.name.toUpperCase();
+        const quizB = b.name.toUpperCase();
+      
+        let comparison = 0;
+        if (quizA > quizB) {
+          comparison = 1;
+        } else if (quizA < quizB) {
+          comparison = -1;
+        }
+        return comparison * order;
+      }
+
+      switch (field) {
+          case 'name':
+                setOrderingName(!orderingName)
+                setChangedQuizes(orderingName 
+                                  ? changedQuizes.sort((a,b)=>compare(a,b,-1)).map(e => e) 
+                                  : changedQuizes.sort(compare).map(e => e))
+          break;
+          case 'duration':
+            orderBy =  changedQuizes[0][field] >= changedQuizes[changedQuizes.length - 1 ][field];
+            setChangedQuizes(changedQuizes.sort((a, b) => orderBy 
+                              ? a[field] - b[field] 
+                              : b[field] - a[field]).map(e => e))
+          break;
+          case 'questions':
+            orderBy =  changedQuizes[0][field].length >= changedQuizes[changedQuizes.length - 1 ][field].length;
+            setChangedQuizes(changedQuizes.sort((a, b) => orderBy 
+                              ? a[field].length - b[field].length 
+                              : b[field].length - a[field].length).map(e => e))
+          break;
+      }
+    }
+    const searchHandler = (e) => {
+      if(e.target.value)
+        setChangedQuizes([...changedQuizes.filter( el => el.name.includes(e.target.value))])
+        else
+          setChangedQuizes(quizes)
+    }
 
     return (
       <>
@@ -169,9 +223,12 @@ const Quizes = (props) => {
 
       </Modal>
 
-
+        
         <div className='quizesWrapper'>
-            {quizes.length ?
+        <input type="text" name='quiz' className='searchField' onInput={searchHandler} placeholder="search..."/>
+        
+        <hr/>
+            {changedQuizes.length ?
                 <div className='quizesTableDiv'>
                     <input type='text'
                            ref={inptRef}
@@ -182,16 +239,16 @@ const Quizes = (props) => {
                         <tr key='quizHeader'>
                             <th>#</th>
                             <th></th>
-                            <th>Quiz name</th>
-                            <th>Questions<br/>quantity</th>
-                            <th>Duration<br/>in minutes</th>
+                            <th style={{width: 200}}><div className='sorting' name='questionsLength' onDoubleClick={(e) => sortingBy(e, 'name')}>Quiz name</div></th>
+                            <th><div className='sorting' name='questionsLength' onDoubleClick={(e) => sortingBy(e, 'questions')}>Questions<br/>quantity</div></th>
+                            <th><div className='sorting' name='duration' onDoubleClick={(e) => sortingBy(e, 'duration')}>Duration<br/>in minutes</div></th>
                             <th>Quiz link</th>
                             <th>Status</th>
                             <th></th>
                         </tr>
 
 
-                        {quizes.slice(page, rowperpage + page).map((quiz, i) => (
+                        {changedQuizes.slice(page, rowperpage + page).map((quiz, i) => (
                             <tr key={`1${quiz.dbId}`}>
                                 <td>{i + 1 + page}</td>
                                 <td><FontAwesomeIcon id='editQuiz' icon={faEdit} 

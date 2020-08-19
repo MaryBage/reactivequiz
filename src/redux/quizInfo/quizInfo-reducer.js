@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
     duration: null,
+    creator: null,
     start: null,
     quizId: null,
     quizName: null,

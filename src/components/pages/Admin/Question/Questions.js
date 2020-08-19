@@ -26,31 +26,27 @@ const customStyles = {
 };
 
 const Questions = (props) => {
-  const {
-    deleteData,
-    questions,
-    addQuizes,
-    updateData,
-  } = useContext(DbContext);
-
+  const { deleteData, questions, addQuizes, updateData, } = useContext(DbContext);
   const [selectedQstns, setSelectedQstns] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const { register, handleSubmit } = useForm();
-  const [quizFormControls, setFormControls] = useState({
-    name: "",
-    duration: "",
-  });
-
+  const [quizFormControls, setFormControls] = useState({name: "", duration: ""});
   const [showAnswers, setShowAnswers] = useState([]);
   const [filteredValue, setFilteredValue] = useState(questions);
-
   const [searching, setSearching] = useState({ question: '', category: '', difficulty: '', type: '', timeout: 0 });
+  const [disappear, setDisappear] = useState({ disappear: false, index: null });
+  const [checkAll, setCheckAll] = useState(false);
+
+  console.log('filteredValue',filteredValue)
 
   useEffect(() => {
 
     setFilteredValue(questions);
 
   }, [props])
+
+  console.log('selectedQstns',selectedQstns)
+  console.log('checkAll 2',checkAll)
 
   useEffect(() => {
 
@@ -69,7 +65,20 @@ const Questions = (props) => {
 
   }, [searching])
 
-  const [disappear, setDisappear] = useState({ disappear: false, index: null });
+  useEffect(() => {
+
+    checkAll 
+        && setSelectedQstns(filteredValue.map(e => e. questionDbId))
+ 
+    }, [checkAll])
+
+     useEffect(() => {
+
+        if (selectedQstns.length > 0 && selectedQstns.length < filteredValue.length) setCheckAll(false)
+        if (selectedQstns.length === filteredValue.length) setCheckAll(true)
+
+     }, [selectedQstns])
+  
 
   const makeToDisappear = (e, id) => {
     setDisappear({
@@ -112,11 +121,14 @@ const Questions = (props) => {
   function closeModal() {
     setIsOpen(false);
   }
-
+  console.log(selectedQstns)
   const onchangeHandler = (e) => {
-    if (selectedQstns.includes(e.target.value))
-      setSelectedQstns(selectedQstns.filter((el) => el != e.target.value));
-    else setSelectedQstns([...selectedQstns, e.target.value]);
+
+   
+        if (selectedQstns.includes(e.target.value))
+        setSelectedQstns(selectedQstns.filter((el) => el != e.target.value));
+        else setSelectedQstns([...selectedQstns, e.target.value]);
+    
   };
 
   const sbmtHandler = async (data) => {
@@ -124,6 +136,7 @@ const Questions = (props) => {
     if (data.name && data.duration) {
       addQuizes(data)
       closeModal()
+      setSelectedQstns([]);
     } else
       setFormControls({
         duration: data.duration || "empty",
@@ -132,8 +145,27 @@ const Questions = (props) => {
   };
 
   const onChangeHandler = (e) => {
+    
     setSearching({ ...searching, [e.target.name]: e.target.value })
   }
+
+  const selectAll = () => {
+    // setCheckAll(!checkAll)
+    console.log('checkAll 1',checkAll)
+    if(checkAll){
+     setCheckAll(false)
+     setSelectedQstns([])
+    }
+    else {
+        setCheckAll(true)
+    }
+   
+  }
+
+  const deleteAll = () => {
+   selectedQstns.map(e => deleteData(e));
+   setSelectedQstns([]);
+}
 
   return (
     <>  
@@ -199,8 +231,8 @@ const Questions = (props) => {
       <div className={s.questionWrapper}>
         <div className={s.buttonsWrapper}>
           <button className={s.createQuiz} name="createQuiz" onClick={openModal}>compose quiz</button>
-          <button className={s.selectAll}  name="selectAll" /*onClick={selectAll}*/>select all</button>
-          <button className={s.deleteAll}  name="deleteAll" /*onClick={deleteAll}*/>delete all</button>
+          <button className={s.selectAll}  name="selectAll" onClick={selectAll}>{checkAll ? 'un' : null}select all</button>
+          <button className={s.deleteAll}  name="deleteAll" onClick={deleteAll}>delete all</button>
         </div>
         <hr />
         <div className="filterDiv">
@@ -228,8 +260,8 @@ const Questions = (props) => {
                     <input
                       type="checkbox"
                       value={currentQuestion.questionId}
-                      checked={selectedQstns.includes(
-                        currentQuestion.questionDbId
+                      checked={checkAll || selectedQstns.includes(
+                        currentQuestion.questionDbId 
                       )}
                       value={currentQuestion.questionDbId}
                       onChange={onchangeHandler}

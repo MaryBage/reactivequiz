@@ -112,6 +112,7 @@ export const DbState = ({ children }) => {
 
     const updateQuizes = async (data) =>{
         setLoader();
+        console.log('updateQuizes',data);
 
         await axios.post('/quizData.php', btoa(JSON.stringify({
                     action: 'update', 
@@ -139,11 +140,13 @@ export const DbState = ({ children }) => {
       console.log(' getStudents',res.data)
          const payload = res.data.map((student) => {
                      return {
+                        quizName: student.quizName,
                          name: student.name,
                          email: student.email,
                          quizId: student.quizId,
-                         result_json: student.result,
-                         result: 80,
+                         result_json: student.result_json,
+                         score: student.score,
+                         percentage: student.percentage,
                          date: student.date
                      }
                  });

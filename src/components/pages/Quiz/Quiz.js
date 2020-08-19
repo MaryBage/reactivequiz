@@ -14,11 +14,11 @@ const Quiz = (props) => {
     const params = props.match.params.detail
           ? atob(props.match.params.detail)
           : JSON.stringify(props)
-    const {start, duration} = props.quizInfo
+    const {start, duration, creator} = props.quizInfo
 
 
     const [quiz, setQuiz] = useState([])
-    const [conds, setConds] = useState({trasition: false, loader: true, result: []})
+    const [conds, setConds] = useState({trasition: false, loader: true, result: [], creator})
     useEffect(() => {
 
         axios
@@ -95,19 +95,22 @@ const Quiz = (props) => {
         }));
     }
 
-    const finishQuiz = (e) => {
-        e.preventDefault();
+    const finishQuiz = () => {
+        
         const params = {
             quiz: {},
+            start: !!start,
             ...props.quizInfo
         };
         quiz.forEach(questionItem => {
-            params.quiz[questionItem.questionDbId] = questionItem.userAnswer.join();
+                params.quiz[questionItem.questionDbId] = questionItem.userAnswer.join();
         })
+
+  
         axios
             .post(`/calcResult.php`, btoa(JSON.stringify(params)))
             .then(res => {
-                setConds({...conds, result: res.data})
+             setConds({...conds, result: res.data})
             })
     }
 
@@ -126,11 +129,17 @@ const Quiz = (props) => {
                                         </span>
                                 )}
                                     date={+start + duration * 60000} 
-                                    onComplete = {() => alert('Timeout')}
+                                    onComplete = {finishQuiz}
                                     style={{color: '#fff'}}/>
                                 <hr/>
                             </>}
-
+                            <input type='button'
+                               className='finishBtn'
+                               value='finish'
+                               key='finish'
+                               disabled={!quiz.every(e => e.userAnswer.length)}
+                               onClick={finishQuiz}/>
+                               
                         {quiz.map((el, i) => {
                                 return <a href="#"
                                           className={(i == quiz.findIndex(item => item.isActive)) ? 'activeQstn' : (el.isSubmitted ? 'passedQuestion' : null)}
@@ -138,12 +147,7 @@ const Quiz = (props) => {
                                     <span>&#10004;</span> : null} Question {i + 1}</a>
                             })
                         }
-                        <input type='button'
-                               className='finishBtn'
-                               value='finish'
-                               key='finish'
-                               disabled={!quiz.every(e => e.userAnswer.length)}
-                               onClick={finishQuiz}/>
+                        
                     </div>
 
                     <ActiveQuiz

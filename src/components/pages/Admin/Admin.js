@@ -38,11 +38,11 @@ const Admin = () => {
 
         
 return (
-    
       <>
-            <div className="header" style={{backgroundColor: `rgba(${THEME[theme]})`}}>
-                <div style={{width: '80%'}} ><Link to='/admin' className="logoAdmin">reActive</Link> </div>
-                <div style={{display:'flex', flexDirection:'column',justifyContent: 'center'}}>
+      <div className='containerAdmin'>
+        <div className="header" style={{backgroundColor: `rgba(${THEME[theme]})`}}>
+            <div style={{width: '80%'}} ><Link to='/admin' className="logoAdmin">reActive</Link> </div>
+            <div style={{display:'flex', flexDirection:'column',justifyContent: 'center'}}>
                     <span className='displayName'>Hello, {user.displayName}!</span>
                     <button 
                     className='logout'
@@ -55,15 +55,17 @@ return (
                 </div>
             </div>
             <div className="sidebar-left" style={{ backgroundColor: `rgba(${THEME[theme]},.45)` }}>
-                <CustomButton component={Link} to="/admin/addquestions">{adminNav[0]}</CustomButton>
-                <CustomButton component={Link} to="/admin/questions" linear='true'>{adminNav[1]}({db.questions.length})</CustomButton>
-                <CustomButton component={Link} to="/admin/quizes" linear="true">{adminNav[2]}({db.quizes.length})</CustomButton>
-                <CustomButton component={Link} to="/admin/students_results" linear="true">{adminNav[3]}</CustomButton>
-                <button className="settingsButton" onClick={makeToShow}>
-                    <SettingsIcon style={{color:"#fff"}}/>
-                    {adminNav[4]}
-                </button>
-                {showSettings && <SettingsMenu />}
+                
+                    <CustomButton component={Link} to="/admin/addquestions">{adminNav[0]}</CustomButton>
+                    <CustomButton component={Link} to="/admin/questions" linear='true'>{adminNav[1]}({db.questions.length})</CustomButton>
+                    <CustomButton component={Link} to="/admin/quizes" linear="true">{adminNav[2]}({db.quizes.length})</CustomButton>
+                    <CustomButton component={Link} to="/admin/students_results" linear="true">{adminNav[3]}</CustomButton>
+                    <button className="settingsButton" onClick={makeToShow}>
+                        <SettingsIcon style={{color:"#fff"}}/>
+                        {adminNav[4]}
+                    </button>
+                    {showSettings && <SettingsMenu />}
+                
             </div>
             <div className="mainAdmin" style={{ backgroundColor: `rgba(${THEME[theme]},.15)` }}>
                 <Switch >
@@ -76,6 +78,7 @@ return (
                     <Route path='/admin/' exact component={AddForm} />
                     
                 </Switch>
+            </div>
             </div>
         </>
     )

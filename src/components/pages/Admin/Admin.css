@@ -1,23 +1,70 @@
+.containerAdmin{
+  display: grid;
+
+  grid-template-areas:
+    "header header "
+    "nav content ";
+  grid-template-columns: 290px 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+}
+
 .header {
-    position: absolute;
-    left: 0; 
-    right: 0;
-    height: 92px;
-    padding: 5px 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 19px;
-    color: white;
-    animation: 800ms ease-out 0s 1 slideInFromAboveAdm;
+  grid-area: header;
+  height: 92px;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 19px;
+  color: white;
+  animation: 800ms ease-out 0s 1 slideInFromAboveAdm;
+}
+
+.sidebar-left {
+  grid-area: nav;
+  margin-left: 0;
+  width: 250px;
+  padding: 0 20px;
+  animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.mainAdmin {
+  grid-area: content;
+  padding: 45px 100px;
+  animation: 800ms ease-out 0s 1 slideInFromRightAdm;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-areas:
+      "header"
+      "nav"
+      "content";
+
+    grid-template-columns: 1fr;
+    grid-template-rows:
+      auto /* Header */
+      minmax(75px, auto) /* Nav */
+      1fr /* Content */
+
+  }
+
+  .sidebar-left {
+    margin: 0;
+  }
 }
 
 .quizesWrapper {
-  margin: 50px 50px;
-  border-radius: 15px;
-  padding: 15px;
-  box-shadow: 5px 5px 25px rgba(0,0,0,.5);
+    width: 100%;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 5px 5px 25px rgba(0,0,0,.5);
+    color: #555555;
 }
 
 .logoAdmin {
@@ -45,17 +92,13 @@
     cursor: pointer;
 }
 
-.sidebar-left{
-    position:absolute;
-    left:0; 
-    top:102px; 
-    width: 250px;
-    padding: 0 20px;
-    animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
+/* .buttonsWrapper {
+  width: 250px;
+  animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+} */
 
 .navAdmin {
   
@@ -78,31 +121,16 @@
   color: #fff;
 }
 
-.mainAdmin{
-    position: absolute;
-    left:290px; 
-    top:102px; 
-    right:0;
-    animation: 800ms ease-out 0s 1 slideInFromRightAdm;
-    height: 100%;
-}
 
-.footer{
-    clear:both;
-    height: 50px;
-    width: 100%;
-    text-align: center;
-    background-color: lightblue;
-}
 
 .addForm{
-    font-size: 18px;
-    border-radius: 15px;
-    padding: 15px;
-    margin: 50px 100px;
-    box-shadow: 5px 5px 25px rgba(0,0,0,.5); 
-    color: #555555;
-    min-width: 350px;
+  width:65%; 
+  min-width: 350px;
+  font-size: 18px;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 5px 5px 25px rgba(0,0,0,.5);
+  color: #555555;
 }
 
  .addForm input, select, textarea{
@@ -125,17 +153,14 @@ input::placeholder {
      font-weight: bold;
 }
 
-.addForm h3{
-    text-align:center;
-}
 
 .addForm form{
     display:flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    flex-grow: 1;
-    width:100%;
+    /* align-items: flex-start;
+    flex-grow: 1;*/
+   
 }
 
 .addForm input[type="number"] {
@@ -215,6 +240,9 @@ input::placeholder {
     background: none;
     border-radius: 15px;
     box-shadow: 2px 2px 2px rgba(0,0,0,.5); */
+}
+.sorting {
+  cursor: pointer;
 }
 
 .pointer {
@@ -439,7 +467,7 @@ input::placeholder {
 */
 }
 
-.filterForm input[type='text'] {
+.filterForm input[type='text'], .searchField {
   
     width: 50%;
     padding: 9px;
@@ -450,17 +478,6 @@ input::placeholder {
     font-size: 17px;
     letter-spacing: 0.02857em;
     outline: none;
-  
-  
-  /* outline: none;
-  padding: 5px;
-  border-radius: 7px;
-  font-family: 'Courier New', Courier, monospace;
-  font-style: italic;
-  font-size: 17px;
-  box-shadow: 2px 2px 2px rgba(0,0,0,.5);
-  border: none;
-  width: 50%; */
 }
 
 .filterForm select {
@@ -511,10 +528,11 @@ input::placeholder {
   .resetBtn {
     font-style: normal!important;
     font-weight: bold;
-    font-size: 22pt!important;
+    font-size: 20pt!important;
     background: none;
     margin-top: 3px;
     color: black;
+    border: none!important
   }
   .addFormHeader {
     padding: 5px;
