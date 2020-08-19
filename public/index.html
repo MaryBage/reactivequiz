@@ -11,17 +11,6 @@
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <script>
-      window.onblur = function  () {
-        let nodeList = document.getElementsByTagName("link");
-        for (let i = 0; i < nodeList.length; i++) {
-          if(nodeList[i].getAttribute("rel") == "icon") {
-            nodeList[i].removeAttribute("href");
-            nodeList[i].setAttribute("href", "%PUBLIC_URL%/reactive.png");
-          }
-        }
-      }
-    </script>
     <title>React App</title>
   </head>
   <body>
