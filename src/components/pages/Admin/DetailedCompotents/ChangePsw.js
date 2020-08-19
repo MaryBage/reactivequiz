@@ -2,8 +2,8 @@ import React, { useState, useContext } from "react";
 import s from "./ChangePsw.module.css";
 import { CSSTransition } from "react-transition-group";
 import { useForm } from "react-hook-form";
-import axios from '../../../../axios/axios-quiz'
-import { UserContext } from '../context/user/userContext'
+import axios from '../../../../axios/axios-quiz';
+import { UserContext } from '../context/user/userContext';
 
 const ChangePsw = () => {
 
@@ -14,12 +14,16 @@ const ChangePsw = () => {
        const [success, setSuccess] = useState(false);
 
        const sbmtHandler = data => {
+              // console.log(data);
               if (data.psw != data.confirmed) {
-                     setMatch(true)
+                     setMatch(true);
+              }
+              if (data.psw || data.confirmed === "") {
+                     return;
               }
               else {
-                     axios.post(`/reset.php`, btoa(JSON.stringify({ action: 'change', newPsw: data.psw, creator: id })))
-                            .then(res => setSuccess(res.data.success))
+                  axios.post(`/reset.php`, btoa(JSON.stringify({action: 'change', newPsw: data.psw, creator: id})))
+                     .then(res => setSuccess(res.data.success));
               }
        }
 
@@ -57,7 +61,6 @@ const ChangePsw = () => {
                      </div>
               </>
        )
-
 }
 
 export default ChangePsw;
