@@ -1,22 +1,25 @@
 import React, { useState, useContext } from "react";
 import "./ChangePsw.css";
-import { CSSTransition } from "react-transition-group";
 import { useForm } from "react-hook-form";
 import axios from '../../../../axios/axios-quiz'
 import {UserContext} from '../context/user/userContext'
 
 const ChangePsw=()=>{
 const { id } = useContext(UserContext)
-const [toggle,settoggle]=useState(false);
+
 const { register, handleSubmit } = useForm();
-const onClickHandler=()=>(settoggle(!toggle)) 
+
 const [match, setMatch] = useState(false)
 const [success, setSuccess] = useState(false)
 
 const sbmtHandler = data => {
        console.log(data);
-       if(data.psw != data.confirmed)
+       if(data.psw != data.confirmed){
               setMatch(true)
+       }
+            if(data.psw||data.confirmed==="") {
+                   return
+            }
        else{
            axios.post(`/reset.php`, btoa(JSON.stringify({action: 'change', newPsw: data.psw, creator: id})))
               .then(res => setSuccess(res.data.success))
@@ -27,16 +30,8 @@ const sbmtHandler = data => {
 
  return (
 <>
-<br/><br/>
- <button type="button" className='changePswBtn' onClick={onClickHandler}>Change password</button>
 
-<hr/>
-<CSSTransition
-  in={toggle}
-  timeout={10}
-  classNames="formanimation"
-   unmountOnExit
-> </CSSTransition>
+
 {match && <span>Passwords don't match</span>}
 {success && <span>Your password is successfully changed!</span>}
 <form className="container" onSubmit={handleSubmit(sbmtHandler)}>
@@ -45,7 +40,7 @@ const sbmtHandler = data => {
 
 <input ref={register} name='confirmed' className={"cngpasswordlabel"} key='2' type="password" placeholder="retype new" /><br/>
 
-<input value="save changes" type="submit" />
+<input value="save changes" type="submit"  className={"cngpasswordlabel"} />
 </form>
 
 
