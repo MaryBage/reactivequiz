@@ -92,18 +92,8 @@
     cursor: pointer;
 }
 
-/* .buttonsWrapper {
-  width: 250px;
-  animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
-  display: flex;
-  flex-direction: column;
-} */
-
 .navAdmin {
-  
-  
   overflow-x: hidden;
-
   box-shadow: 10px 0px 25px rgba(0,0,0,.5);
   animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
 }
@@ -120,8 +110,6 @@
   color: #fff;
 }
 
-
-
 .addForm{
   width:65%; 
   min-width: 350px;
@@ -130,6 +118,7 @@
   padding: 15px;
   box-shadow: 5px 5px 25px rgba(0,0,0,.5);
   color: #555555;
+  margin: 0 auto;
 }
 
  .addForm input, select, textarea{

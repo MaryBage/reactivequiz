@@ -2,14 +2,12 @@
   display: flex;
   flex-direction: column;
   width: 90%;
-  padding: 30px 0;
-  margin: 0 50px;
 }
 
 h1 {
   color: #555555;
   letter-spacing: 1.8px;
-  margin-bottom: 5px;
+  margin-top: 0;
 }
 
 .formWrapper {
@@ -18,13 +16,13 @@ h1 {
   justify-content: space-between;
   height: 35%;
   width: 60%;
-  margin: 50px 0 45px 0;
+  margin: 50px 0 0 0;
 }
 
 .inputWrapper, .submitWrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 .inputWrapper div {
@@ -34,6 +32,7 @@ h1 {
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   letter-spacing: 1px;
+  margin-right: 30px;
 }
 
 .inputWrapper input[type="password"], .changePswSubmit {
@@ -55,6 +54,7 @@ h1 {
 
 .submitWrapper div {
   width: 30%;
+  margin-right: 30px;
 }
 
 .changePswSubmit {
