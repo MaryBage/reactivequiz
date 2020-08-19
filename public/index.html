@@ -16,8 +16,8 @@
         let nodeList = document.getElementsByTagName("link");
         for (let i = 0; i < nodeList.length; i++) {
           if(nodeList[i].getAttribute("rel") == "icon") {
-            nodeList[i].removeAttribute("href"),
-            nodeList[i].setAttribute("href", "%PUBLIC_URL%/reactive.png")
+            nodeList[i].removeAttribute("href");
+            nodeList[i].setAttribute("href", "%PUBLIC_URL%/reactive.png");
           }
         }
       }
