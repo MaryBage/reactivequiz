@@ -1,19 +1,52 @@
 import React, {useContext, useState, useRef, useEffect} from 'react'
 import {DbContext} from './context/database/dbContext';
 import './Admin.css'
-
 import {ArrowLeft, ArrowRight} from '@material-ui/icons';
 import {updateQuizInfo} from "../../../redux/quizInfo/quizInfo.actions";
 import {connect} from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import Modal from "react-modal";
+import { useForm } from "react-hook-form";
+import {UserContext} from './context/user/userContext'
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    borderRadius: 15,
+    border: "none",
+    boxShadow: "5px 5px 25px rgba(0,0,0,.5)",
+  },
+};
 
 
 const Quizes = (props) => {
+    const { id } = useContext(UserContext)
     const {deleteQuizes, quizes, updateQuizes} = useContext(DbContext)
     const [page, setPage] = useState(0)
     const [rowperpage, setRowperpage] = useState(5)
     const [copySuccess, setCopySuccess] = useState({id: '', copied: false});
-
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const [quizFormControls, setFormControls] = useState({
+      dbId: "",
+      name: "",
+      duration: "",
+      status: ""
+    });
+    const { register, handleSubmit } = useForm();
     const inptRef = useRef(null);
+    const [changedQuizes, setChangedQuizes] = useState([])
+    const [orderingName, setOrderingName] = useState(false)
+    
+    useEffect(()=>{
+
+      setChangedQuizes(quizes)
+    },[quizes])
 
     function copyToClipboard(e, duration) {
 
@@ -25,10 +58,10 @@ const Quizes = (props) => {
         document.execCommand('copy');
         e.target.focus();
         setCopySuccess({id: e.target.id, copied: true});
-        props.updateQuizInfo({duration: duration, quizId: e.target.id, quizName: e.target.name});
+        props.updateQuizInfo({duration: duration, quizId: e.target.id, quizName: e.target.name, creator:id});
         setTimeout(() => {
             setCopySuccess({...copySuccess, copied: false});
-        }, 2500)
+        }, 1500)
     };
 
 
@@ -51,31 +84,180 @@ const Quizes = (props) => {
         setRowperpage(+e.target.value)
 
     }
+    const changeQuizInfo = (e) => {
+      setFormControls({...quizFormControls,[e.target.name]:e.target.value})
+    }
 
+    function openModal(props) {
+        console.log(props);
+        setFormControls({...props})
+        setIsOpen(true)
+    }
+  
+    function afterOpenModal() {
+      //setCopyLink({ value: "", copied: false });
+    }
+  
+    function closeModal() {
+      setIsOpen(false);
+    }
+
+    const sbmtHandler = async (data) => {
+      console.log(data);
+      if (data.name && data.duration) {
+        updateQuizes(data)
+        closeModal()
+        setIsOpen(false)
+      } else
+        setFormControls({
+          duration: data.duration || "empty",
+          name: data.name || "empty",
+        });
+    };
+
+    const sortingBy = (e, field) => {
+      let orderBy = true ;
+
+      function compare(a, b, order = 1) {
+        // Use toUpperCase() to ignore character casing
+        const quizA = a.name.toUpperCase();
+        const quizB = b.name.toUpperCase();
+      
+        let comparison = 0;
+        if (quizA > quizB) {
+          comparison = 1;
+        } else if (quizA < quizB) {
+          comparison = -1;
+        }
+        return comparison * order;
+      }
+
+      switch (field) {
+          case 'name':
+                setOrderingName(!orderingName)
+                setChangedQuizes(orderingName 
+                                  ? changedQuizes.sort((a,b)=>compare(a,b,-1)).map(e => e) 
+                                  : changedQuizes.sort(compare).map(e => e))
+          break;
+          case 'duration':
+            orderBy =  changedQuizes[0][field] >= changedQuizes[changedQuizes.length - 1 ][field];
+            setChangedQuizes(changedQuizes.sort((a, b) => orderBy 
+                              ? a[field] - b[field] 
+                              : b[field] - a[field]).map(e => e))
+          break;
+          case 'questions':
+            orderBy =  changedQuizes[0][field].length >= changedQuizes[changedQuizes.length - 1 ][field].length;
+            setChangedQuizes(changedQuizes.sort((a, b) => orderBy 
+                              ? a[field].length - b[field].length 
+                              : b[field].length - a[field].length).map(e => e))
+          break;
+      }
+    }
+    const searchHandler = (e) => {
+      if(e.target.value)
+        setChangedQuizes([...changedQuizes.filter( el => el.name.includes(e.target.value))])
+        else
+          setChangedQuizes(quizes)
+    }
 
     return (
+      <>
+      <Modal
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Quiz name"
+        >
+            <div className="pointer red" style={{marginLeft: 270}} onClick={closeModal}>
+                  &#10008;
+                </div>
+            <form className="adminModalForm" onSubmit={handleSubmit(sbmtHandler)}>
+            
+              <input ref={register} type='hidden' name='id' value={quizFormControls.dbId} />
+              
+              <input
+                type="text"
+                placeholder="Put a name of quiz"
+                style={
+                  quizFormControls.name == "empty"
+                    ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
+                    : {}
+                }
+                name="name"
+                className = 'modalInptName'
+                onChange = {changeQuizInfo}
+                value={quizFormControls.name}
+                ref={register}
+              />
+              <input
+                type="number"
+                ref={register}
+                name="duration"
+                style={
+                  quizFormControls.duration == "empty"
+                    ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
+                    : {}
+                }
+                step="5"
+                placeholder="duration"
+                onChange = {changeQuizInfo}
+                value={quizFormControls.duration}
+              />
+              <select name="status" 
+              value={quizFormControls.status} 
+              ref={register}
+              onChange = {changeQuizInfo}>
+                <option key="enabled" value="enabled">
+                  enabled
+                </option>
+                <option key="disabled" value="disabled">
+                  disabled
+                </option>
+              </select>
+              <div className="createCancelDiv">
+                &nbsp;
+                <input type="submit" value="Confirm" name="create" />
+             </div>
+            </form>
+
+      </Modal>
+
+        
         <div className='quizesWrapper'>
-            {quizes.length ?
+        <input type="text" name='quiz' className='searchField' onInput={searchHandler} placeholder="search..."/>
+        
+        <hr/>
+            {changedQuizes.length ?
                 <div className='quizesTableDiv'>
                     <input type='text'
                            ref={inptRef}
                            className='linkToCopyInpt'/>
 
                     <table className='quizTable'>
-                        <tr key='quizHeader1'>
+                      <tbody>
+                        <tr key='quizHeader'>
                             <th>#</th>
-                            <th>Quiz name</th>
-                            <th>Questions<br/>quantity</th>
-                            <th>Duration<br/>in minutes</th>
+                            <th></th>
+                            <th style={{width: 200}}><div className='sorting' name='questionsLength' onDoubleClick={(e) => sortingBy(e, 'name')}>Quiz name</div></th>
+                            <th><div className='sorting' name='questionsLength' onDoubleClick={(e) => sortingBy(e, 'questions')}>Questions<br/>quantity</div></th>
+                            <th><div className='sorting' name='duration' onDoubleClick={(e) => sortingBy(e, 'duration')}>Duration<br/>in minutes</div></th>
                             <th>Quiz link</th>
                             <th>Status</th>
                             <th></th>
                         </tr>
 
 
-                        {quizes.slice(page, rowperpage + page).map((quiz, i) => (
+                        {changedQuizes.slice(page, rowperpage + page).map((quiz, i) => (
                             <tr key={`1${quiz.dbId}`}>
                                 <td>{i + 1 + page}</td>
+                                <td><FontAwesomeIcon id='editQuiz' icon={faEdit} 
+                                onClick={() => openModal({
+                                  dbId:quiz.dbId, 
+                                  name:quiz.name, 
+                                  duration: quiz.duration,
+                                  status: quiz.status
+                                  })} /></td>
                                 <td>
                                     <div style={{cursor: 'pointer'}}
                                          onClick={(e) => filterByQuiz(e, quiz.questions, quiz.name)}> {quiz.name} </div>
@@ -96,7 +278,7 @@ const Quizes = (props) => {
                                 <td>
                                     <select
                                         style={quiz.status == 'enabled' ? {backgroundColor: 'rgba(60, 160, 60,.1)'} : {backgroundColor: 'rgba(170,10,10, .1)'}}
-                                        onChange={(e) => updateQuizes(quiz.dbId, 'status', e.target.value)}>
+                                        onChange={(e) => updateQuizes({id:quiz.dbId, status: e.target.value})}>
                                         <option key={`1${quiz.dbId}`} value={quiz.status}>{quiz.status}</option>
                                         <option key={`2${quiz.dbId}`} value='enabled'>enabled</option>
                                         <option key={`3${quiz.dbId}`} value='disabled'>disabled</option>
@@ -132,11 +314,12 @@ const Quizes = (props) => {
 
                         </tr>
 
-
+                        </tbody>
                     </table>
                 </div>
                 : 'There is no quizes yet.'}
         </div>
+        </>
     )
 
 }

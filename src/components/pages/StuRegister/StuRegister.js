@@ -20,7 +20,7 @@ const StuRegister = (props) => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        props.updateQuizInfo({userName: data.displayName, email: data.email})
+        props.updateQuizInfo({userName: data.displayName, email: data.email, start: Date.now()})
         props.history.push({
             pathname: `/quiz/${props.match.params.detail}`,
 

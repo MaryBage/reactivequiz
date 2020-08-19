@@ -10,12 +10,13 @@ import {Link} from "react-router-dom"
 
 
 
-const StartPage = () => {
 
+const StartPage = () => {
     useEffect (()=>{
         document.body.style.overflow='hidden';  
     },[])
-   
+    
+     
     return (
         <div className="wrapper">
             <StaticImage image={image} anim='fromAbove'/>

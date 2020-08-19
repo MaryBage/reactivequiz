@@ -8,15 +8,17 @@ import {withRouter} from "react-router-dom";
 import Countdown, {zeroPad} from 'react-countdown';
 import {connect} from "react-redux";
 
+
 const Quiz = (props) => {
+    console.log(props)
     const params = props.match.params.detail
-        ? atob(props.match.params.detail)
-        : JSON.stringify(props)
-    const duration = props.quizInfo.duration
+          ? atob(props.match.params.detail)
+          : JSON.stringify(props)
+    const {start, duration, creator} = props.quizInfo
 
 
     const [quiz, setQuiz] = useState([])
-    const [conds, setConds] = useState({trasition: false, loader: true, result: []})
+    const [conds, setConds] = useState({trasition: false, loader: true, result: [], creator})
     useEffect(() => {
 
         axios
@@ -86,33 +88,29 @@ const Quiz = (props) => {
         e.preventDefault();
         setQuiz(quiz.map((questionItem, i) => {
             return {
-                questionId: questionItem.questionId,
-                questionDbId: questionItem.questionDbId,
-                question: questionItem.question,
-                code: questionItem.code,
-                type: questionItem.type,
-                difficulty: questionItem.difficulty,
-                options: questionItem.options,
-                userAnswer: questionItem.userAnswer,
+                ...questionItem,
                 isActive: (i === +e.target.id) ? true : false,
                 isSubmitted: questionItem.isSubmitted
             }
         }));
     }
 
-    const finishQuiz = (e) => {
-        e.preventDefault();
+    const finishQuiz = () => {
+        
         const params = {
             quiz: {},
+            start: !!start,
             ...props.quizInfo
         };
         quiz.forEach(questionItem => {
-            params.quiz[questionItem.questionDbId] = questionItem.userAnswer.join();
+                params.quiz[questionItem.questionDbId] = questionItem.userAnswer.join();
         })
+
+  
         axios
             .post(`/calcResult.php`, btoa(JSON.stringify(params)))
             .then(res => {
-                setConds({...conds, result: res.data})
+             setConds({...conds, result: res.data})
             })
     }
 
@@ -123,28 +121,33 @@ const Quiz = (props) => {
             <div className="quizBody">
                 <div className='quizLayout'>
                     <div className='sidenav'>
-
-                        <Countdown renderer={({hours, minutes, seconds}) => (
-                            <span style={{color: '#fff', marginLeft: 15, paddingBottom: 25}}>
-                                      {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
-                                    </span>
-                        )}
-                                   date={Date.now() + duration * 60000} style={{color: '#fff'}}/>
-                        <hr/>
-                        {
-                            quiz.map((el, i) => {
+                        {duration &&
+                            <>
+                                <Countdown renderer={({hours, minutes, seconds}) => (
+                                <span style={{color: '#fff', marginLeft: 15, paddingBottom: 25}}>
+                                        {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
+                                        </span>
+                                )}
+                                    date={+start + duration * 60000} 
+                                    onComplete = {finishQuiz}
+                                    style={{color: '#fff'}}/>
+                                <hr/>
+                            </>}
+                            <input type='button'
+                               className='finishBtn'
+                               value='finish'
+                               key='finish'
+                               disabled={!quiz.every(e => e.userAnswer.length)}
+                               onClick={finishQuiz}/>
+                               
+                        {quiz.map((el, i) => {
                                 return <a href="#"
                                           className={(i == quiz.findIndex(item => item.isActive)) ? 'activeQstn' : (el.isSubmitted ? 'passedQuestion' : null)}
                                           id={i} onClick={changeQuestion}>{el.isSubmitted ?
                                     <span>&#10004;</span> : null} Question {i + 1}</a>
                             })
                         }
-                        <input type='button'
-                               className='finishBtn'
-                               value='finish'
-                               key='finish'
-                               disabled={!quiz.every(e => e.userAnswer.length)}
-                               onClick={finishQuiz}/>
+                        
                     </div>
 
                     <ActiveQuiz

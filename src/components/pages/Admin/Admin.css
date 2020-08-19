@@ -1,21 +1,66 @@
+.containerAdmin{
+  display: grid;
+
+  grid-template-areas:
+    "header header "
+    "nav content ";
+  grid-template-columns: 290px 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+}
+
 .header {
-    left: 0; 
-    right: 0;
-    height: 92px;
-    padding: 5px 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 19px;
-    color: white;
-    animation: 800ms ease-out 0s 1 slideInFromAboveAdm;
+  grid-area: header;
+  height: 92px;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 19px;
+  color: white;
+  animation: 800ms ease-out 0s 1 slideInFromAboveAdm;
+}
+
+.sidebar-left {
+  grid-area: nav;
+  margin-left: 0;
+  width: 250px;
+  padding: 0 20px;
+  animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.mainAdmin {
+  grid-area: content;
+  padding: 45px 100px;
+  animation: 800ms ease-out 0s 1 slideInFromRightAdm;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-areas:
+      "header"
+      "nav"
+      "content";
+
+    grid-template-columns: 1fr;
+    grid-template-rows:
+      auto /* Header */
+      minmax(75px, auto) /* Nav */
+      1fr /* Content */
+
+  }
+
+  .sidebar-left {
+    margin: 0;
+  }
 }
 
 .quizesWrapper {
-    height: min-content;
-    width: 80%;
-    margin-top: 50px;
+    width: 100%;
     border-radius: 15px;
     padding: 15px;
     box-shadow: 5px 5px 25px rgba(0,0,0,.5);
@@ -47,22 +92,20 @@
     cursor: pointer;
 }
 
-.sidebar-left{
-  height: 86vh;
-  float: left;
+/* .buttonsWrapper {
   width: 250px;
-  padding: 0 20px;
   animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
   display: flex;
   flex-direction: column;
-}
+} */
 
-.buttonsWrapper {
-  width: 250px;
+.navAdmin {
+  
+  
+  overflow-x: hidden;
+
+  box-shadow: 10px 0px 25px rgba(0,0,0,.5);
   animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
 }
 
 .sidebar-left .linear ::before {
@@ -77,30 +120,14 @@
   color: #fff;
 }
 
-.mainAdmin{
-  height: 86vh;
-  display: flex;
-  justify-content: center;
-  left: 290px;
-  right: 0;
-  animation: 800ms ease-out 0s 1 slideInFromRightAdm;
-}
 
-.footer{
-    clear:both;
-    height: 50px;
-    width: 100%;
-    text-align: center;
-    background-color: lightblue;
-}
 
-.addForm {
-  height: 80%;
-  width: 65%;
+.addForm{
+  width:65%; 
+  min-width: 350px;
   font-size: 18px;
   border-radius: 15px;
   padding: 15px;
-  margin-top: 50px;
   box-shadow: 5px 5px 25px rgba(0,0,0,.5);
   color: #555555;
 }
@@ -125,14 +152,14 @@ input::placeholder {
      font-weight: bold;
 }
 
-.addForm h3{
-    text-align:center;
-}
 
 .addForm form{
     display:flex;
     flex-direction: column;
     justify-content: center;
+    /* align-items: flex-start;
+    flex-grow: 1;*/
+   
 }
 
 .addForm input[type="number"] {
@@ -155,6 +182,9 @@ input::placeholder {
 .addFormTxtarea {
   max-width: 100%;
   margin: 0;
+}
+.modalInptName{
+  text-align: center;
 }
 
 .row {
@@ -208,6 +238,9 @@ input::placeholder {
     background: none;
     border-radius: 15px;
     box-shadow: 2px 2px 2px rgba(0,0,0,.5); */
+}
+.sorting {
+  cursor: pointer;
 }
 
 .pointer {
@@ -433,7 +466,8 @@ input::placeholder {
 */
 }
 
-.filterForm input[type='text'] {
+.filterForm input[type='text'], .searchField {
+  
     width: 50%;
     padding: 9px;
     border: 1.5px solid #bbbbbb;
@@ -493,10 +527,11 @@ input::placeholder {
   .resetBtn {
     font-style: normal!important;
     font-weight: bold;
-    font-size: 22pt!important;
+    font-size: 20pt!important;
     background: none;
     margin-top: 3px;
     color: black;
+    border: none!important
   }
   .addFormHeader {
     padding: 5px;
@@ -532,7 +567,7 @@ input::placeholder {
 .linkToCopyInpt {
     border: none;
     color: transparent;
-    z-index: 0;
+    /* z-index: 0; */
 }
 
 .quizTable, .linkToCopyInpt {
@@ -546,7 +581,7 @@ input::placeholder {
     padding: 10px; 
     text-align:center; 
     background-color: white;
-    z-index: 1;
+    /* z-index: 1; */
     font-size: 15pt;
 }
 

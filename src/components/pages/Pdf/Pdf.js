@@ -11,30 +11,33 @@ const ResultPdf = (props) => {
       <View style={styles.row}>
         <Text style={styles.logo}>reActive</Text>
         <View style={styles.table}> 
-          <View style={styles.tableRow}>
-            <View style={styles.tableCol}> 
-              <Text style={styles.tableCell}>Name</Text> 
-            </View> 
-            <View style={styles.tableCol}> 
-              <Text style={styles.tableCell}>{props.userName}</Text>
+          {props.userName &&
+          <>
+            <View style={styles.tableRow}>
+              <View style={styles.tableCol}> 
+                <Text style={styles.tableCell}>Name</Text> 
+              </View> 
+              <View style={styles.tableCol}> 
+                <Text style={styles.tableCell}>{props.userName}</Text>
+              </View>
             </View>
-          </View>
-          <View style={styles.tableRow}>
-            <View style={styles.tableCol}> 
-              <Text style={styles.tableCell}>Email</Text> 
+            <View style={styles.tableRow}>
+              <View style={styles.tableCol}> 
+                <Text style={styles.tableCell}>Email</Text> 
+              </View> 
+              <View style={styles.tableCol}>
+                <Text style={styles.tableCell}>{props.email}</Text>
+              </View> 
             </View> 
-            <View style={styles.tableCol}>
-              <Text style={styles.tableCell}>{props.email}</Text>
+            <View style={styles.tableRow}>
+              <View style={styles.tableCol}> 
+                <Text style={styles.tableCell}>Quiz</Text> 
+              </View> 
+              <View style={styles.tableCol}>
+                <Text style={styles.tableCell}>{props.quizName}</Text>
+              </View> 
             </View> 
-          </View> 
-          <View style={styles.tableRow}>
-            <View style={styles.tableCol}> 
-              <Text style={styles.tableCell}>Quiz</Text> 
-            </View> 
-            <View style={styles.tableCol}>
-              <Text style={styles.tableCell}>{props.quizName}</Text>
-            </View> 
-          </View> 
+            </>}
           <View style={styles.tableRow}>
             <View style={styles.tableCol}> 
               <Text style={styles.tableCell}>Score</Text> 

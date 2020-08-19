@@ -16,8 +16,7 @@ const StartTest = () => {
     const [data, setData] = useState({ quiz: '', category: "", level: "" });
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        setData({ ...data, quiz: 'trainee' });
+            setData({ ...data, quiz: 'trainee' });
     };
     
     const handleSelectChange = (e) => {
@@ -38,9 +37,9 @@ const StartTest = () => {
                     <PageIntro logoText={logoText[1]} sloganText={sloganText[1]} />
                     <div className="freeSpace" />
                     <form onSubmit={handleSubmit} className="informativeDivision">
-                        <CustomSelect options={category} onChange={handleSelectChange} name="category" selectfieldtext={selectFieldText[0]} />
+                        <CustomSelect options={category} onChange={handleSelectChange} name="category" selectfieldtext={selectFieldText[0]}  required/>
                         <SimpleLine />
-                        <CustomSelect options={level} onChange={handleSelectChange} name="level" selectfieldtext={selectFieldText[1]} />
+                        <CustomSelect options={level} onChange={handleSelectChange} name="level" selectfieldtext={selectFieldText[1]}  required/>
                         <CustomButton type="submit" linear="true">{approveButtonText[4]}</CustomButton>
                     </form>
                 </div>

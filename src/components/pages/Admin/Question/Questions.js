@@ -8,9 +8,7 @@ import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import AnswersAndCode from "../DetailedCompotents/AnswersAndCode";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
-// import { CopyToClipboard } from "react-copy-to-clipboard";
 import { withRouter } from "react-router-dom";
-// import { Filter } from "@material-ui/icons";
 import Filters from "../DetailedCompotents/Filter";
 
 const customStyles = {
@@ -28,26 +26,19 @@ const customStyles = {
 };
 
 const Questions = (props) => {
-  const {
-    deleteData,
-    questions,
-    addQuizes,
-    getQuizes,
-    updateData,
-  } = useContext(DbContext);
-
+  const { deleteData, questions, addQuizes, updateData, } = useContext(DbContext);
   const [selectedQstns, setSelectedQstns] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const { register, handleSubmit } = useForm();
-  const [quizFormControls, setFormControls] = useState({
-    name: "",
-    duration: "",
-  });
+  const [quizFormControls, setFormControls] = useState({name: "", duration: ""});
   const [showAnswers, setShowAnswers] = useState([]);
   const [disappear, setDisappear] = useState({ disappear: false, index: null });
   const [hint, setHint] = useState({hint : false, index : null});
   const [filteredValue, setFilteredValue] = useState(questions);
   const [searching, setSearching] = useState({ question: '', category: '', difficulty: '', type: '', timeout: 0 });
+  const [checkAll, setCheckAll] = useState(false);
+
+  console.log('filteredValue',filteredValue)
 
 
   useEffect(() => {
@@ -55,6 +46,9 @@ const Questions = (props) => {
     setFilteredValue(questions);
 
   }, [props])
+
+  console.log('selectedQstns',selectedQstns)
+  console.log('checkAll 2',checkAll)
 
   useEffect(() => {
 
@@ -72,6 +66,21 @@ const Questions = (props) => {
     setFilteredValue(filtered)
 
   }, [searching])
+
+  useEffect(() => {
+
+    checkAll 
+        && setSelectedQstns(filteredValue.map(e => e. questionDbId))
+ 
+    }, [checkAll])
+
+     useEffect(() => {
+
+        if (selectedQstns.length > 0 && selectedQstns.length < filteredValue.length) setCheckAll(false)
+        if (selectedQstns.length === filteredValue.length) setCheckAll(true)
+
+     }, [selectedQstns])
+  
 
   const makeToDisappear = (e, id) => {
     setDisappear({
@@ -124,11 +133,14 @@ const Questions = (props) => {
   function closeModal() {
     setIsOpen(false);
   }
-
+  console.log(selectedQstns)
   const onchangeHandler = (e) => {
-    if (selectedQstns.includes(e.target.value))
-      setSelectedQstns(selectedQstns.filter((el) => el != e.target.value));
-    else setSelectedQstns([...selectedQstns, e.target.value]);
+
+   
+        if (selectedQstns.includes(e.target.value))
+        setSelectedQstns(selectedQstns.filter((el) => el != e.target.value));
+        else setSelectedQstns([...selectedQstns, e.target.value]);
+    
   };
 
   const sbmtHandler = async (data) => {
@@ -136,6 +148,7 @@ const Questions = (props) => {
     if (data.name && data.duration) {
       addQuizes(data)
       closeModal()
+      setSelectedQstns([]);
     } else
       setFormControls({
         duration: data.duration || "empty",
@@ -144,51 +157,74 @@ const Questions = (props) => {
   };
 
   const onChangeHandler = (e) => {
+    
     setSearching({ ...searching, [e.target.name]: e.target.value })
   }
 
+  const selectAll = () => {
+    // setCheckAll(!checkAll)
+    console.log('checkAll 1',checkAll)
+    if(checkAll){
+     setCheckAll(false)
+     setSelectedQstns([])
+    }
+    else {
+        setCheckAll(true)
+    }
+   
+  }
+
+  const deleteAll = () => {
+   selectedQstns.map(e => deleteData(e));
+   setSelectedQstns([]);
+}
+
   return (
-    <>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Quiz name"
-      >
-        <form className="adminModalForm" onSubmit={handleSubmit(sbmtHandler)}>
-          <input
-            type="hidden"
-            value={selectedQstns}
-            name="qstnId"
-            ref={register}
-          />
-          <input
-            type="text"
-            placeholder="Put a name of quiz"
-            style={
-              quizFormControls.name == "empty"
-                ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
-                : {}
-            }
-            name="name"
-            ref={register}
-          />
-          <input
-            type="number"
-            ref={register}
-            name="duration"
-            style={
-              quizFormControls.duration == "empty"
-                ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
-                : {}
-            }
-            step="5"
-            placeholder="duration"
-          />
-          <select name="status" ref={register}>
-            <option key="enabled" value="enabled">
-              enabled
+    <>  
+        <Modal
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Quiz name"
+        >
+            <div className="pointer red" style={{marginLeft: 270}} onClick={closeModal}>
+                  &#10008;
+                </div>
+            <form className="adminModalForm" onSubmit={handleSubmit(sbmtHandler)}>
+              <input
+                type="hidden"
+                value={selectedQstns}
+                name="qstnId"
+                ref={register}
+              />
+              <input
+                type="text"
+                placeholder="Put a name of quiz"
+                style={
+                  quizFormControls.name == "empty"
+                    ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
+                    : {}
+                }
+                name="name"
+                className = 'modalInptName'
+                ref={register}
+              />
+              <input
+                type="number"
+                ref={register}
+                name="duration"
+                style={
+                  quizFormControls.duration == "empty"
+                    ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
+                    : {}
+                }
+                step="5"
+                placeholder="duration"
+              />
+              <select name="status" ref={register}>
+                <option key="enabled" value="enabled">
+                  enabled
                 </option>
             <option key="disabled" value="disabled">
               disabled
@@ -197,19 +233,18 @@ const Questions = (props) => {
           <div className="createCancelDiv">
             &nbsp;
                 <input type="submit" value="Confirm" name="create" />
-                &nbsp;
-                <div className="pointer red" onClick={closeModal}>
-              &#10008;
-                </div>
-          </div>
-        </form>
+    
+              </div>
+            </form>
+        
+        
       </Modal>
       {props.location.hash && <div className='filterBy'>Filtered by quiz : {props.location.hash.slice(1)}</div>}
       <div className={s.questionWrapper}>
         <div className={s.buttonsWrapper}>
           <button className={s.createQuiz} name="createQuiz" onClick={openModal}>compose quiz</button>
-          <button className={s.selectAll}  name="selectAll" /*onClick={selectAll}*/>select all</button>
-          <button className={s.deleteAll}  name="deleteAll" /*onClick={deleteAll}*/>delete all</button>
+          <button className={s.selectAll}  name="selectAll" onClick={selectAll}>{checkAll ? 'un' : null}select all</button>
+          <button className={s.deleteAll}  name="deleteAll" onClick={deleteAll}>delete all</button>
         </div>
         <hr />
         <div className="filterDiv">
@@ -237,8 +272,8 @@ const Questions = (props) => {
                     <input
                       type="checkbox"
                       value={currentQuestion.questionId}
-                      checked={selectedQstns.includes(
-                        currentQuestion.questionDbId
+                      checked={checkAll || selectedQstns.includes(
+                        currentQuestion.questionDbId 
                       )}
                       value={currentQuestion.questionDbId}
                       onChange={onchangeHandler}

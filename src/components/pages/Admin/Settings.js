@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {updateSettings} from "../../../redux/user/user.actions"
 
 
-const Settings = ({setThemeColor, id, theme, updateSettings}) => {
+const Settings = ({setThemeColor, id, updateSettings}) => {
 
     const handleSelectChange = (e) => {
         e.preventDefault();
@@ -15,9 +15,9 @@ const Settings = ({setThemeColor, id, theme, updateSettings}) => {
 
     return (
         <div className='settings'>
-            <select className='themeSelect' onChange={handleSelectChange} name="theme">
+            <select className='themeSelect' onChange={handleSelectChange}  name="theme">
                 <option value="selectColor">select color</option>
-                {Object.keys(THEME).map(color => <option
+                {Object.keys(THEME).map(color => <option 
                     // selected={color == theme ? 'selected' : ''} 
                     value={color}
                     style={{color: `rgb(${THEME[color]})`}}>

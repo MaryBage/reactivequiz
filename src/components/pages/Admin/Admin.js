@@ -39,7 +39,7 @@ const Admin = () => {
         
 return (
       <>
-      <div>
+      <div className='containerAdmin'>
         <div className="header" style={{backgroundColor: `rgba(${THEME[theme]})`}}>
             <div style={{width: '80%'}} ><Link to='/admin' className="logoAdmin">reActive</Link> </div>
             <div style={{display:'flex', flexDirection:'column',justifyContent: 'center'}}>
@@ -55,7 +55,7 @@ return (
                 </div>
             </div>
             <div className="sidebar-left" style={{ backgroundColor: `rgba(${THEME[theme]},.45)` }}>
-                <div className="buttonsWrapper">
+                
                     <CustomButton component={Link} to="/admin/addquestions">{adminNav[0]}</CustomButton>
                     <CustomButton component={Link} to="/admin/questions" linear='true'>{adminNav[1]}({db.questions.length})</CustomButton>
                     <CustomButton component={Link} to="/admin/quizes" linear="true">{adminNav[2]}({db.quizes.length})</CustomButton>
@@ -65,7 +65,7 @@ return (
                         {adminNav[4]}
                     </button>
                     {showSettings && <SettingsMenu />}
-                </div>
+                
             </div>
             <div className="mainAdmin" style={{ backgroundColor: `rgba(${THEME[theme]},.15)` }}>
                 <Switch >

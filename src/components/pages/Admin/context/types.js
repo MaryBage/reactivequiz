@@ -3,6 +3,7 @@ export const HIDE_ALERT = 'HIDE_ALERT'
 
 export const GET_DATA = 'GET_DATA'
 export const GET_QUIZ = 'GET_QUIZ'
+export const GET_STUDENTS = 'GET_STUDENTS'
 export const ADD_DATA = 'ADD_DATA'
 export const UPDATE_DATA = 'UPDATE_DATA'
 export const DELETE_DATA = 'DELETE_DATA'

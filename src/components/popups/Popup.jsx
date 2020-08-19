@@ -67,28 +67,28 @@ const Popup = (props) => {
         <>
             {openPdf ? <PDFViewer style={{width: '100%', height: '100vh'}}>
                     <ResultPdf res={props.res} {...stuInfo} score={`${result}/${total}`} percentage={coefficient}/>
-                </PDFViewer> :
-                <div className="popup-container">
-                    <div
-                        className={s.popupWrapper}
-                        style={
-                            width.w >= 800
-                                ? {minWidth: "800px", gridTemplateColumns: "repeat(2, 50%)"}
-                                : {minWidth: "400px", gridTemplateRows: "repeat(2, 50%)"}
-                        }
-                    >
-                        <div className="zoomIn">
-                            <img className={s.popupImg} src={images[i]} alt="img"/>
-                        </div>
-                        <div className={`${s.popupCommonWrapper} zoomOut`}>
-                            <h1>{text}</h1>
-                            {props.res.length ? (
-                                <h2>
-                                    Your result: <span>{result}</span> of <span>{total}</span>
-                                </h2>
-                            ) : (
-                                <h2>{thanksmailText}</h2>
-                            )}
+                    </PDFViewer> :
+        <div className="popup-container">
+            <div
+                className={s.popupWrapper}
+                style={
+                    width.w >= 800
+                        ? { minWidth: "800px", gridTemplateColumns: "repeat(2, 50%)" }
+                        : { minWidth: "400px", gridTemplateRows: "repeat(2, 50%)" }
+                }
+            >
+                <div className="zoomIn">
+                    <img className={s.popupImg} src={images[i]} alt="img" />
+                </div>
+                <div className={`${s.popupCommonWrapper} zoomOut`}>
+                    <h1>{text}</h1>
+                    {props.res.length ? (
+                        <h2>
+                            Your result: <span>{result}</span> of <span>{total}</span>
+                        </h2>
+                    ) : (
+                            <h2>{thanksmailText}</h2>
+                        )}
 
                             {/* <button
                         className={s.tryAgain}
