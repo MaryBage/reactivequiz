@@ -8,6 +8,7 @@ const AnswersAndCode = ({id, dbid, questions}) => {
     const { updateData, deleteData } = useContext(DbContext);
     const answers = questions[id - 1].options;
     const [disappear, setDisappear] = useState({ disappear : false, index : null });
+    const [hint, setHint] = useState({hint : false, index : null});
 
     const makeToDisappear = (e, id) => {
         setDisappear({
@@ -17,6 +18,16 @@ const AnswersAndCode = ({id, dbid, questions}) => {
         })
     }
     
+    const makeToShowHint = (e, id) => {
+        setHint(
+          {
+            ...hint,
+            hint : true,
+            index : id
+          }
+        )
+    }
+
     const codeEdit = (e, id, table) => {
         if(e.target.value) {
             updateData(id, table, e.target.name, e.target.value);
@@ -47,8 +58,11 @@ const AnswersAndCode = ({id, dbid, questions}) => {
                         <div 
                             className={Object.keys(answer)[0] == disappear.index ? s.disappeared : s.appeared} 
                             onDoubleClick={(e) => makeToDisappear(e, Object.keys(answer)[0])}
+                            onMouseOver={(e) => makeToShowHint(e, Object.keys(answer)[0])}
+                            onMouseOut={() => makeToShowHint(false)}
                         >
                             {Object.values(answer)[0][1]}
+                            {hint && hint.index == Object.keys(answer)[0] ? <div className={s.hint}>Double-click and edit the question!</div> : null}
                         </div>
                         { disappear.disappear && Object.keys(answer)[0] == disappear.index &&
                         <input 

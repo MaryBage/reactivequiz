@@ -76,7 +76,6 @@ return (
                     <Route path='/admin/students_results' component={StuResults} />
                     <Route path="/admin/change_password" component={ChangePsw} />
                     <Route path='/admin/' exact component={AddForm} />
-                    
                 </Switch>
             </div>
             </div>

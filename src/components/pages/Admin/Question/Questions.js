@@ -32,12 +32,15 @@ const Questions = (props) => {
   const { register, handleSubmit } = useForm();
   const [quizFormControls, setFormControls] = useState({name: "", duration: ""});
   const [showAnswers, setShowAnswers] = useState([]);
+  const [disappear, setDisappear] = useState({ disappear: false, index: null });
+  const [hint, setHint] = useState({hint : false, index : null});
   const [filteredValue, setFilteredValue] = useState(questions);
   const [searching, setSearching] = useState({ question: '', category: '', difficulty: '', type: '', timeout: 0 });
   const [disappear, setDisappear] = useState({ disappear: false, index: null });
   const [checkAll, setCheckAll] = useState(false);
 
   console.log('filteredValue',filteredValue)
+
 
   useEffect(() => {
 
@@ -108,6 +111,16 @@ const Questions = (props) => {
       setShowAnswers([...showAnswers, id]);
     }
   };
+
+  const makeToShowHint = (e, id) => {
+    setHint(
+      {
+        ...hint,
+        hint : true,
+        index : id
+      }
+    )
+  }
 
   function openModal() {
     if (selectedQstns.length) setIsOpen(true);
@@ -279,8 +292,11 @@ const Questions = (props) => {
                     <div
                       className={currentQuestion.questionId == disappear.index ? s.disappeared : s.appeared}
                       onDoubleClick={(e) => makeToDisappear(e, currentQuestion.questionId)}
+                      onMouseOver={(e) => makeToShowHint(e, currentQuestion.questionId)}
+                      onMouseOut={() => makeToShowHint(false)}
                     >
                       {currentQuestion.question}
+                      {hint && hint.index == currentQuestion.questionId ? <div className={s.hint}>Double-click and edit the question!</div> : null}
                     </div>
                     {disappear.disappear && currentQuestion.questionId == disappear.index &&
                       <input

@@ -46,7 +46,7 @@ select:hover {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .buttonsWrapper button {
@@ -158,11 +158,14 @@ select .selected {
 }
 
 .appeared {
+  position: relative;
   display: inline-flex;
+  flex-direction: column;
   font-family: 'Courier New', Courier, monospace;
   font-size: 19px;
   color: #555555;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .questionItem-exit-active {
@@ -171,6 +174,21 @@ select .selected {
   
 .questionItem-enter-active {
     animation: questionItem 800ms ease-in alternate-reverse;
+}
+
+.hint {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  height: max-content;
+  width: max-content;
+  color: #757575;
+  font-size: 13px;
+  font-family: 'Courier New', Courier, monospace;
+  border: 1px solid #bbbbbb;
+  border-radius: 3px;
+  background-color: whitesmoke;
+  padding: 3px;
 }
   
 @keyframes questionItem {

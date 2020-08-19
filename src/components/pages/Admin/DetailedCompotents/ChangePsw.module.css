@@ -1,0 +1,82 @@
+.changePassWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 30px 0;
+  margin: 0 50px;
+}
+
+h1 {
+  color: #555555;
+  letter-spacing: 1.8px;
+  margin-bottom: 5px;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 35%;
+  width: 60%;
+  margin: 50px 0 45px 0;
+}
+
+.inputWrapper, .submitWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inputWrapper div {
+  width: 30%;
+  color: #919191;
+  font-size: 19px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.inputWrapper input[type="password"], .changePswSubmit {
+  height: 40px;
+  width: 70%;
+  border: 1.5px solid #bbbbbb;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 19px;
+  color: #757575;
+  letter-spacing: 4px;
+  outline: none;
+}
+
+.inputWrapper input[type="password"]:hover {
+  border: 1.5px solid #a6a6a6;
+  box-shadow: 1.5px 1.5px 5px #a6a6a6;
+}
+
+.submitWrapper div {
+  width: 30%;
+}
+
+.changePswSubmit {
+  height: 46px;
+  width: 71%;
+  background-color: #cccccc;
+  border: 1.5px solid white;
+  color: white;
+  font-size: 19px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  letter-spacing: normal;
+}
+
+.changePswSubmit:hover {
+  background-color: white;
+  border-color: #a6a6a6;
+  box-shadow: 1px 1px 5px #a6a6a6;
+  color: #919191;
+  font-weight: bold;
+}
+
+.changePassWrapper hr {
+  margin-top: 30px;
+}

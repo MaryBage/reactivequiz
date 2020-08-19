@@ -96,7 +96,6 @@
   width: 250px;
   animation: 800ms ease-out 0s 1 slideInFromLeftAdm;
   display: flex;
-  justify-content: center;
   flex-direction: column;
 } */
 
@@ -170,7 +169,7 @@ input::placeholder {
 .addForm input[type="submit"] {
     border: 2px solid #bbbbbb;
     font-weight: bold;
-    margin: auto;
+    margin: 5px auto;
     padding: 10px;
     color: #555555;
 }
@@ -221,8 +220,7 @@ input::placeholder {
     margin: 7px;
 }
 
-.getLinkBtn{
-
+.getLinkBtn {
   width: 130px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 17px;
@@ -457,12 +455,13 @@ input::placeholder {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
-
 }
+
 .filterForm {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
  /* border: 1px solid red;
 */
 }
@@ -614,11 +613,12 @@ input::placeholder {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    padding: 5px;
 }
 
 hr {
-  margin-bottom: 25px;
-  border: 0.1px solid white;
+  margin: 0 0 25px 0;
+  border: 0.1px solid #ededed;
 }
 
 button, input[type='submit'], input[type='button'] {
