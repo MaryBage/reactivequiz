@@ -227,7 +227,8 @@ const Quizes = (props) => {
         <div className='quizesWrapper'>
         <input type="text" name='quiz' className='searchField' onInput={searchHandler} placeholder="search..."/>
         
-        <hr/>
+        <hr style={{margin:'25px 0px'}}/>
+
             {changedQuizes.length ?
                 <div className='quizesTableDiv'>
                     <input type='text'
