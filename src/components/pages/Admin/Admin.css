@@ -602,7 +602,7 @@ input::placeholder {
 
 hr {
   margin: 0 0 25px 0;
-  border: 0.1px solid #ededed;
+  border: 0.1px solid #FFF;
 }
 
 button, input[type='submit'], input[type='button'] {

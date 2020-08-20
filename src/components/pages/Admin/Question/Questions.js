@@ -239,7 +239,7 @@ const Questions = (props) => {
         <div className={s.buttonsWrapper}>
           <button className={s.createQuiz} name="createQuiz" onClick={openModal}>compose quiz</button>
           <button className={s.selectAll}  name="selectAll" onClick={selectAll}>{checkAll ? 'un' : null}select all</button>
-          <button className={s.deleteAll}  name="deleteAll" onClick={deleteAll}>delete all</button>
+          <button className={s.deleteAll}  name="deleteAll" onClick={deleteAll}>delete</button>
         </div>
         <hr />
         <div className="filterDiv">
@@ -322,7 +322,7 @@ const Questions = (props) => {
                       <option value="hard">hard</option>
                     </select>
                   </div>
-                  <div>
+                  {/* <div>
                     <select
                       name="type"
                       onChange={(e) =>
@@ -335,7 +335,7 @@ const Questions = (props) => {
                       <option value="single">single</option>
                       <option value="multiple">multiple</option>
                     </select>
-                  </div>
+                  </div> */}
                   <div
                     className="pointer red"
                     onClick={() => deleteData(currentQuestion.questionDbId)}

@@ -118,7 +118,7 @@ return (
     <>
     
     <div className='quizesWrapper'>
-    <input type="text" name='quiz' className='searchField' onInput={searchHandler} placeholder="search..."/>&nbsp;&nbsp; in &nbsp;&nbsp;
+    <input type="text" name='quiz' className='searchField' onInput={searchHandler} placeholder="search..."/>&nbsp;&nbsp; by &nbsp;&nbsp;
     <select onChange = {(e) => setSearchBy(e.target.value)}>
           <option value='quizName'>Quiz</option>
           <option value='name'>Name</option>

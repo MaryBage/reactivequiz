@@ -13,6 +13,14 @@
   font-weight: bolder;
 }
 
+.successPsw {
+  color: green;
+  font-weight: bold;
+  animation: successAnim 800ms forwards;
+}
+
+
+
 .changePswBtn {
   color:white;
   font-size: 20px;
