@@ -38,17 +38,15 @@ const Questions = (props) => {
   const [searching, setSearching] = useState({ question: '', category: '', difficulty: '', type: '', timeout: 0 });
   const [checkAll, setCheckAll] = useState(false);
 
-  console.log('filteredValue',filteredValue)
+//console.log('filteredValue',filteredValue)
 
 
   useEffect(() => {
-
     setFilteredValue(questions);
-
   }, [props])
 
-  console.log('selectedQstns',selectedQstns)
-  console.log('checkAll 2',checkAll)
+//console.log('selectedQstns',selectedQstns)
+//console.log('checkAll 2',checkAll)
 
   useEffect(() => {
 
@@ -66,6 +64,7 @@ const Questions = (props) => {
     setFilteredValue(filtered)
 
   }, [searching])
+
 
   useEffect(() => {
 
@@ -90,6 +89,16 @@ const Questions = (props) => {
     })
   }
 
+  const makeToShowHint = (e, id) => {
+    setHint(
+      {
+        ...hint,
+        hint : true,
+        index : id
+      }
+    )
+  }
+
   const editInput = (e, id, table) => {
     e.preventDefault();
     if (e.target.value) {
@@ -111,16 +120,6 @@ const Questions = (props) => {
     }
   };
 
-  const makeToShowHint = (e, id) => {
-    setHint(
-      {
-        ...hint,
-        hint : true,
-        index : id
-      }
-    )
-  }
-
   function openModal() {
     if (selectedQstns.length) setIsOpen(true);
     else alert("Choose questions for quiz");
@@ -133,18 +132,16 @@ const Questions = (props) => {
   function closeModal() {
     setIsOpen(false);
   }
-  console.log(selectedQstns)
-  const onchangeHandler = (e) => {
+  //console.log(selectedQstns)
 
-   
+  const onchangeHandler = (e) => {
         if (selectedQstns.includes(e.target.value))
         setSelectedQstns(selectedQstns.filter((el) => el != e.target.value));
         else setSelectedQstns([...selectedQstns, e.target.value]);
-    
   };
 
   const sbmtHandler = async (data) => {
-    console.log(data);
+    //console.log(data);
     if (data.name && data.duration) {
       addQuizes(data)
       closeModal()
@@ -157,13 +154,12 @@ const Questions = (props) => {
   };
 
   const onChangeHandler = (e) => {
-    
     setSearching({ ...searching, [e.target.name]: e.target.value })
   }
 
   const selectAll = () => {
     // setCheckAll(!checkAll)
-    console.log('checkAll 1',checkAll)
+    //console.log('checkAll 1',checkAll)
     if(checkAll){
      setCheckAll(false)
      setSelectedQstns([])
@@ -171,13 +167,12 @@ const Questions = (props) => {
     else {
         setCheckAll(true)
     }
-   
   }
 
   const deleteAll = () => {
    selectedQstns.map(e => deleteData(e));
    setSelectedQstns([]);
-}
+  }
 
   return (
     <>  

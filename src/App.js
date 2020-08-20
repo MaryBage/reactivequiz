@@ -20,10 +20,7 @@ import StuRegister from './components/pages/StuRegister/StuRegister';
 
 const App = ({currentUser, logoutUser}) => {
     
-
     return (
-        
-        
         <Router>
             <Switch>
                 <Route exact path="/" component={StartPage}/>
