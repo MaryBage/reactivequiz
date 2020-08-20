@@ -1,4 +1,4 @@
-.containerAdmin{
+.containerAdmin {
   display: grid;
   grid-template-areas:
     "header header "
@@ -6,6 +6,7 @@
   grid-template-columns: 290px 1fr;
   grid-template-rows: auto 1fr;
   height: 100vh;
+  gap: 5px;
 }
 
 .header {
