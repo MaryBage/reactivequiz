@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { logoText, sloganText, approveButtonText } from "../../../StaticContent";
 import s from "./Feedback.module.css";
 import image from "../../../images/pages/feedback.png";
@@ -19,6 +19,10 @@ const Feedback = () => {
     const [fieldsValue, setFieldsValue] = useState({ fName: '', fEmail: '', message: '' })
     const [error, setError] = useState('')
     const [loader,setLoader] = useState(false)
+
+    useEffect (()=>{
+        document.body.style.overflow='hidden';  
+    },[])
 
     const sbmtHandler = (e) => {
         e.preventDefault()

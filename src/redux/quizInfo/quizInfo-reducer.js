@@ -9,6 +9,7 @@ const INITIAL_STATE = {
 
 };
 const quizInfoReducer = (state = INITIAL_STATE, action) => {
+
     switch (action.type) {
         case "UPDATE_QUIZ_INFO":
             return {...state, ...action.payload};

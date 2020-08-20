@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {logoText, sloganText, approveButtonText} from "../../../StaticContent";
 import image from "../../../images/pages/signup.png";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
@@ -17,6 +17,10 @@ const SignUp = ({setCurrentUser}) => {
     const [data, setData] = useState({displayName: '', email: '', password: ''});
     const [error, setError] = useState({error: ''});
     const [loader, setLoader] = useState({loader: false});
+
+    useEffect (()=>{
+        document.body.style.overflow='hidden';  
+    },[])
 
     const oniInputChange = (e) => {
         const {name} = e.target;

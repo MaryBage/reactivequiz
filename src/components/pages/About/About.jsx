@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import { logoText, sloganText } from "../../../StaticContent";
 import s from "./About.module.css";
 import image from "../../../images/pages/welcome.png";
@@ -13,6 +13,11 @@ import DelayLink from 'react-delay-link';
 const About = (props) => {
 
   const [toggle,settoggle]=useState(true)
+
+  useEffect (()=>{
+    document.body.style.overflow='hidden';  
+  },[])
+
   return (
     <div className="wrapper">
         <StaticImage image={image} anim='fromLeft' />

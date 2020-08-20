@@ -36,18 +36,15 @@ class ResetPasswordPopup extends React.Component {
         axios
         .post(`/reset.php`, btoa(JSON.stringify(
             {
+            action: 'reset',
             email: this.state.value,
             }
         )))
         .then(res => {
-            //console.log(res.data);
+            console.log(res.data);
             this.setState({
                 status: res.data.status,
-            });
-            this.setState({
                 message: res.data.message,
-            });
-            this.setState({
                 loader: false,
             });
         });

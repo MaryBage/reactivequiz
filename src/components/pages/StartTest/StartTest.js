@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { logoText, sloganText, selectFieldText, approveButtonText, category, level } from "../../../StaticContent";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import image from "../../../images/pages/pass.png";
@@ -14,6 +14,10 @@ import DelayLink from 'react-delay-link';
 const StartTest = () => {
 
     const [data, setData] = useState({ quiz: '', category: "", level: "" });
+
+    useEffect (()=>{
+        document.body.style.overflow='hidden';  
+    },[])
 
     const handleSubmit = (e) => {
             setData({ ...data, quiz: 'trainee' });

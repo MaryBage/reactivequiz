@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {logoText, sloganText, approveButtonText} from "../../../StaticContent";
 import image from "../../../images/pages/studentRegister.png";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
@@ -7,8 +7,6 @@ import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
 import InformativeField from "../DetailedComponents/Fields/InformativeField/InformativeField";
 import SimpleLine from "../DetailedComponents/SimpleLine/SimpleLine";
 import {connect} from "react-redux";
-
-
 import {updateQuizInfo} from "../../../redux/quizInfo/quizInfo.actions";
 
 const StuRegister = (props) => {
@@ -17,6 +15,10 @@ const StuRegister = (props) => {
         const {name} = e.target;
         setData({...data, [name]: e.target.value});
     };
+
+    useEffect (()=>{
+        document.body.style.overflow='hidden';  
+    },[])
 
     const handleRegister = async (e) => {
         e.preventDefault();

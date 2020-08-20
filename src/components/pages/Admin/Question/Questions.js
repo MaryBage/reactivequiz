@@ -340,7 +340,7 @@ const Questions = (props) => {
                       <option value="single">single</option>
                       <option value="multiple">multiple</option>
                     </select>
-                  </div> */}
+                    </div>*/ }
                   <div
                     className="pointer red"
                     onClick={() => deleteData(currentQuestion.questionDbId)}

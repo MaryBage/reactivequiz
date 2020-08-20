@@ -7,7 +7,6 @@ import { UserContext } from '../context/user/userContext';
 const ChangePsw = () => {
 
        const { id } = useContext(UserContext);
-       // const [toggle, settoggle] = useState(false);
        const { register, handleSubmit } = useForm();
        const [match, setMatch] = useState(false);
        const [success, setSuccess] = useState(false);

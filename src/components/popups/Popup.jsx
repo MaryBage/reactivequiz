@@ -8,6 +8,8 @@ import {popupText} from "../../StaticContent";
 import ResultPdf from '../../components/pages/Pdf/Pdf'
 import {PDFViewer} from '@react-pdf/renderer';
 import {withRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import {updateQuizInfo} from "../../redux/quizInfo/quizInfo.actions";
 
 const Popup = (props) => {
 
@@ -30,23 +32,15 @@ const Popup = (props) => {
 
 
     const images = [harder, well, great, thanksmail];
-    const [openPdf, setOpenPdf] = useState(false)
+    const [openPdf, setOpenPdf] = useState({
+                                    status: false, 
+                                    date: Date(Date.now()).slice(4, 24),
+                                    ...props.quizInfo})
     const total = props.res.map(e => Math.max(...e.options.map(el => el.total))).reduce((t, e) => t + e, 0);
     const result = props.res.map(e => Math.max(...e.options.map(el => el.point))).reduce((t, e) => t + e, 0);
     const coefficient = (result / total) * 100;
     const thanksmailText = "We greatly appreciate your feedback!";
-    const stuInfo = {
-        date: Date(Date.now()).slice(4, 24),
-        ...props.quizInfo
-    };
-
-    if (props.location.search) {
-        let stuInfoArr = props.location.search.slice(1).split('&')
-        stuInfoArr.map(e => {
-            stuInfo[e.split('=')[0]] = e.split('=')[1]
-        })
-    }
-
+    
     let i;
     let text;
     if (coefficient < 60) {
@@ -63,10 +57,23 @@ const Popup = (props) => {
         text = popupText.thanksmail;
     }
 
+    const openPdfHandler = () => {
+        setOpenPdf({...openPdf, status:true})
+        props.updateQuizInfo({
+            duration: null,
+            creator: null,
+            start: null,
+            quizId: null,
+            quizName: null,
+            userName: null,
+            email: null
+        });
+    }
+
     return (
         <>
-            {openPdf ? <PDFViewer style={{width: '100%', height: '100vh'}}>
-                    <ResultPdf res={props.res} {...stuInfo} score={`${result}/${total}`} percentage={coefficient}/>
+            {openPdf.status ? <PDFViewer style={{width: '100%', height: '100vh'}}>
+                    <ResultPdf res={props.res} {...openPdf} score={`${result}/${total}`} percentage={coefficient}/>
                     </PDFViewer> :
         <div className="popup-container">
             <div
@@ -102,7 +109,7 @@ const Popup = (props) => {
                                 className={s.tryAgain}
                                 value="see results"
                                 key="tryAgain"
-                                onClick={() => setOpenPdf(true)}
+                                onClick={openPdfHandler}
                             >
                                 see results
                             </button>
@@ -114,4 +121,9 @@ const Popup = (props) => {
     );
 };
 
-export default withRouter(Popup);
+
+const mapDispatchToProps = dispatch => ({
+    updateQuizInfo: (info) => dispatch(updateQuizInfo(info)),
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(Popup));

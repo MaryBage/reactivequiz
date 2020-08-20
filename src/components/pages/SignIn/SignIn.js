@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { logoText, sloganText } from "../../../StaticContent";
 import image from "../../../images/pages/signin.png";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
@@ -18,6 +18,10 @@ const SignIn = ({ setCurrentUser }) => {
     const [data, setData] = useState({ email: '', password: '' });
     const [error, setError] = useState({ error: '' });
     const [loader, setLoader] = useState({ loader: false });
+
+    useEffect (()=>{
+        document.body.style.overflow='hidden';  
+    },[])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

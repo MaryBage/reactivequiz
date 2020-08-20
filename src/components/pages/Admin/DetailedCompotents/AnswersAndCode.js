@@ -46,6 +46,7 @@ const AnswersAndCode = ({id, dbid, questions}) => {
             { questions[id - 1].code &&
                 <div className={s.codeWrapper}>
                     <textarea 
+                        cols='50' rows='4'
                         name="code"
                         placeholder={questions[id - 1].code} 
                         onBlur={(e) => codeEdit(e, dbid, "questions")}
