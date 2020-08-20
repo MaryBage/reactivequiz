@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import s from "./ChangePsw.module.css";
-import { CSSTransition } from "react-transition-group";
 import { useForm } from "react-hook-form";
 import axios from '../../../../axios/axios-quiz';
 import { UserContext } from '../context/user/userContext';
@@ -14,16 +13,17 @@ const ChangePsw = () => {
        const [success, setSuccess] = useState(false);
 
        const sbmtHandler = data => {
-              // console.log(data);
+               
+              if (!data.psw) {
+                    return;
+              }
               if (data.psw != data.confirmed) {
                      setMatch(true);
-              }
-              if (data.psw || data.confirmed === "") {
-                     return;
               }
               else {
                   axios.post(`/reset.php`, btoa(JSON.stringify({action: 'change', newPsw: data.psw, creator: id})))
                      .then(res => setSuccess(res.data.success));
+                     setMatch(false);
               }
        }
 
@@ -34,15 +34,10 @@ const ChangePsw = () => {
                                    <h1>Change password</h1>
                             </div>
                             <hr />
-                            <CSSTransition
-                                   // in={toggle}
-                                   timeout={10}
-                                   classNames="formanimation"
-                                   unmountOnExit
-                            > 
-                            </CSSTransition>
-                            {match && <span>Passwords don't match</span>}
-                            {success && <span>Your password has been successfully changed!</span>}
+                            <div style={{height: 25}}>
+                                   {match && <span style={{color:'red'}}>Passwords don't match</span>}
+                                   {success && <span  style={{color: 'green', fontWeight: 'bold'}}>Your password has been successfully changed!</span>}
+                            </div>
                             <form className={s.formWrapper} onSubmit={handleSubmit(sbmtHandler)}>
                                    <div className={s.inputWrapper}>
                                           <div>new password</div>

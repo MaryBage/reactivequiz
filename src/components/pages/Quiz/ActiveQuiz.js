@@ -21,19 +21,19 @@ export default function ActiveQuiz(props) {
         setQuiz(props.quiz);
     }, [props])
 
-
+    console.log('quiz bef', quiz)
     const addUserAnswer  = (e) => {
-       
+        console.log('quiz id',+e.target.id)
         if(quiz.type == 'single')
-          setQuiz({...answeredQuiz, isSubmitted: false, userAnswer: [+e.target.id]})
+          setQuiz({...answeredQuiz, userAnswer: [+e.target.id]})
         if(quiz.type == 'multiple'){
             if(quiz.userAnswer.includes(+e.target.id))
-                 setQuiz({...answeredQuiz,isSubmitted: false, userAnswer:[+e.target.id].filter( el => el != +e.target.id )})
+                 setQuiz({...answeredQuiz, userAnswer:[+e.target.id].filter( el => el != +e.target.id )})
             else{
-                setQuiz({...answeredQuiz,isSubmitted: false, userAnswer: answeredQuiz.userAnswer.concat(+e.target.id)})
+                setQuiz({...answeredQuiz, userAnswer: answeredQuiz.userAnswer.concat(+e.target.id)})
             }
         }
-      
+       
     }
     
     return (
