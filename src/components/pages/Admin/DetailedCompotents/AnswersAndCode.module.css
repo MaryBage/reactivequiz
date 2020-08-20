@@ -46,7 +46,7 @@
     display: none;
 }
   
-.appeared {
+.appeared, .appearedTrue {
     position: relative;
     display: inline-flex;
     font-family: 'Courier New', Courier, monospace;
@@ -54,6 +54,10 @@
     color: #555555;
     font-weight: bold;
     cursor: pointer;
+}
+
+.appearedTrue {
+    color: #009900;
 }
 
 .hint {

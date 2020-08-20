@@ -56,13 +56,16 @@ const AnswersAndCode = ({id, dbid, questions}) => {
             {answers.map(answer => (
                     <div className={s.answer} key={Object.keys(answer)[0]}>
                         <div 
-                            className={Object.keys(answer)[0] == disappear.index ? s.disappeared : s.appeared} 
+                            name
+                            className={Object.keys(answer)[0] == disappear.index ? s.disappeared : s.appeared && 
+                                Object.values(answer)[0][0] == "right" ? s.appearedTrue : s.appeared} 
                             onDoubleClick={(e) => makeToDisappear(e, Object.keys(answer)[0])}
                             onMouseOver={(e) => makeToShowHint(e, Object.keys(answer)[0])}
                             onMouseOut={() => makeToShowHint(false)}
                         >
                             {Object.values(answer)[0][1]}
-                            {hint && hint.index == Object.keys(answer)[0] ? <div className={s.hint}>Double-click and edit the question!</div> : null}
+                            {hint && hint.index == Object.keys(answer)[0] ? 
+                                <div className={s.hint}>Double-click and edit the question!</div> : null}
                         </div>
                         { disappear.disappear && Object.keys(answer)[0] == disappear.index &&
                         <input 
