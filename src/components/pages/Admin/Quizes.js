@@ -140,20 +140,20 @@ const Quizes = (props) => {
           case 'name':
                 setOrderingName(!orderingName)
                 setChangedQuizes(orderingName 
-                                  ? changedQuizes.sort((a,b)=>compare(a,b,-1)).map(e => e) 
-                                  : changedQuizes.sort(compare).map(e => e))
+                                  ? changedQuizes.sort((a,b)=>compare(a,b,-1)) 
+                                  : changedQuizes.sort(compare))
           break;
           case 'duration':
             setOrderingDuration(!orderingDuration)
             setChangedQuizes(changedQuizes.sort((a, b) => orderingDuration 
                               ? a[field] - b[field] 
-                              : b[field] - a[field]).map(e => e))
+                              : b[field] - a[field]))
           break;
           case 'questions':
             setOrderingQuestions(!orderingQuestions)
             setChangedQuizes(changedQuizes.sort((a, b) => orderingQuestions 
                               ? a[field].length - b[field].length 
-                              : b[field].length - a[field].length).map(e => e))
+                              : b[field].length - a[field].length))
           break;
       }
     }

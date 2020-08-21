@@ -87,9 +87,10 @@ const AnswersAndCode = ({id, dbid, questions}) => {
                             {hint && hint.index == answer[0] ? 
                                 <div className={s.hint}>Double-click and edit the answer!</div> : null}
                         </div>
+                            /* {+answer[1].point>0 &&  <div>{answer[1].point}</div>} </> */
                         }
                         {(disappear.disappear && answer[0] == disappear.index) &&
-                        <input 
+                        <><input 
                             className={answer[1].type == "right" ? s.appearedTrue : s.appeared} 
                             type="text" 
                             name="answer"
@@ -103,6 +104,7 @@ const AnswersAndCode = ({id, dbid, questions}) => {
                                                                     [answer[0]]:{...details.options[answer[0]],
                                                                         answer: e.target.value}}})}
                         />
+                        </>
                         }
                        
                         <div className="pointer red" onClick={() => deleteData(answer[0])}>&#10008;</div>

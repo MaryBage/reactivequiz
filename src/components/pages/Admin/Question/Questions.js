@@ -276,9 +276,9 @@ const Questions = (props) => {
           {filteredValue.map((currentQuestion,i) => (
             <CSSTransition
               key={currentQuestion.questionId}
-              className={s.questionItem}
+              classNames='questionItemAnim'
               timeout={800}
-            >
+            ><li className={s.questionItem}>
               <div className={s.questionItemWrapper}>
                 <li className={s.questionItemLi}>
                   <div className={s.inputWrapper}>
@@ -372,6 +372,7 @@ const Questions = (props) => {
                   )}
                 </div>
               </div>
+              </li>
             </CSSTransition>
           ))}
         </TransitionGroup>

@@ -60,8 +60,10 @@ const AddForm = (props) => {
 
         if(typeof data.point == 'string' ) {
             if(data.qstnType == 'multiple'){
+            console.log('myType',myType)
                const cnt =  myType.filter(e => e).length
-               myPoint = myType.map(e => !!e * data.point/cnt)
+               myPoint = myType.map(e => (e ? +(data.point/cnt).toPrecision(2) : -1*(data.point/myType.length).toPrecision(2)))
+               console.log('myPoint',myPoint)
             }
             else {
              myPoint[+data.type] = parseFloat(data.point)
@@ -98,7 +100,7 @@ const AddForm = (props) => {
             validation = false;
         }
 
-        if(!myType.map((e,i) => e ? i : null).filter(e => e!=null).every(e => data.point[e])){
+        if(!myType.map((e,i) => e ? i : null).filter(e => e!=null).every(e => myPoint[e])){
             error += 'Right answer has no point.\n'
             validation = false;
         }

@@ -3,6 +3,7 @@ import Highlight, { defaultProps } from "prism-react-renderer"
 import {faLongArrowAltRight,faLongArrowAltLeft} from '@fortawesome/free-solid-svg-icons'
 import {CSSTransition} from 'react-transition-group'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PropTypes from 'prop-types'
 
 export default function ActiveQuiz(props) {
     const  quiz = props.quiz;
@@ -16,19 +17,19 @@ export default function ActiveQuiz(props) {
         window.removeEventListener("resize", handleResize);
       };
     });
-
+    
     useEffect(() => {
         setQuiz(props.quiz);
     }, [props])
 
-    console.log('quiz bef', quiz)
+    
     const addUserAnswer  = (e) => {
-        console.log('quiz id',+e.target.id)
+        
         if(quiz.type == 'single')
           setQuiz({...answeredQuiz, userAnswer: [+e.target.id]})
         if(quiz.type == 'multiple'){
-            if(quiz.userAnswer.includes(+e.target.id))
-                 setQuiz({...answeredQuiz, userAnswer:[+e.target.id].filter( el => el != +e.target.id )})
+            if(answeredQuiz.userAnswer.includes(+e.target.id))
+                 setQuiz({...answeredQuiz, userAnswer:answeredQuiz.userAnswer.filter( el => el != +e.target.id )})
             else{
                 setQuiz({...answeredQuiz, userAnswer: answeredQuiz.userAnswer.concat(+e.target.id)})
             }
@@ -128,4 +129,11 @@ export default function ActiveQuiz(props) {
 }
 
 
-
+ActiveQuiz.propTypes = {
+    quiz: PropTypes.object ,
+    lastQuestion: PropTypes.number,
+    activeQuestion: PropTypes.number,
+    onNextClickHandler: PropTypes.func,
+    onBackClickHandler: PropTypes.func,
+    onSbmtHandler: PropTypes.func,
+}              

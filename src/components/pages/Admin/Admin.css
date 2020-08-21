@@ -228,6 +228,7 @@ input::placeholder {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
 
 .pointer {
@@ -483,11 +484,11 @@ input::placeholder {
     cursor: pointer;
 }
 
-  .questionItem-exit-active {
+  .questionItemAnim-exit-active {
       animation: questionItem 800ms;
   }
   
-  .questionItem-enter-active {
+  .questionItemAnim-enter-active {
       animation: questionItem 800ms ease-in alternate-reverse;
   }
   

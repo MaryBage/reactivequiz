@@ -79,26 +79,26 @@ const StuResults = () => {
           case 'name':
               setOrderingName(!orderingName)
               setChangedStudents(orderingName 
-                              ? changedStudents.sort((a,b)=>compare(a,b,field,-1)).map(e => e) 
-                              : changedStudents.sort((a,b) =>compare(a,b,field)).map(e => e))
+                              ? changedStudents.sort((a,b)=>compare(a,b,field,-1)) 
+                              : changedStudents.sort((a,b) =>compare(a,b,field)))
           break;
           case 'email':
               setOrderingEmail(!orderingEmail)
               setChangedStudents(orderingEmail 
-                              ? changedStudents.sort((a,b)=>compare(a,b,field,-1)).map(e => e) 
-                              : changedStudents.sort((a,b) =>compare(a,b,field)).map(e => e))
+                              ? changedStudents.sort((a,b)=>compare(a,b,field,-1)) 
+                              : changedStudents.sort((a,b) =>compare(a,b,field)))
           break;
           case 'quizName':
               setOrderingQuizName(!orderingQuizName)
               setChangedStudents(orderingQuizName 
-                              ? changedStudents.sort((a,b)=>compare(a,b,field,-1)).map(e => e) 
-                              : changedStudents.sort((a,b) =>compare(a,b,field)).map(e => e))
+                              ? changedStudents.sort((a,b)=>compare(a,b,field,-1)) 
+                              : changedStudents.sort((a,b) =>compare(a,b,field)))
           break;
           case 'percentage':
               setOrderingPercentage(!orderingPercentage)
               setChangedStudents(changedStudents.sort((a, b) => orderingPercentage 
                                       ? a[field] - b[field] 
-                                      : b[field] - a[field]).map(e => e))
+                                      : b[field] - a[field]))
           break;
         }
 

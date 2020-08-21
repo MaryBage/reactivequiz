@@ -3,8 +3,7 @@ import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 
 
 const ResultPdf = (props) => {
-    console.log('pdf',props);
-  
+   
  return  (
     <Document>
       <Page style={styles.body}>

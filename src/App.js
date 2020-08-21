@@ -17,6 +17,7 @@ import { DbState } from './components/pages/Admin/context/database/dbState';
 import { ThemeState } from './components/pages/Admin/context/theme/themeState';
 import PageNotFound from './components/pages/PageNotFound/PageNotFound';
 import StuRegister from './components/pages/StuRegister/StuRegister';
+import ResetPasswordForm from './components/popups/ResetPasswordPopup/AfterResetPopup/ResetPasswordForm'
 
 const App = ({currentUser, logoutUser}) => {
     
@@ -28,6 +29,7 @@ const App = ({currentUser, logoutUser}) => {
                 <Route path="/start-test" component={StartTest}/>
                 <Route path="/quiz/:detail" component={Quiz}/>
                 <Route path="/unavailable" component={PageNotFound}/>
+                <Route path="/reset_password_form/:detail" component={ResetPasswordForm}/>
                 <Route path="/start-quiz/:detail" component={StuRegister}/>
                 {/* <Route path='/pdf' render={() => <PDFViewer style={{width:'100%', height:'100vh'}}><ResultPdf value='80'/></PDFViewer>} /> */}
                 {!currentUser ? <Route exact path="/signIn" component={SignIn}/> : null}

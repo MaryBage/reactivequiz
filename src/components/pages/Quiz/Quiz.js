@@ -7,10 +7,11 @@ import Popup from '../../popups/Popup';
 import {withRouter} from "react-router-dom";
 import Countdown, {zeroPad} from 'react-countdown';
 import {connect} from "react-redux";
+import PropTypes from 'prop-types'
 
 
 const Quiz = (props) => {
-    console.log(props)
+    
     const params = props.match.params.detail
           ? atob(props.match.params.detail)
           : JSON.stringify(props)
@@ -24,7 +25,7 @@ const Quiz = (props) => {
         axios
             .post(`/quiz.php`, params)
             .then(res => {
-                console.log(res.data)
+                
                 if (res.data.message) {
                     props.history.push('/unavailable/')
                 } else {
@@ -169,4 +170,11 @@ const Quiz = (props) => {
 const mapStateToProps = state => ({
     quizInfo: state.quizInfo
 });
+
+
+Quiz.propTypes = {
+    quiz: PropTypes.string ,
+    category: PropTypes.string,
+    level: PropTypes.string,
+}
 export default withRouter(connect(mapStateToProps)(Quiz));
