@@ -23,7 +23,24 @@ export const DbState = ({ children }) => {
 
         const res = await axios.post('/data.php', btoa(JSON.stringify({...data, creator: id, action: 'add'})))
         
-        getData();
+        const payload = res.data.map((questionItem) => {
+            return {
+
+                questionId: questionItem.questionId,
+                questionDbId: questionItem.questionDbId,
+                question: questionItem.question,
+                code: questionItem.code,
+                type: questionItem.type,
+                difficulty: questionItem.difficulty,
+                category: questionItem.category,
+                options: questionItem.options
+            }
+        });
+
+        dispatch({
+            type: GET_DATA,
+            payload
+        })
 
     } 
 
@@ -31,7 +48,7 @@ export const DbState = ({ children }) => {
         setLoader();
         
       const res = await axios.post('/data.php', btoa(JSON.stringify({action: 'get', creator: id})))
-      console.log(res.data)
+     
         const payload = res.data.map((questionItem) => {
             return {
 
@@ -64,20 +81,53 @@ export const DbState = ({ children }) => {
             id: dbId
         })))
 
-        getData();
+        const payload = res.data.map((questionItem) => {
+            return {
+
+                questionId: questionItem.questionId,
+                questionDbId: questionItem.questionDbId,
+                question: questionItem.question,
+                code: questionItem.code,
+                type: questionItem.type,
+                difficulty: questionItem.difficulty,
+                category: questionItem.category,
+                options: questionItem.options
+            }
+        });
+
+        dispatch({
+            type: GET_DATA,
+            payload
+        })
     }
 
     const deleteData = async (dbId, dataToDelete = 'question') => {
         setLoader();
-        console.log('deleting')
+        
         const res = await axios.post('/data.php', btoa(JSON.stringify({
                     action: 'delete', 
                     creator: id, 
                     dataToDelete: dataToDelete, 
                     id: dbId})))
-                console.log(res.data)
-        
-        getData();
+
+        const payload = res.data.map((questionItem) => {
+            return {
+
+                questionId: questionItem.questionId,
+                questionDbId: questionItem.questionDbId,
+                question: questionItem.question,
+                code: questionItem.code,
+                type: questionItem.type,
+                difficulty: questionItem.difficulty,
+                category: questionItem.category,
+                options: questionItem.options
+            }
+        });
+
+        dispatch({
+            type: GET_DATA,
+            payload
+        })
         getQuizes();
     } 
 
@@ -92,7 +142,6 @@ export const DbState = ({ children }) => {
         setLoader();
         
       const res = await axios.post('/quizData.php', btoa(JSON.stringify({creator: id, action: 'get'})))
-      console.log('get quiz',res.data)
         const payload = res.data.map((quizItem) => {
                     return {
                         dbId: quizItem.id,
@@ -112,14 +161,27 @@ export const DbState = ({ children }) => {
 
     const updateQuizes = async (data) =>{
         setLoader();
-        console.log('updateQuizes',data);
 
-        await axios.post('/quizData.php', btoa(JSON.stringify({
+        const res = await axios.post('/quizData.php', btoa(JSON.stringify({
                     action: 'update', 
                     creator: id,
                     ...data})))
         
-        getQuizes();
+            const payload = res.data.map((quizItem) => {
+                return {
+                    dbId: quizItem.id,
+                    name: quizItem.name,
+                    status: quizItem.status,
+                    duration: quizItem.duration,
+                    questions: quizItem.questions.split(',')
+                    
+                }
+            });
+
+            dispatch({
+                type:GET_QUIZ,
+                payload
+            })
     } 
 
     const deleteQuizes = async (dbId) =>{
@@ -130,14 +192,27 @@ export const DbState = ({ children }) => {
                     creator: id, 
                     id: dbId})))
         
-        getQuizes();
+        const payload = res.data.map((quizItem) => {
+            return {
+                dbId: quizItem.id,
+                name: quizItem.name,
+                status: quizItem.status,
+                duration: quizItem.duration,
+                questions: quizItem.questions.split(',')
+                
+            }
+        });
+
+        dispatch({
+            type:GET_QUIZ,
+            payload
+        })
     } 
 
     const getStudents = async () =>{
         setLoader();
         
       const res = await axios.post('/students.php', btoa(JSON.stringify({creator: id, action: 'get'})))
-      console.log(' getStudents',res.data)
          const payload = res.data.map((student) => {
                      return {
                         quizName: student.quizName,

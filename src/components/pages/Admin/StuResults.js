@@ -6,6 +6,8 @@ import {UserContext} from './context/user/userContext'
 import Modal from "react-modal";
 import {PDFViewer} from '@react-pdf/renderer';
 import ResultPdf from '../../pages/Pdf/Pdf'
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 
 const customStyles = {
     content: {
@@ -27,8 +29,12 @@ const StuResults = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [res, setRes] = useState({res: []})
     const [changedStudents, setChangedStudents] = useState([])
-    const [orderingName, setOrderingName] = useState(false)
     const [searchBy, setSearchBy] = useState('quizName')
+    const [orderingName, setOrderingName] = useState(false)
+    const [orderingQuizName, setOrderingQuizName] = useState(false)
+    const [orderingEmail, setOrderingEmail] = useState(false)
+    const [orderingPercentage, setOrderingPercentage] = useState(false)
+
 
 
   console.log(changedStudents)
@@ -70,23 +76,33 @@ const StuResults = () => {
             return comparison * order;
           }
         switch (field) {
-            case 'name':
-            case 'email':
-            case 'quizName':
-                setOrderingName(!orderingName)
-                setChangedStudents(orderingName 
-                                ? changedStudents.sort((a,b)=>compare(a,b,field,-1)).map(e => e) 
-                                : changedStudents.sort((a,b) =>compare(a,b,field)).map(e => e))
-            break;
-            case 'percentage':
-                const  orderBy =  changedStudents[0][field] >= changedStudents[changedStudents.length - 1 ][field];
-                setChangedStudents(changedStudents.sort((a, b) => orderBy 
-                                        ? a[field] - b[field] 
-                                        : b[field] - a[field]).map(e => e))
-            break;
-            }
+          case 'name':
+              setOrderingName(!orderingName)
+              setChangedStudents(orderingName 
+                              ? changedStudents.sort((a,b)=>compare(a,b,field,-1)).map(e => e) 
+                              : changedStudents.sort((a,b) =>compare(a,b,field)).map(e => e))
+          break;
+          case 'email':
+              setOrderingEmail(!orderingEmail)
+              setChangedStudents(orderingEmail 
+                              ? changedStudents.sort((a,b)=>compare(a,b,field,-1)).map(e => e) 
+                              : changedStudents.sort((a,b) =>compare(a,b,field)).map(e => e))
+          break;
+          case 'quizName':
+              setOrderingQuizName(!orderingQuizName)
+              setChangedStudents(orderingQuizName 
+                              ? changedStudents.sort((a,b)=>compare(a,b,field,-1)).map(e => e) 
+                              : changedStudents.sort((a,b) =>compare(a,b,field)).map(e => e))
+          break;
+          case 'percentage':
+              setOrderingPercentage(!orderingPercentage)
+              setChangedStudents(changedStudents.sort((a, b) => orderingPercentage 
+                                      ? a[field] - b[field] 
+                                      : b[field] - a[field]).map(e => e))
+          break;
+        }
 
-      }
+    }
  
       const searchHandler = (e) => {
         if(e.target.value)
@@ -130,11 +146,43 @@ return (
               <tbody>
                 <tr key='quizHeader'>
                     <th>#</th>
-                    <th><div className='sorting' name='questionsLength' onDoubleClick={(e) => sortingBy(e, 'quizName')}>Quiz</div></th>
-                    <th><div className='sorting' name='questionsLength' onDoubleClick={(e) => sortingBy(e, 'name')}>Name</div></th>
-                    <th><div className='sorting' name='questionsLength' onDoubleClick={(e) => sortingBy(e, 'email')}>Email</div></th>
-                    <th><div className='sorting' name='questionsLength' onDoubleClick={(e) => sortingBy(e, 'percentage')}>Result</div></th>
-                    <th>Pdf</th>
+                    <th>
+                      <div className='sorting' 
+                        name='questionsLength' 
+                        onDoubleClick={(e) => sortingBy(e, 'quizName')}>
+                      Quiz
+                      {!orderingQuizName && <ArrowDropUpIcon />}
+                      {orderingQuizName && <ArrowDropDownIcon />}
+                      </div>
+                    </th>
+                    <th>
+                      <div className='sorting' 
+                        name='questionsLength' 
+                        onDoubleClick={(e) => sortingBy(e, 'name')}>
+                        Name
+                        {!orderingName && <ArrowDropUpIcon />}
+                        {orderingName && <ArrowDropDownIcon />}
+                      </div>
+                    </th>
+                    <th>
+                      <div className='sorting' 
+                      name='questionsLength' 
+                      onDoubleClick={(e) => sortingBy(e, 'email')}>
+                        Email
+                        {!orderingEmail && <ArrowDropUpIcon />}
+                        {orderingEmail && <ArrowDropDownIcon />}
+                      </div>
+                    </th>
+                    <th>
+                      <div className='sorting' 
+                      name='questionsLength' 
+                      onDoubleClick={(e) => sortingBy(e, 'percentage')}>
+                        Result
+                        {!orderingPercentage && <ArrowDropUpIcon />}
+                        {orderingPercentage && <ArrowDropDownIcon />}
+                      </div>
+                    </th>
+                  <th>Pdf</th>
                 </tr>
 
 

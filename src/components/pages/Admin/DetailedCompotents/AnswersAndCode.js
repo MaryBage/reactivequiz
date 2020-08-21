@@ -9,6 +9,7 @@ const AnswersAndCode = ({id, dbid, questions}) => {
     const answers = questions[id - 1].options;
     const [disappear, setDisappear] = useState({ disappear : false, index : null });
     const [hint, setHint] = useState({hint : false, index : null});
+    const [details, setDetails] = useState(questions[id - 1])
 
     const makeToDisappear = (e, id) => {
         setDisappear({
@@ -28,6 +29,8 @@ const AnswersAndCode = ({id, dbid, questions}) => {
         )
     }
 
+   
+
     const codeEdit = (e, id, table) => {
         if(e.target.value) {
             updateData(id, table, e.target.name, e.target.value);
@@ -35,49 +38,75 @@ const AnswersAndCode = ({id, dbid, questions}) => {
     }
 
     const editAnswer = (e, table) => {
-        console.log(e.target.id, table, e.target.name, e.target.value)
+        
         if(e.target.value) {
             updateData(e.target.id, table, e.target.name, e.target.value);
+            setDisappear({
+                ...disappear,
+                disappear : false,
+                index : e.target.id
+                })
+        }
+    }
+
+    const keyPressHandler = (e) => {
+        if(e.key === 'Enter'){
+            editAnswer(e, "answers")
+            e.target.blur();
         }
     }
 
     return (
         <>  
-            { questions[id - 1].code &&
+            {details.code &&
                 <div className={s.codeWrapper}>
                     <textarea 
-                        cols='50' rows='4'
+                        cols='50' rows={questions[id - 1].code.split('\n').length}
                         name="code"
-                        placeholder={questions[id - 1].code} 
+                        value={details.code} 
                         onBlur={(e) => codeEdit(e, dbid, "questions")}
+                        onChange={(e) => setDetails({...details, code: e.target.value})}
                     />
                     <div className="pointer red" onClick={() => deleteData(dbid)}>&#10008;</div>
                 </div>
             }
-            {answers.map(answer => (
-                    <div className={s.answer} key={Object.keys(answer)[0]}>
-                        <div 
+
+            
+            {Object.entries(details.options).map(answer => {
+                
+                 return   <div className={s.answer} key={answer[0]}>
+                        { <div 
                             name
-                            className={Object.keys(answer)[0] == disappear.index ? s.disappeared : s.appeared && 
-                                Object.values(answer)[0][0] == "right" ? s.appearedTrue : s.appeared} 
-                            onDoubleClick={(e) => makeToDisappear(e, Object.keys(answer)[0])}
-                            onMouseOver={(e) => makeToShowHint(e, Object.keys(answer)[0])}
+                            className={(answer[0] == disappear.index && disappear.disappear ) ? s.disappeared : s.appeared && 
+                                answer[1].type == "right" ? s.appearedTrue : s.appeared} 
+                            onDoubleClick={(e) => makeToDisappear(e, answer[0])}
+                            onMouseOver={(e) => makeToShowHint(e, answer[0])}
                             onMouseOut={() => makeToShowHint(false)}
                         >
-                            {Object.values(answer)[0][1]}
-                            {hint && hint.index == Object.keys(answer)[0] ? 
-                                <div className={s.hint}>Double-click and edit the question!</div> : null}
+                            {answer[1].answer}
+                            {hint && hint.index == answer[0] ? 
+                                <div className={s.hint}>Double-click and edit the answer!</div> : null}
                         </div>
-                        { disappear.disappear && Object.keys(answer)[0] == disappear.index &&
+                        }
+                        {(disappear.disappear && answer[0] == disappear.index) &&
                         <input 
+                            className={answer[1].type == "right" ? s.appearedTrue : s.appeared} 
                             type="text" 
                             name="answer"
-                            id={Object.keys(answer)[0]}
-                            placeholder={Object.values(answer)[0][1]}
-                            onBlur={(e) => editAnswer(e, "answers")}
-                        />}
-                        <div className="pointer red" onClick={() => deleteData(Object.keys(answer)[0])}>&#10008;</div>
-                </div>))
+                            id={answer[0]}
+                            value={answer[1].answer}
+                            onMouseOver={(e) => makeToShowHint(e, answer[0])}
+                            onMouseOut={() => makeToShowHint(false)}
+                            onKeyPress={keyPressHandler}
+                            onChange = {(e) => setDetails({...details, 
+                                                                options:{...details.options,
+                                                                    [answer[0]]:{...details.options[answer[0]],
+                                                                        answer: e.target.value}}})}
+                        />
+                        }
+                       
+                        <div className="pointer red" onClick={() => deleteData(answer[0])}>&#10008;</div>
+                        </div>})
             }
         </>
     )

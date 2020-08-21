@@ -97,6 +97,11 @@ const AddForm = (props) => {
             error += 'Right answer text is empty.\n'
             validation = false;
         }
+
+        if(!myType.map((e,i) => e ? i : null).filter(e => e!=null).every(e => data.point[e])){
+            error += 'Right answer has no point.\n'
+            validation = false;
+        }
  
         setAddValidation({...addValidation, validation, error , question, category, point, answer})
 
@@ -130,7 +135,7 @@ return (
                         question: 1,
                         answer: 1})
                     }}>
-                    <div>
+                    <div style={{height:40}}>
                     { addValidation.error 
                     ? addValidation.error.split ('\n').map ((item, i) => (
                               <><span style={{color:'red'}} key={i}>{item}</span><br/></>))
@@ -140,20 +145,28 @@ return (
                          } 
                     </div>
                  
-                <div className='row'> <input ref={register} 
-                className='wideRow' 
-                type='text' 
-                name='question' 
-                placeholder='Enter a question' 
-                style= {!addValidation.question ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
-                onChange={hideSuccessMsg}  /></div>
-                <div className='row'> <textarea  ref={register} cols='50' rows='4' name='code' placeholder='code here' onChange={hideSuccessMsg} className="addFormTxtarea" /></div>
-                <div className='row' style={{flexFlow: 'row wrap'}}> <input ref={register} 
-                type='text' 
-                name='category' 
-                placeholder='Enter a category' 
-                style= {!addValidation.category ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
-                onChange={hideSuccessMsg} />
+                <div className='row'> 
+                        <input ref={register} 
+                            className='wideRow' 
+                            type='text' 
+                            name='question' 
+                            placeholder='Enter a question' 
+                            style= {!addValidation.question ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
+                            onChange={hideSuccessMsg}  /></div>
+                <div className='row'> 
+                        <textarea  ref={register} 
+                            cols='50' rows='4' 
+                            name='code' placeholder='code here' 
+                            onChange={hideSuccessMsg} 
+                            className="addFormTxtarea" />
+                </div>
+                <div className='row' style={{flexFlow: 'row wrap'}}> 
+                    <input ref={register} 
+                        type='text' 
+                        name='category' 
+                        placeholder='Enter a category' 
+                        style= {!addValidation.category ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
+                        onChange={hideSuccessMsg} />
                 <select name='difficulty' ref={register} onChange={qstnTypeChangeHandler}>
                         <option value='Easy'>easy</option>
                         <option value='Medium'>medium</option>
@@ -165,13 +178,13 @@ return (
                         <option value='multiple'>multiple</option>
                     </select>
          
-  <input type='number' 
-  ref={register}  
-  name='point'  
-  step='1' 
-  onChange={pointChangeHandler} 
-  style= {!addValidation.point ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
-  placeholder='Score'/> 
+                <input type='number' 
+                ref={register}  
+                name='point'  
+                min='0'
+                step='1' 
+                onChange={pointChangeHandler} 
+                placeholder='Score'/> 
                   </div>
                     {answers.map((_, i) => <div key={i} className='row'> 
                     {qstnType ==='single' ? 
@@ -197,7 +210,15 @@ return (
                         <input type='text' 
                         style= {!addValidation.answer ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
                         className='wideRow' ref={register}  key={`1${i}`} name={`answer[${i}]`}  onChange={hideSuccessMsg}/> &nbsp;
-                        {qstnPoint ? null : <input type='number'  ref={register} key={`4${i}`} size='1' name={`point[${i}]`}   step='0.2' onChange={hideSuccessMsg} />} 
+                        {!qstnPoint && 
+                        <input type='number'  
+                        ref={register} 
+                        key={`4${i}`} 
+                        size='1'
+                        min='0'
+                        name={`point[${i}]`}  
+                        step='0.2' 
+                        onChange={hideSuccessMsg} />} 
                         </div>) }
 
                         <div className='centerAdm'><input value='Add question' type='submit' 

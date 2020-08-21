@@ -17,20 +17,6 @@ const Popup = (props) => {
         w: window.innerWidth,
         dif: window.outerWidth - window.innerWidth,
     });
-
-    useEffect(() => {
-        const handleResize = () =>
-            setWidth({
-                w: window.innerWidth,
-                dif: window.outerWidth - window.innerWidth,
-            });
-        window.addEventListener("resize", handleResize);
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    });
-
-
     const images = [harder, well, great, thanksmail];
     const [openPdf, setOpenPdf] = useState({
                                     status: false, 
@@ -40,6 +26,31 @@ const Popup = (props) => {
     const result = props.res.map(e => Math.max(...e.options.map(el => el.point))).reduce((t, e) => t + e, 0);
     const coefficient = (result / total) * 100;
     const thanksmailText = "We greatly appreciate your feedback!";
+
+    useEffect(()=>{
+        props.updateQuizInfo({
+          duration: null,
+          creator: null,
+          start: null,
+          quizId: null,
+          quizName: null,
+          userName: null,
+          email: null
+      });
+  },[])
+
+  useEffect(() => {
+      const handleResize = () =>
+          setWidth({
+              w: window.innerWidth,
+              dif: window.outerWidth - window.innerWidth,
+          });
+      window.addEventListener("resize", handleResize);
+      return () => {
+          window.removeEventListener("resize", handleResize);
+      };
+  });
+
     
     let i;
     let text;
@@ -56,20 +67,6 @@ const Popup = (props) => {
         i = 3;
         text = popupText.thanksmail;
     }
-
-    const openPdfHandler = () => {
-        setOpenPdf({...openPdf, status:true})
-        props.updateQuizInfo({
-            duration: null,
-            creator: null,
-            start: null,
-            quizId: null,
-            quizName: null,
-            userName: null,
-            email: null
-        });
-    }
-
     return (
         <>
             {openPdf.status ? <PDFViewer style={{width: '100%', height: '100vh'}}>
@@ -109,7 +106,7 @@ const Popup = (props) => {
                                 className={s.tryAgain}
                                 value="see results"
                                 key="tryAgain"
-                                onClick={openPdfHandler}
+                                onClick={() => setOpenPdf({...openPdf, status:true})}
                             >
                                 see results
                             </button>

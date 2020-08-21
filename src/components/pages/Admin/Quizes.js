@@ -2,6 +2,8 @@ import React, {useContext, useState, useRef, useEffect} from 'react'
 import {DbContext} from './context/database/dbContext';
 import './Admin.css'
 import {ArrowLeft, ArrowRight} from '@material-ui/icons';
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import {updateQuizInfo} from "../../../redux/quizInfo/quizInfo.actions";
 import {connect} from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -42,6 +44,8 @@ const Quizes = (props) => {
     const inptRef = useRef(null);
     const [changedQuizes, setChangedQuizes] = useState([])
     const [orderingName, setOrderingName] = useState(false)
+    const [orderingDuration, setOrderingDuration] = useState(false)
+    const [orderingQuestions, setOrderingQuestions] = useState(false)
     
     useEffect(()=>{
 
@@ -140,14 +144,14 @@ const Quizes = (props) => {
                                   : changedQuizes.sort(compare).map(e => e))
           break;
           case 'duration':
-            orderBy =  changedQuizes[0][field] >= changedQuizes[changedQuizes.length - 1 ][field];
-            setChangedQuizes(changedQuizes.sort((a, b) => orderBy 
+            setOrderingDuration(!orderingDuration)
+            setChangedQuizes(changedQuizes.sort((a, b) => orderingDuration 
                               ? a[field] - b[field] 
                               : b[field] - a[field]).map(e => e))
           break;
           case 'questions':
-            orderBy =  changedQuizes[0][field].length >= changedQuizes[changedQuizes.length - 1 ][field].length;
-            setChangedQuizes(changedQuizes.sort((a, b) => orderBy 
+            setOrderingQuestions(!orderingQuestions)
+            setChangedQuizes(changedQuizes.sort((a, b) => orderingQuestions 
                               ? a[field].length - b[field].length 
                               : b[field].length - a[field].length).map(e => e))
           break;
@@ -240,9 +244,33 @@ const Quizes = (props) => {
                         <tr key='quizHeader'>
                             <th>#</th>
                             <th></th>
-                            <th style={{width: 200}}><div className='sorting' name='questionsLength' onDoubleClick={(e) => sortingBy(e, 'name')}>Quiz name</div></th>
-                            <th><div className='sorting' name='questionsLength' onDoubleClick={(e) => sortingBy(e, 'questions')}>Questions<br/>quantity</div></th>
-                            <th><div className='sorting' name='duration' onDoubleClick={(e) => sortingBy(e, 'duration')}>Duration<br/>in minutes</div></th>
+                            <th style={{width: 200}}>
+                              <div className='sorting' 
+                                    name='questionsLength' 
+                                    onDoubleClick={(e) => sortingBy(e, 'name')}>
+                                Quiz name 
+                                {!orderingName && <ArrowDropUpIcon />}
+                                {orderingName && <ArrowDropDownIcon />}
+                                </div>
+                              </th>
+                            <th>
+                              <div className='sorting' 
+                              name='questionsLength' 
+                              onDoubleClick={(e) => sortingBy(e, 'questions')}>
+                                Questions<br/>quantity
+                                {orderingQuestions && <ArrowDropUpIcon />}
+                                {!orderingQuestions && <ArrowDropDownIcon />}
+                              </div>
+                            </th>
+                            <th>
+                                <div className='sorting' 
+                                  name='duration' 
+                                  onDoubleClick={(e) => sortingBy(e, 'duration')}>
+                                  Duration<br/>in minutes
+                                  {orderingDuration && <ArrowDropUpIcon />}
+                                  {!orderingDuration && <ArrowDropDownIcon />}
+                                </div>
+                             </th>
                             <th>Quiz link</th>
                             <th>Status</th>
                             <th></th>

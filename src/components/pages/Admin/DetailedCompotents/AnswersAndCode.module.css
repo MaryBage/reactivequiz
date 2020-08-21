@@ -48,6 +48,7 @@
   
 .appeared, .appearedTrue {
     position: relative;
+    width:100%;
     display: inline-flex;
     font-family: 'Courier New', Courier, monospace;
     font-size: 19px;
@@ -57,13 +58,13 @@
 }
 
 .appearedTrue {
-    color: #009900;
+    color: #009900!important;
 }
 
 .hint {
     position: absolute;
-    top: 25px;
-    left: 25px;
+    margin-top: 25px;
+    margin-left: 25px;
     height: max-content;
     width: max-content;
     color: #757575;

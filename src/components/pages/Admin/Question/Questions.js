@@ -35,6 +35,7 @@ const Questions = (props) => {
   const [disappear, setDisappear] = useState({ disappear: false, index: null });
   const [hint, setHint] = useState({hint : false, index : null});
   const [filteredValue, setFilteredValue] = useState(questions);
+  const [qstnInptValue, setQstnInptValue] = useState(questions.reduce((txt, value, key) => ({ ...txt, [`question${key}`]: value.question}), {}));
   const [searching, setSearching] = useState({ question: '', category: '', difficulty: '', type: '', timeout: 0 });
   const [checkAll, setCheckAll] = useState(false);
 
@@ -43,6 +44,7 @@ const Questions = (props) => {
 
   useEffect(() => {
     setFilteredValue(questions);
+    setQstnInptValue(questions.reduce((txt, value, key) => ({ ...txt, [`question${key}`]: value.question}), {}));
   }, [props])
 
 //console.log('selectedQstns',selectedQstns)
@@ -62,6 +64,7 @@ const Questions = (props) => {
       filtered = filtered.filter(el => el[key].includes(searching[key]))
     }
     setFilteredValue(filtered)
+    setQstnInptValue(filtered.reduce((txt, value, key) => ({ ...txt, [`question${key}`]: value.question}), {}));
 
   }, [searching])
 
@@ -103,6 +106,11 @@ const Questions = (props) => {
     e.preventDefault();
     if (e.target.value) {
       updateData(id, table, e.target.name, e.target.value);
+            setDisappear({
+                ...disappear,
+                disappear: false,
+                index: id
+            })
     }
   };
 
@@ -146,6 +154,7 @@ const Questions = (props) => {
       addQuizes(data)
       closeModal()
       setSelectedQstns([]);
+      setCheckAll(false)
     } else
       setFormControls({
         duration: data.duration || "empty",
@@ -174,6 +183,15 @@ const Questions = (props) => {
    setSelectedQstns([]);
   }
 
+  const onKeyPressHandler = (e) => {
+
+    if(e.key === 'Enter'){
+        editInput(e, e.target.id, "questions")
+        e.target.blur();
+    }
+  
+  }
+ 
   return (
     <>  
         <Modal
@@ -255,7 +273,7 @@ const Questions = (props) => {
         </div>
         <hr />
         <TransitionGroup component="ul" className={s.questions}>
-          {filteredValue.map((currentQuestion) => (
+          {filteredValue.map((currentQuestion,i) => (
             <CSSTransition
               key={currentQuestion.questionId}
               className={s.questionItem}
@@ -284,7 +302,7 @@ const Questions = (props) => {
                         )}
                     </div>
                     <div
-                      className={currentQuestion.questionId == disappear.index ? s.disappeared : s.appeared}
+                      className={currentQuestion.questionId == disappear.index && disappear.disappear? s.disappeared : s.appeared}
                       onDoubleClick={(e) => makeToDisappear(e, currentQuestion.questionId)}
                       onMouseOver={(e) => makeToShowHint(e, currentQuestion.questionId)}
                       onMouseOut={() => makeToShowHint(false)}
@@ -296,11 +314,12 @@ const Questions = (props) => {
                       <input
                         type="text"
                         name="question"
-                        placeholder={currentQuestion.question}
+                        id={currentQuestion.questionDbId}
+                        value ={qstnInptValue[`question${i}`]}
                         className={s.questionItemInput}
-                        onBlur={(e) =>
-                          editInput(e, currentQuestion.questionDbId, "questions")
-                        }
+                        onKeyPress={onKeyPressHandler}
+                        onChange = {e => setQstnInptValue(e.target.value)}
+                        
                       />
                     }
                   </div>

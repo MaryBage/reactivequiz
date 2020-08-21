@@ -5,7 +5,6 @@ const INITIAL_STATE = {
 const userReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case "SET_CURRENT_USER":
-            // console.log(action)
             return {...state, ...action.payload};
         case "LOGOUT_USER":
             return {
