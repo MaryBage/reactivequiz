@@ -1,0 +1,18 @@
+.hintIncluder {
+  position: relative;
+}
+
+.hint {
+  position: absolute;
+  top: 25px;
+  left: 30px;
+  height: max-content;
+  width: max-content;
+  color: #757575;
+  font-size: 13px;
+  font-family: 'Courier New', Courier, monospace;
+  border: 1px solid #bbbbbb;
+  border-radius: 3px;
+  background-color: whitesmoke;
+  padding: 3px;
+}

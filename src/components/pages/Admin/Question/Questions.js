@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Admin.css";
 import s from "./Questions.module.css";
 import { DbContext } from "../context/database/dbContext";
@@ -72,7 +72,7 @@ const Questions = (props) => {
   useEffect(() => {
 
     checkAll 
-        && setSelectedQstns(filteredValue.map(e => e. questionDbId))
+      && setSelectedQstns(filteredValue.map(e => e.questionDbId))
  
     }, [checkAll])
 

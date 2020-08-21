@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { approveButtonText } from "../../../StaticContent";
 import s from "./PopupReset.module.css";
 import InformativeField from '../../pages/DetailedComponents/Fields/InformativeField/InformativeField';

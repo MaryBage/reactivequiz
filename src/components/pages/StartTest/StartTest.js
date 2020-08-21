@@ -7,7 +7,6 @@ import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import CustomSelect from "../DetailedComponents/Buttons/CustomSelect/CustomSelect";
 import SimpleLine from "../DetailedComponents/SimpleLine/SimpleLine";
-import { Link } from "react-router-dom";
 import  Quiz  from "../Quiz/Quiz";
 import DelayLink from 'react-delay-link';
 

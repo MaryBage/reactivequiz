@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Redirect, BrowserRouter as Router, Route, Switch,withRouter } from "react-router-dom";
+import {Redirect, BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {connect} from 'react-redux';
 import {logoutUser} from './redux/user/user.actions';
 import StartPage from "./components/pages/StartPage/StartPage";
@@ -17,7 +17,7 @@ import { DbState } from './components/pages/Admin/context/database/dbState';
 import { ThemeState } from './components/pages/Admin/context/theme/themeState';
 import PageNotFound from './components/pages/PageNotFound/PageNotFound';
 import StuRegister from './components/pages/StuRegister/StuRegister';
-import ResetPasswordForm from './components/popups/ResetPasswordPopup/AfterResetPopup/ResetPasswordForm'
+import ResetPasswordForm from './components/popups/ResetPasswordPopup/AfterResetPopup/ResetPasswordForm';
 
 const App = ({currentUser, logoutUser}) => {
     

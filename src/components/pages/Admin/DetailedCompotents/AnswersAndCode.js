@@ -6,7 +6,6 @@ import { DbContext } from "../context/database/dbContext";
 const AnswersAndCode = ({id, dbid, questions}) => {
 
     const { updateData, deleteData } = useContext(DbContext);
-    const answers = questions[id - 1].options;
     const [disappear, setDisappear] = useState({ disappear : false, index : null });
     const [hint, setHint] = useState({hint : false, index : null});
     const [details, setDetails] = useState(questions[id - 1])
@@ -28,8 +27,6 @@ const AnswersAndCode = ({id, dbid, questions}) => {
           }
         )
     }
-
-   
 
     const codeEdit = (e, id, table) => {
         if(e.target.value) {
@@ -70,45 +67,42 @@ const AnswersAndCode = ({id, dbid, questions}) => {
                     <div className="pointer red" onClick={() => deleteData(dbid)}>&#10008;</div>
                 </div>
             }
-
-            
             {Object.entries(details.options).map(answer => {
-                
-                 return   <div className={s.answer} key={answer[0]}>
-                        { <div 
-                            name
+                return   <div className={s.answer} key={answer[0]}>
+                    {<div 
                             className={(answer[0] == disappear.index && disappear.disappear ) ? s.disappeared : s.appeared && 
                                 answer[1].type == "right" ? s.appearedTrue : s.appeared} 
                             onDoubleClick={(e) => makeToDisappear(e, answer[0])}
                             onMouseOver={(e) => makeToShowHint(e, answer[0])}
                             onMouseOut={() => makeToShowHint(false)}
-                        >
+                            >
                             {answer[1].answer}
                             {hint && hint.index == answer[0] ? 
                                 <div className={s.hint}>Double-click and edit the answer!</div> : null}
-                        </div>
+                    </div>
                             /* {+answer[1].point>0 &&  <div>{answer[1].point}</div>} </> */
-                        }
-                        {(disappear.disappear && answer[0] == disappear.index) &&
-                        <><input 
-                            className={answer[1].type == "right" ? s.appearedTrue : s.appeared} 
-                            type="text" 
-                            name="answer"
-                            id={answer[0]}
-                            value={answer[1].answer}
-                            onMouseOver={(e) => makeToShowHint(e, answer[0])}
-                            onMouseOut={() => makeToShowHint(false)}
-                            onKeyPress={keyPressHandler}
-                            onChange = {(e) => setDetails({...details, 
-                                                                options:{...details.options,
-                                                                    [answer[0]]:{...details.options[answer[0]],
-                                                                        answer: e.target.value}}})}
-                        />
+                    }
+                    {(disappear.disappear && answer[0] == disappear.index) &&
+                        <>
+                            <input 
+                                className={answer[1].type == "right" ? s.appearedTrue : s.appeared} 
+                                type="text" 
+                                name="answer"
+                                id={answer[0]}
+                                value={answer[1].answer}
+                                onMouseOver={(e) => makeToShowHint(e, answer[0])}
+                                onMouseOut={() => makeToShowHint(false)}
+                                onKeyPress={keyPressHandler}
+                                onChange = {(e) => setDetails({...details, 
+                                    options:{...details.options,
+                                        [answer[0]]:{...details.options[answer[0]],
+                                            answer: e.target.value}}})}
+                            />
                         </>
-                        }
+                    }
                        
-                        <div className="pointer red" onClick={() => deleteData(answer[0])}>&#10008;</div>
-                        </div>})
+                <div className="pointer red" onClick={() => deleteData(answer[0])}>&#10008;</div>
+                </div>})
             }
         </>
     )

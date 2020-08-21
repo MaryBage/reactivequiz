@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import './_CustomButton.css';
-import { Switch, Route, } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
 
@@ -27,19 +26,11 @@ const CustomButton = ({ children, ...otherProps }) => {
 
   return (
     <>
- 
-
-
-
-
-
- <CSSTransition
+      <CSSTransition
         in={toggle}
         timeout={500}
-      
       >
         {state=>
-        
         <Button {...otherProps} classes={{
           root: classes.root
         }} className={`${otherProps.linear ? "linear" : ""} ${otherProps.small ? `small ${state}` : ""}`} 

@@ -1,11 +1,11 @@
-import React,{useEffect, useContext, useState} from 'react'
-import './Admin.css'
-import axios from '../../../axios/axios-quiz'
-import { DbContext } from "./context/database/dbContext"
-import {UserContext} from './context/user/userContext'
+import React,{useEffect, useContext, useState} from 'react';
+import './Admin.css';
+import axios from '../../../axios/axios-quiz';
+import { DbContext } from "./context/database/dbContext";
+import {UserContext} from './context/user/userContext';
 import Modal from "react-modal";
 import {PDFViewer} from '@react-pdf/renderer';
-import ResultPdf from '../../pages/Pdf/Pdf'
+import ResultPdf from '../../pages/Pdf/Pdf';
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 
@@ -114,7 +114,6 @@ const StuResults = () => {
 
 return (
     <>
-
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={() => setIsOpen(false)}
@@ -235,7 +234,7 @@ return (
             </table>
         </div>
         </div></>
-        : 'There is no students yet.'
+        : 'There are no students yet.'
         }
 
         </>

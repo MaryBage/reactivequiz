@@ -15,7 +15,6 @@ import { UserContext } from './context/user/userContext';
 import { DbContext } from './context/database/dbContext';
 import SettingsMenu from './DetailedCompotents/SettingsMenu';
 import SettingsIcon from '@material-ui/icons/Settings';
-import Pdf from '../Pdf/Pdf';
 
 const Admin = () => {
 

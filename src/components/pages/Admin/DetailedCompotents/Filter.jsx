@@ -1,6 +1,4 @@
 import React  from "react";
-import { DbContext } from '../context/database/dbContext';
-
 
 
  const Filters = (props) => {

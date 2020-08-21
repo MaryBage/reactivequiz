@@ -7,7 +7,6 @@ import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
 import InformativeField from "../DetailedComponents/Fields/InformativeField/InformativeField";
 import SimpleLine from "../DetailedComponents/SimpleLine/SimpleLine";
-import {Link} from "react-router-dom";
 import {setCurrentUser} from "../../../redux/user/user.actions";
 import {connect} from "react-redux";
 import axios from "axios";

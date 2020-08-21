@@ -475,7 +475,7 @@ input::placeholder {
   margin-bottom: 15px;
   font-size: 19px;
   font-weight: bold;
-
+  color: #555555;
 }
 
 .settingsContent button:hover {

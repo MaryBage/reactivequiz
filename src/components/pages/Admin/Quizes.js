@@ -1,16 +1,17 @@
-import React, {useContext, useState, useRef, useEffect} from 'react'
+import React, {useContext, useState, useRef, useEffect} from 'react';
 import {DbContext} from './context/database/dbContext';
-import './Admin.css'
+import './Admin.css';
+import s from "./Quizes.module.css";
 import {ArrowLeft, ArrowRight} from '@material-ui/icons';
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import {updateQuizInfo} from "../../../redux/quizInfo/quizInfo.actions";
 import {connect} from "react-redux";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
-import {UserContext} from './context/user/userContext'
+import {UserContext} from './context/user/userContext';
 
 const customStyles = {
   content: {
@@ -46,11 +47,22 @@ const Quizes = (props) => {
     const [orderingName, setOrderingName] = useState(false)
     const [orderingDuration, setOrderingDuration] = useState(false)
     const [orderingQuestions, setOrderingQuestions] = useState(false)
-    
+    const [hint, setHint] = useState({hint : false, index : null});
+
     useEffect(()=>{
 
       setChangedQuizes(quizes)
     },[quizes])
+
+    const makeToShowHint = (e, id) => {
+      setHint(
+        {
+          ...hint,
+          hint : true,
+          index : id
+        }
+      )
+    }
 
     function copyToClipboard(e, duration) {
 
@@ -120,7 +132,7 @@ const Quizes = (props) => {
     };
 
     const sortingBy = (e, field) => {
-      let orderBy = true ;
+      //let orderBy = true ;
 
       function compare(a, b, order = 1) {
         // Use toUpperCase() to ignore character casing
@@ -288,8 +300,16 @@ const Quizes = (props) => {
                                   status: quiz.status
                                   })} /></td>
                                 <td>
-                                    <div style={{cursor: 'pointer'}}
-                                         onClick={(e) => filterByQuiz(e, quiz.questions, quiz.name)}> {quiz.name} </div>
+                                    <div 
+                                      className={s.hintIncluder}
+                                      style={{cursor: 'pointer'}}
+                                      onClick={(e) => filterByQuiz(e, quiz.questions, quiz.name)}  
+                                      onMouseOver={(e) => makeToShowHint(e, quiz.dbId)}
+                                      onMouseOut={() => makeToShowHint(false)}
+                                    >
+                                      {quiz.name}
+                                      {hint && hint.index === quiz.dbId ? <div className={s.hint}>Click to see quiz questions!</div> : null}
+                                    </div>
                                 </td>
                                 <td>{quiz.questions.length}</td>
                                 <td>{quiz.duration}</td>
@@ -332,7 +352,6 @@ const Quizes = (props) => {
                                             <option value='15'>15</option>
                                         </select>
                                     </div>
-
                                     <div>
                                         <ArrowLeft onClick={back}/>
                                         <ArrowRight onClick={next}/>
@@ -346,7 +365,7 @@ const Quizes = (props) => {
                         </tbody>
                     </table>
                 </div>
-                : 'There is no quizes yet.'}
+              : 'There are no quizes yet.'}
         </div>
         </>
     )

@@ -7,7 +7,6 @@ import CustomButton from "../DetailedComponents/Buttons/CustomButton/CustomButto
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
 import InformativeField from "../DetailedComponents/Fields/InformativeField/InformativeField";
-import { Link } from "react-router-dom";
 import axios from '../../../axios/axios-quiz'
 import Popup from '../../popups/Popup'
 import { Loader } from "../DetailedComponents/Loader/Loader";

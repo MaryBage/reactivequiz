@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import {logoText, sloganText, approveButtonText} from "../../../StaticContent";
 import image from "../../../images/pages/studentRegister.png";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import CustomButton from "../DetailedComponents/Buttons/CustomButton/CustomButton";
@@ -30,7 +29,6 @@ const StuRegister = (props) => {
     }
     return (
         <>
-
             <div className="wrapper">
                 <StaticImage image={image} anim='fromBelow'/>
                 <div className="changable-wrapper fromAbove">
@@ -72,6 +70,5 @@ const StuRegister = (props) => {
 const mapDispatchToProps = dispatch => ({
     updateQuizInfo: (info) => dispatch(updateQuizInfo(info)),
 });
-
 
 export default connect(null, mapDispatchToProps)(StuRegister);

@@ -1,8 +1,8 @@
-import React, {useContext} from 'react'
-import './Admin.css'
+import React from 'react';
+import './Admin.css';
 import {THEME} from './context/types';
 import {connect} from "react-redux";
-import {updateSettings} from "../../../redux/user/user.actions"
+import {updateSettings} from "../../../redux/user/user.actions";
 
 
 const Settings = ({setThemeColor, id, updateSettings}) => {
