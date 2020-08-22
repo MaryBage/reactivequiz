@@ -439,7 +439,7 @@ const Quizes = (props) => {
             </table>
           </div>
         ) : (
-          "There is no quizes yet."
+          "There are no quizes yet."
         )}
       </div>
     </>
