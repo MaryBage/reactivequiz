@@ -44,14 +44,6 @@ const Questions = (props) => {
     console.log('filteredValue',filteredValue)
     console.log('valToDelete ',valToDelete)
 
-  useEffect(() => {
-      console.log('props',props)
-    
-        setFilteredValue(questions);
-        setQstnInptValue(questions.reduce((txt, value, key) => ({ ...txt, [`question${key}`]: value.question}), {}));
-    
-  }, [props.match.params.detail])
-
 
   useEffect(() => {
 
@@ -69,7 +61,7 @@ const Questions = (props) => {
     setFilteredValue(filtered)
     setQstnInptValue(filtered.reduce((txt, value, key) => ({ ...txt, [`question${key}`]: value.question}), {}));
 
-  }, [searching])
+  }, [searching, props])
 
 
     useEffect(() => {
@@ -289,7 +281,7 @@ const Questions = (props) => {
         <TransitionGroup component="ul" className={s.questions}>
           {filteredValue.map((currentQuestion,i) => (
             <CSSTransition
-              key={currentQuestion.questionId}
+              key={currentQuestion.questionDbId}
               classNames='questionItemAnim'
               timeout={800}
             ><li className={s.questionItem}>
@@ -372,7 +364,7 @@ const Questions = (props) => {
                   <div
                   id={currentQuestion.questionDbId}
                     className="pointer red"
-                    onClick={deleteHandler}
+                    onClick={() => deleteData(currentQuestion.questionDbId)}
                   >
                     &#10008;
                   </div>

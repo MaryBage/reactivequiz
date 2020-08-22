@@ -213,30 +213,28 @@ export const DbState = ({ children }) => {
         })
     } 
 
-    const getStudents = async () =>{
-        setLoader();
-        
-      const res = await axios.post('/students.php', btoa(JSON.stringify({creator: id, action: 'get'})))
-         const payload = res.data.map((student) => {
-                     return {
-                        quizName: student.quizName,
-                         name: student.name,
-                         email: student.email,
-                         quizId: student.quizId,
-                         result_json: student.result_json,
-                         score: student.score,
-                         percentage: student.percentage,
-                         date: student.date
-                     }
-                 });
-
-              
-            dispatch({
-                type:GET_STUDENTS,
-                payload
-            })
-       
-    } 
+    // const getStudents = async () =>{
+    //     setLoader();
+    //
+    //   const res = await axios.post('/students.php', btoa(JSON.stringify({creator: id, action: 'get'})));
+    //      const payload = res.data.map((student) => {
+    //                  return {
+    //                     quizName: student.quizName,
+    //                      name: student.name,
+    //                      email: student.email,
+    //                      quizId: student.quizId,
+    //                      result_json: student.result_json,
+    //                      score: student.score,
+    //                      percentage: student.percentage,
+    //                      date: student.date
+    //                  }
+    //              });
+    //
+    //      dispatch({
+    //          type:GET_STUDENTS,
+    //         payload
+    //      })
+    // }
 
     const setLoader = () => dispatch({type: SET_LOADER})
 
@@ -250,11 +248,9 @@ export const DbState = ({ children }) => {
             addQuizes,
             updateQuizes,
             deleteQuizes,
-            getStudents,
             setLoader, 
             questions: state.questions,
             quizes: state.quizes,
-            students: state.students,
             loading: state.loading, 
         }}>
             {children}

@@ -8,6 +8,10 @@ import {PDFViewer} from '@react-pdf/renderer';
 import ResultPdf from '../../pages/Pdf/Pdf'
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+import {logoutUser} from "../../../redux/user/user.actions";
+import {fetchCollectionStartAsync} from "../../../redux/student/student.actions";
+import {connect} from "react-redux";
+
 
 const customStyles = {
     content: {
@@ -23,9 +27,9 @@ const customStyles = {
     },
   };
 
-const StuResults = () => {
+const StuResults = ({students, getStudents}) => {
     const { id } = useContext(UserContext)
-    const {getStudents, students} = useContext(DbContext);
+    // const {getStudents, students} = useContext(DbContext);
     const [modalIsOpen, setIsOpen] = useState(false);
     const [res, setRes] = useState({res: []})
     const [changedStudents, setChangedStudents] = useState([])
@@ -37,9 +41,10 @@ const StuResults = () => {
 
 
 
-  console.log(changedStudents)
+  console.log(students)
     useEffect(() => {
-        getStudents();
+
+     getStudents(id);
       // eslint-disable-next-line
  
     }, [])
@@ -147,8 +152,8 @@ return (
                 <tr key='quizHeader'>
                     <th>#</th>
                     <th>
-                      <div className='sorting' 
-                        name='questionsLength' 
+                      <div className='sorting'
+                        name='questionsLength'
                         onDoubleClick={(e) => sortingBy(e, 'quizName')}>
                       Quiz
                       {!orderingQuizName && <ArrowDropUpIcon />}
@@ -156,8 +161,8 @@ return (
                       </div>
                     </th>
                     <th>
-                      <div className='sorting' 
-                        name='questionsLength' 
+                      <div className='sorting'
+                        name='questionsLength'
                         onDoubleClick={(e) => sortingBy(e, 'name')}>
                         Name
                         {!orderingName && <ArrowDropUpIcon />}
@@ -165,8 +170,8 @@ return (
                       </div>
                     </th>
                     <th>
-                      <div className='sorting' 
-                      name='questionsLength' 
+                      <div className='sorting'
+                      name='questionsLength'
                       onDoubleClick={(e) => sortingBy(e, 'email')}>
                         Email
                         {!orderingEmail && <ArrowDropUpIcon />}
@@ -174,8 +179,8 @@ return (
                       </div>
                     </th>
                     <th>
-                      <div className='sorting' 
-                      name='questionsLength' 
+                      <div className='sorting'
+                      name='questionsLength'
                       onDoubleClick={(e) => sortingBy(e, 'percentage')}>
                         Result
                         {!orderingPercentage && <ArrowDropUpIcon />}
@@ -204,7 +209,7 @@ return (
                                                             percentage:student.percentage,
                                                             creator: id
                              })}>
-                            Open 
+                            Open
                             </button>
                          </td>
                     </tr>
@@ -229,7 +234,7 @@ return (
                         </div> */}
                     </td>
 
-                </tr> 
+                </tr>
 
                 </tbody>
             </table>
@@ -241,5 +246,12 @@ return (
         </>
     )
 
-}
-export default StuResults;
+};
+const mapDispatchToProps = dispatch => ({
+    getStudents: (id) => dispatch(fetchCollectionStartAsync(id)),
+});
+const mapStateToProps = state => ({
+    students: state.students.students
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(StuResults);

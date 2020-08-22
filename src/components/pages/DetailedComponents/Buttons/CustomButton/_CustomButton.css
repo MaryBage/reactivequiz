@@ -21,22 +21,37 @@
     padding: 0 0 !important;
 }
 
-/*.small.entering{
+.small.entering{
 
-    animation: small 500ms linear infinite;
+    animation: small 500ms ;
 }
 .small.exiting{
     
-    animation: small 500ms linear infinite;
+    animation: small 500ms;
 }
 
 @keyframes  small{
 
-  100% {
-    transform: rotateX(360deg);
+  0%{
+
+   
+    transform:rotateX(0deg)
+  }
+  50%{
+
+   
+    transform:rotateX(180deg)
   }
 
-}*/
+
+
+  100%{
+
+    
+    transform:rotateX(0deg)
+  }
+
+}
 
 .rotate-active {
   animation: spin 1s linear infinite;
