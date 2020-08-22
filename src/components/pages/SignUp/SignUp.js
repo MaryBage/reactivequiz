@@ -65,7 +65,7 @@ const SignUp = ({ setCurrentUser }) => {
         <div className="wrapper">
           <StaticImage image={image} anim="fromBelow" />
           <div className="changable-wrapper fromAbove">
-            <DelayLink delay={700} to={"/"}>
+            <DelayLink delay={700} to={"/signin"}>
               <CustomButton small="true">
                 <KeyboardBackspaceIcon />
                 back
