@@ -40,10 +40,6 @@ const Questions = (props) => {
   const [checkAll, setCheckAll] = useState(false);
   const [valToDelete, setValToDelete] = useState('')
 
-    console.log('----------------')
-    console.log('filteredValue',filteredValue)
-    console.log('valToDelete ',valToDelete)
-
 
   useEffect(() => {
 
