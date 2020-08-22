@@ -1,24 +1,18 @@
 .resetWrapper {
-    display: grid;
-    width: 100%;
-    margin: 0 270px;
-    border: 2px solid #bbbbbb;
-    border-radius: 20px;
-    background-color: white;
-    height: 70%;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.resetWrapper a {
-    width: 13% !important;
-    align-self: flex-start;
-    margin: 20px;
+  display: grid;
+  width: 100%;
+  margin: 0 270px;
+  border: 2px solid #bbbbbb;
+  border-radius: 20px;
+  background-color: white;
+  height: 70%;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .popupWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .popupWrapper input {
@@ -27,8 +21,8 @@
   color: #555555;
   font-size: 19px;
   letter-spacing: 0.02857em;
-  font-family: 'Courier New', Courier, monospace;
-  border: 1.5px solid  #bbbbbb;
+  font-family: "Courier New", Courier, monospace;
+  border: 1.5px solid #bbbbbb;
   border-radius: 5px;
   background-color: white;
   text-align: center;
@@ -36,20 +30,20 @@
 }
 
 .popupWrapper input:hover {
-    border-color: #7e57c2;
-    color: #7e57c2;
-    cursor: pointer;
+  border-color: #7e57c2;
+  color: #7e57c2;
+  cursor: pointer;
 }
-  
+
 .popupWrapper input:hover::placeholder {
-    color: #7e57c2;
+  color: #7e57c2;
 }
 
 .popupWrapper h1 {
-    color: #7e57c2;
+  color: #7e57c2;
 }
 
 .popupWrapper h3 {
-    text-align: center;
-    color: #a78dd4ff;
+  text-align: center;
+  color: #a78dd4ff;
 }

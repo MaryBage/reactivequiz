@@ -1,31 +1,25 @@
 .afterResetWrapper {
-    display: grid;
-    width: 100%;
-    margin: 0 270px;
-    border: 2px solid #bbbbbb;
-    border-radius: 20px;
-    background-color: white;
-    height: 70%;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
+  display: grid;
+  width: 100%;
+  margin: 0 270px;
+  border: 2px solid #bbbbbb;
+  border-radius: 20px;
+  background-color: white;
+  height: 70%;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .afterResetTextWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .afterResetWrapper h1 {
-    color: #7e57c2;
+  color: #7e57c2;
 }
 
 .afterResetWrapper h3 {
-    color: #a78dd4ff;
-}
-
-.afterResetWrapper a {
-    height: 48px !important;
-    width: 13% !important;
+  color: #a78dd4ff;
 }
