@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
-import s from "./ChangePsw.module.css";
 import { useForm } from "react-hook-form";
 import axios from '../../../../axios/axios-quiz';
 import { UserContext } from '../context/user/userContext';
+import s from "./ChangePsw.module.css";
+import useUnmounted from '../../../../useUnmount'
 
 
 const ChangePsw = () => {
@@ -11,6 +12,8 @@ const ChangePsw = () => {
        const [match, setMatch] = useState(false);
        const [success, setSuccess] = useState(false);
 
+       const unMounted = useUnmounted();
+
        const sbmtHandler = data => {
                
               if (!data.psw) {
@@ -18,11 +21,15 @@ const ChangePsw = () => {
               }
               if (data.psw != data.confirmed) {
                      setMatch(true);
+                     setSuccess(false);
               }
               else {
                   axios.post(`/reset.php`, btoa(JSON.stringify({action: 'change', newPsw: data.psw, creator: id})))
                      .then(res => setSuccess(res.data.success));
-                     setMatch(false);
+                     if (!unMounted.current) {
+                            setMatch(false);
+                     }
+                     
               }
        }
 

@@ -31,10 +31,12 @@ const AnswersAndCode = ({id, dbid, questions}) => {
 
    
 
-    const codeEdit = (e, id, table) => {
+    const codeEditHandler = (e) => {
+        
         if(e.target.value) {
-            updateData(id, table, e.target.name, e.target.value);
+            updateData(e.target.id, "questions", e.target.name, e.target.value);
         }
+        
     }
 
     const editAnswer = (e, table) => {
@@ -63,8 +65,9 @@ const AnswersAndCode = ({id, dbid, questions}) => {
                     <textarea 
                         cols='50' rows={questions[id - 1].code.split('\n').length}
                         name="code"
+                        id={dbid}
                         value={details.code} 
-                        onBlur={(e) => codeEdit(e, dbid, "questions")}
+                        onBlur={codeEditHandler}
                         onChange={(e) => setDetails({...details, code: e.target.value})}
                     />
                     <div className="pointer red" onClick={() => deleteData(dbid)}>&#10008;</div>

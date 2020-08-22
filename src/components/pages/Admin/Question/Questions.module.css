@@ -165,7 +165,11 @@ select .selected {
   color: #555555;
   font-weight: bold;
   cursor: pointer;
+  padding-right:15px;
+  word-break: break-word;
 }
+
+
 
 .questionItem-exit-active {
     animation: questionItem 800ms;

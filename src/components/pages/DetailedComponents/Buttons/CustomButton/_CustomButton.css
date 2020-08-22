@@ -21,34 +21,35 @@
     padding: 0 0 !important;
 }
 
-.small.entering{
+/*.small.entering{
 
-    animation: small 500ms;
+    animation: small 500ms linear infinite;
 }
 .small.exiting{
     
-    animation: small 500ms;
+    animation: small 500ms linear infinite;
 }
 
 @keyframes  small{
 
-  0%{
-
-   
-    transform:rotateY(0deg)
-  }
-  50%{
-
-   
-    transform:rotateY(180deg)
+  100% {
+    transform: rotateX(360deg);
   }
 
+}*/
 
+.rotate-active {
+  animation: spin 1s linear infinite;
+}
 
-  100%{
-
-    
-    transform:rotateY(0deg)
+.rotate-exit.rotate-exit-active{
+  opacity:1;
+}
+.rotate-active {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  100% {
+    transform: rotatey(360deg);
   }
-
 }

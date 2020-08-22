@@ -10,6 +10,7 @@ import {PDFViewer} from '@react-pdf/renderer';
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {updateQuizInfo} from "../../redux/quizInfo/quizInfo.actions";
+import useUnmounted from '../../useUnmount'
 
 const Popup = (props) => {
 
@@ -27,6 +28,8 @@ const Popup = (props) => {
         result = result > total ? Math.round(result) : +result.toPrecision(2)
     const coefficient = (result / total) * 100;
     const thanksmailText = "We greatly appreciate your feedback!";
+
+
 
     useEffect(()=>{
         props.updateQuizInfo({

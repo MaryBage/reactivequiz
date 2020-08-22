@@ -58,6 +58,7 @@ const Quiz = (props) => {
                 ...questionItem,
                 userAnswer: (i === activeQuestion) ? singleQuiz.userAnswer : questionItem.userAnswer,
                 isActive: (i === activeQuestion - 1) ? true : false,
+                isSubmitted: (i === activeQuestion) ? singleQuiz.isSubmitted : questionItem.isSubmitted
             }
         }));
     }
@@ -69,6 +70,7 @@ const Quiz = (props) => {
                 ...questionItem,
                 userAnswer: (i === activeQuestion) ? singleQuiz.userAnswer : questionItem.userAnswer,
                 isActive: (i === activeQuestion + 1) ? true : false,
+                isSubmitted: (i === activeQuestion) ? singleQuiz.isSubmitted : questionItem.isSubmitted
             }
         }));
     }
@@ -138,7 +140,7 @@ const Quiz = (props) => {
                                className='finishBtn'
                                value='finish'
                                key='finish'
-                               disabled={!quiz.every(e => e.userAnswer.length)}
+                               disabled={!quiz.every(e => e.isSubmitted)}
                                onClick={finishQuiz}/>
                                
                         {quiz.map((el, i) => {

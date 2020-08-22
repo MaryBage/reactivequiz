@@ -348,18 +348,21 @@ input::placeholder {
     }
 }
 
-.rotate-active {
-    animation: spin 1s linear infinite;
-}
 
-.rotate-exit.rotate-exit-active{
-    opacity:1;
-}
 
 .successAnim {
     animation: successAnim 800ms forwards;
 }
+.rotate-active {
+  animation: spin 1s linear infinite;
+}
 
+.rotate-exit.rotate-exit-active{
+  opacity:1;
+}
+.rotate-active {
+  animation: spin 1s linear infinite;
+}
 @keyframes spin {
   100% {
     transform: rotatey(360deg);
@@ -485,7 +488,7 @@ input::placeholder {
 }
 
   .questionItemAnim-exit-active {
-      animation: questionItem 800ms;
+      animation: questionItem 800ms ease-in;
   }
   
   .questionItemAnim-enter-active {
@@ -495,6 +498,7 @@ input::placeholder {
   @keyframes questionItem {
     0% {
       opacity: 1;
+      transform: translateX(0);
     }
   
     30% {

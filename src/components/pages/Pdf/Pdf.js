@@ -60,7 +60,7 @@ const ResultPdf = (props) => {
             {props.res.map(e => {
             return (
                     <>
-                      <View style={styles.quizMain}>
+                      <View style={styles.quizMain} wrap={false}>
                       <View style={styles.question}><Text>{e.question}</Text></View>
                       <View style={styles.answer}>{e.options.map(option => {
                               return (<>

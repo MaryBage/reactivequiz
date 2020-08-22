@@ -103,7 +103,8 @@ export const DbState = ({ children }) => {
 
     const deleteData = async (dbId, dataToDelete = 'question') => {
         setLoader();
-        
+        console.log('db.state')
+
         const res = await axios.post('/data.php', btoa(JSON.stringify({
                     action: 'delete', 
                     creator: id, 
@@ -124,10 +125,13 @@ export const DbState = ({ children }) => {
             }
         });
 
-        dispatch({
+
+            dispatch({
             type: GET_DATA,
             payload
-        })
+        }) 
+       
+
         getQuizes();
     } 
 
@@ -226,10 +230,12 @@ export const DbState = ({ children }) => {
                      }
                  });
 
-         dispatch({
-             type:GET_STUDENTS,
-            payload
-         })
+              
+            dispatch({
+                type:GET_STUDENTS,
+                payload
+            })
+       
     } 
 
     const setLoader = () => dispatch({type: SET_LOADER})

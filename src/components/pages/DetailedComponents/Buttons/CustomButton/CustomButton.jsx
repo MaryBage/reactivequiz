@@ -36,6 +36,7 @@ const CustomButton = ({ children, ...otherProps }) => {
  <CSSTransition
         in={toggle}
         timeout={500}
+        classNames='rotate'
       
       >
         {state=>

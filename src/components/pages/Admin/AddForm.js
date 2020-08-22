@@ -101,7 +101,7 @@ const AddForm = (props) => {
         }
 
         if(!myType.map((e,i) => e ? i : null).filter(e => e!=null).every(e => myPoint[e])){
-            error += 'Right answer has no point.\n'
+            error += 'Question or right answer has no score.\n'
             validation = false;
         }
  
@@ -142,8 +142,7 @@ return (
                     ? addValidation.error.split ('\n').map ((item, i) => (
                               <><span style={{color:'red'}} key={i}>{item}</span><br/></>))
                     : addValidation.success
-                       && <span className='successAnim' style={{color:'green'}}>Question is successfully added! Click&nbsp;
-                       <input type='reset' className='resetBtn' value='&#8634;' name='reset' />&nbsp;to reset</span>
+                       && <span className='successAnim' style={{color:'green'}}>Question is successfully added!</span>
                          } 
                     </div>
                  
@@ -212,20 +211,21 @@ return (
                         <input type='text' 
                         style= {!addValidation.answer ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
                         className='wideRow' ref={register}  key={`1${i}`} name={`answer[${i}]`}  onChange={hideSuccessMsg}/> &nbsp;
-                        {!qstnPoint && 
+                        {!qstnPoint && qstnType !='multiple' &&
                         <input type='number'  
                         ref={register} 
                         key={`4${i}`} 
                         size='1'
                         min='0'
                         name={`point[${i}]`}  
-                        step='0.2' 
+                        step='0.1' 
                         onChange={hideSuccessMsg} />} 
                         </div>) }
 
                         <div className='centerAdm'><input value='Add question' type='submit' 
                         name='submit'
-                         /> </div>
+                         />&nbsp;
+                         <input type='reset' className='resetBtn' value='&#8634;' name='reset' />&nbsp;</div>
     
                 </form>
             

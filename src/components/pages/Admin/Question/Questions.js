@@ -38,17 +38,20 @@ const Questions = (props) => {
   const [qstnInptValue, setQstnInptValue] = useState(questions.reduce((txt, value, key) => ({ ...txt, [`question${key}`]: value.question}), {}));
   const [searching, setSearching] = useState({ question: '', category: '', difficulty: '', type: '', timeout: 0 });
   const [checkAll, setCheckAll] = useState(false);
+  const [valToDelete, setValToDelete] = useState('')
 
-//console.log('filteredValue',filteredValue)
-
+    console.log('----------------')
+    console.log('filteredValue',filteredValue)
+    console.log('valToDelete ',valToDelete)
 
   useEffect(() => {
-    setFilteredValue(questions);
-    setQstnInptValue(questions.reduce((txt, value, key) => ({ ...txt, [`question${key}`]: value.question}), {}));
-  }, [props])
+      console.log('props',props)
+    
+        setFilteredValue(questions);
+        setQstnInptValue(questions.reduce((txt, value, key) => ({ ...txt, [`question${key}`]: value.question}), {}));
+    
+  }, [props.match.params.detail])
 
-//console.log('selectedQstns',selectedQstns)
-//console.log('checkAll 2',checkAll)
 
   useEffect(() => {
 
@@ -69,7 +72,7 @@ const Questions = (props) => {
   }, [searching])
 
 
-  useEffect(() => {
+    useEffect(() => {
 
     checkAll 
         && setSelectedQstns(filteredValue.map(e => e. questionDbId))
@@ -82,7 +85,12 @@ const Questions = (props) => {
         if (selectedQstns.length === filteredValue.length) setCheckAll(true)
 
      }, [selectedQstns])
-  
+
+     useEffect (() => {
+         deleteData(valToDelete)
+     },[valToDelete])
+
+      
 
   const makeToDisappear = (e, id) => {
     setDisappear({
@@ -140,7 +148,7 @@ const Questions = (props) => {
   function closeModal() {
     setIsOpen(false);
   }
-  //console.log(selectedQstns)
+ 
 
   const onchangeHandler = (e) => {
         if (selectedQstns.includes(e.target.value))
@@ -179,6 +187,7 @@ const Questions = (props) => {
   }
 
   const deleteAll = () => {
+      console.log(selectedQstns)
    selectedQstns.map(e => deleteData(e));
    setSelectedQstns([]);
   }
@@ -191,7 +200,12 @@ const Questions = (props) => {
     }
   
   }
- 
+  const deleteHandler =  (e) => {
+    setFilteredValue(filteredValue.filter(el => el.questionDbId != e.target.id))
+    setValToDelete(e.target.id)
+}
+
+
   return (
     <>  
         <Modal
@@ -302,7 +316,7 @@ const Questions = (props) => {
                         )}
                     </div>
                     <div
-                      className={currentQuestion.questionId == disappear.index && disappear.disappear? s.disappeared : s.appeared}
+                      className={currentQuestion.questionId == disappear.index && disappear.disappear? s.disappeared : s.appeared }
                       onDoubleClick={(e) => makeToDisappear(e, currentQuestion.questionId)}
                       onMouseOver={(e) => makeToShowHint(e, currentQuestion.questionId)}
                       onMouseOut={() => makeToShowHint(false)}
@@ -316,7 +330,7 @@ const Questions = (props) => {
                         name="question"
                         id={currentQuestion.questionDbId}
                         value ={qstnInptValue[`question${i}`]}
-                        className={s.questionItemInput}
+                        className={`${s.questionItemInput}`}
                         onKeyPress={onKeyPressHandler}
                         onChange = {e => setQstnInptValue(e.target.value)}
                         
@@ -356,8 +370,9 @@ const Questions = (props) => {
                     </select>
                     </div>*/ }
                   <div
+                  id={currentQuestion.questionDbId}
                     className="pointer red"
-                    onClick={() => deleteData(currentQuestion.questionDbId)}
+                    onClick={deleteHandler}
                   >
                     &#10008;
                   </div>
