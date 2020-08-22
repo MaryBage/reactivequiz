@@ -1,25 +1,31 @@
 {
-    "env": {
-        "browser": true,
-        "es2020": true
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb", "prettier"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb",
-        "prettier"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 11,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "prettier"
-    ],
-    "rules": {
-        "prettier/prettier": "error"
-    }
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "parser": "babel-eslint",
+  "presets": ["env", "react"],
+  "plugins": [
+    "react",
+    "prettier",
+    "transform-object-rest-spread",
+    "transform-class-properties"
+  ],
+  "rules": {
+    "no-nested-ternary": 0,
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
 }
