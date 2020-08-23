@@ -32,19 +32,19 @@ export default function ActiveQuiz(props) {
   }, [props]);
 
   const addUserAnswer = (e) => {
-    if (quiz.type == "single")
+    if (quiz.type === "single")
       setQuiz({
         ...answeredQuiz,
         isSubmitted: false,
         userAnswer: [+e.target.id],
       });
-    if (quiz.type == "multiple") {
+    if (quiz.type === "multiple") {
       if (answeredQuiz.userAnswer.includes(+e.target.id))
         setQuiz({
           ...answeredQuiz,
           isSubmitted: false,
           userAnswer: answeredQuiz.userAnswer.filter(
-            (el) => el != +e.target.id
+            (el) => el !== +e.target.id
           ),
         });
       else {

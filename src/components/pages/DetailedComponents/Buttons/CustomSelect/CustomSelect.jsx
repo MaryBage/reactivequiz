@@ -15,7 +15,7 @@ const CustomSelect = ({ options, ...otherProps }) => {
         <option
           key={key}
           value={key}
-          disabled={otherProps.name == "category" && key !== "JavaScript"}
+          disabled={otherProps.name === "category" && key !== "JavaScript"}
         >
           {options[key]}
         </option>

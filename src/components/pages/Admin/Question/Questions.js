@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
 import { withRouter } from "react-router-dom";
@@ -182,7 +182,7 @@ const Questions = (props) => {
   };
 
   const deleteAll = () => {
-    console.log(selectedQstns);
+    
     selectedQstns.map((e) => deleteData(e));
     setSelectedQstns([]);
   };

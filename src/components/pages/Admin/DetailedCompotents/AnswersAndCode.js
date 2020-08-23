@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import s from "./AnswersAndCode.module.css";
 import "../Admin.css";
 import { DbContext } from "../context/database/dbContext";
@@ -12,7 +11,7 @@ const AnswersAndCode = ({ id, dbid, questions }) => {
 
   useEffect(() => {
     setDetails(questions[id - 1])
-   },   [questions] )
+   },   [questions,id] )
   const makeToDisappear = (e, id) => {
     setDisappear({
       ...disappear,
@@ -83,9 +82,9 @@ const AnswersAndCode = ({ id, dbid, questions }) => {
               <div
                 name
                 className={
-                  answer[0] == disappear.index && disappear.disappear
+                  answer[0] === disappear.index && disappear.disappear
                     ? s.disappeared
-                    : s.appeared && answer[1].type == "right"
+                    : s.appeared && answer[1].type === "right"
                     ? s.appearedTrue
                     : s.appeared
                 }
@@ -94,17 +93,17 @@ const AnswersAndCode = ({ id, dbid, questions }) => {
                 onMouseOut={() => makeToShowHint(false)}
               >
                 {answer[1].answer}
-                {hint && hint.index == answer[0] ? (
+                {hint && hint.index === answer[0] ? (
                   <div className={s.hint}>Double-click to edit the answer!</div>
                 ) : null}
               </div>
               /* {+answer[1].point>0 &&  <div>{answer[1].point}</div>} </> */
             }
-            {disappear.disappear && answer[0] == disappear.index && (
+            {disappear.disappear && answer[0] === disappear.index && (
               <>
                 <input
                   className={
-                    answer[1].type == "right" ? s.appearedTrue : s.appeared
+                    answer[1].type === "right" ? s.appearedTrue : s.appeared
                   }
                   type="text"
                   name="answer"
@@ -128,7 +127,7 @@ const AnswersAndCode = ({ id, dbid, questions }) => {
                 />
               </>
             )}
-            {Object.keys(details.options).length > 2 && <div className="pointer red" onClick={() => deleteData(answer[0],'answer')}>&#10008;</div>}
+            {(Object.keys(details.options).length > 2 || answer[1].type === "right") && <div className="pointer red" onClick={() => deleteData(answer[0],'answer')}>&#10008;</div>}
             </div>
            
             )})}

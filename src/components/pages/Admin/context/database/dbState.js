@@ -109,7 +109,7 @@ export const DbState = ({ children }) => {
 
   const deleteData = async (dbId, dataToDelete = "question") => {
     setLoader();
-    console.log("db.state");
+  
 
     const res = await axios.post(
       "/data.php",

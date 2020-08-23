@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { logoText, sloganText } from "../../../StaticContent";
 import s from "./About.module.css";
 import image from "../../../images/pages/welcome.png";
@@ -8,7 +8,7 @@ import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
 import DelayLink from "react-delay-link";
 
-const About = (props) => {
+const About = () => {
   useEffect(() => {
     document.body.style.overflow = "hidden";
   }, []);

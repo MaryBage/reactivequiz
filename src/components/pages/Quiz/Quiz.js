@@ -83,7 +83,7 @@ const Quiz = (props) => {
             return {
                 ...questionItem,
                 userAnswer: (i === activeQuestion) ? singleQuiz.userAnswer : questionItem.userAnswer,
-                isActive: activeQuestion < quiz.length - 1 ? (i === activeQuestion + 1 || (activeQuestion + 1) == quiz.length ? true : false) : questionItem.isActive,
+                isActive: activeQuestion < quiz.length - 1 ? (i === activeQuestion + 1 || (activeQuestion + 1) === quiz.length ? true : false) : questionItem.isActive,
                 isSubmitted: (i === activeQuestion) ? true : questionItem.isSubmitted
             }
         }));
@@ -148,7 +148,7 @@ const Quiz = (props) => {
                                
                         {quiz.map((el, i) => {
                                 return <a href="#"
-                                          className={(i == quiz.findIndex(item => item.isActive)) ? 'activeQstn' : (el.isSubmitted ? 'passedQuestion' : null)}
+                                          className={(i === quiz.findIndex(item => item.isActive)) ? 'activeQstn' : (el.isSubmitted ? 'passedQuestion' : null)}
                                           id={i} onClick={changeQuestion}>{el.isSubmitted ?
                                     <span>&#10004;</span> : null} Question {i + 1}</a>
                             })

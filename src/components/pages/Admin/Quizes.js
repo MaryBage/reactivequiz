@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
-import { UserContext } from "./context/user/userContext";
 
 const customStyles = {
   content: {
@@ -28,7 +27,6 @@ const customStyles = {
 };
 
 const Quizes = (props) => {
-  const { id } = useContext(UserContext);
   const { deleteQuizes, quizes, updateQuizes } = useContext(DbContext);
   const [page, setPage] = useState(0);
   const [rowperpage, setRowperpage] = useState(5);
@@ -207,7 +205,7 @@ const Quizes = (props) => {
             type="text"
             placeholder="Put a name of quiz"
             style={
-              quizFormControls.name == "empty"
+              quizFormControls.name === "empty"
                 ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
                 : {}
             }
@@ -222,7 +220,7 @@ const Quizes = (props) => {
             ref={register}
             name="duration"
             style={
-              quizFormControls.duration == "empty"
+              quizFormControls.duration === "empty"
                 ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }
                 : {}
             }
@@ -355,12 +353,12 @@ const Quizes = (props) => {
                       <input
                         type="button"
                         style={
-                          copySuccess.id == quiz.dbId && copySuccess.copied
+                          copySuccess.id === quiz.dbId && copySuccess.copied
                             ? { backgroundColor: "rgba(60, 160, 60,.1)" }
                             : {}
                         }
                         value={
-                          copySuccess.id == quiz.dbId && copySuccess.copied
+                          copySuccess.id === quiz.dbId && copySuccess.copied
                             ? "Copied!"
                             : "get link"
                         }
@@ -373,7 +371,7 @@ const Quizes = (props) => {
                     <td>
                       <select
                         style={
-                          quiz.status == "enabled"
+                          quiz.status === "enabled"
                             ? { backgroundColor: "rgba(60, 160, 60,.1)" }
                             : { backgroundColor: "rgba(170,10,10, .1)" }
                         }

@@ -18,7 +18,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 
 const Admin = () => {
   const user = useContext(UserContext);
-  const { setThemeColor, theme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const db = useContext(DbContext);
   const [showSettings, setShowSettings] = useState(false);
 

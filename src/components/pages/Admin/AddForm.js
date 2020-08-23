@@ -49,14 +49,14 @@ const AddForm = (props) => {
     let myType = new Array(data.answer.length).fill(false);
     let myPoint = new Array(data.answer.length).fill(0);
 
-    if (typeof data.type == "string") {
+    if (typeof data.type === "string") {
       myType[+data.type] = !!data.type;
     } else {
       myType = data.type.map((e) => !!e);
     }
 
-    if (typeof data.point == "string") {
-      if (data.qstnType == "multiple") {
+    if (typeof data.point === "string") {
+      if (data.qstnType === "multiple") {
         console.log("myType", myType);
         const cnt = myType.filter((e) => e).length;
         myPoint = myType.map((e) =>
@@ -125,7 +125,7 @@ const AddForm = (props) => {
 
     if (validation) {
       data.answer.map((e, i) => {
-        myData.answers.push({ answer: e, point: myPoint[i], type: myType[i] });
+        return myData.answers.push({ answer: e, point: myPoint[i], type: myType[i] });
       });
       addData(myData);
 
@@ -227,7 +227,7 @@ return (
                         <input type='text' 
                         style= {!addValidation.answer ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
                         className='wideRow' ref={register}  key={`1${i}`} name={`answer[${i}]`}  onChange={hideSuccessMsg}/> &nbsp;
-                        {!qstnPoint && qstnType !='multiple' &&
+                        {!qstnPoint && qstnType !== 'multiple' &&
                         <input type='number'  
                         ref={register} 
                         key={`4${i}`} 
