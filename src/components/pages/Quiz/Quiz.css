@@ -90,11 +90,13 @@
   width: 20px;
   height: 20px;
   margin-right: 18px;
+  margin: 20px;
 }
 
 .choice > div > label{
  /* width: 450px;*/
   position: relative;
+  line-height: normal;
 }
 
 .btns{

@@ -1,16 +1,18 @@
 import React, {useState, useEffect} from 'react';
+
+import Countdown, {zeroPad} from 'react-countdown';
+import {connect} from "react-redux";
+import PropTypes from 'prop-types'
+import {withRouter} from "react-router-dom";
 import axios from '../../../axios/axios-quiz';
 import {Loader} from '../DetailedComponents/Loader/Loader';
 import ActiveQuiz from './ActiveQuiz';
 import './Quiz.css';
 import Popup from '../../popups/Popup';
-import {withRouter} from "react-router-dom";
-import Countdown, {zeroPad} from 'react-countdown';
-import {connect} from "react-redux";
-import PropTypes from 'prop-types'
 
 
 const Quiz = (props) => {
+    console.log('props fro Quiz.js',props)
     
     const params = props.match.params.detail
           ? atob(props.match.params.detail)
@@ -29,7 +31,7 @@ const Quiz = (props) => {
                 if (res.data.message) {
                     props.history.push('/unavailable/')
                 } else {
-                    setQuiz(res.data.map((questionItem, i) => {
+                    setQuiz(res.data.quiz.map((questionItem, i) => {
                         return {
                             questionId: questionItem.questionId,
                             questionDbId: questionItem.questionDbId,
@@ -137,9 +139,9 @@ const Quiz = (props) => {
                                 <hr/>
                             </>}
                             <input type='button'
-                               className='finishBtn'
                                value='finish'
                                key='finish'
+                               className = {quiz.every(e => e.isSubmitted) ? 'finishBtn blink' : 'finishBtn'}
                                disabled={!quiz.every(e => e.isSubmitted)}
                                onClick={finishQuiz}/>
                                

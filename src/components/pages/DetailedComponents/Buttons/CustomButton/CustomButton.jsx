@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import 'animate.css';
+import { Switch, Route, } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import './_CustomButton.css';
-import { Switch, Route, } from "react-router-dom";
-import { CSSTransition } from "react-transition-group";
+
 
 
 const useStyles = makeStyles({
@@ -36,8 +38,7 @@ const CustomButton = ({ children, ...otherProps }) => {
  <CSSTransition
         in={toggle}
         timeout={500}
-        classNames='rotate'
-      
+        
       >
         {state=>
         

@@ -7,9 +7,8 @@ import CustomButton from "../DetailedComponents/Buttons/CustomButton/CustomButto
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
 import InformativeField from "../DetailedComponents/Fields/InformativeField/InformativeField";
-import { Link } from "react-router-dom";
 import axios from '../../../axios/axios-quiz'
-import Popup from '../../popups/Popup'
+import PopupThks from '../../popups/PopupThks'
 import { Loader } from "../DetailedComponents/Loader/Loader";
 
 import DelayLink from 'react-delay-link';
@@ -32,9 +31,7 @@ const Feedback = () => {
         if (allFieldsFilled) {
             setLoader(true)
             axios
-                .post(`/feedback.php`, btoa(JSON.stringify({
-                    ...fieldsValue
-                })))
+                .get(`/feedback.php?fName=${fieldsValue.fName}&fEmail=${fieldsValue.fEmail}&message=${fieldsValue.message}`)
                 .then(res => {
                     console.log(res.data)
                     if(!res.data.status) setError(res.data.message)
@@ -55,7 +52,7 @@ const Feedback = () => {
     return (
 
         <>  {loader ? <Loader /> :
-            sentStatus.status ? <Popup /> :
+            sentStatus.status ? <PopupThks /> :
                 <div className="wrapper">
                     <StaticImage image={image} anim='fromRight' />
                     <div className="changable-wrapper fromLeft">
@@ -76,7 +73,7 @@ const Feedback = () => {
 
                                 />
                                 <InformativeField style={sentStatus.message.includes('email') ? { borderColor: '#e60000', color: '#e60000' } : {}} onBlur={onFieldChange}
-                                    type="text"
+                                    type="email"
                                     id="feedback-email"
                                     name="fEmail"
                                     placeholder="email"

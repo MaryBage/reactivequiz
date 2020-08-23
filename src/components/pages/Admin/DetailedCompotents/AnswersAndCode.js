@@ -1,5 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import s from "./AnswersAndCode.module.css";
+import "../Admin.css";
 import { DbContext } from "../context/database/dbContext";
 
 const AnswersAndCode = ({ id, dbid, questions }) => {
@@ -8,6 +10,9 @@ const AnswersAndCode = ({ id, dbid, questions }) => {
   const [hint, setHint] = useState({ hint: false, index: null });
   const [details, setDetails] = useState(questions[id - 1]);
 
+  useEffect(() => {
+    setDetails(questions[id - 1])
+   },   [questions] )
   const makeToDisappear = (e, id) => {
     setDisappear({
       ...disappear,
@@ -65,12 +70,15 @@ const AnswersAndCode = ({ id, dbid, questions }) => {
           <div className="pointer red" onClick={() => deleteData(dbid)}>
             &#10008;
           </div>
+          <hr />
         </div>
       )}
-
+     
       {Object.entries(details.options).map((answer) => {
         return (
-          <div className={s.answer} key={answer[0]}>
+           
+  
+          <div className={s.answer} key={`1${answer[0]}`}>
             {
               <div
                 name
@@ -120,7 +128,9 @@ const AnswersAndCode = ({ id, dbid, questions }) => {
                 />
               </>
             )}
+            {Object.keys(details.options).length > 2 && <div className="pointer red" onClick={() => deleteData(answer[0],'answer')}>&#10008;</div>}
             </div>
+           
             )})}
 
         </>

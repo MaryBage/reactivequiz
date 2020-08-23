@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react';
+import React, { useState, useContext, useEffect} from 'react';
 import { DbContext } from './context/database/dbContext';
 import './Admin.css';
 import { useForm } from "react-hook-form";
@@ -6,9 +6,9 @@ import {withRouter} from 'react-router-dom';
 
 
 const AddForm = (props) => {
-    const [answersQty, setAnswersQty] = useState(5)
-
-    const answers = new Array(answersQty).fill(1);
+ 
+    let answers = new Array(6).fill(1);
+   
     const {addData} = useContext(DbContext);
 
     const { register, handleSubmit } = useForm();
@@ -169,7 +169,7 @@ return (
                         placeholder='Enter a category' 
                         style= {!addValidation.category ? {backgroundColor: 'rgba(170, 10, 10, 0.25)'} : {}}
                         onChange={hideSuccessMsg} />
-                <select name='difficulty' ref={register} onChange={qstnTypeChangeHandler}>
+                <select name='difficulty' ref={register}>
                         <option value='Easy'>easy</option>
                         <option value='Medium'>medium</option>
                         <option value='Hard'>hard</option>
@@ -188,6 +188,7 @@ return (
                 onChange={pointChangeHandler} 
                 placeholder='Score'/> 
                   </div>
+  
                     {answers.map((_, i) => <div key={i} className='row'> 
                     {qstnType ==='single' ? 
                             <input ref={register} 

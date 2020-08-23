@@ -23,6 +23,7 @@ const Popup = (props) => {
                                     status: false, 
                                     date: Date(Date.now()).slice(4, 24),
                                     ...props.quizInfo})
+    
     const total = props.res.map(e => +e.total).reduce((total, e) => total + e);
     let result = props.res.map(e => +e.point).reduce((total, e) => total + e);
         result = result > total ? Math.round(result) : +result.toPrecision(2)
