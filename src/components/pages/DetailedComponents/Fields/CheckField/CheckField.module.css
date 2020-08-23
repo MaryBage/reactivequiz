@@ -1,34 +1,22 @@
 .checkField {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 5px;
-    margin-bottom: -35px;
-    font-size: 14px;
-    color: #555555;
-}
-
-.firstInnerCheckField {
-    display: flex;
-    align-items: center;
-}
-
-.firstInnerCheckField input {
-    width: 18px;
-    height: 18px;
-    margin: 0 10px 0 0;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-bottom: -12px;
+  font-size: 14px;
+  color: #555555;
 }
 
 .secondInnerCheckField {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .checkField a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 .checkField a:hover {
-    color: #7e57c2;
+  color: #7e57c2;
 }
