@@ -73,6 +73,7 @@ body {
 .informativeDivision input:hover {
   border-color: #7e57c2 !important;
   color: #7e57c2 !important;
+  font-weight: bold;
   cursor: pointer !important;
 }
 

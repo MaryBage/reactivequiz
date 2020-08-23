@@ -30,6 +30,7 @@
 .feedbackInformativeDivision textarea:hover {
   border-color: #7e57c2 !important;
   color: #7e57c2 !important;
+  font-weight: bold !important;
   cursor: pointer !important;
 }
 

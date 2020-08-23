@@ -12,9 +12,23 @@
   width: 20% !important;
 }
 
+.small:hover {
+  border: 1.5px solid #7e57c2 !important;
+  background-color: #fcfcfc !important;
+  color: #7e57c2;
+  font-weight: bold;
+}
+
 .makeStyles-root-1 {
   border: 1.5px solid #bbbbbb !important;
   height: 48px;
+}
+
+.makeStyles-root-1:hover {
+  border: 1.5px solid #7e57c2 !important;
+  background-color: #fcfcfc !important;
+  color: #7e57c2;
+  font-weight: bold;
 }
 
 .MuiButton-text {
