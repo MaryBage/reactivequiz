@@ -21,32 +21,32 @@ const Popup = (props) => {
     "https://stories.freepik.com/education",
     "https://stories.freepik.com/people",
     "https://stories.freepik.com/people",
-    "https://stories.freepik.com/"
+    "https://stories.freepik.com/",
   ];
-  
- 
-    const [openPdf, setOpenPdf] = useState({
-                                    status: false, 
-                                    date: Date(Date.now()).slice(4, 24),
-                                    ...props.quizInfo})
-    
-    const total = props.res.map(e => +e.total).reduce((total, e) => total + e);
-    let result = props.res.map(e => +e.point).reduce((total, e) => total + e);
-        result = result > total ? Math.round(result) : +result.toPrecision(2)
-    const coefficient = (result / total) * 100;
-    const thanksmailText = "We greatly appreciate your feedback!";
 
-    useEffect(()=>{
-        props.updateQuizInfo({
-          duration: null,
-          creator: null,
-          start: null,
-          quizId: null,
-          quizName: null,
-          userName: null,
-          email: null
-      });
-  },[])
+  const [openPdf, setOpenPdf] = useState({
+    status: false,
+    date: Date(Date.now()).slice(4, 24),
+    ...props.quizInfo,
+  });
+
+  const total = props.res.map((e) => +e.total).reduce((total, e) => total + e);
+  let result = props.res.map((e) => +e.point).reduce((total, e) => total + e);
+  result = result > total ? Math.round(result) : +result.toPrecision(2);
+  const coefficient = (result / total) * 100;
+  const thanksmailText = "We greatly appreciate your feedback!";
+
+  useEffect(() => {
+    props.updateQuizInfo({
+      duration: null,
+      creator: null,
+      start: null,
+      quizId: null,
+      quizName: null,
+      userName: null,
+      email: null,
+    });
+  }, []);
 
   useEffect(() => {
     const handleResize = () =>
@@ -116,7 +116,7 @@ const Popup = (props) => {
               <h1>{text}</h1>
               {props.res.length ? (
                 <h2>
-                  Your result: <span>{result}</span> of <span>{total}</span>
+                  Your score: <span>{result}</span> of <span>{total}</span>
                 </h2>
               ) : (
                 <h2>{thanksmailText}</h2>
@@ -143,7 +143,7 @@ const Popup = (props) => {
         </div>
       )}
     </>
-  )
+  );
 };
 
 const mapDispatchToProps = (dispatch) => ({

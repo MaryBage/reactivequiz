@@ -33,6 +33,10 @@
   flex-direction: column;
 }
 
+.sidebar-left .makeStyles-root-1:hover {
+  color: #555555 !important;
+}
+
 .mainAdmin {
   grid-area: content;
   padding: 45px 100px;
@@ -488,9 +492,7 @@ input::placeholder {
   cursor: pointer;
 }
 
-answerAnim
-
-.answerAnim-exit-active {
+answerAnim .answerAnim-exit-active {
   animation: answerAnim 800ms ease-in;
 }
 

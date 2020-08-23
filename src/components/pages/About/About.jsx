@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { logoText, sloganText } from "../../../StaticContent";
 import s from "./About.module.css";
 import image from "../../../images/pages/welcome.png";

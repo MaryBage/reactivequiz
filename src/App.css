@@ -86,7 +86,6 @@ body {
   color: #4d3874 !important;
   font-size: 19px !important;
   font-family: "Courier New", Courier, monospace !important;
-  border: 2px solid #4d3874 !important;
   border-radius: 5px !important;
   background-color: white !important;
   text-align: center !important;
@@ -95,7 +94,7 @@ body {
 }
 
 .error-message {
-  color:red;
+  color: red;
   font-weight: 700;
 }
 

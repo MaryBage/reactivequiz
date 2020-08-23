@@ -17,7 +17,7 @@ const ChangePsw = () => {
     if (!data.psw) {
       return;
     }
-    if (data.psw != data.confirmed) {
+    if (data.psw !== data.confirmed) {
       setMatch(true);
       setSuccess(false);
     } else {
