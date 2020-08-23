@@ -5,7 +5,6 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  withRouter,
 } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "./redux/user/user.actions";

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   background-color: #f3f3f3;
 }
 
@@ -21,14 +21,13 @@ body {
   flex-direction: column;
   justify-content: space-between;
   padding-left: 50px;
-  border: 5px solid #E2DDEE;
+  border: 5px solid #e2ddee;
   background-color: white;
 }
 
-.static-wrapper{
+.static-wrapper {
   background-color: #e2ddee;
   border: 5px solid #ffffff;
-
 }
 
 .pageIntro {
@@ -45,7 +44,7 @@ body {
 .slogan {
   color: #6f6e6e;
   font-size: 30px;
-} 
+}
 
 .informativeDivision {
   display: flex;
@@ -59,15 +58,15 @@ body {
   color: #555555 !important;
   font-size: 19px !important;
   letter-spacing: 0.02857em !important;
-  font-family: 'Courier New', Courier, monospace !important;
-  border: 1.5px solid  #bbbbbb !important;
+  font-family: "Courier New", Courier, monospace !important;
+  border: 1.5px solid #bbbbbb !important;
   border-radius: 5px !important;
   background-color: white !important;
   text-align: center !important;
   outline: none !important;
 }
 
-::placeholder { 
+::placeholder {
   color: #555555;
 }
 
@@ -82,15 +81,15 @@ body {
 }
 
 .incorrectInput {
-  height: 45px!important;
-  color: #4d3874!important;
-  font-size: 19px!important;
-  font-family: 'Courier New', Courier, monospace!important;
-  border: 2px solid  #4d3874!important;
-  border-radius: 5px!important;
-  background-color: white!important;
-  text-align: center!important;
-  outline: none!important;
+  height: 45px !important;
+  color: #4d3874 !important;
+  font-size: 19px !important;
+  font-family: "Courier New", Courier, monospace !important;
+  border: 2px solid #4d3874 !important;
+  border-radius: 5px !important;
+  background-color: white !important;
+  text-align: center !important;
+  outline: none !important;
   font-weight: 800;
 }
 
@@ -100,7 +99,7 @@ body {
 }
 
 .popup-container {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
@@ -113,57 +112,93 @@ body {
   color: #bbbbbb;
 }
 
-.fromAbove{
-  animation: fromAbove 1000ms; 
+.fromAbove {
+  animation: fromAbove 1000ms;
 }
 
-.fromBelow{
-  animation: fromBelow 1000ms; 
+.fromBelow {
+  animation: fromBelow 1000ms;
 }
 
-.fromLeft{
-  animation: fromLeft 1000ms; 
+.fromLeft {
+  animation: fromLeft 1000ms;
 }
 
-.fromRight{
-  animation: fromRight 1000ms; 
+.fromRight {
+  animation: fromRight 1000ms;
 }
-.zoomOut{
+.zoomOut {
   animation: zoomOut 1000ms;
 }
 
-.zoomIn{
+.zoomIn {
   animation: zoomIn 1000ms;
 }
 
-@keyframes fromAbove{
-  0%{ opacity: 0; transform: translateY(-50%);}
-  100%{ opacity: 1; transform: translateY(0);}
+@keyframes fromAbove {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes fromBelow{
-  0%{ opacity: 0; transform: translateY(50%);}
-  100%{ opacity: 1; transform: translateY(0);}
+@keyframes fromBelow {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes fromLeft{
-  0%{ opacity: 0; transform: translateX(-50%);}
-  100%{ opacity: 1; transform: translateX(0);}
+@keyframes fromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-@keyframes fromRight{
-  0%{ opacity: 0; transform: translateX(50%);}
-  100%{ opacity: 1; transform: translateX(0);}
+@keyframes fromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-@keyframes zoomOut{
-  0%{ opacity: 0; transform: scale(0);}
-  100%{ opacity: 1; transform: scale(1);}
+@keyframes zoomOut {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-@keyframes zoomIn{
-  0%{ opacity: 0; transform: scale(1.5);}
-  100%{ opacity: 1; transform: scale(1);}
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .freeSpace {

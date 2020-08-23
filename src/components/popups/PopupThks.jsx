@@ -37,7 +37,18 @@ const PopupThks = () => {
                 }
             >
                 <div className="zoomIn">
-                    <img className={s.popupImg} src={thanksmail} alt="img" />
+                    <img className={s.popupImg} 
+                    src={thanksmail} 
+                    alt="img" 
+                    useMap="#workmap"/>
+                  <map name="workmap">
+                <area
+                  shape="rect"
+                  coords="34,44,35,45"
+                  alt="img"
+                  href="https://stories.freepik.com/"
+                />
+              </map>
                 </div>
                 <div className={`${s.popupCommonWrapper} zoomOut`}>
                     <h1>{popupText.thanksmail}</h1>

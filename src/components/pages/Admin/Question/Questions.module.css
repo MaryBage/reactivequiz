@@ -1,7 +1,7 @@
 .questionWrapper {
   border-radius: 15px;
   padding: 15px;
-  box-shadow: 5px 5px 25px rgba(0,0,0,.5);
+  box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.5);
 }
 
 .filters {
@@ -18,16 +18,16 @@
 }
 
 .filters select {
-width: 130px;
-padding: 11px;
-border: 1.5px solid #bbbbbb;
-border-radius: 5px;
-color: #757575;
-font-family: 'Courier New', Courier, monospace;
-font-size: 17px;
-letter-spacing: 0.02857em;
-outline: none;
-margin-left: 10px;
+  width: 130px;
+  padding: 11px;
+  border: 1.5px solid #bbbbbb;
+  border-radius: 5px;
+  color: #757575;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 17px;
+  letter-spacing: 0.02857em;
+  outline: none;
+  margin-left: 10px;
 }
 
 .filters input::placeholder {
@@ -52,65 +52,69 @@ select:hover {
   margin-right: 10px;
 }
 
-.createQuiz, .selectAll, .deleteAll {
+.createQuiz,
+.selectAll,
+.deleteAll {
   width: 150px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: 17px;
   color: #555555;
   outline: none;
   border: none;
   padding: 11px;
   border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,.5);
-  background-color: rgba(255,255,255,0.95);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
-.createQuiz { width: 150px!important; }
+.createQuiz {
+  width: 150px !important;
+}
 
 .questions {
-    width: 100%;
-    font-size: 20px;
-    padding: 0;
-    margin: 0;
+  width: 100%;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
 }
 
 .questionItem {
-    display: flex;
-    flex-direction: column;
-    margin: 0 0 5px 0;
-    padding: 5px 15px;
-    border: 1.5px solid #bbbbbb;
-    border-radius: 5px;
-    background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 5px 0;
+  padding: 5px 15px;
+  border: 1.5px solid #bbbbbb;
+  border-radius: 5px;
+  background-color: #fff;
 }
 
 .questionItemLi {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 5px 5px 10px 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px 5px 10px 5px;
 }
 
 .questionItemLi select:hover {
-    border-color: #555555;
-    color: #555555;
-    font-weight: bold;
+  border-color: #555555;
+  color: #555555;
+  font-weight: bold;
 }
 
 .inputWrapper {
-    display: flex;
-    flex-grow: 2;
-    align-items: center;
+  display: flex;
+  flex-grow: 2;
+  align-items: center;
 }
 
 .questionItemInput {
-    width: 90%;
-    border: none;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 17px;
-    font-weight: bold;
-    color: #555555;
-    outline: none;
+  width: 90%;
+  border: none;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 17px;
+  font-weight: bold;
+  color: #555555;
+  outline: none;
 }
 
 .questionItemInput::placeholder {
@@ -118,38 +122,37 @@ select:hover {
 }
 
 .questionItemLi select {
-    width: 130px;
-    padding: 5px;
-    margin-right: 10px;
-    border: 1.5px solid #bbbbbb;
-    border-radius: 5px;
-    color: #757575;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 15px;
-    letter-spacing: 0.02857em;
-    outline: none;
+  width: 130px;
+  padding: 5px;
+  margin-right: 10px;
+  border: 1.5px solid #bbbbbb;
+  border-radius: 5px;
+  color: #757575;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px;
+  letter-spacing: 0.02857em;
+  outline: none;
 }
 
 select .selected {
-    background-color: #dedede;
-
+  background-color: #dedede;
 }
 
 .tick {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    outline: none;
-    margin-left: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  margin-left: 10px;
 }
 
 .answersWrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 5px;
 }
 
 .disappeared {
@@ -160,23 +163,21 @@ select .selected {
   position: relative;
   display: inline-flex;
   flex-direction: column;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: 19px;
   color: #555555;
   font-weight: bold;
   cursor: pointer;
-  padding-right:15px;
+  padding-right: 15px;
   word-break: break-word;
 }
 
-
-
 .questionItem-exit-active {
-    animation: questionItem 800ms;
-  }
-  
+  animation: questionItem 800ms;
+}
+
 .questionItem-enter-active {
-    animation: questionItem 800ms ease-in alternate-reverse;
+  animation: questionItem 800ms ease-in alternate-reverse;
 }
 
 .hint {
@@ -187,23 +188,23 @@ select .selected {
   width: max-content;
   color: #757575;
   font-size: 13px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   border: 1px solid #bbbbbb;
   border-radius: 3px;
   background-color: whitesmoke;
   padding: 3px;
 }
-  
+
 @keyframes questionItem {
   0% {
     opacity: 1;
   }
-  
+
   30% {
-    opacity: .7;
+    opacity: 0.7;
     transform: translateX(30px);
   }
-  
+
   100% {
     opacity: 0;
     transform: translateX(-200px);
@@ -211,7 +212,8 @@ select .selected {
 }
 
 @media (max-width: 950px) {
-  .appeared, .questionItemInput {
+  .appeared,
+  .questionItemInput {
     font-size: 15px;
     width: min-content;
   }

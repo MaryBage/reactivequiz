@@ -1,11 +1,9 @@
-import React from "react"
+import React from "react";
 
 const Logo = (props) => {
-    const text = props.logoText; // "reactive", "hello", "compose", "create", "join", "tell"
+  const text = props.logoText;
 
-    return (
-        <div className="logo">{text}</div>
-    )
-}
+  return <div className="logo">{text}</div>;
+};
 
 export default Logo;

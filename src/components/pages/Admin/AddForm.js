@@ -1,129 +1,143 @@
-import React, { useState, useContext, useEffect} from 'react';
-import { DbContext } from './context/database/dbContext';
-import './Admin.css';
+import React, { useState, useContext } from "react";
+import { DbContext } from "./context/database/dbContext";
+import "./Admin.css";
 import { useForm } from "react-hook-form";
-import {withRouter} from 'react-router-dom';
-
+import { withRouter } from "react-router-dom";
 
 const AddForm = (props) => {
- 
-    let answers = new Array(6).fill(1);
-   
-    const {addData} = useContext(DbContext);
+  const answers = new Array(5).fill(1);
+  const { addData } = useContext(DbContext);
 
-    const { register, handleSubmit } = useForm();
-    const [addValidation, setAddValidation] = useState({validation: false,
-                                                        error:'', 
-                                                        success: false,
-                                                        category: 1,
-                                                        question: 1,
-                                                        answer: 1,
-                                                        point: 1
-                                                    })
+  const { register, handleSubmit } = useForm();
+  const [addValidation, setAddValidation] = useState({
+    validation: false,
+    error: "",
+    success: false,
+    category: 1,
+    question: 1,
+    answer: 1,
+    point: 1,
+  });
 
-    const [qstnType, setQstnType] = useState('single')
-    const [qstnPoint, setQstnPoint] = useState('')
+  const [qstnType, setQstnType] = useState("single");
+  const [qstnPoint, setQstnPoint] = useState("");
 
-    const qstnTypeChangeHandler = (e) => {
-        setQstnType(e.target.value);
-        hideSuccessMsg();
-    }
-    const pointChangeHandler = e => {
-        setQstnPoint(e.target.value)
-        hideSuccessMsg();
-    }
-    const sbmtHandler = data => {
- 
-        const myData = {
-            question: data.question, 
-            code: data.code, 
-            qstnType: data.qstnType, 
-            category: data.category,
-            difficulty: data.difficulty,
-            answers: []
-        }
+  const qstnTypeChangeHandler = (e) => {
+    setQstnType(e.target.value);
+    hideSuccessMsg();
+  };
+  const pointChangeHandler = (e) => {
+    setQstnPoint(e.target.value);
+    hideSuccessMsg();
+  };
+  const sbmtHandler = (data) => {
+    const myData = {
+      question: data.question,
+      code: data.code,
+      qstnType: data.qstnType,
+      category: data.category,
+      difficulty: data.difficulty,
+      answers: [],
+    };
 
-        let validation = true;
-        let question = true;
-        let answer = true;
-        let point = true;
-        let category = true;
-        let error = '';
-        let myType = new Array(data.answer.length).fill(false)
-        let myPoint = new Array(data.answer.length).fill(0)
+    let validation = true;
+    let question = true;
+    let answer = true;
+    let point = true;
+    let category = true;
+    let error = "";
+    let myType = new Array(data.answer.length).fill(false);
+    let myPoint = new Array(data.answer.length).fill(0);
 
-        if(typeof data.type == 'string') {
-            myType[+data.type] = !!data.type;
-        }
-        else {
-            myType = data.type.map(e => !!e);
-        }
-
-        if(typeof data.point == 'string' ) {
-            if(data.qstnType == 'multiple'){
-            console.log('myType',myType)
-               const cnt =  myType.filter(e => e).length
-               myPoint = myType.map(e => (e ? +(data.point/cnt).toPrecision(2) : -1*(data.point/myType.length).toPrecision(2)))
-               console.log('myPoint',myPoint)
-            }
-            else {
-             myPoint[+data.type] = parseFloat(data.point)
-            }
-        }
-        else {
-            myPoint = data.point
-        }
-
-
-        if(!data.question){
-           /* error += 'Question field is empty.\n'*/
-            validation = question = false;
-        } 
-        if(!data.category){
-           /* error += 'Category field is empty.\n'*/
-            validation = category = false;
-        } 
-        if(data.answer.filter(e => e).length < 2){
-            error += 'Should be at least 2 answers.\n'
-            validation = false;
-        }
-        if(!myType.some(e => e) ){
-            error += 'There is no right answer.\n'
-            validation = answer = false;
-        }
-        if(myPoint.every(e => !e)){
-           /* error += 'There is no point for this question.\n'*/
-            validation = point = false;
-        }
-
-        if(!myType.map((e,i) => e ? i : null).filter(e => e!=null).every(e => data.answer[e])){
-            error += 'Right answer text is empty.\n'
-            validation = false;
-        }
-
-        if(!myType.map((e,i) => e ? i : null).filter(e => e!=null).every(e => myPoint[e])){
-            error += 'Question or right answer has no score.\n'
-            validation = false;
-        }
- 
-        setAddValidation({...addValidation, validation, error , question, category, point, answer})
-
-        if(validation) {
-            data.answer.map((e,i) => {
-                myData.answers.push({answer: e, point: myPoint[i], type: myType[i] })
-            })
-            addData(myData);
-
-            setAddValidation({...addValidation, validation, error, success: true})
-        }
-    } 
-
-    const hideSuccessMsg = () => {
-        setAddValidation({...addValidation,success: false })
+    if (typeof data.type == "string") {
+      myType[+data.type] = !!data.type;
+    } else {
+      myType = data.type.map((e) => !!e);
     }
 
-    
+    if (typeof data.point == "string") {
+      if (data.qstnType == "multiple") {
+        console.log("myType", myType);
+        const cnt = myType.filter((e) => e).length;
+        myPoint = myType.map((e) =>
+          e
+            ? +(data.point / cnt).toPrecision(2)
+            : -1 * (data.point / myType.length).toPrecision(2)
+        );
+        console.log("myPoint", myPoint);
+      } else {
+        myPoint[+data.type] = parseFloat(data.point);
+      }
+    } else {
+      myPoint = data.point;
+    }
 
+    if (!data.question) {
+      /* error += 'Question field is empty.\n'*/
+      validation = question = false;
+    }
+    if (!data.category) {
+      /* error += 'Category field is empty.\n'*/
+      validation = category = false;
+    }
+    if (data.answer.filter((e) => e).length < 2) {
+      error += "Should be at least 2 answers.\n";
+      validation = false;
+    }
+    if (!myType.some((e) => e)) {
+      error += "There is no right answer.\n";
+      validation = answer = false;
+    }
+    if (myPoint.every((e) => !e)) {
+      /* error += 'There is no point for this question.\n'*/
+      validation = point = false;
+    }
+
+    if (
+      !myType
+        .map((e, i) => (e ? i : null))
+        .filter((e) => e != null)
+        .every((e) => data.answer[e])
+    ) {
+      error += "Right answer text is empty.\n";
+      validation = false;
+    }
+
+    if (
+      !myType
+        .map((e, i) => (e ? i : null))
+        .filter((e) => e != null)
+        .every((e) => myPoint[e])
+    ) {
+      error += "Question or right answer has no score.\n";
+      validation = false;
+    }
+
+    setAddValidation({
+      ...addValidation,
+      validation,
+      error,
+      question,
+      category,
+      point,
+      answer,
+    });
+
+    if (validation) {
+      data.answer.map((e, i) => {
+        myData.answers.push({ answer: e, point: myPoint[i], type: myType[i] });
+      });
+      addData(myData);
+
+      setAddValidation({ ...addValidation, validation, error, success: true });
+    }
+  };
+
+  const hideSuccessMsg = () => {
+    setAddValidation({ ...addValidation, success: false });
+  };
+
+  
 return (
         <div className='addForm'>
                 <div className='centerAdm'>   <div className='addFormHeader'>Add question</div></div>
@@ -230,10 +244,9 @@ return (
                          <input type='reset' className='resetBtn' value='&#8634;' name='reset' />&nbsp;</div>
     
                 </form>
-            
-        </div>
+          
+    </div>
+  );
+};
 
-    )
-
-}
-export default withRouter(AddForm);
+export default withRouter(AddForm)

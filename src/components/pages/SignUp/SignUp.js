@@ -63,7 +63,7 @@ const SignUp = ({ setCurrentUser }) => {
     <>
       {(loader.loader && <Loader />) || (
         <div className="wrapper">
-          <StaticImage image={image} anim="fromBelow" />
+          <StaticImage image={image} i="4" anim="fromBelow" />
           <div className="changable-wrapper fromAbove">
             <DelayLink delay={700} to={"/signin"}>
               <CustomButton small="true">

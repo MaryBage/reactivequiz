@@ -139,6 +139,7 @@ const Quiz = (props) => {
                                 <hr/>
                             </>}
                             <input type='button'
+
                                value='finish'
                                key='finish'
                                className = {quiz.every(e => e.isSubmitted) ? 'finishBtn blink' : 'finishBtn'}
