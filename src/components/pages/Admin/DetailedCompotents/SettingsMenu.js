@@ -10,7 +10,7 @@ const SettingsMenu = () => {
 
   return (
     <div className="settingsWrapper">
-      <div class="settingsContent">
+      <div className="settingsContent">
         <Settings setThemeColor={setThemeColor} id={user.id} theme={theme} />
         <Link to="/admin/change_password">
           {" "}

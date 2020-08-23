@@ -22,6 +22,7 @@ const Settings = ({ setThemeColor, id, updateSettings }) => {
         {Object.keys(THEME).map((color) => (
           <option
             // selected={color == theme ? 'selected' : ''}
+            key={color}
             value={color}
             style={{ color: `rgb(${THEME[color]})` }}
           >
