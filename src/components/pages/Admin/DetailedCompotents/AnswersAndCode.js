@@ -6,7 +6,6 @@ import { DbContext } from "../context/database/dbContext";
 const AnswersAndCode = ({id, dbid, questions}) => {
 
     const { updateData, deleteData } = useContext(DbContext);
-    const answers = questions[id - 1].options;
     const [disappear, setDisappear] = useState({ disappear : false, index : null });
     const [hint, setHint] = useState({hint : false, index : null});
     const [details, setDetails] = useState(questions[id - 1])
@@ -110,7 +109,7 @@ const AnswersAndCode = ({id, dbid, questions}) => {
                         </>
                         }
                        
-                        <div className="pointer red" onClick={() => deleteData(answer[0])}>&#10008;</div>
+                        <div className="pointer red" onClick={() => deleteData(answer[0],'answer')}>&#10008;</div>
                         </div>})
             }
         </>

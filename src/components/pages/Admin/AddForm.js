@@ -6,8 +6,9 @@ import {withRouter} from 'react-router-dom';
 
 
 const AddForm = (props) => {
+    const [answersQty, setAnswersQty] = useState(5)
 
-    const answers = new Array(5).fill(1);
+    const answers = new Array(answersQty).fill(1);
     const {addData} = useContext(DbContext);
 
     const { register, handleSubmit } = useForm();
