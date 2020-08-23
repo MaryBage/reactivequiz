@@ -16,6 +16,7 @@ const AnswersAndCode = ({ id, dbid, questions }) => {
     });
   };
 
+
   const makeToShowHint = (e, id) => {
     setHint({
       ...hint,
@@ -119,15 +120,11 @@ const AnswersAndCode = ({ id, dbid, questions }) => {
                 />
               </>
             )}
-
-            <div className="pointer red" onClick={() => deleteData(answer[0])}>
-              &#10008;
             </div>
-          </div>
-        );
-      })}
-    </>
-  );
-};
+            )})}
+
+        </>
+    )
+}
 
 export default AnswersAndCode;
