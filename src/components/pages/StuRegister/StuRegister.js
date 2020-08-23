@@ -33,7 +33,7 @@ const StuRegister = (props) => {
   return (
     <>
       <div className="wrapper">
-        <StaticImage image={image} anim="fromBelow" />
+        <StaticImage image={image} i="6" anim="fromBelow" />
         <div className="changable-wrapper fromAbove">
           <div style={{ marginTop: 150 }}>
             <PageIntro

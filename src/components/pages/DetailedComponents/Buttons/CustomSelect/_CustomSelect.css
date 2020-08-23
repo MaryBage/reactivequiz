@@ -1,33 +1,33 @@
 .custom-select {
-    border: 1.5px solid #bbbbbb;
-    border-radius: 5px;
-    height: 48px;
-    color: #555555;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 19px;
-    letter-spacing: 0.02857em;
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    text-overflow: '';
-    text-align-last: center;
-    -moz-text-align-last: center; 
+  border: 1.5px solid #bbbbbb;
+  border-radius: 5px;
+  height: 48px;
+  color: #555555;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 19px;
+  letter-spacing: 0.02857em;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-overflow: "";
+  text-align-last: center;
+  -moz-text-align-last: center;
 }
 
 .custom-select > option {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-.custom-select > option:disabled { 
+.custom-select > option:disabled {
   font-weight: normal;
 }
 
 .custom-select::-ms-expand {
-    display: none;
+  display: none;
 }
 
 .custom-select:hover {
-    color: #7e57c2;
-    border-color: #7e57c2;
-    cursor: pointer;
+  color: #7e57c2;
+  border-color: #7e57c2;
+  cursor: pointer;
 }

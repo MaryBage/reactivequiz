@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
-
-
-const InformativeField = ({...otherProps}) => {
-    return (
-        <input {...otherProps} />
-    )
+const InformativeField = ({ ...otherProps }) => {
+  return <input {...otherProps} />;
 };
 
 export default InformativeField;
