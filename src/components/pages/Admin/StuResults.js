@@ -108,7 +108,7 @@ const StuResults = ({ students, getStudents }) => {
   const searchHandler = (e) => {
     if (e.target.value)
       setChangedStudents(
-        changedStudents.filter((el) => el[searchBy].includes(e.target.value))
+        changedStudents.filter((el) => el[searchBy].toLowerCase().includes(e.target.value.toLowerCase()))
       );
     else setChangedStudents(students);
   };

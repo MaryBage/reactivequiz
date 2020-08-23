@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import {withRouter} from "react-router-dom";
+import axios from '../../../axios/axios-quiz';
 import image from "../../../images/pages/studentRegister.png";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
 import CustomButton from "../DetailedComponents/Buttons/CustomButton/CustomButton";
 import PageIntro from "../DetailedComponents/PageIntro/PageIntro";
 import InformativeField from "../DetailedComponents/Fields/InformativeField/InformativeField";
 import SimpleLine from "../DetailedComponents/SimpleLine/SimpleLine";
-import { connect } from "react-redux";
 import { updateQuizInfo } from "../../../redux/quizInfo/quizInfo.actions";
+import {Loader} from '../DetailedComponents/Loader/Loader';
 
 const StuRegister = (props) => {
   const [data, setData] = useState({ displayName: "", email: "" });
@@ -14,14 +17,41 @@ const StuRegister = (props) => {
     const { name } = e.target;
     setData({ ...data, [name]: e.target.value });
   };
+  const [quizInfo, setQuizInfo] = useState({
+                                    duration: '',
+                                    quizId: '',
+                                    quizName: '',
+                                    creator: ''})
+  const [loader, setLoader] = useState(true);
+     
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
+      if(props.match.params.detail){
+        axios
+        .post(`/quiz.php`, atob(props.match.params.detail))
+        .then(res => {
+          console.log(res.data)
+            if (res.data.message) {
+                props.history.push('/unavailable/')
+                setLoader(false)
+            }
+            else {
+              setQuizInfo({...quizInfo, ...res.data});
+              setLoader(false)
+            }
+        })
+      }
+      else setLoader(false);
   }, []);
 
   const handleRegister = async (e) => {
     e.preventDefault();
     props.updateQuizInfo({
+      duration: quizInfo.duration,
+      quizName: quizInfo.quizName,
+      quizId: quizInfo.quizId,
+      creator: quizInfo.creator,
       userName: data.displayName,
       email: data.email,
       start: Date.now(),
@@ -32,6 +62,7 @@ const StuRegister = (props) => {
   };
   return (
     <>
+    {(loader && <Loader/>) ||
       <div className="wrapper">
         <StaticImage image={image} i="6" anim="fromBelow" />
         <div className="changable-wrapper fromAbove">
@@ -67,7 +98,7 @@ const StuRegister = (props) => {
             </CustomButton>
           </form>
         </div>
-      </div>
+      </div>}
     </>
   );
 };
@@ -76,4 +107,4 @@ const mapDispatchToProps = (dispatch) => ({
   updateQuizInfo: (info) => dispatch(updateQuizInfo(info)),
 });
 
-export default connect(null, mapDispatchToProps)(StuRegister);
+export default withRouter(connect(null, mapDispatchToProps)(StuRegister));

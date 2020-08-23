@@ -63,12 +63,7 @@ const Quizes = (props) => {
     document.execCommand("copy");
     e.target.focus();
     setCopySuccess({ id: e.target.id, copied: true });
-    props.updateQuizInfo({
-      duration: duration,
-      quizId: e.target.id,
-      quizName: e.target.name,
-      creator: id,
-    });
+    
     setTimeout(() => {
       setCopySuccess({ ...copySuccess, copied: false });
     }, 1500);
@@ -171,7 +166,7 @@ const Quizes = (props) => {
   const searchHandler = (e) => {
     if (e.target.value)
       setChangedQuizes([
-        ...changedQuizes.filter((el) => el.name.includes(e.target.value)),
+        ...changedQuizes.filter((el) => el.name.toLowerCase().includes(e.target.value.toLowerCase())),
       ]);
     else setChangedQuizes(quizes);
   };

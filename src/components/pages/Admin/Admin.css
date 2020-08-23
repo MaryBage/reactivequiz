@@ -488,6 +488,33 @@ input::placeholder {
   cursor: pointer;
 }
 
+answerAnim
+
+.answerAnim-exit-active {
+  animation: answerAnim 800ms ease-in;
+}
+
+.answerAnim-enter-active {
+  animation: answerAnim 800ms ease-in alternate-reverse;
+}
+
+@keyframes answerAnim {
+  0% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+
+  30% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
 .questionItemAnim-exit-active {
   animation: questionItem 800ms ease-in;
 }
@@ -620,4 +647,17 @@ button,
 input[type="submit"],
 input[type="button"] {
   cursor: pointer;
+}
+
+.blink {
+  animation-name: blink;
+  animation-timing-function: linear;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }

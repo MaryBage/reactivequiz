@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import "../Admin.css";
-import s from "./Questions.module.css";
-import { DbContext } from "../context/database/dbContext";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
-import AnswersAndCode from "../DetailedCompotents/AnswersAndCode";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
 import { withRouter } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import "../Admin.css";
+import s from "./Questions.module.css";
+import { DbContext } from "../context/database/dbContext";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+import AnswersAndCode from "../DetailedCompotents/AnswersAndCode";
+
 import Filters from "../DetailedCompotents/Filter";
 
 const customStyles = {
@@ -65,7 +66,7 @@ const Questions = (props) => {
     } else filtered = [...questions];
 
     for (let key of filtArr) {
-      filtered = filtered.filter((el) => el[key].includes(searching[key]));
+      filtered = filtered.filter((el) => el[key].toLowerCase().includes(searching[key].toLowerCase()));
     }
     setFilteredValue(filtered);
     setQstnInptValue(
