@@ -215,13 +215,14 @@ body {
   .wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+   
   }
   .img {
     object-fit: cover;
     height: 97.7vh;
     width: 100%;
   }
-  .informativeDivision input {
+ /* .informativeDivision input {
     height: 25px !important;
     font-size: 15px !important;
   }
@@ -230,7 +231,7 @@ body {
   }
   .slogan {
     font-size: 20px;
-  }
+  }*/
 }
 
 
