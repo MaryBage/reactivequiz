@@ -211,20 +211,26 @@ body {
   height: 130px;
 }
 
-@media  screen and (min-width:768px){
- 
+@media screen and (min-width: 768px) {
   .wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
-  
   .img {
     object-fit: cover;
     height: 97.7vh;
     width: 100%;
   }
-
-
+  .informativeDivision input {
+    height: 25px !important;
+    font-size: 15px !important;
+  }
+  .logo {
+    font-size: 40px;
+  }
+  .slogan {
+    font-size: 20px;
+  }
 }
 
 

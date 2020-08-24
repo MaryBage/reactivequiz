@@ -25,7 +25,7 @@ import StuRegister from "./components/pages/StuRegister/StuRegister";
 import ResetPasswordForm from "./components/popups/ResetPasswordPopup/AfterResetPopup/ResetPasswordForm";
 
 const App = ({ currentUser, logoutUser }) => {
-  //console.log = console.warn = console.info = console.error  = function(){}
+  console.log = console.warn = console.info = console.error  = function(){}
   return (
     <Router>
       <Switch>
