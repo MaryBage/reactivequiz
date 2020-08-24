@@ -242,6 +242,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
   },
   tableCell: {
+    display:'flex',
+    flexFlow: 'row wrap',
     margin: "auto",
     paddingTop: 5,
     paddingBottom: 5,

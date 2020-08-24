@@ -74,21 +74,7 @@ const Quiz = (props) => {
         }
      })
      .catch(e => console.log(e.message))
-
-     window.addEventListener('popstate',onBackButtonEvent);
-
-      return window.removeEventListener('popstate',onBackButtonEvent);
 }, [])
-
-const onBackButtonEvent = (e) => {
-    e.preventDefault();
-    if(true){
-    window.history.go(0);
-    }else {
-    window.history.forward();
-  }
-}
-
 
     const onBackClickHandler = (e, singleQuiz, activeQuestion) => {
         e.preventDefault();

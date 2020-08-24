@@ -231,6 +231,7 @@ const Questions = (props) => {
             type="number"
             ref={register}
             name="duration"
+            min='0'
             style={
               quizFormControls.duration == "empty"
                 ? { backgroundColor: "rgba(170, 10, 10, 0.25)" }

@@ -126,7 +126,7 @@ const AnswersAndCode = ({ id, dbid, questions }) => {
                 />
               </>
             )}
-            {(Object.keys(details.options).length > 2 || answer[1].type === "right") && <div className="pointer red" onClick={() => deleteData(answer[0],'answer')}>&#10008;</div>}
+            {(Object.keys(details.options).length > 2 || answer[1].type !== "right") && <div className="pointer red" onClick={() => deleteData(answer[0],'answer')}>&#10008;</div>}
             </div>
            
             )})}
