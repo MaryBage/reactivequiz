@@ -32,6 +32,7 @@
 .popupWrapper input:hover {
   border-color: #7e57c2;
   color: #7e57c2;
+  font-weight: bold;
   cursor: pointer;
 }
 

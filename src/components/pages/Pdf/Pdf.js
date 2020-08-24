@@ -57,18 +57,18 @@ const ResultPdf = (props) => {
           </View>
         </View>
 
-        {props.res.map((e) => {
+        {props.res.map((e,i) => {
           return (
             <>
-              <View style={styles.quizMain} wrap={false}>
+              <View key={`q${i}`} style={styles.quizMain} wrap={false}>
                 <View style={styles.question}>
                   <Text>{e.question}</Text>
                 </View>
                 <View style={styles.answer}>
-                  {e.options.map((option) => {
+                  {e.options.map((option,j) => {
                     return (
                       <>
-                        <View style={styles.row}>
+                        <View key={`a${j}`} style={styles.row}>
                           <View style={styles.tinyRow}>
                             <View style={styles.bullet}>
                               {option.match ? (

@@ -55,8 +55,7 @@ const Questions = (props) => {
     timeout: 0,
   });
   const [checkAll, setCheckAll] = useState(false);
-  const [valToDelete, setValToDelete] = useState("");
-
+ 
   useEffect(() => {
     const filtArr = Object.keys(searching).filter((el) => searching[el]);
     let filtered = [];
@@ -66,7 +65,9 @@ const Questions = (props) => {
     } else filtered = [...questions];
 
     for (let key of filtArr) {
-      filtered = filtered.filter((el) => el[key].toLowerCase().includes(searching[key].toLowerCase()));
+      filtered = filtered.filter((el) =>
+        el[key].toLowerCase().includes(searching[key].toLowerCase())
+      );
     }
     setFilteredValue(filtered);
     setQstnInptValue(
@@ -87,9 +88,6 @@ const Questions = (props) => {
     if (selectedQstns.length === filteredValue.length) setCheckAll(true);
   }, [selectedQstns]);
 
-  useEffect(() => {
-    deleteData(valToDelete);
-  }, [valToDelete]);
 
   const makeToDisappear = (e, id) => {
     setDisappear({
@@ -192,12 +190,6 @@ const Questions = (props) => {
       editInput(e, e.target.id, "questions");
       e.target.blur();
     }
-  };
-  const deleteHandler = (e) => {
-    setFilteredValue(
-      filteredValue.filter((el) => el.questionDbId != e.target.id)
-    );
-    setValToDelete(e.target.id);
   };
 
   return (
@@ -330,7 +322,7 @@ const Questions = (props) => {
                       </div>
                       <div
                         className={
-                          currentQuestion.questionId == disappear.index &&
+                          currentQuestion.questionId === disappear.index &&
                           disappear.disappear
                             ? s.disappeared
                             : s.appeared
@@ -344,14 +336,14 @@ const Questions = (props) => {
                         onMouseOut={() => makeToShowHint(false)}
                       >
                         {currentQuestion.question}
-                        {hint && hint.index == currentQuestion.questionId ? (
+                        {hint && hint.index === currentQuestion.questionId ? (
                           <div className={s.hint}>
                             Double-click to edit the question!
                           </div>
                         ) : null}
                       </div>
                       {disappear.disappear &&
-                        currentQuestion.questionId == disappear.index && (
+                        currentQuestion.questionId === disappear.index && (
                           <input
                             type="text"
                             name="question"

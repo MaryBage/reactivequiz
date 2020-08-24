@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import {withRouter} from "react-router-dom";
+import {withRouter, useHistory} from "react-router-dom";
 import axios from '../../../axios/axios-quiz';
 import image from "../../../images/pages/studentRegister.png";
 import StaticImage from "../DetailedComponents/StaticImage/StaticImage";
@@ -12,6 +12,8 @@ import { updateQuizInfo } from "../../../redux/quizInfo/quizInfo.actions";
 import {Loader} from '../DetailedComponents/Loader/Loader';
 
 const StuRegister = (props) => {
+  const [ locationKeys, setLocationKeys ] = useState([])
+  const history = useHistory()
   const [data, setData] = useState({ displayName: "", email: "" });
   const oniInputChange = (e) => {
     const { name } = e.target;
@@ -31,9 +33,8 @@ const StuRegister = (props) => {
         axios
         .post(`/quiz.php`, atob(props.match.params.detail))
         .then(res => {
-          console.log(res.data)
-            if (res.data.message) {
-                props.history.push('/unavailable/')
+             if (res.data.message) {
+               history.push('/unavailable/')
                 setLoader(false)
             }
             else {
@@ -43,7 +44,20 @@ const StuRegister = (props) => {
         })
       }
       else setLoader(false);
+
+      window.addEventListener('popstate',onBackButtonEvent);
+
+      return window.removeEventListener('popstate',onBackButtonEvent);
   }, []);
+
+  
+
+ const onBackButtonEvent = (e) => {
+    e.preventDefault();
+    console.log('onBackButtonEvent')
+     history.push('http://localhost:3000/');
+}
+
 
   const handleRegister = async (e) => {
     e.preventDefault();

@@ -16,6 +16,9 @@ const useStyles = makeStyles({
     textAlign: "center",
     outline: "none",
     textTransform: "lowercase",
+    "&:hover": {
+      backgroundColor: "#fbf7ff",
+    },
   },
 });
 

@@ -1,55 +1,80 @@
-import React, {useState, useEffect} from 'react';
-
-import Countdown, {zeroPad} from 'react-countdown';
-import {connect} from "react-redux";
-import PropTypes from 'prop-types'
-import {withRouter} from "react-router-dom";
-import axios from '../../../axios/axios-quiz';
-import {Loader} from '../DetailedComponents/Loader/Loader';
-import ActiveQuiz from './ActiveQuiz';
-import './Quiz.css';
-import Popup from '../../popups/Popup';
-
+import React, { useState, useEffect } from "react";
+import Countdown, { zeroPad } from "react-countdown";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { withRouter, useHistory } from "react-router-dom";
+import axios from "../../../axios/axios-quiz";
+import { Loader } from "../DetailedComponents/Loader/Loader";
+import ActiveQuiz from "./ActiveQuiz";
+import "./Quiz.css";
+import Popup from "../../popups/Popup";
 
 const Quiz = (props) => {
-    console.log('props fro Quiz.js',props)
-    
-    const params = props.match.params.detail
-          ? atob(props.match.params.detail)
-          : JSON.stringify(props)
-    const {start, duration, creator} = props.quizInfo
+    const history = useHistory()
+    const [ locationKeys, setLocationKeys ] = useState([])
 
+  const params = props.match.params.detail
+    ? atob(props.match.params.detail)
+    : JSON.stringify(props);
+  const { start, duration, creator } = props.quizInfo;
 
-    const [quiz, setQuiz] = useState([])
-    const [conds, setConds] = useState({trasition: false, loader: true, result: [], creator})
-    useEffect(() => {
+  const [quiz, setQuiz] = useState([]);
 
-        axios
-            .post(`/quiz.php`, params)
-            .then(res => {
-                
-                if (res.data.message) {
-                    props.history.push('/unavailable/')
-                } else {
-                    setQuiz(res.data.quiz.map((questionItem, i) => {
-                        return {
-                            questionId: questionItem.questionId,
-                            questionDbId: questionItem.questionDbId,
-                            question: questionItem.question,
-                            code: questionItem.code,
-                            type: questionItem.type,
-                            difficulty: questionItem.difficulty,
-                            options: questionItem.options.sort(() => Math.random() - .5),
-                            userAnswer: [],
-                            isActive: (i === 0),
-                            isSubmitted: false
-                        }
-                    }));
-                    setConds({...conds, loader: false, trasition: true})
-                }
-            })
-            .catch((e) => console.log(e.message))
-    }, [])
+  const [conds, setConds] = useState({
+    trasition: false,
+    loader: true,
+    result: [],
+    creator,
+  });
+  useEffect(() => {
+    return history.listen(location => {
+      console.log(location)
+
+      if (history.action === 'PUSH') {
+        setLocationKeys([ location.key ])
+      }
+  
+      if (history.action === 'POP') {
+        if (locationKeys[1] === location.key) {
+          setLocationKeys(([ _, ...keys ]) => keys)
+  
+          // Handle forward event
+  
+        } else {
+          setLocationKeys((keys) => [ location.key, ...keys ])
+            history.push('http://localhost:3000/');
+          }
+      }
+    })
+  }, [ locationKeys ])
+  useEffect(() => {
+    axios
+      .post(`/quiz.php`, params)
+      .then((res) => {
+             if (res.data.message) {
+            history.push("/unavailable/");
+            } 
+            else {
+                setQuiz(
+                    res.data.quiz.map((questionItem, i) => {
+                      return {
+                        questionId: questionItem.questionId,
+                        questionDbId: questionItem.questionDbId,
+                        question: questionItem.question,
+                        code: questionItem.code,
+                        type: questionItem.type,
+                        difficulty: questionItem.difficulty,
+                        options: questionItem.options.sort(() => Math.random() - 0.5),
+                        userAnswer: [],
+                        isActive: i === 0,
+                        isSubmitted: false,
+                };
+            }))
+            setConds({...conds, loader: false});
+        }
+     })
+     .catch(e => console.log(e.message))
+}, [])
 
 
     const onBackClickHandler = (e, singleQuiz, activeQuestion) => {
@@ -164,22 +189,23 @@ const Quiz = (props) => {
                         onNextClickHandler={onNextClickHandler}
                         onSbmtHandler={sbmtHandler}
                     />
-                </div>
+                    <hr />
+   
+                
             </div>
-            }
-        </>
-    )
-}
+          </div>
+        }
+    </>
+  );
+};
 
-
-const mapStateToProps = state => ({
-    quizInfo: state.quizInfo
+const mapStateToProps = (state) => ({
+  quizInfo: state.quizInfo,
 });
 
-
 Quiz.propTypes = {
-    quiz: PropTypes.string ,
-    category: PropTypes.string,
-    level: PropTypes.string,
-}
+  quiz: PropTypes.string,
+  category: PropTypes.string,
+  level: PropTypes.string,
+};
 export default withRouter(connect(mapStateToProps)(Quiz));

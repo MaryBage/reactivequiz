@@ -1,8 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import CustomButton from "../DetailedComponents/Buttons/CustomButton/CustomButton";
 import { adminNav } from "../../../StaticContent";
-import { Link } from "react-router-dom";
 import "./Admin.css";
 import Quizes from "./Quizes";
 import Questions from "./Question/Questions";
@@ -15,8 +14,10 @@ import { UserContext } from "./context/user/userContext";
 import { DbContext } from "./context/database/dbContext";
 import SettingsMenu from "./DetailedCompotents/SettingsMenu";
 import SettingsIcon from "@material-ui/icons/Settings";
+import {Loader} from '../DetailedComponents/Loader/Loader'
 
 const Admin = () => {
+   
   const user = useContext(UserContext);
   const { theme } = useContext(ThemeContext);
   const db = useContext(DbContext);
@@ -36,6 +37,7 @@ const Admin = () => {
 
   return (
     <>
+    {db.loading ? <Loader /> :
       <div className="containerAdmin">
         <div
           className="header"
@@ -111,6 +113,7 @@ const Admin = () => {
           </Switch>
         </div>
       </div>
+}
     </>
   );
 };

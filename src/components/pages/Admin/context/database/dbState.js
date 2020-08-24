@@ -3,7 +3,7 @@ import axios from "../../../../../axios/axios-quiz";
 import { DbContext } from "./dbContext";
 import { dbReducer } from "./dbReducer";
 import { UserContext } from "../user/userContext";
-import { GET_DATA, GET_QUIZ, SET_LOADER, GET_STUDENTS } from "../types";
+import { GET_DATA, GET_QUIZ, SET_LOADER } from "../types";
 
 export const DbState = ({ children }) => {
   const { id } = useContext(UserContext);
@@ -235,29 +235,6 @@ export const DbState = ({ children }) => {
       payload,
     });
   };
-
-  // const getStudents = async () =>{
-  //     setLoader();
-  //
-  //   const res = await axios.post('/students.php', btoa(JSON.stringify({creator: id, action: 'get'})));
-  //      const payload = res.data.map((student) => {
-  //                  return {
-  //                     quizName: student.quizName,
-  //                      name: student.name,
-  //                      email: student.email,
-  //                      quizId: student.quizId,
-  //                      result_json: student.result_json,
-  //                      score: student.score,
-  //                      percentage: student.percentage,
-  //                      date: student.date
-  //                  }
-  //              });
-  //
-  //      dispatch({
-  //          type:GET_STUDENTS,
-  //         payload
-  //      })
-  // }
 
   const setLoader = () => dispatch({ type: SET_LOADER });
 

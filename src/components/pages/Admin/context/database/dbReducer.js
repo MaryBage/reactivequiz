@@ -1,4 +1,4 @@
-import { GET_QUIZ, GET_DATA, SET_LOADER, GET_STUDENTS } from "../types";
+import { GET_QUIZ, GET_DATA, SET_LOADER } from "../types";
 
 const handlers = {
   [GET_DATA]: (state, { payload }) => ({
@@ -9,11 +9,6 @@ const handlers = {
   [GET_QUIZ]: (state, { payload }) => ({
     ...state,
     quizes: payload,
-    loading: false,
-  }),
-  [GET_STUDENTS]: (state, { payload }) => ({
-    ...state,
-    students: payload,
     loading: false,
   }),
   [SET_LOADER]: (state) => state,

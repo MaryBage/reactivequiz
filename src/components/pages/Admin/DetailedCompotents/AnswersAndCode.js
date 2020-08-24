@@ -10,8 +10,10 @@ const AnswersAndCode = ({ id, dbid, questions }) => {
   const [details, setDetails] = useState(questions[id - 1]);
 
   useEffect(() => {
-    setDetails(questions[id - 1])
+    if(questions.length > 0)
+      setDetails(questions[id - 1])
    },   [questions,id] )
+   
   const makeToDisappear = (e, id) => {
     setDisappear({
       ...disappear,
@@ -19,7 +21,6 @@ const AnswersAndCode = ({ id, dbid, questions }) => {
       index: id,
     });
   };
-
 
   const makeToShowHint = (e, id) => {
     setHint({
@@ -72,11 +73,9 @@ const AnswersAndCode = ({ id, dbid, questions }) => {
           <hr />
         </div>
       )}
-     
+
       {Object.entries(details.options).map((answer) => {
         return (
-           
-  
           <div className={s.answer} key={`1${answer[0]}`}>
             {
               <div
