@@ -1,3 +1,7 @@
+
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   padding: 0;
@@ -7,14 +11,16 @@ body {
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
 }
+
 
 .img {
   object-fit: cover;
-  height: 97.7vh;
+  height:38.8vh;
   width: 100%;
 }
+
 
 .changable-wrapper {
   display: flex;
@@ -204,3 +210,26 @@ body {
 .freeSpace {
   height: 130px;
 }
+
+@media  screen and (min-width:768px){
+ 
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .img {
+    object-fit: cover;
+    height: 97.7vh;
+    width: 100%;
+  }
+
+
+}
+
+
+
+
+
+
+
