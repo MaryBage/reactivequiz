@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+import Countdown, { zeroPad } from "react-countdown";
+import { PDFViewer } from "@react-pdf/renderer";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import s from "./Popup.module.css";
 import harder from "../../images/popups/harder.png";
 import well from "../../images/popups/well.png";
@@ -6,9 +10,6 @@ import great from "../../images/popups/great.png";
 import thanksmail from "../../images/popups/thanksmail.png";
 import { popupText } from "../../StaticContent";
 import ResultPdf from "../../components/pages/Pdf/Pdf";
-import { PDFViewer } from "@react-pdf/renderer";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
 import { updateQuizInfo } from "../../redux/quizInfo/quizInfo.actions";
 
 const Popup = (props) => {
@@ -29,6 +30,8 @@ const Popup = (props) => {
     date: Date(Date.now()).slice(4, 24),
     ...props.quizInfo,
   });
+  console.log('openPdf',openPdf.start,openPdf.duration )
+  const [seeResults, setSeeResults] = useState(true)
 
   const total = props.res.map((e) => +e.total).reduce((total, e) => total + e);
   let result = props.res.map((e) => +e.point).reduce((total, e) => total + e);
@@ -130,10 +133,19 @@ const Popup = (props) => {
                     >
                         try again!
                     </button> */}
+               Your result will be available in <Countdown renderer={({hours, minutes, seconds}) => (
+                                <span style={{color: '#000', marginLeft: 15, paddingBottom: 25}}>
+                                        {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
+                                        </span>
+                                )}
+                                    date={+openPdf.start+ openPdf.duration*60000} 
+                                    onComplete = {()=> setSeeResults(false)}
+                                    style={{color: '#000'}}/>
               <button
-                className={s.tryAgain}
+                className={seeResults ? s.tryAgain : `${s.tryAgain} blink` }
                 value="see results"
                 key="tryAgain"
+                disabled = {seeResults}
                 onClick={() => setOpenPdf({ ...openPdf, status: true })}
               >
                 see results

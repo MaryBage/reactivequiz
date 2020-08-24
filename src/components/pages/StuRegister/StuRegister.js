@@ -45,18 +45,8 @@ const StuRegister = (props) => {
       }
       else setLoader(false);
 
-      window.addEventListener('popstate',onBackButtonEvent);
 
-      return window.removeEventListener('popstate',onBackButtonEvent);
   }, []);
-
-  
-
- const onBackButtonEvent = (e) => {
-    e.preventDefault();
-    console.log('onBackButtonEvent')
-     history.push('http://localhost:3000/');
-}
 
 
   const handleRegister = async (e) => {
@@ -90,7 +80,7 @@ const StuRegister = (props) => {
             <InformativeField
               onChange={oniInputChange}
               type="text"
-              id="signup"
+              id="stu-name"
               name="displayName"
               placeholder="name"
               value={data.displayName}
@@ -100,8 +90,8 @@ const StuRegister = (props) => {
             <InformativeField
               className={false ? "incorrectInput" : ""}
               onChange={oniInputChange}
-              type="text"
-              id="signup-email"
+              type="email"
+              id="stu-email"
               name="email"
               placeholder="email"
               value={data.email}

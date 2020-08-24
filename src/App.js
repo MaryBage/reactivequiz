@@ -25,6 +25,7 @@ import StuRegister from "./components/pages/StuRegister/StuRegister";
 import ResetPasswordForm from "./components/popups/ResetPasswordPopup/AfterResetPopup/ResetPasswordForm";
 
 const App = ({ currentUser, logoutUser }) => {
+  //console.log = console.warn = console.info = console.error  = function(){}
   return (
     <Router>
       <Switch>
@@ -38,6 +39,7 @@ const App = ({ currentUser, logoutUser }) => {
           component={ResetPasswordForm}
         />
         <Route path="/start-quiz/:detail" component={StuRegister} />
+     
         {/* <Route path='/pdf' render={() => <PDFViewer style={{width:'100%', height:'100vh'}}><ResultPdf value='80'/></PDFViewer>} /> */}
         {!currentUser ? (
           <Route exact path="/signIn" component={SignIn} />

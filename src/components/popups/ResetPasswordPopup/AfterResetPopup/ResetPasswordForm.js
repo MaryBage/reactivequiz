@@ -47,7 +47,8 @@ const ResetPasswordForm = (props) => {
               )}
               {success && (
                 <span style={{ color: "green", fontWeight: "bold" }}>
-                  Your password has been successfully changed!
+                  Your password has been successfully changed!&nbsp;
+                  <a href='http://localhost:3000/signIn'>Sign in</a>
                 </span>
               )}
             </div>

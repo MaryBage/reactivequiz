@@ -17,14 +17,13 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import {Loader} from '../DetailedComponents/Loader/Loader'
 
 const Admin = () => {
-   
+    
   const user = useContext(UserContext);
   const { theme } = useContext(ThemeContext);
   const db = useContext(DbContext);
   const [showSettings, setShowSettings] = useState(false);
 
   const makeToShow = () => {
-    console.log(showSettings);
     setShowSettings(!showSettings);
   };
 

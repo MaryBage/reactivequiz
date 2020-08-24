@@ -19,7 +19,7 @@ export const DbState = ({ children }) => {
 
   const addData = async (data) => {
     setLoader();
-
+    try{
     const res = await axios.post(
       "/data.php",
       btoa(JSON.stringify({ ...data, creator: id, action: "add" }))
@@ -42,6 +42,9 @@ export const DbState = ({ children }) => {
       type: GET_DATA,
       payload,
     });
+
+    }
+    catch(e) { console.log(e.message) }
   };
 
   const getData = async () => {
