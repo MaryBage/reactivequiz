@@ -11,13 +11,13 @@ body {
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 
 .img {
   object-fit: cover;
-  height:38.8vh;
+  height:97.7vh;
   width: 100%;
 }
 
@@ -211,27 +211,26 @@ body {
   height: 130px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 280px) and (max-width: 800px) {
   .wrapper {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-   
+    grid-template-columns: repeat(1, 1fr);
+    overflow-y: scroll; 
   }
   .img {
     object-fit: cover;
-    height: 97.7vh;
+    height: 38.8vh;
     width: 100%;
   }
- /* .informativeDivision input {
-    height: 25px !important;
-    font-size: 15px !important;
+  .freeSpace {
+    height: 75px !important;
   }
   .logo {
-    font-size: 40px;
+    font-size: 40px !important;
   }
   .slogan {
-    font-size: 20px;
-  }*/
+    font-size: 20px !important;
+  }
 }
 
 

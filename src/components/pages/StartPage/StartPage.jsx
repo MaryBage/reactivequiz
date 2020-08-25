@@ -9,8 +9,10 @@ import { Link } from "react-router-dom";
 
 const StartPage = () => {
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-  }, []);
+    if(window.innerWidth > 800)
+      document.body.style.overflow = "hidden";
+      
+  });
 
   return (
     <div className="wrapper">

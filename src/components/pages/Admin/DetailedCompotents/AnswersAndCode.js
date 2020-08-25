@@ -67,7 +67,7 @@ const AnswersAndCode = ({ id, dbid, questions }) => {
             onBlur={codeEditHandler}
             onChange={(e) => setDetails({ ...details, code: e.target.value })}
           />
-          <div className="pointer red" onClick={() => deleteData(dbid)}>
+          <div className="pointer red" onClick={() => updateData(dbid, "questions", 'code', '')}>
             &#10008;
           </div>
           <hr />

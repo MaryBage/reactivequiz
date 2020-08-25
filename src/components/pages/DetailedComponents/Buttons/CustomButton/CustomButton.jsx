@@ -11,13 +11,17 @@ const useStyles = makeStyles({
     color: "#555555",
     fontSize: 19,
     fontFamily: "Courier New",
+    border: "1.5px solid #bbbbbb",
     borderRadius: 5,
     backgroundColor: "white",
     textAlign: "center",
     outline: "none",
     textTransform: "lowercase",
     "&:hover": {
-      backgroundColor: "#fbf7ff",
+      border: "1.5px solid #7e57c2",
+      backgroundColor: "#fcfcfc",
+      color: "#7e57c2",
+      fontWeight: "bold",
     },
   },
 });

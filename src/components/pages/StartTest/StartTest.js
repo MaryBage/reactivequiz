@@ -21,8 +21,9 @@ const StartTest = () => {
   const [data, setData] = useState({ quiz: "", category: "", level: "" });
 
   useEffect(() => {
+    if(window.innerWidth > 800)
     document.body.style.overflow = "hidden";
-  }, []);
+  });
 
   const handleSubmit = (e) => {
     setData({ ...data, quiz: "trainee" });

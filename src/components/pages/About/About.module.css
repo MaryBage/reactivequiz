@@ -11,3 +11,9 @@
     color: #7e57c2;
     font-weight: bold;
 }
+
+@media screen and (min-width: 280px) and (max-width: 800px) {
+    .content {
+        font-size: 15px!important;
+    }
+  }

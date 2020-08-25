@@ -27,8 +27,9 @@ const Feedback = () => {
   const [loader, setLoader] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-  }, []);
+    if(window.innerWidth > 800)
+      document.body.style.overflow = "hidden";
+  });
 
   const sbmtHandler = (e) => {
     e.preventDefault();

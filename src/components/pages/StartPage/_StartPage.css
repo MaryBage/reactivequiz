@@ -37,6 +37,10 @@
   width: 55%;
 }
 
+.buttons a {
+  border: 1.5px solid #bbbbbb;
+}
+
 .buttons .linear ::before {
   width: 1.6px !important;
 }

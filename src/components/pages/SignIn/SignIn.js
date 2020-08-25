@@ -21,8 +21,9 @@ const SignIn = ({ setCurrentUser }) => {
   const [loader, setLoader] = useState({ loader: false });
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-  }, []);
+    if(window.innerWidth > 800)
+     document.body.style.overflow = "hidden";
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +34,7 @@ const SignIn = ({ setCurrentUser }) => {
     };
     axios
       .post(
-        `https://cors-anywhere.herokuapp.com/https://reactivequiz.com/api/auth.php`,
+        `https://reactivequiz.com/api/auth.php`,
         btoa(JSON.stringify(params))
       )
       .then((res) => {
