@@ -60,11 +60,11 @@ export default function ActiveQuiz(props) {
   return (
     <div
       className="quizMain"
-      style={
-        width.w >= 800
-          ? { minWidth: "800px", gridTemplateColumns: "repeat(2, 50%)" }
-          : { minWidth: "400px", gridTemplateRows: "repeat(2, 50%)" }
-      }
+      // style={
+      //   width.w >= 800
+      //     ? { minWidth: "800px", gridTemplateColumns: "repeat(2, 50%)" }
+      //     : { minWidth: "400px", gridTemplateRows: "repeat(2, 50%)" }
+      // }
     >
       <div className="question" value={quiz.questionDbId}>
         {`${quiz.questionId}. ${quiz.question}`}

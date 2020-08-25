@@ -51,7 +51,7 @@ const Quizes = (props) => {
   }, [quizes]);
 
   function copyToClipboard(e, duration) {
-    inptRef.current.value = `http://localhost:3000/start-quiz/${btoa(
+    inptRef.current.value = `https://reactivequiz.com/start-quiz/${btoa(
       JSON.stringify({
         quiz: "trainer",
         quizId: e.target.id,

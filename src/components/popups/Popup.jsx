@@ -133,19 +133,19 @@ const Popup = (props) => {
                     >
                         try again!
                     </button> */}
-               Your result will be available in <Countdown renderer={({hours, minutes, seconds}) => (
+               { openPdf.start && <> Your result will be available in <Countdown renderer={({hours, minutes, seconds}) => (
                                 <span style={{color: '#000', marginLeft: 15, paddingBottom: 25}}>
                                         {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
                                         </span>
                                 )}
                                     date={+openPdf.start+ openPdf.duration*60000} 
                                     onComplete = {()=> setSeeResults(false)}
-                                    style={{color: '#000'}}/>
+                                    style={{color: '#000'}}/> </>}
               <button
                 className={seeResults ? s.tryAgain : `${s.tryAgain} blink` }
                 value="see results"
-                key="tryAgain"
-                disabled = {seeResults}
+                key="seeresults"
+                disabled = {openPdf.start && seeResults}
                 onClick={() => setOpenPdf({ ...openPdf, status: true })}
               >
                 see results
